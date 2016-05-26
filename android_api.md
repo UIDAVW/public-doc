@@ -127,7 +127,7 @@ public class LYException extends Exception {
 ```
 void startCloudService(String userToken, String configString, CallBackListener<Long> listener);
 ```
-||
+|  |  |
 |-------|----|
 | 接口名 | startCloudService |
 | 功能 | 调用了此api之后,平台相关凭证及资源开始准备，并且在回调接口通知云服务是否启动成功！ 建议在客户端登录验证逻辑通过之后即刻调用。服务启动之后，相关的平台接口才能正常使用。 |
