@@ -1,6 +1,6 @@
-#羚羊云Android SDK使用说明
+#羚羊云iOS SDK使用说明
 ##一、概述
->本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的API接口，实现直播推流、直播播放、云端录像播放、消息透传等功能。
+>本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的API接口，实现直播推流、直播播放、云端录像播放、消息透传等功能。
 
 ##二、功能概要
 >该套SDK主要提供的功能如下：
@@ -14,84 +14,64 @@
 ##三、功能特性
 |    | 功能特性 |
 |----|----|
-|    | 支持 H.264 和 AAC 软编（推荐） |
+|    | 支持 H.264 和 OPUS硬编(推荐) |
+|    | 支持 H.264 和 AAC 软编 |
 |    | 支持 H.264 和 AAC 硬编 |
-|    | 软编支持 Android Min API 15（Android 4.0.3）及其以上版本 |
-|    | 硬编支持 Android Min API 18（Android 4.3）及其以上版本 |
-|    | 支持羚羊云自定义网络协议QSUP进行推流 |
 |    | 支持羚羊云自定义网络协议QSTP进行推流 |
+|    | 支持羚羊云自定义网络协议QSUP进行推流 |
+|    | 支持带存储的直播 |
 |    | 支持自主设置分辨率、码率、帧率 |
-|    | 支持前后置摄像头，以及动态切换 |
-|    | 支持Zoom 操作 |
-|    | 支持Mute/Unmute |
-|    | 支持RTMP 推流自适应网络质量动态切换码率或自定义策略 |
-|    | 支持纯音频推流，以及后台运行 |
-|    | 支持自动对焦 |
-|    | 支持闪光灯操作 |
-|    | Android Min API 15 |
+|    | 支持手机摄像头推流 |
+|    | 支持手机前置摄像头和后置摄像头切换 |
+|    | 支持手机闪光灯的开启 |
+|    | 支持获取实时采集帧数据和图片 |
 |    | 支持羚羊云自定义网络协议QSUP进行播放 |
 |    | 支持羚羊云自定义网络协议QSTP进行播放 |
-|    | 提供播放器核心类 IPlayer |
-|    | 提供 LYPlayer 控件 |
-|    | 支持画面旋转（0 度，90 度，180 度，270 度） |
-|    | 支持 MediaCodec 硬件解码 |
-|    | 可高度定制化的 MediaController |
+|    | 支持实时获取流媒体信息参数 |
+|    | 支持实时获取播放流截图 |
+|    | 支持本地录制播放流并保存为视频 |
+|    | 支持云存储录像点播 |
+|    | 支持录像点播实时定位播放 |
+|    | 支持录像点播获取实时播放时间 |
 
 ##四、开发准备
 ###4.1 SDK的获取
->从羚羊云官网下载Android SDK
+>请到http://www.topvdn.com/xiazai.php 页面下载最新版本羚羊视频云SDK。
 
 ###4.2 SDK支持的系统版本
->SDK支持的Android版本：4.3及以上的Android版本(api18)。
+>支持的IOS 8.0以上版本。
 
 ###4.3 SDK库结构
->libs<br>
->├── armeabi<br>
->│   ├── libffmpeg_topvdn.so （编解码库）<br>
->│   └── libjplayer_topvdn.so （播放器）<br>
->│   ├── libSDK_topvdn.so （SDK和平台基础库）<br>
->│   └── libcrypto_topvdn.so （网络传输加密需要）<br>
->│   └── libssl_topvdn.so （网络传输加密需要）<br>
->└── sdk.jar (Android sdk jar包）
+>SDK包内的文件简要说明如下： <br>
+libLYCloudSDK.a整个SDK静态库文件，包含所有SDK功能；<br>
+include文件夹：SDK所需要导入的头文件目录；<br>
+Version.txt 更新日志文件。
 
 ###4.4 SDK的集成
-####4.4.1 Eclipse环境
->在eclipse下新建一个工程，对工程进行一下配置，搭建开发环境。
-
->将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
- 
-####4.4.2 Android Studio环境
->在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
+> 
+####4.4.1 拖拽方式
+将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination： 
 >
->(1)将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
->       
->(2)在build.gradle里添加一下代码：<br>
->
-    dependencies {
-        compile files('libs/sdk.jar')
-    }
+####4.4.2 拷贝方式
+>1、首先拷贝SDK到所需项目目录下：
 
-###4.5 系统权限设置
-    //networking api使用权限
-    <uses-permission android:name="android.permission.INTERNET"/>
-    //允许应用程序使用摄像头
-    <uses-permission android:name="android.permission.CAMERA"/>
-    //允许应用程序修改全局音频设置
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
-    //允许应用程序录制视频
-    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
-    //允许应用程序录制音频
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    //允许应用程序读取sd卡
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    //允许应用程序写入sd卡
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    //允许应用程序访问网络状态
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    //摄像头
-    <uses-feature android:name="android.hardware.camera"/>
-    //摄像头功能
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+>2、然后 Xcode左侧右键点击
+
+>3、最后选择目录下SDK文件夹点击Add
+> 
+####4.4.3 添加依赖库
+> 
+说明：SDK底层是C++实现，所以需要添加libstdc++.tbd文件(如果使用的是xcode7以下版本，后缀为dylib)；VideoToolbox.framework是硬编解码所需要，如果不使用硬编解码可不添加。
+####4.4.4 修改Enable BitCode
+SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
+> 
+####4.4.5 其他设置
+1)在 Build Settings -> Other Linker Flags 里，添加选项 -ObjC。
+2)如果您的工程需要使用 C++ ，在 Build Setting -> Apple LLVM 7.0 - Language - C++ -> C++ Standard Library 里， 设置值为 libstdc++ (GNU C++ standard library)。
+3)在工程配置infof.plist文件中，添加条目 NSAppTransportSecurity ，属性设为 Dictionary。在此条目下添加键值对，key 为 NSAllowsArbitraryLoads, 值为 YES。
+> 
+####4.4.6 编译工程
+以上步骤进行完成以后，编译工程，如果没有报错，恭喜你！集成羚羊云iOS SDK成功！接下来可以开启炫酷的视频播放操作。
 
 ##五、开发示例
 >本章节介绍如何调用SDK的API接口来实现直播推流、播放器、消息透传的功能。
@@ -99,34 +79,26 @@
 ###5.1 启动云服务
 >启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 >
-    /**
-     * 开启云服务
-     */
-    public void startCloudServiceWithFacetime(String userToken) {
-        LYService.getInstance().startCloudService(
-        	userToken
-            , Const.CONFIG
-            , new CallBackListener<Long>() {
-                @Override
-                public void onSuccess(Long aLong) {
-                        CLog.v("long-" + aLong);
-                        showToast("登录成功" );
-                }
->                
-                @Override
-                public void onError(LYException exception) {
-                    CLog.v("exception-" + exception.toString());
-                    showToast("登录失败"+exception.getMessage());
-                }
-            }
-        );
-    }
+```
+[[LYCloudService sharedLYCloudService] startCloudService: m_token
+                                                  config: m_config
+                                              startBlock: ^(LYstatusCode statusCode, NSString *errorString)
+                                                        {
+                                                            //启动云服务的成功与否状态回调
+                                                        }
+                                         popMessageBlock: ^(NSDictionary *dictionary)
+                                                        {
+                                                            //平台透传的所有消息都从这回调出来
+                                                        }
+];
+```
 >**注意**：其他接口必须在此接口被调用成功之后才能调用。
 
 ###5.2 停止云服务
 > 
-    //退出是要关闭云服务，节省资源
-    LYService.getInstance().stopCloudService();
+```
+[[LYCloudService sharedLYCloudService] stopCloudService];
+```
 >在应用退出的时候调用，释放系统资源。
 
 ###5.3 消息透传
@@ -135,18 +107,14 @@
 >该功能可以有如下应用场景：<br>
 (1)在移动终端的应用中读取或更改接入到羚羊云中的私人摄像设备的参数。<br>
 (2)在移动终端的应用中监听各个摄像设备的在线状态变化。
-> 
-    /**
-     * 设置云消息监听
-     */
-    LYService.getInstance().setCloudMessageCallbackListener (
-        new LYService.AcceptMessageListener() {
-            @Override
-            public void accept (LYService.CloudMessage message) {
-                CLog.v(message.toString());
-            }
-        }
-    );
+
+>在启动云服务时设置popMessageBlock回调，可以监听从云平台传送过来的消息，在popMessageBlock回调函数中您可以处理消息并选择是否回应消息给对方。
+```
+popMessageBlock:^(NSDictionary *dictionary) {
+    //处理平台消息
+    //…
+}
+```
 **注意**：<br>
 (1)消息最大长度为256个字节;<br>
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
@@ -154,127 +122,70 @@
 
 ###5.4 播放器
  
-####5.4.1 设置播放布局
->我们将播放器封装成了界面控件，方便用户直接嵌入到app的主界面中，实现播放器的功能。
-> 
-    <com.lingyang.sdk.player.widget.LYPlayer
-        android:id="@+id/ly_player"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
->
-    LYPlayer mPlayer = (LYPlayer)findViewById(R.id.ly_player);
-
-####5.4.2 设置播放源
-> 
-    //公众摄像机直播观看		
-    mPlayer.setDataSource("topvdn://rtmp6.public.topvdn.cn:1935?" +
-	                      "protocolType=2&connectType=2&token=1003136_3356753920_" +
-                          "1492163431_cc3acc347784f3e30cd4713acec615b1");
->
-播放源格式：<br>
-  1,RTMP连接URL格式：<br>
-    topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
-  2,P2P连接URl格式：<br>
-    topvdn://traker_ip:port?protocolType=[]&token=[]<br>
-  3,云存储下载URL格式：<br>
-    topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
->
-<u>protocolType</u>：协议类型，[1]P2P,[2]RTMP,[3]云存储下载<br>
-<u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
-<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
-<u>token</u>：对端应用客户端的访问token，具体内容格式请见《羚羊云SDK接入指南》的“羚羊云token认证机制”的详细介绍。
-**URL的详细格式请参考《羚羊云URL格式解析》。**
-
-####5.4.3 设置播放连接状态监听
->设置循环执行网络拉流、解码视频帧、及显示视频帧这些过程之前，连接到云服务器的状态监听函数；
+####5.4.1 创建播放器类
 ```
-/**
- * 所有连接完成，开始播放监听
- */
-mPlayer.setOnPreparedListener(new OnPreparedListener() {
-    @Override
-    public void onPrepared(int time) {
-        //time 连接过程所消耗的时间
-        runOnUiThread(new Runnable() {
-            public void run() {}
-        }
-        );
+LYPlayer *m_player = [[LYPlayer alloc] init];
+```
+
+####5.4.2 创建播放配置
+```
+LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:playview
+                                                                                  frame:CGRectMake(0, 0, 640  , 480)
+                                                                             decodeMode:LYPlayerDecodeModeHard];
+```
+
+####5.4.3 设置播放配置
+```
+[m_player setViewWithConfiguration:m_playerConfig];
+```
+
+####5.4.4 打开播放器
+```
+[m_player open: @"topvdn://203.195.157.248:80?protocolType=1&token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb"
+    openStatus: ^(LYstatusCode statusCode, NSString *errorString) {
+        //打开播放器的状态回调
     }
-});
-```
-OnPreparedListener被触发则表示连接至云服务器已经成功，在回调函数中，可以在播放控件界面上显示连接状态的变化。
+  playerStatus: ^(NSDictionary *playerMessageDic) {
+        //播放过程中的状态回调
+    }
+];
 
-####5.4.4 开始播放
-> 
 ```
-mPlayer.start();
-```
-开始播放后会触发OnPreparedListener回调函数;
->
-注：该方法既可以播放直播流，也可以播放云端录像流。播放的类型根据上面所述 “设置播放源”小节的url地址内容来区分。
+>说明：播放地址由应用后台获取。
 
-####5.4.5 结束播放
+####5.4.5 关闭播放器
 ```
-mPlayer.stopPlayback();
+[m_player close];
 ```
 
 ####5.4.6 播放控制
 #####视频截图
 ```
-mPlayer.snapshot(snapPath, name, new OnSnapshotListener() {
-	@Override
-	public void onSnapshotSuccess(String snapPath) {
-		showToast("截图成功"+snapPath);
-	}
-	@Override
-	public void onSnapshotFail(LYException e) {
-		showToast("截图失败"+e.getMessage());
-	}
-});
+[m_player snapshot: m_path
+            status: ^(LYstatusCode statusCode, NSString *errorString) {}
+];
 ```
 #####视频录制
 ```
-//开始录像
-mPlayer.startLocalRecord(recordPath);
+//开始录制
+[m_player startLocalRecord:m_path status:^(LYstatusCode statusCode, NSString *errorString) {
     
-/**
- * 录像状态监听
- */
-OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
-	@Override
-	public void onRecordSizeChange(long size, long time) {
-		showToast("正在录像"+time);
-	}
-	
-	@Override
-	public void onRecordError(LYException arg0) {
-		showToast("录像出错"+arg0.getCode()+"--"+arg0.getMessage());
-	}
+}];
 
-	@Override
-	public void onRecordStart() {
-		showToast("开始录像");
-	}
-
-	@Override
-	public void onRecordStop() {
-		showToast("结束录像");
-		
-	}
-};
+//结束录制
+[m_player stopLocalRecord];
 ```
 #####声音开关
 ```
 //开启声音
-mPlayer.unmute();
+[m_player unmute];
 //关闭声音
-mPlayer.mute();
+[m_player mute];
 ```
 
 #####获取流媒体参数
 ```
-//动态获取流媒体参数，用户根据需要传参获取，如当前视频帧率。
-mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
+[m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```
 
 ###5.5 直播推流
@@ -282,102 +193,98 @@ mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 ####5.5.1 设置流参数
 
 ```
-//音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
-mSessionConfig = new SessionConfig.Builder()
-	.withVideoBitrate(512000)//码率
-	.withVideoResolution(480, 640)//分辨率  默认720p
-    .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
-	.withCameraDisplayOrientation(90)//旋转角度
-	.withAudioChannels(1)//声道 1单声道  2双声道
-	.useHardAudioEncode(false)//是否音频硬编
-	.useHardVideoEncode(false)//是否视频硬编
-	.useAudio(true)//是否开启音频
-    .useVideo(true)//是否开启视频
-	.build();
-
-//没有必须配置项，可直接使用默认值
-mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
+//该方法生成一个默认的视频采集配置
+videoSize = (640, 480);
+frameRate = 30fps, bitrate = 512kbps;
+LYVideoStreamingConfiguration *mVideoConfig = [LYVideoStreamingConfiguration defaultConfiguration];
+    
+//该方法生成一个默认的音频采集配置。
+sampleRate = 11025, channle = 1, birrate = 128kpbs;
+LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
 ```
 >SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
 **注意**：更多的参数配置详见<u>《API手册》</u>中的数据类型-直播推流相关属性配置。
 
-####5.5.2 设置本地预览布局
+####5.5.2 初始化直播类
 ```
-<com.lingyang.sdk.view.LYGLCameraEncoderView
-    android:id="@+id/ly_preview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-
-LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_preview);
+//初始化直播类:如果不采集音频，则audioConfiguration传nil即可，不采集视频相同
+LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
 ```
->我们对surfaceview封装了的自定义View，用来预览本地采集的图像。
 
 ####5.5.3 设置本地预览视图
 ```
-//设置本地预览
-mLiveBroadcast.setLocalPreview(mPreview);
-####5.5.4 设置推流状态监听
-mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
-	@Override
-	public void onBroadcastStart() {
-		showToast("马上开始直播");
-	}
-	@Override
-	public void onBroadcastLive() {
-		showToast("正在直播");
-	}
-	@Override
-	public void onBroadcastStop() {
-		showToast("停止直播");
-	}
-	@Override
-	public void onBroadcastError(LYException exception) {
-		showToast("直播出错" + exception.getCode() + "--"
-				+ exception.getMessage());
-	}
-});
-```
-####5.5.4 开始推流直播
-```
-// 开始直播
-//IBroadcastOpenAPI.MODE_LIVE  :直播
-//IBroadcastOpenAPI.MODE_LIVE_AND_RECORD   :录像直播
-			
-mLiveBroadcast.startBroadcasting(ILiveBroadcast.MODE_LIVE,
-	"3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1");
+//设置采集视频预览view
+[mLiving setPreview:self.preview frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
 ```
 
-####5.5.5 结束推流直播
+####5.5.4 开始直播
 ```
-//结束直播
-mLiveBroadcast.stopBroadcasting();
-//资源释放
-mLiveBroadcast.release();
+//直播资源的准备，返回 statusCode == LYstatusCodeSuccess 才可以推流
+[mLiving startLiveBroadcastWithMode:LYLiveBroadcastModeLiving token:mToken startBlock:^(LYstatusCode statusCode, NSString *errorString) {
+    if (LYstatusCodeSuccess == statusCode) {
+        //直播资源准备完成，可以开始推流；
+    }
+}];
 ```
->**注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
+
+####5.5.5 开始推流直播
+```
+[mLiving startSendVideoData];
+[mLiving startSendAudioData];
+```
+>**注意**：直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放
+
+####5.5.6 结束推流直播
+```
+[mLiving stopLiveBroadcast];
+```
+
+####5.5.7 释放资源
+```
+[mLiving destroy];
+```
 
 ##六、注意事项
 > 
-<1>用户在调用直播推流、播放器、消息透传的功能接口之前，必须先调用startCloudService接口。否则这些接口不可正常使用。
-<2>本SDK只提供了监听消息的功能，并不提供推送消息的功能，推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的Web API接口“设备推送消息”。
-<3>播放控制功能中视频截图接口所抓取图片的格式为jpg。
-<4>本地录像和截图传入的文件夹路径必须是已经被创建的文件夹的路径；获取文件地址不能用file.toString(),要用file.getAbsolutePath()获取绝对路径。
-<5>消息透传功能所支持的消息最大长度为256个字节。
+	1. sdk只支持iOS 8.0以上的版本； 
+	2. 播放器打开之后就不能重新设置解码方式；
+	3. 音视频流配置类生产的类方法均不是单例，每次调用都会生成一个新的配置；
+	4. 直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放；
+	5. 功能模块代码务必按照使用说明流程中的进行，否则会不能正常实现；
+	6. 推流暂不支持动态切换分辨率，可支持动态切换码率。
 
 ##七、常见问题
 > 
-<1>此版本的SDK是否支持在推流的过程中动态更改码率？<br>
-答：暂不支持动态切换码率。不能动态切换分辨率
-> 
-<2>SDK判断设备是否在线的依据是什么？<br>
-答：设备是否在线2分钟更新一次，平台2分钟内检测不到设备在线的心跳，则判断为离线。
-> 
-<3>SDK中有播放云端录像的接口(和播放直播流是一个接口)，但是没发现查询录像列表的功能。<br>
-答：播放云端录像时，录像列表信息有Web API接口提供，SDK不提供。
-> 
-<4>QSTP协议和QSUP协议分别是什么？<br>
-答：QSTP全称quick streaming tcp  protocol，QSUP全称quick streaming udp protocol，是羚羊云针对网络音视频媒体流自主研发的流媒体传协议，具有充分利用节点带宽资源达到高效快速传输的特点。
+1. SDK不工作，请检查平台是否启动；
+2. 无音视频数据采集，请检查摄像头已经麦克风权限是否得到授权。
+3. 接口异常返回，请检查参数的正确性。
 
 ##八、更新历史
+> 
+V1.2.1 sdk更新日期2016.05.16 17：00
+1. 修改视频通话播放器设置为配置类形式；
+2. 修改互联发起方调用流程：<br>
+2.1 进入互联发起方控制器类之后获取默认音视频配置类对象；<br>
+2.2 创建互联类对象：传入参数为2.1获取到的音视频类对象；<br>
+2.3 设置预览view接口调用显示预览画面；(如果不需要预览跳过此步)<br>
+2.4 创建播放器配置类对象；(一定要传入正确的参数，否则观看不到对方视频)；<br>
+2.5 调用设置播放器配置的接口；(可以在界面交互逻辑之后调用)<br>
+2.6 上述步骤完成主动方操作就完成。当连接成功被动方时画面就主动显示出来。<br>
+3. 修改打开视频通话播放器接口：去除参数中的解码方式；
+4. 加视频通话过程中动态切换传输码率接口：可设置(普通、标清、高清三个等级)
+5. 增加打开闪光灯接口；
+6. 该版本视频通话播放器截图、录像以及获取流媒体信息接口暂时不作用；采集重设音视频采集参数暂时不作用。请熟知！
+>
+**特别说明**<br>
+启动云服务的config串用下面的串：<br>
+[Config]\r\nIsDebug=1\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nIsSendBroadcast=0\r\nUdpSendInterval=2\r\nSendPacketBufferLength=1408\r\nRecvPacketBufferLength=1408\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n<br>[RealtimeModeConfig]\r\nLongConncettionServerIP=223.202.103.146\r\nLongConncettionServerPort=8088\r\nDebugServerIP=120.24.56.51\r\nDebugServerPort=41234\r\nRealtimeModeConfigString=00000000000000\r\nPlayerDataBufferDelayLength=6
+>
+V1.1.2 sdk更新日期2016.5.5 18：05
+1. 修改不启动预览自动开启采集；
+2. 修改切换前后置摄像头问题。
+>
+V1.1.1 sdk更新日期2016.4.29 17:00
+1. 改版后的第一版SDK。
+
 
 
