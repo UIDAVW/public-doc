@@ -60,7 +60,7 @@ public interface IScreenRatioChanger {
 }
 ```
 
-###1.3 直播推流参数
+###1.3 SessionConfig配置直播推流参数
 ```
     // 设置图像的旋转角度 只能是 0,90,180,270       
     public Builder withCameraDisplayOrientation(int displayOrientation) ;
