@@ -221,7 +221,6 @@ mPlayer.stopPlayback();
 ####5.4.6 播放控制
 #####视频截图
 ```
-snapPath=”/storage/emulated/0/Topvdn/我的相册/”;
 mPlayer.snapshot(snapPath, name, new OnSnapshotListener() {
 	@Override
 	public void onSnapshotSuccess(String snapPath) {
@@ -236,7 +235,6 @@ mPlayer.snapshot(snapPath, name, new OnSnapshotListener() {
 #####视频录制
 ```
 //开始录像
-recordPath=”/storage/emulated/0/Topvdn/我的录像/record.mp4”;
 mPlayer.startLocalRecord(recordPath);
     
 /**
@@ -381,20 +379,5 @@ mLiveBroadcast.release();
 答：QSTP全称quick streaming tcp  protocol，QSUP全称quick streaming udp protocol，是羚羊云针对网络音视频媒体流自主研发的流媒体传协议，具有充分利用节点带宽资源达到高效快速传输的特点。
 
 ##八、更新历史
->V1.4.3 SDK更新日期 2016.5.20<br>
-<1>jni接口合并，简化内部调用流程，优化内部实现<br>
-<2>修复无法接收云消息bug<br>
-<3>添加采集角度设置：0,90,180,270
->
-V1.4.2 SDK更新日期 2016.5.6<br>
-<1>播放器添加获取流媒体信息接口<br>
-<2>修复不设置预览连接崩溃bug<br>
-<3>互联模块，被连接方内部实现连接，添加动态设置码率
->
-V1.4.1  SDK更新日期 2016.4.29<br>
-<1>SDK整体按功能模块重构：云平台服务，设备直播，音视频互联，播放器<br>
-<2修改，简化调用流程<br>
-<3>地址格式修改<br>
-<4>截图失败bug修复
 
 
