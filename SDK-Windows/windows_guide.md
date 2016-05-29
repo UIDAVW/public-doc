@@ -120,7 +120,7 @@ public:
 **注意**：<br>
 (1)消息最大长度为256个字节;<br>
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
-推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的Web API接口“设备推送消息”。
+推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
  
@@ -220,7 +220,7 @@ std::string strDownloadSpeed = getStreamInfo(STREAMINFO_VIDEO_DOWNLOAD_SPEED);
 答：设备是否在线2分钟更新一次，平台2分钟内检测不到设备在线的心跳，则判断为离线。
 > 
 <3>SDK中有播放云端录像的接口(和播放直播流是一个接口)，但是没发现查询录像列表的功能。<br>
-答：播放云端录像时，录像列表信息有Web API接口提供，SDK不提供。
+答：播放云端录像时，录像列表信息有[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)提供，SDK不提供。
 > 
 <4>QSTP协议和QSUP协议分别是什么？<br>
 答：QSTP全称quick streaming tcp  protocol，QSUP全称quick streaming udp protocol，是羚羊云针对网络音视频媒体流自主研发的流媒体传协议，具有充分利用节点带宽资源达到高效快速传输的特点。
