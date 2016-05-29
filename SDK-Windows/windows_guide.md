@@ -21,7 +21,7 @@
 
 ##四、开发准备
 ###4.1 SDK的获取
-从羚羊云官网下载Windows SDK
+[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows "获取SDK")
 
 ###4.2 SDK支持的系统版本
 >Windows 7及以上版本。

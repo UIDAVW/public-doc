@@ -26,7 +26,7 @@
 
 ##四、开发准备
 ###4.1 SDK的获取
->登陆到羚羊云官方网站下载最新的羚羊云C接口SDK。http://www.topvdn.com/product.html
+>[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C "获取SDK")
 
 ###4.2 SDK库结构
 >SDK目录<br>

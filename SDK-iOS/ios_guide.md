@@ -36,7 +36,7 @@
 
 ##四、开发准备
 ###4.1 SDK的获取
->请到http://www.topvdn.com/xiazai.php 页面下载最新版本羚羊视频云SDK。
+>[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-iOS "获取SDK")
 
 ###4.2 SDK支持的系统版本
 >支持的IOS 8.0以上版本。
