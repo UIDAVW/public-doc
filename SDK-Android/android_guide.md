@@ -1,6 +1,6 @@
 #羚羊云Android SDK使用说明
 ##一、概述
->本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的API接口，实现直播推流、直播播放、云端录像播放、消息透传等功能。
+>本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传等功能。
 
 ##二、功能概要
 >该套SDK主要提供的功能如下：
@@ -94,7 +94,7 @@
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
 ##五、开发示例
->本章节介绍如何调用SDK的API接口来实现直播推流、播放器、消息透传的功能。
+>本章节介绍如何调用[SDK的API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 >启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -301,7 +301,7 @@ mSessionConfig = new SessionConfig.Builder()
 mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 >SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[《API手册》](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md "Android API")中的数据类型-直播推流相关属性配置。
 
 ####5.5.2 设置本地预览布局
 ```

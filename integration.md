@@ -205,14 +205,15 @@ token明文段包含以下字段：
 给出以下传送链接：
 
 [Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
-
 [C版SDK](http://doc.topvdn.com/api/#!c_guide.md "C版SDK")
-
 [iOS版SDK](http://doc.topvdn.com/api/#!ios_guide.md "iOS版SDK")
-
 [Anroid版SDK](http://doc.topvdn.com/api/#!android_guide.md "Anroid版SDK")
-
 [Windows版SDK](http://doc.topvdn.com/api/#!windows_guide.md "Windows版SDK")
+
+[C版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-C/c_api.md)
+[iOS版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)
+[Android版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)
+[Windows版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/windows_api.md)
 
 ##8. 常见问题
 
