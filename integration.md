@@ -206,13 +206,13 @@ token明文段包含以下字段：
 
 [Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
 
-[C版SDK](http://doc.topvdn.com/api/#!c_guide.md "Web API")
+[C版SDK](http://doc.topvdn.com/api/#!c_guide.md "C版SDK")
 
-[iOS版SDK](http://doc.topvdn.com/api/#!ios_guide.md "Web API")
+[iOS版SDK](http://doc.topvdn.com/api/#!ios_guide.md "iOS版SDK")
 
-[Anroid版SDK](http://doc.topvdn.com/api/#!android_guide.md "Web API")
+[Anroid版SDK](http://doc.topvdn.com/api/#!android_guide.md "Anroid版SDK")
 
-[Windows版SDK](http://doc.topvdn.com/api/#!windows_guide.md "Web API")
+[Windows版SDK](http://doc.topvdn.com/api/#!windows_guide.md "Windows版SDK")
 
 ##8. 常见问题
 
