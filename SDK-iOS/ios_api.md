@@ -301,7 +301,7 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
 >
 **token**：用户token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见<u>《羚羊云token认证机制》</u>(给出导航链接)
+token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
 **config**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
@@ -396,7 +396,7 @@ String getSDKVersion();
 |startBlock|oid (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
 >token：用户token，从后台获取，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9<br>
-Token串各字段所表示的意义请见《羚羊云token认证机制》(给出导航链接)
+Token串各字段所表示的意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 
 ###4.4 停止直播
 ```
@@ -587,7 +587,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|dataSourceAddreess|NSString *|in|必须|播放地址|
+|dataSourceAddreess|NSString *|in|必须|播放地址，详见[羚羊云url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)|
 |openBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|打开状态回调|
 |playerBlock|playerCallBackBlock|in|必须|播放状态回调|
 

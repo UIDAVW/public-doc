@@ -143,7 +143,7 @@ void startCloudService(String userToken, String configString, CallBackListener<L
 >
 **userToken**：用户token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见<u>《羚羊云token认证机制》</u>(给出导航链接)
+token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
 **configString**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
@@ -291,7 +291,7 @@ void startBroadcasting(int mode,String token);
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |token|String|in|必须|用户token，用户从第三方后台获取。格式如下：2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
-token的内容格式及意义请见《羚羊云token认证机制》(给出导航链接)|
+token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)|
 |mode|int|in|必须|直播类型，详见推流接口的结构定义 |
 
 ###3.4 停止直播推流
@@ -525,7 +525,7 @@ public void setDataSource(String url)
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见羚羊云播放源url格式解析|
+|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)|
 
 ###4.3 设置播放缓冲时长
 ```

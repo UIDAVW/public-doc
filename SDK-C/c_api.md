@@ -88,7 +88,7 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 >
 **apToken**：用户token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见<u>《羚羊云token认证机制》</u>(给出导航链接)
+token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
 **apConfig**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
@@ -137,7 +137,7 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：<br>
 topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&cid=1003469<br>
 topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&cid=%lu&begin=%lu&end=%lu&play=%lu<br>
-Url各字段意义及详解请见《羚羊云Url格式解析》
+Url各字段意义及详解请见[羚羊云Url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)
 
 ###3.2 断开通道连接
 ```
@@ -216,7 +216,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 >
 **aDeviceToken**：用户token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见<u>《羚羊云token认证机制》</u>(给出导航链接)
+token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 
 ###3.7 跳转到指定时间点录像
 ```
