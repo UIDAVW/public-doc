@@ -18,12 +18,12 @@
 - Web API: 为开发者提供http接口，即开发者通过http形式发起数据请求，获取返回json或xml格式的数据。用户可以基于此开发JavaScript、C#、C++、Java、Objective-C等语言的应用。
 
 ##4. 羚羊云服务架构
-![Alt text](./struct.png "羚羊云服务架构") 
+![Alt text](./images/struct.png "羚羊云服务架构") 
 
 ##5. 羚羊云SDK的功能
 从上面的整体架构中，可以看出羚羊云SDK可以分两大类:供应用服务器调用的Web API和供应用客户端调用的客户端SDK。以下是SDK的主要功能用例图：
 
-![Alt text](./usercase.png "羚羊云SDK的功能")
+![Alt text](./images/usercase.png "羚羊云SDK的功能")
 
 注：以上图中仅仅列出了主要功能，更多具体的功能在各个SDK的开发文档中有详细介绍。
 
@@ -58,7 +58,7 @@
 ###6.3 认证机制
 用户在接入到羚羊云平台时，无论是用户的服务器还是客户端，都必须通过平台的安全认证，才能使用接口以实现应用。服务器和客户端有着不同的认证机制，如下图所示：
 
-![Alt text](./verify.png "羚羊云认证机制")
+![Alt text](./images/verify.png "羚羊云认证机制")
 
 - 应用服务器认证<br>
 应用服务器直接携带app id和app key，通过调用羚羊云提供的Web API向羚羊云平台发送http请求，云平台会对id和key进行验证，验证通过将会返回该API对应的结果。
@@ -74,17 +74,17 @@
 - 应用客户端接入<br>
 客户端的接入过程就相对复杂一些，需要应用服务器的参与，如下图所示：
 
-![Alt text](./flow.png "应用客户端接入羚羊云的流程")
+![Alt text](./images/flow.png "应用客户端接入羚羊云的流程")
 
 ###6.5 另外一种接入方法
 上面的“认证机制”和“用户接入”是我们建议的方法，也是用户通常的认证方法。但有些用户实际的应用体系架构中，没有设计应用服务器(也可以说将应用服务器的业务处理都放在了应用客户端，如一些嵌入在视频采集端的智能硬件设备端应用程序)。
 ####6.5.1 认证机制
 这种用户应用体系架构的认证机制如下图所示：
 
-![Alt text](./verify2.png "用于应用接入羚羊云") 
+![Alt text](./images/verify2.png "用于应用接入羚羊云") 
 
 ####6.5.2 接入流程
-![Alt text](./flow2.png "用于应用接入羚羊云的流程") 
+![Alt text](./images/flow2.png "用于应用接入羚羊云的流程") 
 
 ##7. 羚羊云token认证机制
 ###7.1 羚羊云的身份验证方式
@@ -204,15 +204,15 @@ refer | http请求时的refer地址中的域名部分，这个字段一般用来
 
 给出以下传送链接：
 
-Web API
+[Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
 
-C版SDK
+[C版SDK](http://doc.topvdn.com/api/#!c_guide.md "Web API")
 
-iOS版SDK
+[iOS版SDK](http://doc.topvdn.com/api/#!ios_guide.md "Web API")
 
-Anroid版SDK
+[Anroid版SDK](http://doc.topvdn.com/api/#!android_guide.md "Web API")
 
-Windows版SDK
+[Windows版SDK](http://doc.topvdn.com/api/#!windows_guide.md "Web API")
 
 ##8. 常见问题
 
