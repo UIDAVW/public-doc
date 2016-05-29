@@ -245,7 +245,7 @@ void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|message|CloudMessage|out|--|请参见<u>《API手册》</u>中的消息结构定义|
+|message|CloudMessage|out|--|请参见本文数据类型章节的消息结构定义|
 
 ##3 直播推流接口
 >接口名称：LYLiveBroadcast
