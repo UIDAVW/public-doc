@@ -39,7 +39,7 @@
 
 ##四、开发准备
 ###4.1 SDK的获取
->[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android 获取SDK)
+>[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android "获取SDK")
 
 ###4.2 SDK支持的系统版本
 >SDK支持的Android版本：4.3及以上的Android版本(api18)。
