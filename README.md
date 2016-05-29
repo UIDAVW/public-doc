@@ -18,7 +18,7 @@
 - Web API: 为开发者提供http接口，即开发者通过http形式发起数据请求，获取返回json或xml格式的数据。用户可以基于此开发JavaScript、C#、C++、Java、Objective-C等语言的应用。
 
 ##4. 羚羊云服务架构
-![Alt text](./struct.png "羚羊云服务架构") 
+![Alt text](./images/struct.png "羚羊云服务架构") 
 
 ##5. 羚羊云SDK的功能
 从上面的整体架构中，可以看出羚羊云SDK可以分两大类:供应用服务器调用的Web API和供应用客户端调用的客户端SDK。以下是SDK的主要功能用例图：
