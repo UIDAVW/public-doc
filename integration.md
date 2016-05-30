@@ -198,7 +198,7 @@ token明文段包含以下字段：
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；<br>
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
 
-##7. 如何使用羚羊云SDK
+##8. 如何使用羚羊云SDK
 按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
 
 [Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
@@ -219,7 +219,7 @@ token明文段包含以下字段：
 
 [Windows版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/windows_api.md)
 
-##8. 常见问题
+##9. 常见问题
 
 1. 什么是appid？怎么获取appid？<br>
 答：appid是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appid才能正常使用。
