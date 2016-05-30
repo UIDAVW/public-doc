@@ -86,7 +86,7 @@
 ####6.5.2 接入流程
 ![Alt text](./images/flow2.png "用于应用接入羚羊云的流程") 
 
-<span id = "token">##7. 羚羊云token认证机制</span>
+##<span id = "token">7. 羚羊云token认证机制</span>
 ###7.1 羚羊云的身份验证方式
 羚羊云采用目前web领域普遍的认证方式：基于token的身份验证。
 
