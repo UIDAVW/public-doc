@@ -699,11 +699,6 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |startRecordBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|开始录像状态回调|
 
 ###5.12 结束本地录像   
-   - (void)stopLocalRecord；
-接口	stopLocalRecord
-结束本地录像；
-返回值	无
-参数列表	无
 ```
 - (void)stopLocalRecord；
 ```
@@ -711,4 +706,299 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |-------|----|
 | 接口名 | stopLocalRecord |
 | 功能 | 结束本地录像； |
+| 返回值 | 无 |
+
+##6 视频通话接口
+>接口名称：LYFaceTime
+
+###6.1 初始化
+```
+- (instancetype) initWithVideoConfiguration: (LYVideoStreamingConfiguration *)videoConfiguration audioConfiguration: (LYAudioStreamingConfiguration *)audioConfiguration;
+```
+| - | - |
+|-------|----|
+| 接口名 | initWithVideoConfiguration |
+| 功能 | 初始化直播类 |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|videoConfiguration|LYVideoStreamingConfiguration|in|必须|视频采集和推流配置|
+|audioConfiguration|LYAudioStreamingConfiguration|in|必须|音频采集和推流配置|
+
+###6.2 设置预览View
+```
+- (void) setPreview: (UIView *)preview
+              frame: (CGRect)frame;
+```
+| - | - |
+|-------|----|
+| 接口名 | setPreview |
+| 功能 | 设置预览view，本地采集视频预览view，注意该view上不能存在其他控件，否则会被layer重绘掉 |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|preview|UIView|in|必须|预览view|
+|frame|CGRect|in|必须|view的frame|
+
+###6.3 开始推视频流
+```
+- (void) startSendVideoData;
+```
+| - | - |
+|-------|----|
+| 接口名 | startSendVideoData |
+| 功能 | 视频流开始往平台推送：单独推视频流， |
+| 返回值 | 无 |
+
+###6.4 停止推视频流
+```
+- (void) stopSendVideoData; 
+```
+| - | - |
+|-------|----|
+| 接口名 | stopSendVideoData |
+| 功能 | 停止推流到平台：单独停止视频流 |
+| 返回值 | 无 |
+
+###6.5 开始推音频流
+```
+- (void) startSendAudioData;
+```
+| - | - |
+|-------|----|
+| 接口名 | startSendAudioData |
+| 功能 | 开始推音频流：单独开始音频流 |
+| 返回值 | 无 |
+
+###6.6 停止推音频流
+```
+- (void) stopSendAudioData;
+```
+| - | - |
+|-------|----|
+| 接口名 | stopSendAudioData |
+| 功能 | 开始推音频流：单独开始音频流 |
+| 返回值 | 无 |
+
+###6.7 获取错误信息
+```
+- (NSString *) getCurrentErrorInfo;
+```
+| - | - |
+|-------|----|
+| 接口名 | getCurrentErrorInfo |
+| 功能 | 获取当前的错误信息，如果为nil或者 |
+| 返回值 | 无 |
+
+###6.8 切换前后置摄像头
+```
+- (void) switchCamera: (LYCaptureCameraMode)cameraMode
+          switchBlock: (void (^)(LYstatusCode statusCode, NSString *errorString))switchBlock;	
+```
+| - | - |
+|-------|----|
+| 接口名 | switchCamera |
+| 功能 | 切换摄像头类型 |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|cameraMode|LYCaptureCameraMode|in|必须|前后置摄像头。|
+|switchBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|切换成功与否回调|
+
+###6.9 获取当前采集帧图片
+```
+- (void) getCurrentFrameImage: (void (^)(UIImage *image, char *imageBuffer, int bufferLength))success;
+```
+| - | - |
+|-------|----|
+| 接口名 | getCurrentFrameImage |
+| 功能 | 获取当前摄像头采集的帧数据对应UIImage |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|success|void (^)(UIImage *image, char *imageBuffer, int bufferLength)|in|必须|image:UIImage;imageBuffer:图片数据；bufferLength:数据长度|
+
+###6.10 设置播放view
+```
+- (void)setPlayView: (NSString *)dataSourceAddreess playView: (UIView *)playView frame:(CGRect)frame;
+```
+| - | - |
+|-------|----|
+| 接口名 | setPlayView |
+| 功能 | 设置播放view |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|playView|UIView *|in|必须|设置播放渲染view|
+|frame|CGRect|in|必须|view的frame播放地址|
+
+###6.11 更改播放器frame
+```
+- (void)setPlayViewFrame: (NSString *)dataSourceAddreess frame: (CGRect)frame;
+```
+| - | - |
+|-------|----|
+| 接口名 | setPlayViewFrame |
+| 功能 | 更改播放器frame。该接口的应用场景主要在：旋转view、view大小改变等情况下需要重新设置frame，底层根据大小重新在画布上回执。 |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|frame|CGRect|in|必须|view的frame播放地址|
+
+###6.12 打开播放器
+```
+- (void)open: (NSString *)dataSourceAddreess
+  decodeMode: (LYPlayerDecodeMode)decodeMode
+  openStatus: (void (^)(LYstatusCode statusCode, NSString 					*errorString))openBlock
+playerStatus: (playerCallBackBlock)playerBlock;
+```
+| - | - |
+|-------|----|
+| 接口名 | open |
+| 功能 | 播放源直接建立连接 |
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址：被叫方一定要传入正确，主叫方一定传入nil|
+|decodeMode|LYPlayerDecodeMode|in|必须|view的frame播放地址|
+|openBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|statusCode：连接成功与否标识|
+|playerBlock|playerCallBackBlock|in|必须|播放过程中的状态回调|
+
+###6.13 关闭播放器
+```
+- (void)close: (NSString *)dataSourceAddreess;
+```
+| - | - |
+|-------|----|
+| 接口名 | close |
+| 功能 | 关闭播放 **注意**：该方法关闭播放器，调用open之后一定要调用该方法释放底层资源|
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+
+###6.13 打开声音
+```
+- (NSInteger)unmute: (NSString *)dataSourceAddreess;
+```
+| - | - |
+|-------|----|
+| 接口名 | unmute |
+| 功能 | 打开声音播放|
+| 返回值 | 打开成功为0，失败为-1 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+
+###6.13 关闭声音
+```
+- (void) mute: (NSString *)dataSourceAddreess;
+```
+| - | - |
+|-------|----|
+| 接口名 | mute |
+| 功能 | 关闭声音播放|
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+
+###6.14 获取流媒体参数
+```
+-(NSString *)getMediaParam: (NSString *)dataSourceAddress mediaParam:(LYStreamMediaParam)streamMediaParam;
+```
+| - | - |
+|-------|----|
+| 接口名 | getMediaParam |
+| 功能 | 获取播放流媒体信息数据|
+| 返回值 | 当前流媒体信息数据 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|stremMediaParam|LYStreamMediaParam|in|必须|见流媒体参数枚举|
+
+###6.15 创建视频截图
+```
+- (void)snapshot: (NSString *)dataSourceAddreess path: (NSString *)path
+          status:(void (^)(LYstatusCode statusCode, NSString *errorString))snapshotBlock; 
+```
+| - | - |
+|-------|----|
+| 接口名 | snapshot |
+| 功能 | 创建视频截图|
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|path|NSString *|in|必须|路径：包括文件名-->后缀jpg格式|
+|snapshotBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|截图回调|
+
+###6.16 创建视频录像
+```
+- (void)startLocalRecord: (NSString *)dataSourceAddreess: (NSString *)path
+                  status: (void (^)(LYstatusCode statusCode, NSString *errorString))startRecordBlock;
+```
+| - | - |
+|-------|----|
+| 接口名 | startLocalRecord |
+| 功能 | 创建视频录像|
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|path|NSString *|in|必须|路径：包括文件名-->后缀mp4格式|
+|startRecordBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|录像回调|
+
+###6.17 结束视频录像
+```
+- (void)stopLocalRecord: (NSString *)dataSourceAddreess: (void (^)(NSInteger size, NSInteger time))stopLocalRecordBlock;
+```
+| - | - |
+|-------|----|
+| 接口名 | stopLocalRecord |
+| 功能 | 结束视频录像|
+| 返回值 | 无 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|dataSourceAddreess|NSString *|in|必须|播放地址|
+|stopLocalRecordBlock|void (^)(NSInteger size, NSInteger time)|in|必须|录像回调：size:录制大小，单位:KB  time:录制时长，单位：s|
+
+###6.18 销毁
+```
+- (void) destroy;
+```
+| - | - |
+|-------|----|
+| 接口名 | destroy |
+| 功能 | 释放互联底层资源，退出的时候一定要调用|
 | 返回值 | 无 |

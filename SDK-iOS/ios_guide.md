@@ -266,6 +266,11 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 ```
 [mLiving destroy];
 ```
+###5.6 视频通话
+```
+//这里展示示例代码
+```
+文字说明.........
 
 ##六、注意事项
 > 
