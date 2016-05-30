@@ -167,9 +167,12 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 
 ```
 播放地址由应用向应用后台获取。
+
 应用后台生成播放源url的方法和步骤如下：
 (1)先调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
+
 (2)根据[羚羊云token格式](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)生成token；
+
 (3)按照[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)生成羚羊云格式的URL。
 
 ####5.4.5 关闭播放器
