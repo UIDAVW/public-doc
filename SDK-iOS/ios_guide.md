@@ -50,21 +50,35 @@ Version.txt 更新日志文件。
 ###4.4 SDK的集成
 > 
 ####4.4.1 拖拽方式
-将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination： 
->
+将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination：
+
+![Alt text](./../images/sdk_integration_ios_drag1.png "拖拽方式导入SDK")
+
 ####4.4.2 拷贝方式
 >1、首先拷贝SDK到所需项目目录下：
 
+![Alt text](./../images/sdk_integration_ios_copy1.png "拷贝方式导入SDK-1")
+
 >2、然后 Xcode左侧右键点击
 
+![Alt text](./../images/sdk_integration_ios_copy2.png "拷贝方式导入SDK-2")
+
 >3、最后选择目录下SDK文件夹点击Add
-> 
+
+![Alt text](./../images/sdk_integration_ios_copy3.png "拷贝方式导入SDK-3")
+
 ####4.4.3 添加依赖库
-> 
+
+![Alt text](./../images/sdk_integration_ios_config1.png "添加依赖库1")
+
+![Alt text](./../images/sdk_integration_ios_config2.png "添加依赖库2")
+
 说明：SDK底层是C++实现，所以需要添加libstdc++.tbd文件(如果使用的是xcode7以下版本，后缀为dylib)；VideoToolbox.framework是硬编解码所需要，如果不使用硬编解码可不添加。
 ####4.4.4 修改Enable BitCode
 SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
-> 
+
+![Alt text](./../images/sdk_integration_ios_config3.png "修改Enable BitCode")
+
 ####4.4.5 其他设置
 1)在 Build Settings -> Other Linker Flags 里，添加选项 -ObjC。
 2)如果您的工程需要使用 C++ ，在 Build Setting -> Apple LLVM 7.0 - Language - C++ -> C++ Standard Library 里， 设置值为 libstdc++ (GNU C++ standard library)。
@@ -121,6 +135,7 @@ popMessageBlock:^(NSDictionary *dictionary) {
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
+![Alt text](./../images/flow_player.png "播放器内部实现流程")
  
 ####5.4.1 创建播放器类
 ```
@@ -189,6 +204,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 ```
 
 ###5.5 直播推流
+![Alt text](./../images/flow_push.png "直播推流内部实现流程")
  
 ####5.5.1 设置流参数
 

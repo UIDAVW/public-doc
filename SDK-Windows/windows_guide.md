@@ -45,9 +45,13 @@ Windows_SDK_OPEN_API.dll为羚羊云提供给用户真正使用的C++动态库�
 
 ####4.4.1 Visual Studio环境
 >打开Visual Studio，选择“文件->新建->项目”，选择新建“MFC应用程序”，输入工程名并选择好新建的工程路径，点击“确定”，并在弹出的对话框中选择“下一步”，选择“基于对话框”，如下图所示， 
-> 
-> 
->
+ 
+![Alt text](./../images/sdk_integration_windows_config1.png "Visual Studio环境下的SDK集成1")
+ 
+![Alt text](./../images/sdk_integration_windows_config2.png "Visual Studio环境下的SDK集成2")
+ 
+![Alt text](./../images/sdk_integration_windows_config3.png "Visual Studio环境下的SDK集成3")
+
 点击“完成”，完成工程创建。
 
 ####4.4.2 工程属性设置
@@ -123,6 +127,7 @@ public:
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
+![Alt text](./../images/flow_player.png "播放器内部实现流程")
  
 ####5.4.1 创建播放界面
 >用户绘制好自己的界面，推荐新建一个无边框、无标题栏和工具栏的对话框，将CDialog的属性Border置为false,属性Title Bar置为false，属性Tool Windows置为false，属性Style置为Child，以主窗体作为父窗口。将该对话框移动到用户设计的位置，将该窗体的HANDLE值传入StreamPlayer进行初始化。若用户熟悉MFC，也可使用CWnd等其它窗体类实现，将窗体HANDLE值传入播放器进行初始化即可。下面为CDialog的例子：

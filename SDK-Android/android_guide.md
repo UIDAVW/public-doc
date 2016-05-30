@@ -60,11 +60,15 @@
 
 >将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
+![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
+
 ####4.4.2 Android Studio环境
 >在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
 >
 >(1)将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
->       
+ 
+![Alt text](./../images/sdk_integration_android_as.png " Android Studio环境下的SDK集成")
+
 >(2)在build.gradle里添加一下代码：<br>
 >
     dependencies {
@@ -153,6 +157,7 @@
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
+![Alt text](./../images/flow_player.png "播放器内部实现流程")
  
 ####5.4.1 设置播放布局
 >我们将播放器封装成了界面控件，方便用户直接嵌入到app的主界面中，实现播放器的功能。
@@ -280,6 +285,7 @@ mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 ```
 
 ###5.5 直播推流
+![Alt text](./../images/flow_push.png "直播推流内部实现流程")
  
 ####5.5.1 设置流参数
 
