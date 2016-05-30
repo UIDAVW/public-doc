@@ -81,7 +81,7 @@ token明文段包含以下字段：
 	memcpy(src, &cid, 4);
 	memcpy(src+4, &control, 4);
 	memcpy(src+8, &expire, 4);
-   char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
+    char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
 	unsigned char digest[16];
 
 	int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
@@ -95,17 +95,14 @@ token明文段包含以下字段：
 	return 0;
 ```
 
-
 ##6 羚羊云token类型
-根据羚羊云接口功能的不同，token分为用户token和访问token。
-- 用户token<br>
-用于调用SDK接口执行进行推流、推送消息等动作。<br>
+根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
+- 设备token<br>
 明文组成部分为CID + control + expire + \[IP]；<br>
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
 
 - 访问token<br>
-用于调用SDK接口执行播放媒体流。<br>
-其明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；<br>
+明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；<br>
 按照访问方式不同，[]中的可选项又分为以下几种情况：<br>
 \[vod_time]:只有在看http点播时必须使用，其他情况不得添加；<br>
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；<br>

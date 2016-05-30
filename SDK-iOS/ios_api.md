@@ -293,13 +293,13 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|token|NSString *|in|必须|用户token，由第三方后台生成。|
+|token|NSString *|in|必须|设备token，由第三方后台生成。|
 |config|NSString *|in|必须|配置串，从第三方后台获取。|
 |startBlock|startCloudServiceBlock|in|--|启动服务状态回调 详见平台接口block|
 |popMessageBlock|cloudServicePopMessageBlock|in|--|消息监听回调，设备状态变更、建立连接消息、自定义消息均通过改block回调，详见平台接口block|
 >**注意**：
 >
-**token**：用户token，由应用后台生成，格式如下：<br>
+**token**：设备token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
@@ -393,9 +393,9 @@ String getSDKVersion();
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |mode|LYLiveBroadcastMode |in|必须|直播枚举类型|
-|token|NSString *|in|必须|用户token，用户从第三方后台获取|
+|token|NSString *|in|必须|设备token，用户从第三方后台获取|
 |startBlock|oid (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
->token：用户token，从后台获取，格式如下：<br>
+>token：设备token，从后台获取，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9<br>
 Token串各字段所表示的意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 

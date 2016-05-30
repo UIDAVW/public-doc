@@ -136,12 +136,12 @@ void startCloudService(String userToken, String configString, CallBackListener<L
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|userToken|String|in|必须|用户token，由第三方后台生成。|
+|userToken|String|in|必须|设备token，由第三方后台生成。|
 |configString|String|in|必须|配置串，从第三方后台获取。|
 |listener|CallBackListener<Long>|in|必须|启动结果监听回调，返回成功或失败|
 >**注意**：
 >
-**userToken**：用户token，由应用后台生成，格式如下：<br>
+**userToken**：设备token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
