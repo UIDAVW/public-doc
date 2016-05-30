@@ -187,8 +187,8 @@
 <u>protocolType</u>：协议类型，[1]P2P,[2]RTMP,[3]云存储下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
 <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
-<u>token</u>：对端应用客户端的访问token，具体内容格式请见《羚羊云SDK接入指南》的“羚羊云token认证机制”的详细介绍。
-**URL的详细格式请参考《羚羊云URL格式解析》。**
+<u>token</u>：对端应用客户端的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
+**URL的详细格式请参考[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)。**
 
 ####5.4.3 设置播放连接状态监听
 >设置循环执行网络拉流、解码视频帧、及显示视频帧这些过程之前，连接到云服务器的状态监听函数；
