@@ -127,7 +127,7 @@ public:
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
-![Alt text](./../images/flow_player.png "播放器内部实现流程")
+![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.4.1 创建播放界面
 >用户绘制好自己的界面，推荐新建一个无边框、无标题栏和工具栏的对话框，将CDialog的属性Border置为false,属性Title Bar置为false，属性Tool Windows置为false，属性Style置为Child，以主窗体作为父窗口。将该对话框移动到用户设计的位置，将该窗体的HANDLE值传入StreamPlayer进行初始化。若用户熟悉MFC，也可使用CWnd等其它窗体类实现，将窗体HANDLE值传入播放器进行初始化即可。下面为CDialog的例子：
@@ -183,7 +183,7 @@ m_objStreamPlayer.open(url , true , (antelopecloud::PlayerMsgCallBack)m_objMsgHa
 ####5.4.3 结束播放
 >调用StreamPlayer对象的close方法，如下：
 ```
-m_objStreamPlayer
+m_objStreamPlayer.close();
 ```
 
 ####5.4.4 播放控制

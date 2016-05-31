@@ -291,7 +291,7 @@ void startBroadcasting(int mode,String token);
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|token|String|in|必须|用户token，用户从第三方后台获取。格式如下：2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+|token|String|in|必须|设备token，用户从第三方后台获取。格式如下：2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)|
 |mode|int|in|必须|直播类型，详见推流接口的结构定义 |
 
@@ -1048,7 +1048,7 @@ void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|seekCompleteListener|OnSeekCompleteListener|In|必须|详见：播播放定位查找结束时调用的回调接口|
+|seekCompleteListener|OnSeekCompleteListener|In|必须|详见：播放定位查找结束时调用的回调接口|
 
 ###4.41 seek结束事件的回调接口
 ```
@@ -1066,8 +1066,3 @@ interface OnSeekCompleteListener {
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |time|int|out|必须|查找时长|
-
-
-
-
-

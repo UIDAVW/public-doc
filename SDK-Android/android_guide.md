@@ -60,7 +60,7 @@
 
 >将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
-![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
+![Alt text](https://github.com/AntelopeExpress/public-doc/blob/master/images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
 
 ####4.4.2 Android Studio环境
 >在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
@@ -157,7 +157,7 @@
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
-![Alt text](./../images/flow_player.png "播放器内部实现流程")
+![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.4.1 设置播放布局
 >我们将播放器封装成了界面控件，方便用户直接嵌入到app的主界面中，实现播放器的功能。
@@ -187,7 +187,7 @@
 <u>protocolType</u>：协议类型，[1]P2P,[2]RTMP,[3]云存储下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
 <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
-<u>token</u>：对端的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
+<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
 
 播放源的URL地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
@@ -293,7 +293,7 @@ mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 ```
 
 ###5.5 直播推流
-![Alt text](./../images/flow_push.png "直播推流内部实现流程")
+![Alt text](./../images/flow_push.png "直播推流接口调用流程")
  
 ####5.5.1 设置流参数
 
