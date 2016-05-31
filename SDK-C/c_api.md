@@ -80,14 +80,14 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apToken|char*|in|必须|设备token，由第三方后台生成。|
-|apConfig|char*|in|必须|配置串，从第三方后台获取。|
+|apToken|char*|in|必须|设备token，由第三方应用后台生成。|
+|apConfig|char*|in|必须|配置串，从第三方应用后台获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 >**注意**：
 >
 **apToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
+2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
 **apConfig**：配置串，从后台获取(无需解析)，格式如下：
@@ -102,7 +102,7 @@ typedef void (*PlatformMessageCallBack)(void* apUserData, const char* constaMess
 ```
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apUserData|void*|out|必须|用户自定义数据，对于羚羊云透明，羚羊云只做保存和传递。|
+|apUserData|void*|in|必须|用户自定义数据，对于羚羊云透明，羚羊云只做保存和传递。|
 |aMessage|char*|in|必须|羚羊云的回调数据，cJSON格式，需要解析，解析示例请参照羚羊云C接口DEMO。|
 
 ###2.2 停止云服务
@@ -217,7 +217,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 >**注意**：
 >
 **aDeviceToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
+2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 
 ###3.7 跳转到指定时间点录像
@@ -227,7 +227,7 @@ int LY_seek(const int aFd, const unsigned int aCurrentTime);
 | - | - |
 |-------|----|
 | 接口名 | LY_seek |
-| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间精度为毫秒。 |
+| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
 | 返回值 | 0表示成功，非0表示失败 |
 > 
 
@@ -242,7 +242,7 @@ int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aS
 ```
 | - | - |
 |-------|----|
-| 接口名 | setLocalIP |
+| 接口名 | LY_setLocalIP |
 | 功能 | 在双网卡情况下，可调用此接口设置两个网卡的IP，数据从两个网卡同时发送，避免某个网卡网络差的时候出现延时或者丢包，由另外一个网卡发送确保数据的及时送达。由调用者保证IP不冲突。不调用时随机选择一个网卡发送数据。IP的格式是点分十进制的字符串格式。在使用QSTP协议下调用有效。 |
 | 返回值 | 0表示成功，非0表示失败 |
 > 
