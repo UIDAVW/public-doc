@@ -176,7 +176,7 @@ while(1)
 {
 	fd = LY_connect(url,NULL)//连接推流服务器，返回标识传输通道的fd
 	if(fd< 0)
-{
+	{
 		printf("connect to lingyang cloud relay server failed,retry...\n");
 		usleep(300*1000);
 		continue;
@@ -207,7 +207,7 @@ int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通�
 	char* buf;
 	MediaFrame_tframe = {0};
 	frame.frameBuffer = (char*)malloc(MAX_FRAME);//外面传入buffer接收数据
-	externintrecvAudioing = 1;
+	extern int recvData = 1;
 	while(recvData)
 	{
 		ret = LY_recvMediaFrame(fd,&frame);//没有数据会阻塞住
@@ -248,7 +248,7 @@ while(1)
 {
 	fd = LY_connect(url,dataSource)//连接录像服务器，返回标识传输通道的fd
 	if(fd< 0)
-    {
+    	{
 		printf("connect to lingyang cloud relay server failed,retry...\n");
 		usleep(300*1000);
 		continue;
