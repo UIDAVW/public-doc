@@ -46,7 +46,7 @@ libstdc++.so.6:标准c++库，若使用gcc编译器，则需要连接此库，�
 
 libcrypto.a和libssl.a:羚羊云使用到的加密库，如果需要加密相关功能，则需要链接。
 
->**SDK包内头文件如下**：
+**SDK包内头文件如下**：
 
 common_define.h：此头文件中包含羚羊云一些公共数据类型的定义
 
@@ -139,7 +139,6 @@ void popMessage(void *apData, const char *aMessage)
 **注意**：
 
 (1)消息最大长度为256个字节;
-
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
