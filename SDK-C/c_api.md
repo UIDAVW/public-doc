@@ -217,7 +217,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 >**注意**：
 >
 **aDeviceToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
+2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 
 ###3.7 跳转到指定时间点录像
@@ -227,7 +227,7 @@ int LY_seek(const int aFd, const unsigned int aCurrentTime);
 | - | - |
 |-------|----|
 | 接口名 | LY_seek |
-| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间精度为毫秒。 |
+| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
 | 返回值 | 0表示成功，非0表示失败 |
 > 
 
