@@ -239,7 +239,7 @@ void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 | - | - |
 |-------|----|
 | 接口名 | AcceptMessageListener |
-| 功能 | 视频互联接收，关闭，设备绑定确认，设备配置状态等云消息接收回调监听； |
+| 功能 | 视频通话、关闭、设备绑定确认、设备配置状态等云消息接收回调监听； |
 | 返回值 | 无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
@@ -491,7 +491,7 @@ void setFlashMode(String desiredFlash);
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
 
-##4 音视频互联接口
+##4 视频通话接口
 接口名称：LYFaceTime
  
 ###4.1 设置本地预览
