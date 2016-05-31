@@ -75,7 +75,7 @@ void popMessage(void *apData, const char *aMessage)
 	myMsg tmpMsg = {0,""};
 	if(memcmp("ConnectionAcceptted",name->valuestring,strlen(name->valuestring)) == 0)
 	{
-		//私有协议开始推流
+		//QSUP协议开始推流
 		printf("PopMessage ConnectionAcceptted\n");
 	}
 	//其他详细分支请参考demo
@@ -132,7 +132,7 @@ void popMessage(void *apData, const char *aMessage)
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 建立传输通道
->通过APP端上层应用与APP应用后台交互，获取到对方的tracker IP 和tracker 端口，以及自己的token，组成连接url。建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
+任何媒体数据的接收和发送，必须先建立传输通道。需要传入羚羊云自定义格式的URL作为参数进行通道的连接，成功建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
 ```
 char *peer="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069";
 intfd;
@@ -151,7 +151,7 @@ while(1)
 //...
 ```
 >
-播放源格式：<br>
+URL格式：<br>
   1,RTMP连接URL格式：<br>
     topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
   2,P2P连接URl格式：<br>

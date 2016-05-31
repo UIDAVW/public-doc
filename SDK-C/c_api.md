@@ -10,9 +10,9 @@
 ```
 typedef struct ServerInfo
 {
-	unsignedcharserver_ip[32];//服务器IP，点分十进制格式字符串
-	unsignedintserver_port;//服务器端口
-	unsignedcharextradata[256];//服务器拓展信息
+	unsigned char server_ip[32];//服务器IP，点分十进制格式字符串
+	unsigned int  server_port;//服务器端口
+	unsigned char extradata[256];//服务器拓展信息
 }ServerInfo_t;
 ```
 
@@ -20,10 +20,10 @@ typedef struct ServerInfo
 ```
 typedef struct
 {
-    int                 frameType;   /*多媒体帧类型*/
-    char*               frameBuffer; /*多媒体帧缓冲区地址*/
-    unsigned long       frameLength; /*多媒体帧长度*/
-    unsigned long long  frameTime;   /*多媒体帧时间戳*/
+    unsigned char      frameType;   /*多媒体帧类型*/
+    unsigned char      frameBuffer; /*多媒体帧缓冲区地址*/
+    unsigned long      frameLength; /*多媒体帧长度*/
+    unsigned long long frameTime;   /*多媒体帧时间戳*/
 }MediaFrame_t;
 ```
 
@@ -74,7 +74,7 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 | - | - |
 |-------|----|
 | 接口名 | LY_startCloudService |
-| 功能 | 启动云服务。调用了此api之后,平台相关凭证及资源开始准备，并且调用传入的回调函数apMessageCallBack通知云服务是否启动成功，其他接口必须在云服务启动成功之后才能正常使用。 |
+| 功能 | 启动云服务。调用了此api之后,平台相关凭证及资源开始准备，平台的回调消息通过回调函数apMessageCallBack通知调用者，其他接口必须在云服务启动成功之后才能正常使用。 |
 | 返回值 | 0表示成功，非0表示失败。 |
 > 
 
@@ -125,14 +125,14 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 | - | - |
 |-------|----|
 | 接口名 | LY_connect |
-| 功能 | 和交互端（包括手机APP，羚羊云的服务器）建立连接，根据传入的aUrl参数判断类型，建立媒体传输通道。如果是观看录像使用此接口连接服务器，则第二个参数需要传录像磁盘信息；否则传入第二个参数传NULL即可。该函数与 disconnect配套使用。 |
+| 功能 | 和交互端（包括手机APP，羚羊云的服务器）建立连接，根据传入的aUrl参数判断类型，建立媒体传输通道。如果是观看录像使用此接口连接服务器，则第二个参数需要传录像磁盘信息；否则传入第二个参数传NULL即可。该函数与 LY_disconnect配套使用。 |
 | 返回值 | 大于等于0表示成功，且返回传输通道句柄fd；否则失败 |
 | 参数列表 | 无 |
 > 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|aUrl|char*|in|必须|目标服务器的url地址，包含cid，连接类型（推流或拉流），使用的协议等。|
+|aUrl|char*|in|必须|目标服务器的url地址，连接类型（推流或拉流），使用的协议等。|
 |aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从羚羊云后台或者第三方厂商后台获取，对调用者透明。|
 >**注意**：
 >
@@ -148,7 +148,7 @@ int	LY_disconnect(const int aFd);
 | - | - |
 |-------|----|
 | 接口名 | LY_disconnect |
-| 功能 | 根据传入的fd参数，断开对应传输通道的连接，与 LY_connectToServer或LY_connectToClient配套使用。 |
+| 功能 | 根据传入的fd参数，断开对应传输通道的连接，与 LY_connect配套使用。 |
 | 返回值 | 0表示成功，非0表示失败 |
 > 
 
@@ -235,3 +235,55 @@ int LY_seek(const int aFd, const unsigned int aCurrentTime);
 |-------|----|----|----|----|
 |aFd|int|in|必须|建立录像传输通道时的通道句柄fd|
 |aCurrentTime|unsigned int|in|必须|要跳转的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于0 |
+
+###3.8 设置指定网卡IP
+```
+int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aSecondIP, const int aSecondIpLength);
+```
+| - | - |
+|-------|----|
+| 接口名 | setLocalIP |
+| 功能 | 在双网卡情况下，可调用此接口设置两个网卡的IP，数据从两个网卡同时发送，避免某个网卡网络差的时候出现延时或者丢包，由另外一个网卡发送确保数据的及时送达。由调用者保证IP不冲突。不调用时随机选择一个网卡发送数据。IP的格式是点分十进制的字符串格式。在使用QSTP协议下调用有效。 |
+| 返回值 | 0表示成功，非0表示失败 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|aFirstIP|const char *|in|必须|第一个IP|
+|aFirstIpLength|int|in|必须|第一个IP的长度 |
+|aSecondIP|const char *|in|必须|第二个IP |
+|aSecondIpLength|int|in|必须|第二个IP的长度 |
+
+###3.9 设置媒体编解码信息
+```
+int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo); 
+```
+| - | - |
+|-------|----|
+| 接口名 | setMediaInfo |
+| 功能 | 设置媒体流编解码信息 |
+| 返回值 | 0表示成功，非0表示失败 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|aFd|const int|in|必须|传输通道fd|
+|aMediaInfo|const MediaInfo_t|in|必须|多媒体编解码信息 |
+
+###3.10 设置加密密钥
+```
+int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEncryptKey, const int aEncryptKeyLength);
+```
+| - | - |
+|-------|----|
+| 接口名 | LY_setQSUPEncryptKey |
+| 功能 | 设置加密密钥，密钥最长不能超过128个字节。加密、解密在SDK内部算法实现，外部无需关心。如果没有设置加密秘钥，使用加密功能时会使用羚羊云默认的加密秘钥。QSUP协议默认是使用羚羊云默认加密秘钥加密的，如果需要取消加密，则可调用此接口，第一个参数设置为0即可。QSTP协议如果使用云存储功能，则使用羚羊云默认加密秘钥加密；否则不加密。公众模式下，设置与否都不加密。 |
+| 返回值 | 0表示成功，非0表示失败 |
+> 
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|aEncryptType|int|in|必须|加密类型（0：无加密；1：AES加密）|
+|apEncryptKey|const char*|in|必须|加密秘钥内容指针,自定义秘钥|
+|aEncryptKeyLength|int|in|必须|加密秘钥内容长度, 密钥最长不能超过128个字节|
+
