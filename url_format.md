@@ -1,15 +1,15 @@
 #羚羊云推拉媒体流URL格式
 ##1 URL格式
-  1.RTMP连接URL格式：<br>
+  1.QSTP连接URL格式：<br>
     topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
-  2.P2P连接URl格式：<br>
+  2.QSUP连接URl格式：<br>
     topvdn://traker_ip:port?protocolType=[]&token=[]<br>
   3.云存储下载URL格式：<br>
     topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
 
-- <u>protocolType</u>：协议类型，[1]P2P,[2]RTMP,[3]云存储下载<br>
+- <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云存储录像下载<br>
 - <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
-- <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
+- <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为秒。<br>
 - <u>token</u>：设备token，具体内容格式请见《羚羊云SDK接入指南》的“羚羊云token认证机制”的详细介绍。
 
 不同的场景下，各个字段所设置的值也不同。
@@ -65,7 +65,7 @@ topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_557
 - end 录像结束时间
 - play 开始播放录像的时间，必须在起始和终止时间区间内
 
-##5 P2P模式推拉流
+##5 P2P(QSUP协议)模式推拉流
 
 ###5.1 url示例
 本方APP与对方互连，或者本方APP连接对端设备。
