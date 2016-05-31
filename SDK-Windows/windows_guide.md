@@ -183,7 +183,7 @@ m_objStreamPlayer.open(url , true , (antelopecloud::PlayerMsgCallBack)m_objMsgHa
 ####5.4.3 结束播放
 >调用StreamPlayer对象的close方法，如下：
 ```
-m_objStreamPlayer
+m_objStreamPlayer.close();
 ```
 
 ####5.4.4 播放控制
