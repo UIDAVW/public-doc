@@ -87,7 +87,7 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 >**注意**：
 >
 **apToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
+2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
 **apConfig**：配置串，从后台获取(无需解析)，格式如下：
