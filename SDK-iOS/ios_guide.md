@@ -1,6 +1,6 @@
 #羚羊云iOS SDK使用说明
 ##一、概述
->本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)，实现直播推流、直播播放、云端录像播放、消息透传等功能。
+>本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
 >该套SDK主要提供的功能如下：
@@ -10,6 +10,8 @@
 >- **播放器**：支持播放直播流和云端录像流，网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
 >
 >- **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
+>
+>- **视频通话**：客户端之间通过羚羊云自主研发的QSUP协议建立连接，相互发送接收数据进行视频通话。
 
 ##三、功能特性
 |    | 功能特性 |
@@ -169,7 +171,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 播放地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
 
-(1)先调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
+(1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
 
 (2)根据[羚羊云token格式](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)生成token；
 
@@ -275,6 +277,7 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 [mLiving destroy];
 ```
 ###5.6 视频通话
+![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
  
 ####5.6.1 设置流参数
 
