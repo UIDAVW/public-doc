@@ -7,6 +7,8 @@
 >
 >- **直播推流**：将Android系统设备采集到的音视频数据进行编码，通过羚羊云自主研发的QSTP网络协议推送到羚羊云，以供终端用户观看直播或云端存储录像。支持自主设置分辨率、码率、帧率、编码类型等视频参数。
 >
+>- **音视频互联**：客户端之间通过羚羊云自主研发的QAUP协议建立连接，相互发送接收数据进行音视频互联。
+>
 >- **播放器**：支持播放直播流和云端录像流，网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
 >
 >- **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
@@ -357,6 +359,105 @@ mLiveBroadcast.stopBroadcasting();
 mLiveBroadcast.release();
 ```
 >**注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
+
+###5.6 音视频互联
+ 
+####5.6.1 设置流参数
+
+```
+//音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
+mSessionConfig = new SessionConfig.Builder()
+	.withVideoBitrate(512000)//码率
+	.withVideoResolution(480, 640)//分辨率  默认720p
+    .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
+	.withCameraDisplayOrientation(90)//旋转角度
+	.withAudioChannels(1)//声道 1单声道  2双声道
+	.useHardAudioEncode(false)//是否音频硬编
+	.useHardVideoEncode(false)//是否视频硬编
+	.useAudio(true)//是否开启音频
+    .useVideo(true)//是否开启视频
+	.build();
+
+//没有必须配置项，可直接使用默认值
+mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
+```
+>SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
+**注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+
+####5.6.2 设置本地预览和播放布局
+
+```
+  <!-- 预览布局 -->
+ <com.lingyang.sdk.view.LYGLCameraEncoderView
+      android:id="@+id/ly_preview"
+      android:layout_width="150dp"
+      android:layout_height="200dp" />
+
+  <!-- 播放器布局 -->
+ <com.lingyang.sdk.player.widget.LYPlayer
+      android:id="@+id/ly_player"
+      android:layout_width="150dp"
+      android:layout_height="200dp"" />
+```
+
+ ####5.6.3 设置本地预览和播放器视图
+ 
+ ```
+ // 设置本地预览
+  mLYFaceTime.setLocalPreview(camera_preview);
+// 设置远程播放器
+  mLYFaceTime.setRemoteView(null, playerview);
+ ```
+ 
+ ####5.6.4 建立连接
+ 
+ ```
+ /**
+   * 主动连接方
+   * 从消息透传通道收到对方的连接串主动发起连接，连接成功自动推流
+   */
+ mLYFaceTime.openRemote(FACETIME_URL159,
+	  new CallBackListener<Integer>() {
+			@Override
+	 public void onSuccess(Integer t) {
+	// 连接成功   }
+			@Override
+	 public void onError(final LYException exception) {
+	// 连接失败   }
+				});
+ ```
+ ```
+   /**
+    * 被连接方
+    * 设置连接监听和互联监听
+    */
+ LYService.getInstance().setCloudMessageListener(
+          new LYService.AcceptMessageListener() {
+              @Override
+             public void accept(
+                LYService.CloudMessage message) {
+               if (message.Name.equals("ConnectionAcceptted")) {
+                 //接受对方连接成功
+                            } });
+                            
+    mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
+
+			@Override
+			public void onSuccess(Integer t) {
+                //开始互联
+			}
+
+			@Override
+			public void onError(LYException exception) {
+                //互联失败
+			}
+ ```
+ 
+ ####5.6.5 退出
+ 
+ ```
+ mLYFaceTime.closeRemote(null);
+ ```
 
 ##六、注意事项
 > 
