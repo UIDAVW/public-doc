@@ -102,7 +102,7 @@ typedef void (*PlatformMessageCallBack)(void* apUserData, const char* constaMess
 ```
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apUserData|void*|out|必须|用户自定义数据，对于羚羊云透明，羚羊云只做保存和传递。|
+|apUserData|void*|in|必须|用户自定义数据，对于羚羊云透明，羚羊云只做保存和传递。|
 |aMessage|char*|in|必须|羚羊云的回调数据，cJSON格式，需要解析，解析示例请参照羚羊云C接口DEMO。|
 
 ###2.2 停止云服务
