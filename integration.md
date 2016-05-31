@@ -124,10 +124,10 @@ token明文段包含以下字段：
 ###7.4 token明文段的control字段
 第一字节为int类型的低位，第四字节为int类型的高位
 
-|第一字节（推送播放验证） |	第二字节（录制控制） | 第三字节（播放控制）| 第四字节（多码流保留）|
-|----|----|
+| **第一字节**（推送播放验证） | **第二字节**（录制控制） | **第三字节**（播放控制）| **第四字节**（多码流保留）|
 
-第一字节（0-7位）：验证及推送控制字段<br>
+
+- **第一字节（0-7位）**：验证及推送控制字段<br>
 0位：  是否开启rtmp直播<br>
 1位：  是否开启hls直播<br>
 2位：  是否验证推送IP<br>
@@ -135,13 +135,13 @@ token明文段包含以下字段：
 4位：  UDP standby，是否可以接受UDP连接<br>
 5-7位：保留
 
-第二字节（0-7位）：录制控制<br>
+- **第二字节（0-7位）**：录制控制<br>
 0-3位: 存储时间权限, 0000=>没有存储权限, 0001=>存储7天, 0010=>存储30天,0011=>90天其他保留<br>
 4位 : FLV 持久化开关，默认为 0 不打开<br>
 5位 : HLS 持久化开关，默认为 0 不打开<br>
 6-7位: 保留<br>
 
-第三字节（0-7位）：播放控制<br>
+- **第三字节（0-7位）**：播放控制<br>
 0位：能否观看公众<br>
 1位：能否观看私有<br>
 2位：能否观看时移<br>
@@ -189,15 +189,22 @@ token明文段包含以下字段：
 
 ###7.6 羚羊云token类型
 根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
-- 设备token<br>
-明文组成部分为CID + control + expire + \[IP]；<br>
+
+- **设备token**
+
+明文组成部分为CID + control + expire + \[IP]；
+
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
 
-- 访问token<br>
-明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；<br>
-按照访问方式不同，[]中的可选项又分为以下几种情况：<br>
-\[vod_time]:只有在看http点播时必须使用，其他情况不得添加；<br>
-\[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；<br>
+- **访问token**
+明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；
+
+按照访问方式不同，[]中的可选项又分为以下几种情况：
+
+\[vod_time]:只有在看http点播时必须使用，其他情况不得添加；
+
+\[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；
+
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
 
 ##8. 如何使用羚羊云SDK
@@ -205,21 +212,21 @@ token明文段包含以下字段：
 
 [Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
 
-[C版SDK使用说明](http://doc.topvdn.com/api/#!c_guide.md "C版SDK")
+[SDK使用说明-C版](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_guide.md "C版SDK")
 
-[iOS版SDK使用说明](http://doc.topvdn.com/api/#!ios_guide.md "iOS版SDK")
+[SDK使用说明-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md "iOS版SDK")
 
-[Anroid版SDK使用说明](http://doc.topvdn.com/api/#!android_guide.md "Anroid版SDK")
+[SDK使用说明-Anroid版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_guide.md "Anroid版SDK")
 
-[Windows版SDK使用说明](http://doc.topvdn.com/api/#!windows_guide.md "Windows版SDK")
+[SDK使用说明-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/#!windows_guide.md "Windows版SDK")
 
-[C版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-C/c_api.md)
+[API手册-C版](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_api.md)
 
-[iOS版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)
+[API手册-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_api.md)
 
-[Android版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)
+[API手册-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)
 
-[Windows版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/windows_api.md)
+[API手册-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/#!windows_api.md)
 
 ##9. 常见问题
 
