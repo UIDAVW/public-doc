@@ -242,7 +242,7 @@ int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aS
 ```
 | - | - |
 |-------|----|
-| 接口名 | setLocalIP |
+| 接口名 | LY_setLocalIP |
 | 功能 | 在双网卡情况下，可调用此接口设置两个网卡的IP，数据从两个网卡同时发送，避免某个网卡网络差的时候出现延时或者丢包，由另外一个网卡发送确保数据的及时送达。由调用者保证IP不冲突。不调用时随机选择一个网卡发送数据。IP的格式是点分十进制的字符串格式。在使用QSTP协议下调用有效。 |
 | 返回值 | 0表示成功，非0表示失败 |
 > 
