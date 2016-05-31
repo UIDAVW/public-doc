@@ -60,7 +60,7 @@
 
 >将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
-![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
+![Alt text](https://github.com/AntelopeExpress/public-doc/blob/master/images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
 
 ####4.4.2 Android Studio环境
 >在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
