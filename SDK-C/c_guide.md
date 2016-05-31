@@ -19,7 +19,7 @@
 |    | 视频流支持H264 |
 |    | 支持羚羊云自定义网络协议QSUP进行推流 |
 |    | 支持羚羊云自定义网络协议QSTP进行推流 |
-|    | 支持羚羊云自定义网络协议QSTP进行拉流 |
+|    | 支持羚羊云自定义网络协议QSUP进行拉流 |
 |    | 支持羚羊云自定义网络协议QSTP进行拉流 |
 |    | 支持AAC和OPUS格式音频数据的发送和接收 |
 |    | 支持H264格式视频数据的发送和接收 |
@@ -87,7 +87,7 @@ dpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r
 while(1)
 {
 	//开启云平台服务，并注册消息回调函数,调用此函数之后才能调用云平台的其他函数
-	//此处deviceToken和configStr从羚羊与获取
+	//此处deviceToken和configStr从羚羊云应用后台或者第三方友商自己的后台获取
 	ret = LY_startCloudService(deviceToken,configStr,popMessage,NULL);
 	if(ret == 0)//返回0表示开启成功
 	{

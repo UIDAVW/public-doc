@@ -137,8 +137,8 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 >**注意**：
 >
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：<br>
-topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&cid=1003469<br>
-topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&cid=%lu&begin=%lu&end=%lu&play=%lu<br>
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069<br>
+topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu&end=%lu&play=%lu<br>
 Url各字段意义及详解请见[羚羊云Url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)
 
 ###3.2 断开通道连接
