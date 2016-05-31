@@ -402,77 +402,77 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 ####5.6.2 设置本地预览和播放布局
 
 ```
-  <!-- 预览布局 -->
- <com.lingyang.sdk.view.LYGLCameraEncoderView
-      android:id="@+id/ly_preview"
-      android:layout_width="150dp"
-      android:layout_height="200dp" />
+<!-- 预览布局 -->
+<com.lingyang.sdk.view.LYGLCameraEncoderView
+    android:id="@+id/ly_preview"
+    android:layout_width="150dp"
+    android:layout_height="200dp" />
 
-  <!-- 播放器布局 -->
- <com.lingyang.sdk.player.widget.LYPlayer
-      android:id="@+id/ly_player"
-      android:layout_width="150dp"
-      android:layout_height="200dp"" />
+<!-- 播放器布局 -->
+<com.lingyang.sdk.player.widget.LYPlayer
+    android:id="@+id/ly_player"
+    android:layout_width="150dp"
+    android:layout_height="200dp"" />
 ```
 
  ####5.6.3 设置本地预览和播放器视图
  
- ```
- // 设置本地预览
-  mLYFaceTime.setLocalPreview(camera_preview);
+```
+// 设置本地预览
+mLYFaceTime.setLocalPreview(camera_preview);
 // 设置远程播放器
-  mLYFaceTime.setRemoteView(null, playerview);
- ```
- 
- ####5.6.4 建立连接
- 
- ```
- /**
-   * 主动连接方
-   * 从消息透传通道收到对方的连接串主动发起连接，连接成功自动推流
-   */
- mLYFaceTime.openRemote(FACETIME_URL159,
-	  new CallBackListener<Integer>() {
-			@Override
-	 public void onSuccess(Integer t) {
-	// 连接成功   }
-			@Override
-	 public void onError(final LYException exception) {
-	// 连接失败   }
-				});
- ```
- ```
-   /**
-    * 被连接方
-    * 设置连接监听和互联监听
-    */
- LYService.getInstance().setCloudMessageListener(
-          new LYService.AcceptMessageListener() {
-              @Override
-             public void accept(
-                LYService.CloudMessage message) {
-               if (message.Name.equals("ConnectionAcceptted")) {
-                 //接受对方连接成功
-                            } });
-                            
-    mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
+mLYFaceTime.setRemoteView(null, playerview);
+```
 
-			@Override
-			public void onSuccess(Integer t) {
-                //开始互联
-			}
+####5.6.4 建立连接
 
-			@Override
-			public void onError(LYException exception) {
-                //互联失败
-			}
- ```
- 
- ####5.6.5 退出
- 
- ```
- mLYFaceTime.closeRemote(null);
- ```
+```
+/**
+ * 主动连接方
+ * 从消息透传通道收到对方的连接串主动发起连接，连接成功自动推流
+ */
+mLYFaceTime.openRemote(FACETIME_URL159,
+    new CallBackListener<Integer>() {
+        @Override
+    public void onSuccess(Integer t) {
+// 连接成功   }
+        @Override
+    public void onError(final LYException exception) {
+// 连接失败   }
+            });
+```
+```
+/**
+ * 被连接方
+ * 设置连接监听和互联监听
+ */
+LYService.getInstance().setCloudMessageListener(
+        new LYService.AcceptMessageListener() {
+            @Override
+            public void accept(
+            LYService.CloudMessage message) {
+            if (message.Name.equals("ConnectionAcceptted")) {
+                //接受对方连接成功
+                        } });
+                        
+mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
+
+        @Override
+        public void onSuccess(Integer t) {
+            //开始互联
+        }
+
+        @Override
+        public void onError(LYException exception) {
+            //互联失败
+        }
+```
+
+####5.6.5 退出
+
+```
+mLYFaceTime.closeRemote(null);
+```
 
 ##六、注意事项
 (1)用户在调用直播推流、播放器、消息透传的功能接口之前，必须先调用startCloudService接口。否则这些接口不可正常使用。
@@ -499,7 +499,7 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 答：QSTP全称quick streaming tcp  protocol，QSUP全称quick streaming udp protocol，是羚羊云针对网络音视频媒体流自主研发的流媒体传协议，具有充分利用节点带宽资源达到高效快速传输的特点。
 
 ##八、更新历史
-- V1.4.3 SDK更新日期 2016.5.20
+V1.4.3 SDK更新日期 2016.5.20
 
 (1)jni接口合并，简化内部调用流程，优化内部实现
 
@@ -507,7 +507,7 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 
 (3)添加采集角度设置：0,90,180,270
 
-- V1.4.2 SDK更新日期 2016.5.6
+V1.4.2 SDK更新日期 2016.5.6
 
 (1)播放器添加获取流媒体信息接口
 
@@ -516,7 +516,7 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 (3)互联模块，被连接方内部实现连接，添加动态设置码率
 
 
-- V1.4.1 SDK更新日期 2016.4.29
+V1.4.1 SDK更新日期 2016.4.29
 
 (1)SDK整体按功能模块重构：云平台服务，设备直播，音视频互联，播放器
 
