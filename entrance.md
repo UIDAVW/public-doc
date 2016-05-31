@@ -88,6 +88,5 @@
 ####6.5.2 接入流程
 ![Alt text](./images/flow2.png "用于应用接入羚羊云的流程") 
 
-<a name="token1" id="token1">.</a>
 ##7. 羚羊云token认证机制
 ###7.1 羚羊云的身份验证方式
