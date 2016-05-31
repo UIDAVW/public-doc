@@ -161,7 +161,7 @@ URL格式：<br>
 >
 <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云端录像下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
-<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
+<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为秒。<br>
 <u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
 **URL的详细格式请参考[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)。**
 
