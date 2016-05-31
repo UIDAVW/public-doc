@@ -50,21 +50,35 @@ Version.txt 更新日志文件。
 ###4.4 SDK的集成
 > 
 ####4.4.1 拖拽方式
-将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination： 
->
+将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination：
+
+![Alt text](./../images/sdk_integration_ios_drag1.png "拖拽方式导入SDK")
+
 ####4.4.2 拷贝方式
 >1、首先拷贝SDK到所需项目目录下：
 
+![Alt text](./../images/sdk_integration_ios_copy1.png "拷贝方式导入SDK-1")
+
 >2、然后 Xcode左侧右键点击
 
+![Alt text](./../images/sdk_integration_ios_copy2.png "拷贝方式导入SDK-2")
+
 >3、最后选择目录下SDK文件夹点击Add
-> 
+
+![Alt text](./../images/sdk_integration_ios_copy3.png "拷贝方式导入SDK-3")
+
 ####4.4.3 添加依赖库
-> 
+
+![Alt text](./../images/sdk_integration_ios_config1.png "添加依赖库1")
+
+![Alt text](./../images/sdk_integration_ios_config2.png "添加依赖库2")
+
 说明：SDK底层是C++实现，所以需要添加libstdc++.tbd文件(如果使用的是xcode7以下版本，后缀为dylib)；VideoToolbox.framework是硬编解码所需要，如果不使用硬编解码可不添加。
 ####4.4.4 修改Enable BitCode
 SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
-> 
+
+![Alt text](./../images/sdk_integration_ios_config3.png "修改Enable BitCode")
+
 ####4.4.5 其他设置
 1)在 Build Settings -> Other Linker Flags 里，添加选项 -ObjC。
 2)如果您的工程需要使用 C++ ，在 Build Setting -> Apple LLVM 7.0 - Language - C++ -> C++ Standard Library 里， 设置值为 libstdc++ (GNU C++ standard library)。
@@ -121,6 +135,7 @@ popMessageBlock:^(NSDictionary *dictionary) {
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
+![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.4.1 创建播放器类
 ```
@@ -151,7 +166,14 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 ];
 
 ```
->说明：播放地址由应用后台获取。
+播放地址由应用向应用后台获取。
+应用后台生成播放源url的方法和步骤如下：
+
+(1)先调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
+
+(2)根据[羚羊云token格式](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)生成token；
+
+(3)按照[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)生成羚羊云格式的URL。
 
 ####5.4.5 关闭播放器
 ```
@@ -183,12 +205,21 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 [m_player mute];
 ```
 
+#####对讲开关
+```
+//开启对讲
+- (void)startTalkWithSampleRate: (NSInteger)sampleRate channel: (NSInteger)channel;
+//停止对讲
+- (void)stopTalk;
+```
+
 #####获取流媒体参数
 ```
 [m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```
 
 ###5.5 直播推流
+![Alt text](./../images/flow_push.png "直播推流接口调用流程")
  
 ####5.5.1 设置流参数
 
@@ -202,12 +233,12 @@ LYVideoStreamingConfiguration *mVideoConfig = [LYVideoStreamingConfiguration def
 sampleRate = 11025, channle = 1, birrate = 128kpbs;
 LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
 ```
->SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
+>Configuration类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
 **注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)中的数据类型-直播推流相关属性配置。
 
 ####5.5.2 初始化直播类
 ```
-//初始化直播类:如果不采集音频，则audioConfiguration传nil即可，不采集视频相同
+//初始化直播类:如果不采集音频，则audioConfiguration传nil即可
 LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
 ```
 
@@ -220,7 +251,7 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 ####5.5.4 开始直播
 ```
 //直播资源的准备，返回 statusCode == LYstatusCodeSuccess 才可以推流
-[mLiving startLiveBroadcastWithMode:LYLiveBroadcastModeLiving token:mToken startBlock:^(LYstatusCode statusCode, NSString *errorString) {
+[mLiving startLiveBroadcast:LYLiveBroadcastModeLiving token:mLiveAddress startBlock:^(LYstatusCode statusCode, NSString *errorString) {
     if (LYstatusCodeSuccess == statusCode) {
         //直播资源准备完成，可以开始推流；
     }
@@ -243,6 +274,78 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 ```
 [mLiving destroy];
 ```
+###5.6 视频通话
+ 
+####5.6.1 设置流参数
+
+```
+//该方法生成一个默认的视频采集配置
+videoSize = (640, 480);
+frameRate = 15fps, bitrate = 400kbps;
+LYVideoStreamingConfiguration *mVideoConfig = [LYVideoStreamingConfiguration defaultConfiguration];
+    
+//该方法生成一个默认的音频采集配置。
+sampleRate = 16000, channle = 1;
+LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
+```
+>Configuration类配置视频通话推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
+**注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/ios_api.md)中的数据类型-视频通话推流相关属性配置。
+
+####5.6.2 初始化视频通话类
+```
+//初始化直播类:如果不采集音频，则audioConfiguration传nil即可
+LYFaceTime * mFaceTime = [[LYFaceTime alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
+```
+
+####5.6.3 设置播放参数
+```
+//如果不需要播放对方视频则不设置该参数
+LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:mPlayView frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) decodeMode:LYPlayerDecodeModeHard];
+[mFaceTime setPlayView:mFaceTimeAddress playerConfiguration:mPlayerConfig]; 
+```
+
+####5.6.4 设置本地预览视图
+```
+//设置采集视频预览view：如果不预览自己视频则不设置
+[mFaceTime setPreview:self.preview frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+```
+
+####5.6.5 建立连接
+>发起视频通话的一方不需要调用建立连接接口，5.6.4步骤完成即可；以下连接步骤针对于收到连接地址的一方<br>
+**注意**：连接地址第三方后台透传或者推送得打。
+
+```
+[mFaceTime open: mFaceTimeAddress openStatus:^(LYstatusCode statusCode, NSString *errorString) {
+    NSLog(@"open statusCode = %d, errorString = %@", statusCode, errorString);
+    //连接是否成功的状态回调，只有statusCode == LYstatusCodeSuccess才可以进行推流等操作。
+    //开始推流
+} playerStatus:^(NSDictionary *playerMessageDic) {
+    NSLog(@"playerMessageDic = %@", playerMessageDic);
+    //该回调目前无回调信息。
+}];
+```
+
+####5.6.6 开始推流
+```
+[mFaceTime startSendVideoData];
+[mFaceTime startSendAudioData];
+```
+
+####5.6.7 改变码率
+```
+//视频通话过程中可以根据当前带宽设置合适的推流码率，下行码率需要消息告诉通话对方降低码率。
+[mFaceTime setVideoEncodeBitrateLevel: LYVideoStreamingQualityModeLevelMedium];
+```
+
+####5.6.8 关闭通话
+```
+[mFaceTime close:mFaceTimeAddress];
+```
+
+####5.6.9 释放资源
+```
+[mFaceTime destroy];
+```
 
 ##六、注意事项
 > 
@@ -261,30 +364,30 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 
 ##八、更新历史
 > 
-V1.2.1 sdk更新日期2016.05.16 17：00
-1. 修改视频通话播放器设置为配置类形式；
-2. 修改互联发起方调用流程：<br>
-2.1 进入互联发起方控制器类之后获取默认音视频配置类对象；<br>
-2.2 创建互联类对象：传入参数为2.1获取到的音视频类对象；<br>
-2.3 设置预览view接口调用显示预览画面；(如果不需要预览跳过此步)<br>
-2.4 创建播放器配置类对象；(一定要传入正确的参数，否则观看不到对方视频)；<br>
-2.5 调用设置播放器配置的接口；(可以在界面交互逻辑之后调用)<br>
-2.6 上述步骤完成主动方操作就完成。当连接成功被动方时画面就主动显示出来。<br>
-3. 修改打开视频通话播放器接口：去除参数中的解码方式；
-4. 加视频通话过程中动态切换传输码率接口：可设置(普通、标清、高清三个等级)
-5. 增加打开闪光灯接口；
-6. 该版本视频通话播放器截图、录像以及获取流媒体信息接口暂时不作用；采集重设音视频采集参数暂时不作用。请熟知！
+V1.2.1 sdk更新日期2016.05.16 17：00<br>
+  1. 修改视频通话播放器设置为配置类形式；<br>
+  2. 修改互联发起方调用流程：<br>
+    2.1 进入互联发起方控制器类之后获取默认音视频配置类对象；<br>
+    2.2 创建互联类对象：传入参数为2.1获取到的音视频类对象；<br>
+    2.3 设置预览view接口调用显示预览画面；(如果不需要预览跳过此步)<br>
+    2.4 创建播放器配置类对象；(一定要传入正确的参数，否则观看不到对方视频)；<br>
+    2.5 调用设置播放器配置的接口；(可以在界面交互逻辑之后调用)<br>
+    2.6 上述步骤完成主动方操作就完成。当连接成功被动方时画面就主动显示出来。<br>
+  3. 修改打开视频通话播放器接口：去除参数中的解码方式；<br>
+  4. 加视频通话过程中动态切换传输码率接口：可设置(普通、标清、高清三个等级)<br>
+  5. 增加打开闪光灯接口；<br>
+  6. 该版本视频通话播放器截图、录像以及获取流媒体信息接口暂时不作用；采集重设音视频采集参数暂时不作用。请熟知！<br>
 >
 **特别说明**<br>
 启动云服务的config串用下面的串：<br>
 [Config]\r\nIsDebug=1\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nIsSendBroadcast=0\r\nUdpSendInterval=2\r\nSendPacketBufferLength=1408\r\nRecvPacketBufferLength=1408\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n<br>[RealtimeModeConfig]\r\nLongConncettionServerIP=223.202.103.146\r\nLongConncettionServerPort=8088\r\nDebugServerIP=120.24.56.51\r\nDebugServerPort=41234\r\nRealtimeModeConfigString=00000000000000\r\nPlayerDataBufferDelayLength=6
 >
 V1.1.2 sdk更新日期2016.5.5 18：05
-1. 修改不启动预览自动开启采集；
-2. 修改切换前后置摄像头问题。
+  1. 修改不启动预览自动开启采集；
+  2. 修改切换前后置摄像头问题。
 >
 V1.1.1 sdk更新日期2016.4.29 17:00
-1. 改版后的第一版SDK。
+  1. 改版后的第一版SDK。
 
 
 

@@ -64,3 +64,24 @@ topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_557
 - begin 录像开始时间
 - end 录像结束时间
 - play 开始播放录像的时间，必须在起始和终止时间区间内
+
+##5 P2P模式推拉流
+
+###5.1 url示例
+本方APP与对方互连，或者本方APP连接对端设备。
+
+url示例：
+topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069。<br>
+此url为使用QSUP协议连接对方。
+
+###5.2 字段解释
+- ip 对方登录的羚羊云trackerIP
+- port 对方登录的羚羊云tracker端口
+- protocolType 必须为1
+- connectType 无
+- mode 无
+- token 对方的token
+- begin 无
+- end 无
+- play 无
+

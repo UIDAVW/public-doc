@@ -53,18 +53,19 @@
 用来管理用户自己所属的设备信息、查询设备的状态、配置设备的参数等。
 
 ###6.2 接入凭证
-这些设备想要接入羚羊云，首先必须获得app id和app key。获得方法：联系羚羊云负责对外接口的人员，申请app id和app key。给出联系方式
+这些设备想要接入羚羊云，首先必须获得app id和app key。进入[羚羊云用户管理平台](http://console.topvdn.com/)可申请app id和app key。
 
 ###6.3 认证机制
 用户在接入到羚羊云平台时，无论是用户的服务器还是客户端，都必须通过平台的安全认证，才能使用接口以实现应用。服务器和客户端有着不同的认证机制，如下图所示：
 
 ![Alt text](./images/verify.png "羚羊云认证机制")
 
+
 - 应用服务器认证<br>
 应用服务器直接携带app id和app key，通过调用羚羊云提供的Web API向羚羊云平台发送http请求，云平台会对id和key进行验证，验证通过将会返回该API对应的结果。
 
 - 应用客户端认证<br>
-(1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见《羚羊云平台token验证机制》。<br>
+(1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见本文下一章节的[羚羊云平台token验证机制](#token1)。<br>
 (2)应用客户端向他们的应用服务器获取token，凭着这个token，才能成功调用羚羊云客户端SDK或Web API实现功能。
 
 ###6.4 用户接入
@@ -86,7 +87,7 @@
 ####6.5.2 接入流程
 ![Alt text](./images/flow2.png "用于应用接入羚羊云的流程") 
 
-##7. 羚羊云token认证机制
+##<a name="token1" id="token1">7. 羚羊云token认证机制</a>
 ###7.1 羚羊云的身份验证方式
 羚羊云采用目前web领域普遍的认证方式：基于token的身份验证。
 
@@ -169,7 +170,7 @@ token明文段包含以下字段：
 	memcpy(src, &cid, 4);
 	memcpy(src+4, &control, 4);
 	memcpy(src+8, &expire, 4);
-   char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
+    char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
 	unsigned char digest[16];
 
 	int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
@@ -185,32 +186,30 @@ token明文段包含以下字段：
 
 
 ###7.6 羚羊云token类型
-根据羚羊云接口功能的不同，token分为用户token和访问token。
-- 用户token<br>
-用于调用SDK接口执行进行推流、推送消息等动作。<br>
+根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
+- 设备token<br>
 明文组成部分为CID + control + expire + \[IP]；<br>
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
 
 - 访问token<br>
-用于调用SDK接口执行播放媒体流。<br>
-其明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；<br>
+明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；<br>
 按照访问方式不同，[]中的可选项又分为以下几种情况：<br>
 \[vod_time]:只有在看http点播时必须使用，其他情况不得添加；<br>
 \[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；<br>
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
 
-##7. 如何使用羚羊云SDK
+##8. 如何使用羚羊云SDK
 按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
 
 [Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
 
-[C版SDK](http://doc.topvdn.com/api/#!c_guide.md "C版SDK")
+[C版SDK使用说明](http://doc.topvdn.com/api/#!c_guide.md "C版SDK")
 
-[iOS版SDK](http://doc.topvdn.com/api/#!ios_guide.md "iOS版SDK")
+[iOS版SDK使用说明](http://doc.topvdn.com/api/#!ios_guide.md "iOS版SDK")
 
-[Anroid版SDK](http://doc.topvdn.com/api/#!android_guide.md "Anroid版SDK")
+[Anroid版SDK使用说明](http://doc.topvdn.com/api/#!android_guide.md "Anroid版SDK")
 
-[Windows版SDK](http://doc.topvdn.com/api/#!windows_guide.md "Windows版SDK")
+[Windows版SDK使用说明](http://doc.topvdn.com/api/#!windows_guide.md "Windows版SDK")
 
 [C版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-C/c_api.md)
 
@@ -220,7 +219,7 @@ token明文段包含以下字段：
 
 [Windows版API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/windows_api.md)
 
-##8. 常见问题
+##9. 常见问题
 
 1. 什么是appid？怎么获取appid？<br>
 答：appid是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appid才能正常使用。
