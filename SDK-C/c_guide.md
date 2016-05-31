@@ -138,7 +138,7 @@ char *peer="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_
 intfd;
 while(1)
 {
-	fd = LY_connect (url);
+	fd = LY_connect (url,NULL);
 	if(fd< 0)
 	{
 		printf("connect to client faild\n");
