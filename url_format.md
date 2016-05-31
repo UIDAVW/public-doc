@@ -1,6 +1,6 @@
 #羚羊云推拉媒体流URL格式
 ##1 URL格式
-  1.RTMP连接URL格式：<br>
+  1.RTMP连接URL格式1：<br>
     topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
   2.P2P连接URl格式：<br>
     topvdn://traker_ip:port?protocolType=[]&token=[]<br>
