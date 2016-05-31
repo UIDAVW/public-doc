@@ -64,16 +64,6 @@ static int getMac(char* mac,char* dev_name)
 	return 0;
 }
 
-int getSN(char* sn)
-{
-	if(!sn)
-	{
-		printf("sn is null\n");
-		return -1;
-	}
-	return getMac(sn,"wlan0");
-}
-
 int checkNetStatus(char* net)
 {
 	if(net == NULL)
@@ -259,7 +249,7 @@ typedef struct NTPPACKET
 	return 0;
 }
 
- unsigned long long getUSec()
+ unsigned long long getMSec()
 {
 	struct timeval aika;
 	gettimeofday(&aika,NULL);
@@ -267,19 +257,10 @@ typedef struct NTPPACKET
 	unsigned long long tmp_usec = aika.tv_usec;
 	unsigned long long msecs = tmp_sec * 1000 *1000;
 	msecs += tmp_usec;
-	return msecs;
+	return msecs/1000;
 
 }
 
-#if 0
-int main()
-{
-	char mac[32];
-	getSN(mac);
-	printf("mac:%s\n",mac);
-	return 0;
-}
-#endif
 
 #ifdef __cplusplus
 }

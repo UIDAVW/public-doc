@@ -1,17 +1,17 @@
 #羚羊云Android SDK使用说明
 ##一、概述
->本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传等功能。
+>本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
 >该套SDK主要提供的功能如下：
 >
 >- **直播推流**：将Android系统设备采集到的音视频数据进行编码，通过羚羊云自主研发的QSTP网络协议推送到羚羊云，以供终端用户观看直播或云端存储录像。支持自主设置分辨率、码率、帧率、编码类型等视频参数。
 >
->- **音视频互联**：客户端之间通过羚羊云自主研发的QAUP协议建立连接，相互发送接收数据进行音视频互联。
->
 >- **播放器**：支持播放直播流和云端录像流，网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
 >
 >- **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
+>
+>- **视频通话**：客户端之间通过羚羊云自主研发的QSUP协议建立连接，相互发送接收数据进行视频通话。
 
 ##三、功能特性
 |    | 功能特性 |
@@ -62,7 +62,7 @@
 
 >将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
-![Alt text](https://github.com/AntelopeExpress/public-doc/blob/master/images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
+![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
 
 ####4.4.2 Android Studio环境
 >在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
@@ -174,19 +174,19 @@
 ####5.4.2 设置播放源
 > 
     //公众摄像机直播观看		
-    mPlayer.setDataSource("topvdn://rtmp6.public.topvdn.cn:1935?" +
+    mPlayer.setDataSource("topvdn://topvdn.public.cn" +
 	                      "protocolType=2&connectType=2&token=1003136_3356753920_" +
                           "1492163431_cc3acc347784f3e30cd4713acec615b1");
 >
 播放源格式：<br>
-  1,RTMP连接URL格式：<br>
+  1,QSTP连接URL格式：<br>
     topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
-  2,P2P连接URl格式：<br>
+  2,QSUP连接URl格式：<br>
     topvdn://traker_ip:port?protocolType=[]&token=[]<br>
   3,云存储下载URL格式：<br>
     topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
 >
-<u>protocolType</u>：协议类型，[1]P2P,[2]RTMP,[3]云存储下载<br>
+<u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云存储录像下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
 <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
 <u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
@@ -194,7 +194,7 @@
 播放源的URL地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
 
-(1)先调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
+(1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
 
 (2)根据[羚羊云token格式](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)生成token；
 
@@ -374,8 +374,9 @@ mLiveBroadcast.release();
 ```
 >**注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
 
-###5.6 音视频互联
- 
+###5.6 视频通话
+![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
+
 ####5.6.1 设置流参数
 
 ```

@@ -16,15 +16,13 @@ typedef struct _myMsg
 	char buffer[BUFFER_MAX];
 }myMsg;
 
-int createMsgQueForMsg(unsigned char sub_id);
-
-int getSN(char* sn);
+int createMsgId(unsigned char sub_id);
 
 int sync_time(char* srv_ip);
 
 int checkNetStatus(char* net_interface_name);
 
-unsigned long long getUSec();
+unsigned long long getMSec();
 
 #ifdef __cplusplus
 }

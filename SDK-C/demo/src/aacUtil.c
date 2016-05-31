@@ -114,7 +114,7 @@ static int getAACSpecificConfig(AACHelper* helper)
 	{
 		return - 1;
 	}
-	helper->profile = ((((unsigned char)data[2]) & 0xc0) >> 6) + 1;//ÎªÊ²Ã´+1£¿
+	helper->profile = ((((unsigned char)data[2]) & 0xc0) >> 6) + 1;
 	helper->simple_rate = ((unsigned char)data[2] & 0x3c) >> 2;
 	helper->channels = (((unsigned char)data[2] & 0x1) << 2) | (((unsigned char)data[3] & 0xc0) >> 6);
 	
