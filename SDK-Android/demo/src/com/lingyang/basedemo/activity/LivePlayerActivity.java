@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.lingyang.basedemo.R;
 import com.lingyang.basedemo.config.Const;
+import com.lingyang.basedemo.config.Constants;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.player.IMediaParamProtocol;
@@ -36,6 +37,7 @@ public class LivePlayerActivity extends AppBaseActivity {
 				finish();
 				break;
 			case R.id.btn_start:
+				mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
 				// 开始,观看直播不能暂停
 				if(mPlayer.isPlaying()){
 					showToast("正在播放");
@@ -45,6 +47,7 @@ public class LivePlayerActivity extends AppBaseActivity {
 				mPlayer.start();
 				break;
 			case R.id.btn_end:
+				mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 				// 结束直播
 				mPlayer.stop();
 				break;
@@ -161,6 +164,7 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 			
 			@Override
 			public void onPrepared(int time) {
+				mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 				//time 耗时
 				runOnUiThread(new Runnable() {
 					public void run() {
@@ -177,6 +181,7 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 			
 			@Override
 			public void onClosed() {
+				mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 				runOnUiThread(new Runnable() {
 					public void run() {
 						mStartBtn.setText("播放");
@@ -196,10 +201,10 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 			mPlayer.setDataSource(Const.CAMERA_PLAYER_URL);//公众摄像机直播观看
 			break;
 		case MainActivity.PLAYER_OF_PRIVATE_CAMERA_OF_VALUE:
-			mPlayer.setDataSource(Const.PRIVATE_CAMERA_PLAYER_URL_LL);//私有摄像机直播观看
+			mPlayer.setDataSource(Const.PRIVATE_CAMERA_PLAYER_URL);//私有摄像机直播观看
 			break;
 		case MainActivity.PLAYER_OF_BROADCAST_OF_VALUE:
-			mPlayer.setDataSource(Const.BROADCAST_LIVE_URL159);//设备直播观看
+			mPlayer.setDataSource(Const.BROADCAST_LIVE_URL);//设备直播观看
 			break;
 		default:
 			break;

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.lingyang.basedemo.R;
 import com.lingyang.basedemo.config.Const;
+import com.lingyang.basedemo.config.Constants;
 import com.lingyang.sdk.av.SessionConfig;
 import com.lingyang.sdk.broadcast.ILiveBroadcast;
 import com.lingyang.sdk.broadcast.ILiveBroadcast.BroadcastListener;
@@ -30,10 +31,12 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.btn_start:
+				mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
 				//开始直播
-				mLiveBroadcast.startBroadcasting(Const.BROADCAST_URL_LL);
+				mLiveBroadcast.startBroadcasting(Const.BROADCAST_URL);
 				break;
 			case R.id.btn_end:
+				mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
 				// 结束直播
 				mLiveBroadcast.stopBroadcasting();//结束直播
 				break;
@@ -57,16 +60,6 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_broadcast_live);
 		//音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
-//		mSessionConfig = new SessionConfig.Builder()
-//		        .withVideoBitrate(256000)//码率
-//		        .withVideoResolution(480, 640)//分辨率  默认720p
-//				.withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
-//				.withCameraDisplayOrientation(90)//旋转角度
-//				.withAudioChannels(1)//声道 1单声道  2双声道
-//				.useHardAudioEncode(false)//是否音频硬编
-//				.useHardVideoEncode(false)//是否视频硬编
-//				.useAudio(true)//是否开启音频
-//				.build();
 		mSessionConfig = new SessionConfig.Builder()
 		.withVideoBitrate(512000)
 		.withAudioSampleRateInHz(16000)// 音频采样率
@@ -111,6 +104,7 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 
 					@Override
 					public void onBroadcastLive() {
+						mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 						showToast("正在直播");
 						mStartBtn.setText("正在直播");
 						mStartBtn
@@ -119,6 +113,7 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 
 					@Override
 					public void onBroadcastStop() {
+						mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 						showToast("停止直播");
 						mStartBtn.setText("开始直播");
 						mStartBtn.setBackgroundResource(R.color.colorOrange);
@@ -126,6 +121,7 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 
 					@Override
 					public void onBroadcastError(LYException exception) {
+						mHandler.obtainMessage(Constants.TaskState.EXCEPITON).sendToTarget();
 						showToast("直播出错" + exception.getCode() + "--"
 								+ exception.getMessage());
 					}

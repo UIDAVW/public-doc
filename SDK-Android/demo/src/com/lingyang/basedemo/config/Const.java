@@ -2,8 +2,8 @@ package com.lingyang.basedemo.config;
 
 
 public class Const {
-	public static final String USERTOKEN_LL = "3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1";//token有效期 2016-4-6至2017-4-6
-    public static final String mUserToken188 = "3000000227_3356753920_1491475615_f77ae8d40cd145134df2752586924dd9";//有效期 2016-4-6至2017-4-6
+	public static final String USERTOKEN_FIRST = "2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f";
+    public static final String USERTOKEN_SECOND = "2147550102_3356753920_1685865787_03373899bf20c3d64b1b34a656792b70";
     public static final String CONFIG  =  "[Config]\r\nIsDebug=1\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nIsSendBroadcast=0\r\nUdpSendInterval=2" +
 	 		"\r\nSendPacketBufferLength=1408\r\nRecvPacketBufferLength=1408\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80" +
 	 		"\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[RealtimeModeConfig]\r\nLongConncettionServerIP=223.202.103.146" +
@@ -21,42 +21,34 @@ public class Const {
 //         4.使用QSTP协议推流，公众模式，开启云存储
   
     //互联地址
-    public static final String FACETIME_CALLING_USERTOKEN="3000000227_3356753920_1491475615_f77ae8d40cd145134df2752586924dd9";//188  token有效期 2016-4-6至2017-4-6
-    public static final String FACETIME_LISTENER_USERTOKEN="3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1";//159  token有效期 2016-4-6至2017-4-6
-    public static final String FACETIME_URL159="topvdn://203.195.157.248:80?token=3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1&" +
+    public static final String FACETIME_CALLING_USERTOKEN="2147550102_3356753920_1685865787_03373899bf20c3d64b1b34a656792b70";
+    public static final String FACETIME_LISTENER_USERTOKEN="2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f";
+    public static final String FACETIME_URL="topvdn://203.195.157.248:80?token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f&" +
     		"protocolType=1";
     
     //直播推流地址
-    public static final String BROADCAST_URL_LL = "topvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
-    		"token=3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1&cid=3000000185";//token有效期 2016-4-6至2017-4-6
+    public static final String BROADCAST_URL = "topvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
+    		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f";
     
     /**
      * 播放器
      */
     //公众摄像机直播观看地址（私有带云存储也是该格式） 格式暂定  rtmp6.public.topvdn.cn:1935是转发服务器地址
-    public static final String CAMERA_PLAYER_URL = "topvdn://rtmp6.public.topvdn.cn:1935?token=1003136&protocolType=2&connectType=2";//办公室1
+    public static final String CAMERA_PLAYER_URL = "topvdn://rtmp6.public.topvdn.cn:1935?token=1003176&protocolType=2&connectType=2";
     
     //私有不带云存储摄像机直播观看地址 token是摄像头token  203.195.157.248:80调度服务器地址
-    public static final String PRIVATE_CAMERA_PLAYER_URL_LL = "topvdn://203.195.157.248:80?token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb&"+
-    		"protocolType=1" ;//token有效期 2016-4-6至2017-4-6
+    public static final String PRIVATE_CAMERA_PLAYER_URL = "topvdn://203.195.157.248:80?token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb&"+
+    		"protocolType=1" ;
     
     //手机直播观看地址
-    public static final String BROADCAST_LIVE_URL159 = "topvdn://rtmp5.public.topvdn.cn:1935?token=3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1&" +
-    		"protocolType=2&connectType=2";//token有效期 2016-4-6至2017-4-6
+    public static final String BROADCAST_LIVE_URL = "topvdn://rtmp1.public.topvdn.cn:1935?token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f&" +
+    		"protocolType=2&connectType=2";
     
-    //云存储观看地址 ，，client_token就是设备token，所有时间单位都是秒
-    public static final String RECORD_PLAYER_URL_LL = "topvdn://public.topvdn.cn?protocolType=3&" +
+     //云存储观看地址 ，，client_token就是设备token，所有时间单位都是秒
+    static long begin=System.currentTimeMillis()/1000-3600*24;
+    static long end=System.currentTimeMillis()/1000;
+    public static final String RECORD_PLAYER_URL = "topvdn://public.topvdn.cn?protocolType=3&" +
     		"token=1003639_3356753920_1466920474_d0063cb1050b05adb0fe69767ba95138&cid=1003639&" +
     		"begin=1464317700&end=1464319828&play=1464317700";  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 
 }

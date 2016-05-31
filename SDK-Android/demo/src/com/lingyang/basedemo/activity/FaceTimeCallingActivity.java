@@ -17,6 +17,7 @@ import android.widget.ToggleButton;
 
 import com.lingyang.basedemo.R;
 import com.lingyang.basedemo.config.Const;
+import com.lingyang.basedemo.config.Constants;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.CallBackListener;
 import com.lingyang.sdk.av.SessionConfig;
@@ -48,6 +49,9 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
      * 本地采集预览的摄像机及音频配置文件
      */
     private SessionConfig mSessionConfig;
+    
+    Button btn_end,btn_reset,btn_snapshot;
+    ToggleButton toggle_audio,toggle_local_audio,toggle_input_stream;
 
     private void initView() {
     	TextView title=(TextView) findViewById(R.id.tv_title);
@@ -55,15 +59,22 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         camera_preview = (LYGLCameraEncoderView) findViewById(R.id.ly_preview);
         playerview = (LYPlayer) findViewById(R.id.ly_player);
         Button btn_start  = (Button) findViewById(R.id.btn_start);
-        Button btn_end = (Button) findViewById(R.id.btn_end);
-        Button btn_reset = (Button) findViewById(R.id.btn_reset);
+        btn_end = (Button) findViewById(R.id.btn_end);
+        btn_reset = (Button) findViewById(R.id.btn_reset);
         Button btn_toogle_camera = (Button) findViewById(R.id.btn_toogle_camera);
         Button btn_toogle_flash = (Button) findViewById(R.id.btn_toogle_flash);
-        Button btn_snapshot = (Button) findViewById(R.id.btn_snapshot);
-
-        ToggleButton toggle_audio=(ToggleButton) findViewById(R.id.toggle_audio);
-        ToggleButton toggle_local_audio=(ToggleButton) findViewById(R.id.toggle_lacal_audio);
-        ToggleButton toggle_input_stream=(ToggleButton) findViewById(R.id.toggle_input_stream);
+        btn_snapshot = (Button) findViewById(R.id.btn_snapshot);
+        
+        toggle_audio=(ToggleButton) findViewById(R.id.toggle_audio);
+        toggle_local_audio=(ToggleButton) findViewById(R.id.toggle_lacal_audio);
+        toggle_input_stream=(ToggleButton) findViewById(R.id.toggle_input_stream);
+        
+        btn_reset.setEnabled(false);
+        btn_snapshot.setEnabled(false);
+        btn_end.setEnabled(false);
+        toggle_audio.setEnabled(false);
+        toggle_local_audio.setEnabled(false);
+        toggle_input_stream.setEnabled(false);
 
         findViewById(R.id.back).setOnClickListener(mClickListener);
         btn_start.setOnClickListener(mClickListener);
@@ -134,10 +145,10 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
                 case R.id.toggle_audio:
                 	 //控制远程音频
                     if (isChecked) {
-                        mLYFaceTime.unmute(Const.FACETIME_URL159);
+                        mLYFaceTime.unmute(Const.FACETIME_URL);
                         showToast("开启音频播放");
                     } else {
-                        mLYFaceTime.mute(Const.FACETIME_URL159);
+                        mLYFaceTime.mute(Const.FACETIME_URL);
                         showToast("关闭音频播放");
                     }
                     break;
@@ -173,23 +184,31 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
       public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start:
-            	
+            	mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
                 // 被叫方：收到连接串主动发起连接的那一方
             	//从消息透传通道收到主叫方传过来的连接串，主动发起连接，连接成功自动开始推流
-                mLYFaceTime.openRemote(Const.FACETIME_URL159, new CallBackListener<Integer>() {
+                mLYFaceTime.openRemote(Const.FACETIME_URL, new CallBackListener<Integer>() {
 					
 					@Override
 					public void onSuccess(Integer t) {
+						mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 						// 连接成功
 						runOnUiThread(new Runnable() {
 							public void run() {
 								showToast("连接成功,开始发送数据");
+								 btn_reset.setEnabled(true);
+							        btn_snapshot.setEnabled(true);
+							        btn_end.setEnabled(true);
+							        toggle_audio.setEnabled(true);
+							        toggle_local_audio.setEnabled(true);
+							        toggle_input_stream.setEnabled(true);
 							}
 						});
 						
 					}
 					@Override
 					public void onError(final LYException exception) {
+						mHandler.obtainMessage(Constants.TaskState.FAILURE).sendToTarget();
 						// 连接失败
 						 runOnUiThread(new Runnable() {
                              @Override
@@ -205,7 +224,7 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         		finish();
         		break;
             case R.id.btn_end:
-            	mLYFaceTime.closeRemote(Const.FACETIME_URL159);
+            	mLYFaceTime.closeRemote(Const.FACETIME_URL);
                 break;
             case R.id.btn_reset:
                 // 再次重连之前需要先重置连接选项，可重新配置音视频采集及摄像机选项
