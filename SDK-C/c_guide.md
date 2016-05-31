@@ -138,10 +138,10 @@ char *peer="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_
 intfd;
 while(1)
 {
-	fd = LY_connect (url);
+	fd = LY_connect (url,NULL);
 	if(fd< 0)
 	{
-		printf("connect to client faild\n");
+		printf("connect to peer faild\n");
 		usleep(300*1000);
 		continue;
 	}
@@ -153,7 +153,7 @@ while(1)
 >
 URL格式：<br>
   1,QSTP连接URL格式：<br>
-    topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
+    topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]&mode=[]<br>
   2,QSUP连接URl格式：<br>
     topvdn://traker_ip:port?protocolType=[]&token=[]<br>
   3,云端录像下载URL格式：<br>
@@ -161,7 +161,7 @@ URL格式：<br>
 >
 <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云端录像下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
-<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
+<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为秒。<br>
 <u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
 **URL的详细格式请参考[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)。**
 
@@ -171,12 +171,12 @@ URL格式：<br>
 int fd;
 int ret;
 MediaFrame_tframe = {0};
-char *url="topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&cid=537067556";
+char *url="topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&mode=2";
 while(1)
 {
 	fd = LY_connect(url,NULL)//连接推流服务器，返回标识传输通道的fd
 	if(fd< 0)
-{
+	{
 		printf("connect to lingyang cloud relay server failed,retry...\n");
 		usleep(300*1000);
 		continue;
@@ -198,7 +198,7 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 void* recvMediaData (void* arg)
 {
 #defineMAX_FRAME 512*1014
-	char*url="topvdn://183.57.151.161:1935?protocolType=2&connectType=2&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&cid=537067556";
+	char*url="topvdn://183.57.151.161:1935?protocolType=2&connectType=2&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b";
 int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通道的fd
 	if(arg == NULL)
 		return;
@@ -207,7 +207,7 @@ int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通�
 	char* buf;
 	MediaFrame_tframe = {0};
 	frame.frameBuffer = (char*)malloc(MAX_FRAME);//外面传入buffer接收数据
-	externintrecvAudioing = 1;
+	extern int recvData = 1;
 	while(recvData)
 	{
 		ret = LY_recvMediaFrame(fd,&frame);//没有数据会阻塞住
@@ -241,14 +241,14 @@ int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通�
 >观看录像必须登录到羚羊云平台，通过给出观看录像的时间点，从应用后台拿到该时间点录像的相关信息，然后调用LY_connect连接到服务器，比拉取直播流多了一个传递参数，最后调用LY_recvMediaFrame接收录像数据。
 
 ```
-char *url="topvdn://183.57.151.161:1935?protocolType=3&connectType=2&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&cid=537067556&begin=1464092317&end= 1464095883&play=1464092317";
+char *url="topvdn://183.57.151.161:1935?protocolType=3&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&begin=1464092317&end= 1464095883&play=1464092317";
 char *dataSource;//这个数据从应用后台拿，是json串格式的数据。示例：{"cid": 537067556, "events": [], "request_id": "91be3a8ffc534ad5bc3b3882a4574451", "servers": [{"ip": "183.57.151.208", "port": 80}], "videos": [{"from": 1463587200, "server_index": 0, "to": 1463627550}]} 
 
 while(1)
 {
 	fd = LY_connect(url,dataSource)//连接录像服务器，返回标识传输通道的fd
 	if(fd< 0)
-    {
+    	{
 		printf("connect to lingyang cloud relay server failed,retry...\n");
 		usleep(300*1000);
 		continue;
@@ -298,7 +298,7 @@ else
 1. 什么是appID？怎么获取appID？<br>
 答：appID是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appID才能正常使用。
 2. 什么是cid？怎么获取？<br>
-答：cid也叫hashid，是羚羊云这边唯一标识终端设备的16个字节长度的字符串，根据第三方友商提供设备的SN(必须唯一)由应用后台生成，第三方友商可使用羚羊云的应用后台，也可以使用自己的应用后台。
+答：cid是羚羊云这边唯一标识终端设备的4个字节长度的unsigned int，根据第三方友商提供设备的SN(必须唯一)由应用后台生成，第三方友商可使用羚羊云的应用后台，也可以使用自己的应用后台。
 3. 什么是QSUP协议？什么是QSTP协议？两者有什么区别？我该用什么协议？<br>
 答：QSUP（Quick Streaming UdpProtocol）和QSTP（Quick Streaming TcpProtocol）协议都是羚羊云自定义的网络传输协议。QSUP是基于UDP的P2P传输协议，如果设备端只需要传送数据给设备的拥有者，可使用此协议，此协议传输延时比RTMP、HTTP等协议更低；QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或者需要使用云存储功能，则需要使用此协议。
 4. 羚羊云SDK支持哪些视频压缩格式和音频压缩格式？<br>
@@ -310,7 +310,7 @@ else
 7. 设备网络较差，连接断开的时候SDK会不会自动重连？<br>
 答：使用QSTP协议调用发送数据的接口时，SDK内部会自动重连，重连操作对使用者是透明的；使用QUSP协议时，如果连接断开，则需要主动去调用重连。
 8. 网络较差，发送数据较慢时，SDK内部是否有缓存机制？<br>
-答：网络环境较差，发送数据较慢时，SDK内部有5M的缓存队列来缓存数据。
+答：网络环境较差，发送数据较慢时，SDK内部每个通道有1M的缓存队列来缓存数据。
 9. 使用羚羊云发送音视频的码流格式是什么样的？<br>
 答：SDK发送H264码流，需要带起始头的NALU，每次发送一个NALU，SDK支持SPS PPS SEI I帧以一个NALU为单位进行传输。SDK发送AAC格式的音频要求调用者发送带ADTS头的AAC数据帧，每次发送一帧。
 10.	什么是fd，fd的作用？<br>
