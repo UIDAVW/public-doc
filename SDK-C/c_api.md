@@ -80,8 +80,8 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apToken|char*|in|必须|设备token，由第三方后台生成。|
-|apConfig|char*|in|必须|配置串，从第三方后台获取。|
+|apToken|char*|in|必须|设备token，由第三方应用后台生成。|
+|apConfig|char*|in|必须|配置串，从第三方应用后台获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 >**注意**：
