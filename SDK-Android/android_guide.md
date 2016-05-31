@@ -1,6 +1,6 @@
 #羚羊云Android SDK使用说明
 ##一、概述
-本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
+本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
 该套SDK主要提供的功能如下：
@@ -100,7 +100,7 @@ libs<br>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
 ##五、开发示例
-本章节介绍如何调用[SDK的API接口](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md)来实现直播推流、播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -190,16 +190,16 @@ libs<br>
 <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云存储录像下载<br>
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端<br>
 <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为毫秒。<br>
-<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)的详细介绍。
+<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)的详细介绍。
 
 播放源的URL地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
 
 (1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
 
-(2)根据[羚羊云token格式](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)生成token；
+(2)根据[羚羊云token格式](http://doc.topvdn.com/api/public-doc/#!token_format.md)生成token；
 
-(3)按照[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)生成羚羊云格式的URL。
+(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)生成羚羊云格式的URL。
 
 ####5.4.3 设置播放连接状态监听
 设置循环执行网络拉流、解码视频帧、及显示视频帧这些过程之前，连接到云服务器的状态监听函数；
@@ -317,7 +317,7 @@ mSessionConfig = new SessionConfig.Builder()
 mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md "Android API")中的数据类型-直播推流相关属性配置。
 
 ####5.5.2 设置本地预览布局
 ```
@@ -397,7 +397,7 @@ mSessionConfig = new SessionConfig.Builder()
 mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[API手册](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md "Android API")中的数据类型-直播推流相关属性配置。
 
 ####5.6.2 设置本地预览和播放布局
 
