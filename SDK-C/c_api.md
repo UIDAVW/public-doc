@@ -80,13 +80,13 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apToken|char*|in|必须|用户token，由第三方后台生成。|
+|apToken|char*|in|必须|设备token，由第三方后台生成。|
 |apConfig|char*|in|必须|配置串，从第三方后台获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 >**注意**：
 >
-**apToken**：用户token，由应用后台生成，格式如下：<br>
+**apToken**：设备token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 >
@@ -216,7 +216,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 |maxLen|int|In|必须|接受token信息内存空间的最大长度。|
 >**注意**：
 >
-**aDeviceToken**：用户token，由应用后台生成，格式如下：<br>
+**aDeviceToken**：设备token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
 token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
 
