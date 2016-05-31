@@ -66,7 +66,7 @@
 应用服务器直接携带app id和app key，通过调用羚羊云提供的Web API向羚羊云平台发送http请求，云平台会对id和key进行验证，验证通过将会返回该API对应的结果。
 
 - 应用客户端认证<br>
-(1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见本文下一章节的[羚羊云平台token验证机制](#token1)。<br>
+(1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见本文下一章节的[羚羊云平台token验证机制](https://github.com/AntelopeExpress/public-doc/blob/master/integration.md#7-%E7%BE%9A%E7%BE%8A%E4%BA%91token%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6)。<br>
 (2)应用客户端向他们的应用服务器获取token，凭着这个token，才能成功调用羚羊云客户端SDK或Web API实现功能。
 
 ###6.4 用户接入
@@ -88,7 +88,6 @@
 ####6.5.2 接入流程
 ![Alt text](./images/flow2.png "用于应用接入羚羊云的流程") 
 
-##<a name="token1" id="token1">7. 羚羊云token认证机制</a>
 ###7.1 羚羊云的身份验证方式
 羚羊云采用目前web领域普遍的认证方式：基于token的身份验证。
 
