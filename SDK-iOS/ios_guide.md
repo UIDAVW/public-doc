@@ -135,7 +135,7 @@ popMessageBlock:^(NSDictionary *dictionary) {
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
 ###5.4 播放器
-![Alt text](./../images/flow_player.png "播放器内部实现流程")
+![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.4.1 创建播放器类
 ```
@@ -219,7 +219,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 ```
 
 ###5.5 直播推流
-![Alt text](./../images/flow_push.png "直播推流内部实现流程")
+![Alt text](./../images/flow_push.png "直播推流接口调用流程")
  
 ####5.5.1 设置流参数
 
