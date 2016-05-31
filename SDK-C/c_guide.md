@@ -153,7 +153,7 @@ while(1)
 >
 URL格式：<br>
   1,QSTP连接URL格式：<br>
-    topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]<br>
+    topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]&mode=[]<br>
   2,QSUP连接URl格式：<br>
     topvdn://traker_ip:port?protocolType=[]&token=[]<br>
   3,云端录像下载URL格式：<br>
