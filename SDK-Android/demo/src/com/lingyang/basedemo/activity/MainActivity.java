@@ -62,28 +62,28 @@ public class MainActivity extends AppBaseActivity {
 			case R.id.tv_broadcast:
 				// 设备直播
 				mType=LIVE_BROADCAST_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_LL);
+				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
 			case R.id.tv_public_live_player:
 				// 观看公众摄像机直播
 //				   LYService.getInstance().stopCloudService();
 				mType=PLAYER_OF_PUBLIC_CAMERA_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_LL);
+				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
 			case R.id.tv_private_live_player:
 				// 观看私有摄像机直播
 				mType=PLAYER_OF_PRIVATE_CAMERA_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_LL);
+				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
 			case R.id.tv_broadcast_player:
 				// 观看设备广播
 				mType=PLAYER_OF_BROADCAST_OF_VALUE;
-				startCloudServiceWithFacetime(Const.mUserToken188);
+				startCloudServiceWithFacetime(Const.USERTOKEN_SECOND);
 				break;
 			case R.id.tv_record_player:
 				// 观看云存储
 				mType=PLAYER_OF_RECORD_CAMERA_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_LL);
+				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
 			}
 

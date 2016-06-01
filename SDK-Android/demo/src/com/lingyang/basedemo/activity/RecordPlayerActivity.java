@@ -6,6 +6,7 @@ import java.util.Date;
 import com.lingyang.basedemo.R;
 import com.lingyang.basedemo.R.layout;
 import com.lingyang.basedemo.config.Const;
+import com.lingyang.basedemo.config.Constants;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.player.widget.LYPlayer;
@@ -39,11 +40,13 @@ public class RecordPlayerActivity extends AppBaseActivity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.btn_start:
-				// 结束播放
+				// 开始播放
+				mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
 				mPlayer.start();
 				break;
 			case R.id.btn_end:
 				// 结束播放
+				mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
 				mPlayer.stop();
 				break;
 			case R.id.back:
@@ -109,7 +112,7 @@ public class RecordPlayerActivity extends AppBaseActivity {
 		getTimes.setOnClickListener(mClickListener);
 		seek.setOnClickListener(mClickListener);
 		
-		mPlayer.setDataSource(Const.RECORD_PLAYER_URL_LL);
+		mPlayer.setDataSource(Const.RECORD_PLAYER_URL);
 		//播放进度回调
 		mPlayer.setOnPlayProgressListener(new OnPlayProgressListener() {
 			
@@ -136,6 +139,7 @@ public class RecordPlayerActivity extends AppBaseActivity {
 			
 			@Override
 			public void onPrepared(int time) {
+				mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 				//time 耗时
 				runOnUiThread(new Runnable() {
 					public void run() {
@@ -152,6 +156,7 @@ public class RecordPlayerActivity extends AppBaseActivity {
 			
 			@Override
 			public void onClosed() {
+				mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 				runOnUiThread(new Runnable() {
 					public void run() {
 						mStartBtn.setText("播放");

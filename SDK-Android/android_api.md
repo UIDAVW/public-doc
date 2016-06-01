@@ -121,7 +121,7 @@ public class LYException extends Exception {
 ```
 
 ##2 云服务接口
->接口名称：LYService
+接口名称：LYService
     
 ###2.2 启动云服务
 ```
@@ -132,19 +132,19 @@ void startCloudService(String userToken, String configString, CallBackListener<L
 | 接口名 | startCloudService |
 | 功能 | 调用了此api之后,平台相关凭证及资源开始准备，并且在回调接口通知云服务是否启动成功！ 建议在客户端登录验证逻辑通过之后即刻调用。服务启动之后，相关的平台接口才能正常使用。 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |userToken|String|in|必须|设备token，由第三方后台生成。|
 |configString|String|in|必须|配置串，从第三方后台获取。|
 |listener|CallBackListener<Long>|in|必须|启动结果监听回调，返回成功或失败|
->**注意**：
->
+
+**注意**：
+
 **userToken**：设备token，由应用后台生成，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
->
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
+
 **configString**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
 调用者不必知道该字符串内容所表示的意义。
@@ -181,7 +181,6 @@ void setNativeLoggingEnabled(boolean enabled);
 | 接口名 | setNativeLoggingEnabled |
 | 功能 | 是否开启底层日志打印，设置开启的时候，开发者可在log中看到底层日志，tag:[JPlayer] |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -240,16 +239,15 @@ void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 | - | - |
 |-------|----|
 | 接口名 | AcceptMessageListener |
-| 功能 | 视频互联接收，关闭，设备绑定确认，设备配置状态等云消息接收回调监听； |
+| 功能 | 视频通话、关闭、设备绑定确认、设备配置状态等云消息接收回调监听； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |message|CloudMessage|out|--|请参见本文数据类型章节的消息结构定义|
 
 ##3 直播推流接口
->接口名称：LYLiveBroadcast
+接口名称：LYLiveBroadcast
   
 ###3.1 结构定义
 ```
@@ -272,7 +270,6 @@ void setLocalPreview(LYGLCameraView glSurfaceView);
 | 接口名 | setLocalPreview |
 | 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -287,7 +284,6 @@ void startBroadcasting(String remoteUrl);
 | 接口名 | startBroadcasting |
 | 功能 | 开始直播推流 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -348,7 +344,6 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 | 接口名 | BroadcastStateChangeListener |
 | 功能 | 广播状态变化回调监听，包括直播开始，正在直播，直播停止，错误等 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -363,7 +358,6 @@ void reset(SessionConfig config);
 | 接口名 | reset |
 | 功能 | 重新初始化直播推流相关参数. 必须在停止直播推流后调用 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -458,7 +452,6 @@ void setCameraType(int camera);
 | 接口名 | setCameraType |
 | 功能 | 传入指定的摄像机编号设置相应的摄像头 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -493,14 +486,13 @@ void setFlashMode(String desiredFlash);
 | 接口名 | setFlashMode |
 | 功能 | 根据传入的参数设置相应的闪光灯类型； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
 
-##4 音视频互联接口
->接口名称：LYFaceTime
+##4 视频通话接口
+接口名称：LYFaceTime
  
 ###4.1 设置本地预览
 ```
@@ -511,7 +503,6 @@ public void setLocalPreview(LYGLCameraViewpreviewView);
 | 接口名 | setLocalPreview |
 | 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -526,7 +517,6 @@ public void setRemoteView(String remoteUrl, VideoPlayerView view);
 | 接口名 | setRemoteView |
 | 功能 | 设置远程播放器； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -542,7 +532,6 @@ public void setRemoteView(String remoteUrl, VideoPlayerView view);
 | 接口名 | setRemoteView |
 | 功能 | 设置远程播放器； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -558,7 +547,6 @@ public void openRemote(String remoteUrl, CallBackListener<Integer> callBackListe
 | 接口名 | openRemote |
 | 功能 | 打开链接并推送数据,被连接方无需此操作； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -574,7 +562,6 @@ public void closeRemote(String remoteUrl);
 | 接口名 | openRemote |
 | 功能 | 打开链接并推送数据,被连接方无需此操作； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -599,7 +586,6 @@ public void reset(SessionConfig config);
 | 接口名 | reset |
 | 功能 | 重新初始化音视频编码，推流等相关参数. 必须在停止音视频推流后调用 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -736,7 +722,6 @@ void setCameraType(int camera);
 | 接口名 | setCameraType |
 | 功能 | 传入指定的摄像机编号设置相应的摄像头 |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -771,7 +756,6 @@ void setFlashMode(String desiredFlash);
 | 接口名 | setFlashMode |
 | 功能 | 根据传入的参数设置相应的闪光灯类型； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -779,11 +763,12 @@ void setFlashMode(String desiredFlash);
 
 
 ##5 播放器接口
->接口名称：LYPlayer
->播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
+接口名称：LYPlayer
+
+播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
 
 ###5.1 播放器布局
->该布局是基于SurfaceView的自定义播放器控件，在使用过程中，只需要引入播放器控件的相应的layout界面即可。
+该布局是基于SurfaceView的自定义播放器控件，在使用过程中，只需要引入播放器控件的相应的layout界面即可。
 
     <com.lingyang.sdk.player.widget.LYPlayer
         android:id="@+id/ly_player"
@@ -799,11 +784,10 @@ public void setDataSource(String url)
 | 接口名 | setDataSource |
 | 功能 | 根据传入的url判断播放类型，实例化IPlayer播放控制器，设置播放模式； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)|
+|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)|
 
 ###5.3 设置播放缓冲时长
 ```
@@ -814,7 +798,6 @@ void setPlayOptions(PlayOptions playOptions);
 | 接口名 | setPlayOptions |
 | 功能 | 配置播放缓冲时长，可选择性调用。必须在开始播放前调用； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -859,7 +842,6 @@ void setScreenRatio(int screenType);
 | 接口名 | setScreenRatio |
 | 功能 | 设置画面显示比例； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -874,7 +856,6 @@ void setFullScreen(boolean isFullScreen);
 | 接口名 | setFullScreen |
 | 功能 | 设置画面显示比例,默认为false； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -939,7 +920,6 @@ void seekTo(int pos);
 | 接口名 | seekTo |
 | 功能 | 调整到特定的时间位置(相对时间)，必须在开始播放后调用，仅在点播状态下有效； |
 | 返回值 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -954,7 +934,6 @@ String getMediaParam(int paramType);
 | 接口名 | getMediaParam |
 | 功能 | 根据传入的参数获取相应的流媒体信息； |
 | 返回值 |返回相应的流媒体信息 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1029,7 +1008,6 @@ void setOnPlayProgressListener(OnPlayProgressListener playProgressListener);
 | 接口名 | setOnPlayProgressListener |
 | 功能 | 注册播放进度回调监听，仅在云存储播放时调用； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1046,7 +1024,6 @@ public interface OnPlayProgressListener {
 | 接口名 | OnPlayProgressListener |
 | 功能 | 媒体文件播放结束后调用的回调接口； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1061,7 +1038,6 @@ void setOnPreparedListener(OnPreparedListener preparedListener);
 | 接口名 | setOnPreparedListener |
 | 功能 | 媒体文件即将播放时调用的回调函数； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1078,7 +1054,6 @@ interface OnPreparedListener {
 | 接口名 | OnPreparedListener |
 | 功能 | 媒体文件装载时或即将播放时调用的回调接口； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1093,7 +1068,6 @@ void snapshot(String path, String name, OnSnapshotListener listener);
 | 接口名 | snapshot |
 | 功能 | 创建视频截图； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1128,7 +1102,6 @@ void setLocalRecordListener(OnLocalRecordListener onLocalRecordListener);
 | 接口名 | setLocalRecordListener |
 | 功能 | 录像时回调函数； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1143,7 +1116,6 @@ void onRecordSizeChange(long size, long time);
 | 接口名 | onRecordSizeChange |
 | 功能 | 录制每一KB都会回调此函数； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1159,7 +1131,6 @@ void onRecordError(LYException e);
 | 接口名 | onRecordError |
 | 功能 | 录像时发生错误时调用的回调函数； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1174,7 +1145,6 @@ void startLocalRecord(String filePath);
 | 接口名 | startLocalRecord |
 | 功能 | 开始本地录像，在开始播放后调用； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1209,7 +1179,6 @@ void setOnCompletionListener(OnCompletionListener completionListener);
 | 接口名 | setOnCompletionListener |
 | 功能 | 媒体文件播放结束后调用的回调函数； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1236,7 +1205,6 @@ void setOnErrorListener(OnErrorListener errorListener);
 | 接口名 | setOnErrorListener |
 | 功能 | 在播放和建立播放期间发生错误被调用的回调函数 如果回调函数没有注册，或者回调函数返回错误, 将不返回用户任何错误； |
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1253,7 +1221,6 @@ interface OnErrorListener {
 | 接口名 | OnErrorListener |
 | 功能 | 播放和建立播放期间发生错误时的回调接口；|
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1269,7 +1236,6 @@ void setOnPlayingBufferCacheListener(OnPlayingBufferCacheListener bufferListener
 | 接口名 | setOnPlayingBufferCacheListener |
 | 功能 | 播放时缓存的回调函数，仅在点播状态下有效；|
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1286,7 +1252,6 @@ void onPlayingBufferCache(int percent)；
 | 接口名 | onPlayingBufferCache |
 | 功能 | 正在缓冲时每个百分比都会对调此函数返回当前百分比；|
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1321,7 +1286,6 @@ void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 | 接口名 | setOnSeekCompleteListener |
 | 功能 | Seek完成时调用的回调函数，仅在点播状态下有效；|
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1338,7 +1302,6 @@ interface OnSeekCompleteListener {
 | 接口名 | OnSeekCompleteListener |
 | 功能 | Seek完成时调用的回调函数，仅在点播状态下有效；|
 | 返回值 |无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|

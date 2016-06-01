@@ -289,7 +289,7 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
 | 接口名 | startCloudService |
 | 功能 | 调用了此api之后,平台相关凭证及资源开始准备，并且在回调接口通知云服务是否启动成功！ 建议在客户端登录验证逻辑通过之后即刻调用。服务启动之后，相关的平台接口才能正常使用； |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -297,14 +297,11 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
 |config|NSString *|in|必须|配置串，从第三方后台获取。|
 |startBlock|startCloudServiceBlock|in|--|启动服务状态回调 详见平台接口block|
 |popMessageBlock|cloudServicePopMessageBlock|in|--|消息监听回调，设备状态变更、建立连接消息、自定义消息均通过改block回调，详见平台接口block|
->**注意**：
->
-**token**：设备token，由应用后台生成，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
->
+**注意**：
+**token**：设备token，由应用后台生成，格式：2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 **config**：配置串，从后台获取(无需解析)，格式如下：
-[Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
+[Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n
 调用者不必知道该字符串内容所表示的意义。
 应用后台调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，接口返回的"init_string"字段即配置串。
 
@@ -353,7 +350,7 @@ token的内容格式及意义请见[羚羊云token认证机制](https://github.c
 | 接口名 | initWithVideoConfiguration |
 | 功能 | 根据音视频配置信息对象初始化直播类，调用该方法实现采集和编码的资源准备。 |
 | 返回值 | LYLiveBroadCast实例对象 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -370,7 +367,7 @@ token的内容格式及意义请见[羚羊云token认证机制](https://github.c
 | 接口名 | resetVideoConfig |
 | 功能 | 重新设置音视频配置参数 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -387,7 +384,7 @@ token的内容格式及意义请见[羚羊云token认证机制](https://github.c
 | 接口名 | startLiveBroadcast |
 | 功能 | 开始直播，调用之后开始准备直播相关资源，回调状态码为LYstatusCodeSuccess之后调用开始推流即可。 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -395,7 +392,7 @@ token的内容格式及意义请见[羚羊云token认证机制](https://github.c
 |startBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
 >token：设备token，从后台获取，格式如下：<br>
 2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9<br>
-Token串各字段所表示的意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
+Token串各字段所表示的意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
 ###3.4 停止直播
 ```
@@ -417,7 +414,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | startLiveBroadcastWithMode |
 | 功能 | 展示当前摄像头采集的视频。 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -434,7 +431,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | switchCamera |
 | 功能 | 切换前后置摄像头 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -451,7 +448,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | turnTorchAndFlashOn |
 | 功能 | 打开闪光灯：前置摄像头的时候不可以开启闪光灯。 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -507,7 +504,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | getCurrentFrameImage |
 | 功能 | 获取当前摄像头采集的视频图像转换为UIImage返回 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -545,7 +542,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | setViewWithConfiguration |
 | 功能 | 设置播放器的配置信息。切忌初始化对象完成之后调用设置，否则后续操作无法进行 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -560,7 +557,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](https://gi
 | 接口名 | setViewFrame |
 | 功能 | 重新设置或者改变播放器View的位置 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -577,11 +574,11 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | open |
 | 功能 | 打开播放器，根据对应的播放地址进行连接以及渲染，播放状态实时回调 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|dataSourceAddreess|NSString *|in|必须|播放地址，详见[羚羊云url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)|
+|dataSourceAddreess|NSString *|in|必须|播放地址，详见[羚羊云url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)|
 |openBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|打开状态回调|
 |playerBlock|playerCallBackBlock|in|必须|播放状态回调|
 
@@ -624,7 +621,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | startTalkWithSampleRate |
 | 功能 | 与当前播放的视频采集设备进行对讲 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -650,7 +647,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | getMediaParam |
 | 功能 | 获取流媒体信息数据 |
 | 返回值 | 对应序号的流媒体信息 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -676,7 +673,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | seek |
 | 功能 | 设置播放位置，定位播放时间点：只针对观看历史有效， |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -693,7 +690,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | snapshot |
 | 功能 | 创建视频截图；路径包括文件名，后缀.jpg |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -710,7 +707,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | startLocalRecord |
 | 功能 | 开始本地录像，在开始播放后调用；路径包括文件名，后缀.mp4 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -739,7 +736,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | initWithVideoConfiguration |
 | 功能 | 初始化直播类 |
 | 返回值 | LYFaceTime实例对象 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -756,7 +753,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | setPreview |
 | 功能 | 设置预览view，本地采集视频预览view，注意该view上不能存在其他控件，否则会被layer重绘掉 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -772,7 +769,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | setVideoEncodeBitrateLevel |
 | 功能 | 改接口设置的码率是推流码率。要改变对方的码率请消息通知对方调用该接口让对方传输码率改变 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -838,7 +835,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | switchCamera |
 | 功能 | 切换摄像头类型 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -855,7 +852,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | turnTorchAndFlashOn |
 | 功能 | 打开或者关闭闪光灯 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -871,7 +868,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | getCurrentFrameImage |
 | 功能 | 获取当前摄像头采集的帧数据对应UIImage |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -887,7 +884,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | setPlayView |
 | 功能 | 设置播放view |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -903,7 +900,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | setPlayViewFrame |
 | 功能 | 更改播放器frame。该接口的应用场景主要在：旋转view、view大小改变等情况下需要重新设置frame，底层根据大小重新在画布上回执。 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -921,7 +918,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | open |
 | 功能 | 播放源直接建立连接 |
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -938,7 +935,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | close |
 | 功能 | 关闭播放 **注意**：该方法关闭播放器，调用open之后一定要调用该方法释放底层资源|
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -953,7 +950,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | unmute |
 | 功能 | 打开声音播放|
 | 返回值 | 打开成功为0，失败为-1 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -968,7 +965,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | mute |
 | 功能 | 关闭声音播放|
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -983,7 +980,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | getMediaParam |
 | 功能 | 获取播放流媒体信息数据|
 | 返回值 | 当前流媒体信息数据 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1000,7 +997,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | snapshot |
 | 功能 | 创建视频截图|
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1018,7 +1015,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | startLocalRecord |
 | 功能 | 创建视频录像|
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -1035,7 +1032,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 接口名 | stopLocalRecord |
 | 功能 | 结束视频录像|
 | 返回值 | 无 |
-> 
+
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|

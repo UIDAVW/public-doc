@@ -76,7 +76,6 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 | 接口名 | LY_startCloudService |
 | 功能 | 启动云服务。调用了此api之后,平台相关凭证及资源开始准备，平台的回调消息通过回调函数apMessageCallBack通知调用者，其他接口必须在云服务启动成功之后才能正常使用。 |
 | 返回值 | 0表示成功，非0表示失败。 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -84,18 +83,18 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 |apConfig|char*|in|必须|配置串，从第三方应用后台获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
->**注意**：
->
-**apToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
->
+**注意**：
+
+**apToken**：设备token，由应用后台生成，格式：2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
+
 **apConfig**：配置串，从后台获取(无需解析)，格式如下：
-[Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n<br>
+[Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n
+
 调用者不必知道该字符串内容所表示的意义。
 应用后台调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，接口返回的"init_string"字段即配置串。
 
->
 平台消息回调函数:
 ```
 typedef void (*PlatformMessageCallBack)(void* apUserData, const char* constaMessage);
@@ -128,18 +127,20 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 | 功能 | 和交互端（包括手机APP，羚羊云的服务器）建立连接，根据传入的aUrl参数判断类型，建立媒体传输通道。如果是观看录像使用此接口连接服务器，则第二个参数需要传录像磁盘信息；否则传入第二个参数传NULL即可。该函数与 LY_disconnect配套使用。 |
 | 返回值 | 大于等于0表示成功，且返回传输通道句柄fd；否则失败 |
 | 参数列表 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aUrl|char*|in|必须|目标服务器的url地址，连接类型（推流或拉流），使用的协议等。|
 |aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从羚羊云后台或者第三方厂商后台获取，对调用者透明。|
->**注意**：
->
-**aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：<br>
-topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069<br>
-topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu&end=%lu&play=%lu<br>
-Url各字段意义及详解请见[羚羊云Url格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)
+**注意**：
+
+**aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：
+
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
+
+topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu&end=%lu&play=%lu
+
+Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)
 
 ###3.2 断开通道连接
 ```
@@ -150,7 +151,6 @@ int	LY_disconnect(const int aFd);
 | 接口名 | LY_disconnect |
 | 功能 | 根据传入的fd参数，断开对应传输通道的连接，与 LY_connect配套使用。 |
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -166,7 +166,6 @@ int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 | 功能 | 以数据帧为单位向已连接成功的传输通道发送音视频数据。 |
 | 返回值 | 0表示成功，非0表示失败|
 | 参数列表 | 无 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -182,7 +181,6 @@ int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 | 接口名 | LY_recvMediaFrame |
 | 功能 | 从传输通道接收媒体数据。该接口在没有数据到来时会阻塞，且需要外面管理接收数据的内存空间。 |
 | 返回值 | 0表示成功，非0表示失败|
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -208,33 +206,31 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 | 接口名 | LY_updateToken |
 | 功能 | token过期后可调用此接口更新token信息。|
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aDeviceToken|char*|Out|必须|接收token信息的内存空间的指针。|
 |maxLen|int|In|必须|接受token信息内存空间的最大长度。|
->**注意**：
->
-**aDeviceToken**：设备token，由应用后台生成，格式如下：<br>
-2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。<br>
-token的内容格式及意义请见[羚羊云token认证机制](https://github.com/AntelopeExpress/public-doc/blob/master/token_format.md)
+**注意**：
 
-###3.7 跳转到指定时间点录像
+**aDeviceToken**：设备token，由应用后台生成，格式如下：2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
+
+###3.7 定位录像到指定时间点
 ```
 int LY_seek(const int aFd, const unsigned int aCurrentTime);
 ```
 | - | - |
 |-------|----|
 | 接口名 | LY_seek |
-| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
+| 功能 | 定位录像到指定的时间点，定位的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aFd|int|in|必须|建立录像传输通道时的通道句柄fd|
-|aCurrentTime|unsigned int|in|必须|要跳转的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于0 |
+|aCurrentTime|unsigned int|in|必须|要定位的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于等于0 |
 
 ###3.8 设置指定网卡IP
 ```
@@ -245,7 +241,6 @@ int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aS
 | 接口名 | LY_setLocalIP |
 | 功能 | 在双网卡情况下，可调用此接口设置两个网卡的IP，数据从两个网卡同时发送，避免某个网卡网络差的时候出现延时或者丢包，由另外一个网卡发送确保数据的及时送达。由调用者保证IP不冲突。不调用时随机选择一个网卡发送数据。IP的格式是点分十进制的字符串格式。在使用QSTP协议下调用有效。 |
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -263,7 +258,6 @@ int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo);
 | 接口名 | setMediaInfo |
 | 功能 | 设置媒体流编解码信息 |
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
@@ -279,7 +273,6 @@ int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEn
 | 接口名 | LY_setQSUPEncryptKey |
 | 功能 | 设置加密密钥，密钥最长不能超过128个字节。加密、解密在SDK内部算法实现，外部无需关心。如果没有设置加密秘钥，使用加密功能时会使用羚羊云默认的加密秘钥。QSUP协议默认是使用羚羊云默认加密秘钥加密的，如果需要取消加密，则可调用此接口，第一个参数设置为0即可。QSTP协议如果使用云存储功能，则使用羚羊云默认加密秘钥加密；否则不加密。公众模式下，设置与否都不加密。 |
 | 返回值 | 0表示成功，非0表示失败 |
-> 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
