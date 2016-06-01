@@ -217,20 +217,20 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 
 token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
-###3.7 跳转到指定时间点录像
+###3.7 定位录像到指定时间点
 ```
 int LY_seek(const int aFd, const unsigned int aCurrentTime);
 ```
 | - | - |
 |-------|----|
 | 接口名 | LY_seek |
-| 功能 | 跳转到指定录像时间点，指定调转的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
+| 功能 | 定位录像到指定的时间点，定位的时间点范围在打开该录像通道的开始时间和结束时间内。时间单位为秒。 |
 | 返回值 | 0表示成功，非0表示失败 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aFd|int|in|必须|建立录像传输通道时的通道句柄fd|
-|aCurrentTime|unsigned int|in|必须|要跳转的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于0 |
+|aCurrentTime|unsigned int|in|必须|要定位的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于等于0 |
 
 ###3.8 设置指定网卡IP
 ```
