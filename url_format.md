@@ -14,7 +14,7 @@ QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或�
 - <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
 - <u>token</u>：设备token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)的详细介绍。
 
-不同的场景下，各个字段所设置的值也不同。
+下面列举了不同的场景下的url设置。
 
 ##3 直播推流url示例
 
