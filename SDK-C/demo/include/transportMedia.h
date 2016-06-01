@@ -43,8 +43,6 @@ void stopPushAudio(int fd);
 //开始接受平台发送过来的数据，包括音频、报警等
 int startRecvAudio(int fd);
 
-//停止接受平台发送过来的数据，包括音频、报警等
-int stopRecvAudio(int fd);
 
 
 #ifdef __cplusplus
