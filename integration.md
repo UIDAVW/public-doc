@@ -197,7 +197,7 @@ token明文段包含以下字段：
 ##8. 如何使用羚羊云SDK
 按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
 
-[Web API](http://doc.topvdn.com/api/#!web_api_v2.md "Web API")
+[Web API](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
 
 [SDK使用说明-C版](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_guide.md "C版SDK")
 [SDK使用说明-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md "iOS版SDK")
