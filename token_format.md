@@ -7,10 +7,10 @@
 ##2 羚羊云token内容格式
 >格式：{明文段}\_{验证码}
 
->样式：cid\_control\_expire\_\[vod\_time\]\_\[IP\]\_\[refer\]\_digest
+>样式：cid\_control\_expire\_\[vod\_time\]\_\[ip\]\_\[refer\]\_digest
 
 其中：
-**cid\_control\_expire\_\[vod\_time\]\_\[IP\]\_\[refer\]**为明文段，**[ ]**标记表示可选字段。
+**cid\_control\_expire\_\[vod\_time\]\_\[ip\]\_\[refer\]**为明文段，**[ ]**标记表示可选字段。
 **digest**为验证码
 
 举例：
@@ -21,11 +21,11 @@ token明文段包含以下字段：
 
 |字段 | 含义|
 |----|----|
-|CID	| 设备ID，为访问云平台的设备ID，如摄像机或需要p2p通讯或直播的手机ID，在参与计算token时采用4字节整数方式；|
+|cid	| 设备id，为访问云平台的设备id，如摄像机或需要p2p通讯或直播的手机id，在参与计算token时采用4字节整数方式；|
 |Control	| 控制字段，表示此设备将使用的平台功能权限，在参与计算token时采用4字节整数方式；该字段各个字节和位所表达的意思请见下文的control字段介绍。|
 |expire | 过期时间，指token的有效时间，为Unix时间戳（秒级精度，4字节）在参与计算token时采用4字节整数方式；|
 |vod_time | 点播时间，指点播时对应的录制时间，同时也是点播文件的文件名部分，在参与计算token时采用4字节整数方式；|
-|IP | 指设备的公网IP地址，在计算token时采用4字节整数方式；|
+|ip | 指设备的公网ip地址，在计算token时采用4字节整数方式；|
 |refer | http请求时的refer地址中的域名部分，这个字段一般用来启用防盗链功能，在参与计算token时采用字符串方式；|
 
 **注意：**
@@ -98,12 +98,12 @@ token明文段包含以下字段：
 ##6 羚羊云token类型
 根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
 - 设备token
-明文组成部分为CID + control + expire + \[IP]；
-\[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
+明文组成部分为cid + control + expire + \[ip]；
+\[ip]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
 
 - 访问token
-明文组成部分为CID + control + expire + \[vod_time] + \[IP] + \[refer]；
+明文组成部分为cid + control + expire + \[vod_time] + \[ip] + \[refer]；
 按照访问方式不同，[]中的可选项又分为以下几种情况：
 \[vod_time]:只有在看http点播时必须使用，其他情况不得添加；
-\[IP]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；
+\[ip]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
