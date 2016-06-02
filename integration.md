@@ -214,6 +214,11 @@ token明文段包含以下字段：
 [API手册-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)
 [API手册-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/#!windows_api.md)
 
+[Demo-C版](https://github.com/AntelopeExpress/public-doc/SDK-C/)
+[Demo-iOS版](https://github.com/AntelopeExpress/public-doc/SDK-iOS/)
+[Demo-Android版](https://github.com/AntelopeExpress/public-doc/SDK-Android/)
+[Demo-Windows版](https://github.com/AntelopeExpress/public-doc/SDK-Windows/)
+
 ##9. 常见问题
 
 1. 什么是appid？怎么获取appid？
