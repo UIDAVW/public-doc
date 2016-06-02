@@ -97,11 +97,12 @@ token明文段包含以下字段：
 
 ##6 羚羊云token类型
 根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
-- 设备token
+
+- `设备token`
 明文组成部分为cid + control + expire + \[ip]；
 \[ip]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中。
 
-- 访问token
+- `访问token`
 明文组成部分为cid + control + expire + \[vod_time] + \[ip] + \[refer]；
 按照访问方式不同，[]中的可选项又分为以下几种情况：
 \[vod_time]:只有在看http点播时必须使用，其他情况不得添加；
