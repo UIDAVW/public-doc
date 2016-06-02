@@ -61,7 +61,7 @@ int startCloudService(const std::string & token, const std::string & config, con
 **注意**：
 
 **token**：设备token，由应用后台生成，格式如下：
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+2147549953\_1458979882\_1469999882\_bad3686a62a7aba595df3fb4c9c400e9。
 token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
 **config**：配置串，从后台获取(无需解析)，格式如下：
