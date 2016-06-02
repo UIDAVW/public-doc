@@ -188,6 +188,7 @@ token明文段包含以下字段：
 \[ip]:可选项，如果control字段里面设置验证ip的标志位，则ip字段需要加入到用于token验证码计算的明文中。
 
 - **访问token**
+
 明文组成部分为cid + control + expire + \[vod_time] + \[ip] + \[refer]；
 
 按照访问方式不同，[]中的可选项又分为以下几种情况：
