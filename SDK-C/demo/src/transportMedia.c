@@ -101,13 +101,6 @@ void stopPushMedia(int fd)
 				pthread_join(ch->pidPushAudio,NULL);
 				ch->pidPushAudio = NULL;
 			}
-			//停止接受数据的线程
-			if(ch->pidRecvAudioing != NULL || ch->recvAudioing == 1)
-			{
-				ch->recvAudioing = 0;
-				pthread_join(ch->pidRecvAudioing,NULL);
-				ch->pidRecvAudioing = NULL;
-			}
 			ch->fd = -1;
 			ch->isAudioOpen = 0;
 		}
@@ -192,6 +185,12 @@ static void* recvDataFromLyCloud(void* arg)
 #elif defined(LY_PLATFORM)
 		ret = LY_recvMediaFrame(fd,&frame);
 #endif
+		if(ret != 0)//如果返回-1，则表示已经调用了LY_disconnect获取发生错误，退出线程
+		{
+			printf("LY_recvMediaFrame failed\n");
+			ch->recvAudioing = 0;
+			break;
+		}
 #ifdef PLAYBACK//如果有回放，在这里将数据压到播放队列中
 		if(ret == 0 && pushFrameToQue(ch->playBackBufHandle,frame.frameBuffer,frame.frameLength,frame.frameTime,AAC_TYPE_SAMPLE) != 0)
 		{
@@ -201,6 +200,18 @@ static void* recvDataFromLyCloud(void* arg)
 		printf("recv audio frame,len=%d\n",frame.frameLength);
 #endif
 	}
+#ifdef PLAYBACK
+	//清理工作
+	if(ch->pidPlayBacking != NULL || ch->playBacking)
+	{
+		ch->playBacking = 0;
+		cancelQue(ch->playBackBufHandle);//需要先取消队列，否则会阻塞住
+		pthread_join(ch->pidPlayBacking,NULL);
+		ch->pidPlayBacking = NULL;
+	}
+	destroyQue(ch->playBackBufHandle);
+	ch->playBackBufHandle = NULL;
+#endif
 	printf("recv audio data exit fd=%d\n",fd);
 }
 
@@ -241,41 +252,6 @@ int startRecvAudio(int fd)
 			}
 		}
 #endif
-	}
-	return ret;
-}
-
-//一个连接的生命周期内只会触发一个"StartPopData"消息，所以接收线程开启后避免关闭，除非调用LY_disconnect或者停止推流
-int stopRecvAudio(int fd)
-{
-	int ret = -1;
-	if(fd < 0)
-	{
-		printf("fd must >= 0\n");
-		return -1;
-	}
-	transportChannel* ch = getChannel(fd);
-	if(NULL != ch)
-	{
-		if(ch->pidRecvAudioing != NULL)
-		{
-			ch->recvAudioing = 0;
-			pthread_join(ch->pidRecvAudioing,NULL);
-			ch->pidRecvAudioing = NULL;
-		}
-#ifdef PLAYBACK
-		if(ch->pidPlayBacking != NULL || ch->playBacking)
-		{
-			ch->playBacking = 0;
-			pthread_join(ch->pidPlayBacking,NULL);
-			ch->pidPlayBacking = NULL;
-		}
-		cancelQue(ch->playBackBufHandle);
-		destroyQue(ch->playBackBufHandle);
-		ch->playBackBufHandle = NULL;
-#endif
-		ret = 0;
-		printf("stop recv audio data success\n");
 	}
 	return ret;
 }
