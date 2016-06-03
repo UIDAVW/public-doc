@@ -15,8 +15,8 @@ public interface IMediaParamProtocol {
     int STREAM_MEDIA_PARAM_VIDEO_AVERAGEDOWNLOADSPEED = 5;
     //6.平均音频下载速度
     int STREAM_MEDIA_PARAM_AUDIO_AVERAGEDOWNLOADSPEED = 6;
-    //7.rtmp
-    int STREAM_MEDIA_PARAM_RTMP = 7;
+    //7.获取QSTP转发ip地址
+    int STREAM_MEDIA_PARAM_QSTP = 7;
     //8.上行帧率
     int STREAM_MEDIA_PARAM_DEVICE_UPLOADFRAME = 8;
     //9.上行速度
@@ -34,7 +34,7 @@ public interface IMediaParamProtocol {
     //15.分辨率高
     int STREAM_MEDIA_PARAM_RATIO_HEIGHT = 15;
     //16.发送时间比
-    int STREAM_MEDIA_RTMP_SEND_PERCENT = 16;
+    int STREAM_MEDIA_QSTP_SEND_PERCENT = 16;
     //17.在线人数
     int STREAM_MEDIA_ONLINE_NUMBER = 17;
 }
@@ -249,19 +249,8 @@ void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 ##3 直播推流接口
 接口名称：LYLiveBroadcast
   
-###3.1 结构定义
-```
-    /**
-     * rtmp直播
-     */
-    int MODE_LIVE = 2;
-    /**
-     * 录像直播
-     */
-    int MODE_LIVE_AND_RECORD = 4;
-```
 
-###3.2 设置本地预览视图
+###3.1 设置本地预览视图
 ```
 void setLocalPreview(LYGLCameraView glSurfaceView);
 ```
@@ -275,7 +264,7 @@ void setLocalPreview(LYGLCameraView glSurfaceView);
 |-------|----|----|----|----|
 |glSurfaceView|LYGLCameraView|in|必须|对glsurfaceview进行了封装的自定义View，用来显示视频直播推流的本地预览|
 
-###3.3 开始直播推流
+###3.2 开始直播推流
 ```
 void startBroadcasting(String remoteUrl);
 ```
@@ -289,7 +278,7 @@ void startBroadcasting(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|in|必须|远程播放地址； |
 
-###3.4 停止直播推流
+###3.3 停止直播推流
 ```
 void stopBroadcasting();
 ```
@@ -299,7 +288,7 @@ void stopBroadcasting();
 | 功能 | 关闭广播，除手动点击停止调用外，在onPause()方法里也要调用该接口停止直播 |
 | 返回值 | 无 |
 
-###3.5 释放接口资源
+###3.4 释放接口资源
 ```
 void release();
 ```
@@ -309,7 +298,7 @@ void release();
 | 功能 | 释放编码器，音视频采集器，相关工作线程等资源. 必须在停止直播推流后调用，该实例不能再被使用。 |
 | 返回值 | 无 |
 
-###3.6 是否正在直播
+###3.5 是否正在直播
 ```
 boolean isBroadcasting();
 ```
@@ -319,7 +308,7 @@ boolean isBroadcasting();
 | 功能 | 判断是否正在直播 |
 | 返回值 | 返回直播状态 true: 正在直播  false: 已停止直播 |
 
-###3.7 设置推流状态变化回调
+###3.6 设置推流状态变化回调
 ```
 void setBroadcastListener(BroadcastStateChangeListener listener);
 ```
@@ -330,7 +319,7 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 | 返回值 | 无 |
 | 参数列表 | 参见下面的推流状态变化回调函数 |
 
-###3.8 推流状态变化回调函数
+###3.7 推流状态变化回调函数
 ```
     interface BroadcastStateChangeListener {
         void onBroadcastStart();
@@ -349,21 +338,7 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 |-------|----|----|----|----|
 |exception|LYException|out|--|包含错误信息和错误码。详见：数据类型-错误信息 |
 
-###3.9 重置流参数
-```
-void reset(SessionConfig config);
-```
-| - | - |
-|-------|----|
-| 接口名 | reset |
-| 功能 | 重新初始化直播推流相关参数. 必须在停止直播推流后调用 |
-| 返回值 | 无 |
-
-|参数列表|类型|In/Out|可选/必须|描述|
-|-------|----|----|----|----|
-|config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
-
-###3.10 停止视频采集发送
+###3.8 停止视频采集发送
 ```
 void stopVideoRecording();
 ```
@@ -373,7 +348,7 @@ void stopVideoRecording();
 | 功能 | 在直播页面调用此方法，摄像头会继续采集数据，但不发送；在切到后台的时候调用此方法，当前应用会停止采集，释放对摄像头的锁定；如果切到后台的时候，不调用此方法，摄像头会继续采集发送视频数据(Android 4.3及以上版本)； |
 | 返回值 | 无 |
 
-###3.11 恢复视频采集发送
+###3.9 恢复视频采集发送
 ```
 void startVideoRecording();
 ```
@@ -383,7 +358,7 @@ void startVideoRecording();
 | 功能 | 直播中重新开始视频数据发送 |
 | 返回值 | 无 |
 
-###3.12 恢复音频采集发送
+###3.10 恢复音频采集发送
 ```
 void startAudioRecording();
 ```
@@ -393,7 +368,7 @@ void startAudioRecording();
 | 功能 | 直播过程中重新开始视频数据发送 |
 | 返回值 | 无 |
 
-###3.13 关闭音频采集发送
+###3.11 关闭音频采集发送
 ```
 void stopAudioRecording();
 ```
@@ -403,7 +378,7 @@ void stopAudioRecording();
 | 功能 | 直播过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-###3.14 获取摄像机列表
+###3.12 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -413,7 +388,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###3.15 获取当前摄像机编号
+###3.13 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -423,7 +398,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###3.16 获取期望的摄像机编号
+###3.14 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -433,7 +408,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###3.17 切换摄像头
+###3.15 切换摄像头
 ```
 void switchCamera();
 ```
@@ -443,7 +418,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###3.18 设置摄像头类型
+###3.16 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -457,7 +432,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###3.19 获取闪光灯模式
+###3.17 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -467,7 +442,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###3.20 切换闪光灯
+###3.18 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -477,7 +452,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###3.21 设置闪光灯类型
+###3.19 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
@@ -577,21 +552,7 @@ public void release();
 | 功能 | 释放编码器，音视频采集器，相关工作线程等资源. 必须在断开连接后调用，该实例不能再被使用。 |
 | 返回值 | 无 |
 
-###4.6 重置流参数
-```
-public void reset(SessionConfig config);
-```
-| - | - |
-|-------|----|
-| 接口名 | reset |
-| 功能 | 重新初始化音视频编码，推流等相关参数. 必须在停止音视频推流后调用 |
-| 返回值 | 无 |
-
-|参数列表|类型|In/Out|可选/必须|描述|
-|-------|----|----|----|----|
-|config|SessionConfig|In|必须|配置音视频推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
-
-###4.7 停止视频采集发送
+###4.6 停止视频采集发送
 ```
 public void stopVideoRecording();
 ```
@@ -601,7 +562,7 @@ public void stopVideoRecording();
 | 功能 | 在直播页面调用此方法，摄像头会继续采集数据，但不发送；在切到后台的时候调用此方法，当前应用会停止采集，释放对摄像头的锁定；如果切到后台的时候，不调用此方法，摄像头会继续采集发送视频数据(Android 4.3及以上版本)； |
 | 返回值 | 无 |
 
-###4.8 恢复视频采集发送
+###4.7 恢复视频采集发送
 ```
 public void startVideoRecording();
 ```
@@ -611,7 +572,7 @@ public void startVideoRecording();
 | 功能 | 互联中重新开始视频数据发送 |
 | 返回值 | 无 |
 
-###4.9 恢复音频采集发送
+###4.8 恢复音频采集发送
 ```
 public void startAudioRecording();
 ```
@@ -621,7 +582,7 @@ public void startAudioRecording();
 | 功能 | 互联过程中重新开始视频数据发送 |
 | 返回值 | 无 |
 
-###4.10 关闭音频采集发送
+###4.9 关闭音频采集发送
 ```
 public void stopAudioRecording();
 ```
@@ -631,7 +592,7 @@ public void stopAudioRecording();
 | 功能 | 互联过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-###4.11 关闭音频播放
+###4.10 关闭音频播放
 ```
 public void mute(String remoteUrl);
 ```
@@ -645,7 +606,7 @@ public void mute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-###4.12 开启音频播放
+###4.11 开启音频播放
 ```
 public void unmute(String remoteUrl);
 ```
@@ -659,7 +620,7 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-###4.13 动态设置码率
+###4.12 动态设置码率
 ```
 public void setVideoBitrate(int aBitrate);
 ```
@@ -673,7 +634,7 @@ public void setVideoBitrate(int aBitrate);
 |-------|----|----|----|----|
 |aBitrate|int|In|--|期望设置的码率，单位是kbps,没有限制范围，建议设置200、500、800，分别对应普通、标清、高清 |
 
-###4.14 获取摄像机列表
+###4.13 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -683,7 +644,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###4.15 获取当前摄像机编号
+###4.14 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -693,7 +654,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###4.16 获取期望的摄像机编号
+###4.15 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -703,7 +664,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###4.17 切换摄像头
+###4.16 切换摄像头
 ```
 void switchCamera();
 ```
@@ -713,7 +674,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###4.18 设置摄像头类型
+###4.17 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -727,7 +688,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###4.19 获取闪光灯模式
+###4.18 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -737,7 +698,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###4.20 切换闪光灯
+###4.19 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -747,7 +708,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###4.21 设置闪光灯类型
+###4.20 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
