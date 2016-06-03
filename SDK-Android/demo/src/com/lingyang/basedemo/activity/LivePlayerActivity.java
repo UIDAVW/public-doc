@@ -10,12 +10,14 @@ import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.player.IMediaParamProtocol;
 import com.lingyang.sdk.player.widget.LYPlayer;
+import com.lingyang.sdk.player.widget.LYPlayer.OnErrorListener;
 import com.lingyang.sdk.player.widget.LYPlayer.OnLocalRecordListener;
 import com.lingyang.sdk.player.widget.LYPlayer.OnPreparedListener;
 import com.lingyang.sdk.player.widget.LYPlayer.OnSnapshotListener;
 import com.lingyang.sdk.player.widget.LYPlayer.onClosedListener;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -27,7 +29,7 @@ public class LivePlayerActivity extends AppBaseActivity {
 
 	private LYPlayer mPlayer;
 	private int mType;
-	private Button mStartBtn;
+	private Button mStartBtn,mTalkBtn;
 
 	View.OnClickListener mClickListener = new View.OnClickListener() {
 		@Override
@@ -43,7 +45,7 @@ public class LivePlayerActivity extends AppBaseActivity {
 					showToast("正在播放");
 					return;
 				}
-				setDataSource();
+				setDataResource();
 				mPlayer.start();
 				break;
 			case R.id.btn_end:
@@ -131,6 +133,12 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 			}
 		}
 	};
+	
+    public void showParams(){
+    	showToast("缓冲区延时："+mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_BUFFER_DELAY)
+    			+"缓冲时长："+mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_BUFFER_TIME)
+    			+"当前视频下载次数："+mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_DOWNLOADSPEED));
+    }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -142,20 +150,35 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 
 	private void init() {
 		TextView title = (TextView) findViewById(R.id.tv_title);
-		title.setText("观看直播");
 		mPlayer = (LYPlayer) findViewById(R.id.ly_player);
 		Button snapShot = (Button) findViewById(R.id.btn_snapshot);
 		Button end = (Button) findViewById(R.id.btn_end);
 
 	    mStartBtn = (Button) findViewById(R.id.btn_start);
 		ToggleButton toggleRecord = (ToggleButton) findViewById(R.id.toggle_record);
-
+		
 		toggleRecord.setOnCheckedChangeListener(mChangeListener);
 
 		findViewById(R.id.back).setOnClickListener(mClickListener);
 		snapShot.setOnClickListener(mClickListener);
 		end.setOnClickListener(mClickListener);
 		mStartBtn.setOnClickListener(mClickListener);
+		
+		
+		mType=getIntent().getIntExtra(Const.KEY_OF_PLAYER_TYPE, MainActivity.PLAYER_OF_PUBLIC_CAMERA_OF_VALUE);
+		switch (mType) {
+		case MainActivity.PLAYER_OF_PUBLIC_CAMERA_OF_VALUE:
+			title.setText("观看公众摄像机直播");
+			break;
+		case MainActivity.PLAYER_OF_PRIVATE_CAMERA_OF_VALUE:
+			title.setText("观看私有摄像机直播");
+			break;
+		case MainActivity.PLAYER_OF_BROADCAST_OF_VALUE:
+			title.setText("观看设备直播");
+			break;
+		default:
+			break;
+		}
 		
 		/**
 		 * 所有连接完成，开始播放监听
@@ -191,11 +214,22 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 				
 			}
 		});
+		/**
+		 * 播放发生错误时回调
+		 */
+		mPlayer.setOnErrorListener(new OnErrorListener() {
+			
+			@Override
+			public boolean onError(int code, String msg) {
+				mHandler.obtainMessage(Constants.TaskState.FAILURE).sendToTarget();
+				showToast(code+"-"+msg);
+				return false;
+			}
+		});
 		mPlayer.setLocalRecordListener(mLocalRecordListener);
 	} 
 	
-	private void setDataSource(){
-		mType=getIntent().getIntExtra(Const.KEY_OF_PLAYER_TYPE, MainActivity.PLAYER_OF_PUBLIC_CAMERA_OF_VALUE);
+	private void setDataResource(){
 		switch (mType) {
 		case MainActivity.PLAYER_OF_PUBLIC_CAMERA_OF_VALUE:
 			mPlayer.setDataSource(Const.CAMERA_PLAYER_URL);//公众摄像机直播观看
@@ -209,8 +243,9 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 		default:
 			break;
 		}
+		
 	}
-
+	
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub

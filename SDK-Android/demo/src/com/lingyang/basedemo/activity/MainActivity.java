@@ -66,7 +66,6 @@ public class MainActivity extends AppBaseActivity {
 				break;
 			case R.id.tv_public_live_player:
 				// 观看公众摄像机直播
-//				   LYService.getInstance().stopCloudService();
 				mType=PLAYER_OF_PUBLIC_CAMERA_OF_VALUE;
 				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
@@ -120,6 +119,7 @@ public class MainActivity extends AppBaseActivity {
 		TextView privateCameraPlayer = (TextView) findViewById(R.id.tv_private_live_player);
 		TextView recordPlayer = (TextView) findViewById(R.id.tv_record_player);
 		TextView broadcastPlayer = (TextView) findViewById(R.id.tv_broadcast_player);
+		findViewById(R.id.back).setVisibility(View.GONE);
 		
 		mOptionsLayout=(LinearLayout) findViewById(R.id.layout_player_options);
 

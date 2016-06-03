@@ -50,7 +50,7 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
      */
     private SessionConfig mSessionConfig;
     
-    Button btn_end,btn_reset,btn_snapshot;
+    Button btn_end,btn_snapshot;
     ToggleButton toggle_audio,toggle_local_audio,toggle_input_stream;
 
     private void initView() {
@@ -60,7 +60,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         playerview = (LYPlayer) findViewById(R.id.ly_player);
         Button btn_start  = (Button) findViewById(R.id.btn_start);
         btn_end = (Button) findViewById(R.id.btn_end);
-        btn_reset = (Button) findViewById(R.id.btn_reset);
         Button btn_toogle_camera = (Button) findViewById(R.id.btn_toogle_camera);
         Button btn_toogle_flash = (Button) findViewById(R.id.btn_toogle_flash);
         btn_snapshot = (Button) findViewById(R.id.btn_snapshot);
@@ -69,7 +68,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         toggle_local_audio=(ToggleButton) findViewById(R.id.toggle_lacal_audio);
         toggle_input_stream=(ToggleButton) findViewById(R.id.toggle_input_stream);
         
-        btn_reset.setEnabled(false);
         btn_snapshot.setEnabled(false);
         btn_end.setEnabled(false);
         toggle_audio.setEnabled(false);
@@ -79,7 +77,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         findViewById(R.id.back).setOnClickListener(mClickListener);
         btn_start.setOnClickListener(mClickListener);
         btn_end.setOnClickListener(mClickListener);
-        btn_reset.setOnClickListener(mClickListener);
         btn_toogle_camera.setOnClickListener(mClickListener);
         btn_toogle_flash.setOnClickListener(mClickListener);
         btn_snapshot.setOnClickListener(mClickListener);
@@ -196,7 +193,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
 						runOnUiThread(new Runnable() {
 							public void run() {
 								showToast("连接成功,开始发送数据");
-								 btn_reset.setEnabled(true);
 							        btn_snapshot.setEnabled(true);
 							        btn_end.setEnabled(true);
 							        toggle_audio.setEnabled(true);
@@ -225,10 +221,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         		break;
             case R.id.btn_end:
             	mLYFaceTime.closeRemote(Const.FACETIME_URL);
-                break;
-            case R.id.btn_reset:
-                // 再次重连之前需要先重置连接选项，可重新配置音视频采集及摄像机选项
-                mLYFaceTime.reset(mSessionConfig);
                 break;
             case R.id.btn_toogle_camera:
             	//切换摄像头

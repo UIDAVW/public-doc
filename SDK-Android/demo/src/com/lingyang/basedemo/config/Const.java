@@ -50,5 +50,8 @@ public class Const {
     public static final String RECORD_PLAYER_URL = "topvdn://public.topvdn.cn?protocolType=3&" +
     		"token=1003639_3356753920_1466920474_d0063cb1050b05adb0fe69767ba95138&cid=1003639&" +
     		"begin=1464317700&end=1464319828&play=1464317700";  
+	
+	
+	
 
 }
