@@ -20,13 +20,16 @@
 | 6  | 支持声音开启和关闭 |
 
 ##四、开发准备
-###4.1 SDK的获取
+###4.1 接入准备
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/public-doc/#!integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/public-doc/#!integration.md)即可进入。
+
+###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows "获取SDK")
 
-###4.2 SDK支持的系统版本
+###4.3 SDK支持的系统版本
 Windows 7及以上版本。
 
-###4.3 SDK库结构
+###4.4 SDK库结构
  
 - <u>lib</u>          包含羚羊云windows sdk生成dll动态库时生成的lib文件，可以静态加载动态库。(此静态库并非真正意义上的静态库，只供静态加载动态库时使用，运行时仍需要将动态库放入运行时文件夹)
 - <u>bin</u>		    包含羚羊云windows sdk运行时所需的动态库。
@@ -40,10 +43,10 @@ TopvdnPlayer.dll为羚羊云播放器动态库;
 WindowsSDK.dll为羚羊云C层SDK动态库；
 Windows_SDK_OPEN_API.dll为羚羊云提供给用户真正使用的C++动态库。
 
-###4.4 SDK的集成
+###4.5 SDK的集成
 Windows平台开发语言推荐使用C++，IDE推荐Visual Studio，界面推荐使用MFC，若用户擅长Windows下的编程可使用VC等其它IDE。这里以Visual Studio2012为例。
 
-####4.4.1 Visual Studio环境
+####4.5.1 Visual Studio环境
 打开Visual Studio，选择“文件-新建-项目”，选择新建“MFC应用程序”，输入工程名并选择好新建的工程路径，点击“确定”，并在弹出的对话框中选择“下一步”，选择“基于对话框”，如下图所示， 
  
 ![Alt text](./../images/sdk_integration_windows_config1.png "Visual Studio环境下的SDK集成1")
@@ -54,7 +57,7 @@ Windows平台开发语言推荐使用C++，IDE推荐Visual Studio，界面推荐
 
 点击“完成”，完成工程创建。
 
-####4.4.2 工程属性设置
+####4.5.2 工程属性设置
 直接将LY_Windows_SDK文件夹拷贝到工程目录下(熟悉Windows开发的用户可忽略，包含引用路径和链接路径即可)，在VS解决方案中右键“工程名”，选择“属性”，配置“C/C++”常规一项中”附加包含目录“，填入“LY_Windows_SDK\include;”，在“链接器”的“常规”一项中填入库路径，并将目录下所有静态库的名称引用进去。
 
 ##五、开发示例
