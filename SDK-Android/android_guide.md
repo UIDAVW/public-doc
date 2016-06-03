@@ -40,13 +40,16 @@
 | 22 | 可高度定制化的 MediaController |
 
 ##四、开发准备
-###4.1 SDK的获取
+###4.1 接入准备
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/public-doc/#!integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/public-doc/#!integration.md)即可进入。
+
+###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android "获取SDK")
 
-###4.2 SDK支持的系统版本
+###4.3 SDK支持的系统版本
 SDK支持的Android版本：4.3及以上的Android版本(api18)。
 
-###4.3 SDK库结构
+###4.4 SDK库结构
 libs<br>
 ├── armeabi<br>
 │   ├── libffmpeg_topvdn.so （编解码库）<br>
@@ -56,15 +59,15 @@ libs<br>
 │   └── libssl_topvdn.so （网络传输加密需要）<br>
 └── sdk.jar (Android sdk jar包）
 
-###4.4 SDK的集成
-####4.4.1 Eclipse环境
+###4.5 SDK的集成
+####4.5.1 Eclipse环境
 在eclipse下新建一个工程，对工程进行一下配置，搭建开发环境。
 
 将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
 ![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
 
-####4.4.2 Android Studio环境
+####4.5.2 Android Studio环境
 在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
 
 (1)将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
@@ -77,7 +80,7 @@ libs<br>
         compile files('libs/sdk.jar')
     }
 
-###4.5 系统权限设置
+###4.6 系统权限设置
     //networking api使用权限
     <uses-permission android:name="android.permission.INTERNET"/>
     //允许应用程序使用摄像头

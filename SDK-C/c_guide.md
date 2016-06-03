@@ -25,10 +25,13 @@
 | 9  | 支持H264格式视频数据的发送和接收 |
 
 ##四、开发准备
-###4.1 SDK的获取
+###4.1 接入准备
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/public-doc/#!integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/public-doc/#!integration.md)即可进入。
+
+###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C "获取SDK")
 
-###4.2 SDK库结构
+###4.3 SDK库结构
 SDK目录
 |--lib      包含羚羊云的静态库libTopvdn.a和动态库libPusher.so
 
@@ -52,8 +55,8 @@ common_define.h：此头文件中包含羚羊云一些公共数据类型的定�
 
 LYPlatformAPI.h：此头文件包含羚羊云C接口的声明
 
-###4.3 SDK的集成
-####4.3.1linux环境下在Makefile中配置示例：
+###4.4 SDK的集成
+####4.4.1linux环境下在Makefile中配置示例：
 INCLUDE_DIR	:= ./include /*配置头文件路径*/
 
 LIB_DIR		:= ./lib     /*配置库文件路径*/
@@ -62,7 +65,7 @@ CFLAGS		:= -I$(INCLUDE_DIR)
 
 LDFLAGS		:= -Wl,-rpath=. -lPusher–lTopvdnSDK-lpthread -lssl -lcrypto
 
-####4.3.2windows环境工程配置（VS2012为例）
+####4.4.2windows环境工程配置（VS2012为例）
 1. 新建一个工程。
 2. 右键工程，选择“属性”。
 3. 选择“C/C++”，点击“常规”，在“附加包含目录”中配置头文件目录。

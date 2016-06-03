@@ -214,6 +214,11 @@ token明文段包含以下字段：
 [API手册-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)
 [API手册-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/#!windows_api.md)
 
+[Demo-C版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C/)
+[Demo-iOS版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-iOS/)
+[Demo-Android版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android/)
+[Demo-Windows版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows/)
+
 ##9. 常见问题
 
 1. 什么是appid？怎么获取appid？
@@ -235,7 +240,7 @@ token明文段包含以下字段：
 答：视频监控调用SDK的播放器接口，视频通话调用SDK的视频通话接口。播放器接口调用示例：[iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)；视频通话接口调用示例：[iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
 
 7. 每台设备都需要有一个羚羊云的id，需要在羚羊云注册，注册羚羊云需要调用什么接口，传入什么参数，以及回调是什么？.
-答：由第三方友商应用服务器调用羚羊云[Web-API的获取设备id段接口]，获取到一个id段，然后从这个id段中各个id对应到不同的设备，应用后台服务器必须保证每台设备分配到唯一的id。
+答：由第三方友商应用服务器调用羚羊云[Web-API的获取设备id段接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)，获取到一个id段，然后从这个id段中各个id对应到不同的设备，应用后台服务器必须保证每台设备分配到唯一的id。
 
 8. 视频通话需要调用什么接口，传什么参数？
 答：实现视频通话功能需要调用羚羊云SDK视频通话的接口，不同开发语言版本的SDK接口不一样。可参见[iOS视频通话接口调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android视频通话接口调用示例](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
