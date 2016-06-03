@@ -85,7 +85,7 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 **注意**：
 
-**apToken**：设备token，由应用后台生成，格式：2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+**apToken**：设备token，由应用后台生成，格式：2147549953\_3222536192\_1469999882\_bad3686a62a7aba595df3fb4c9c400e9。
 
 token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
