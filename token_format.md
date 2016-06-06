@@ -109,3 +109,7 @@ token明文段包含以下字段：
 \[vod_time]:只有在看http点播时必须使用，其他情况不得添加；
 \[ip]:可选项，如果control字段里面设置验证IP的标志位，则IP字段需要加入到用于token验证码计算的明文中；
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
+
+##相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

@@ -90,3 +90,6 @@ topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5
 - end 无
 - play 无
 
+##相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
