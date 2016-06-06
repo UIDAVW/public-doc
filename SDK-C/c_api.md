@@ -280,3 +280,8 @@ int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEn
 |apEncryptKey|const char*|in|必须|加密秘钥内容指针,自定义秘钥|
 |aEncryptKeyLength|int|in|必须|加密秘钥内容长度, 密钥最长不能超过128个字节|
 
+
+##4 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

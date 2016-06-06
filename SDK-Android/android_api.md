@@ -1269,6 +1269,7 @@ interface OnSeekCompleteListener {
 |time|int|out|必须|查找时长|
 
 
-
-
-
+##6 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
