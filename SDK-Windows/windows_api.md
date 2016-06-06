@@ -15,8 +15,8 @@ enum StreamInfo_Em {
     int STREAM_MEDIA_PARAM_VIDEO_AVERAGEDOWNLOADSPEED = 5;
     //6.平均音频下载速度
     int STREAM_MEDIA_PARAM_AUDIO_AVERAGEDOWNLOADSPEED = 6;
-    //7.rtmp
-    int STREAM_MEDIA_PARAM_RTMP = 7;
+    //7.QSTP
+    int STREAM_MEDIA_PARAM_QSTP = 7;
     //8.上行帧率
     int STREAM_MEDIA_PARAM_DEVICE_UPLOADFRAME = 8;
     //9.上行速度
@@ -34,7 +34,7 @@ enum StreamInfo_Em {
     //15.分辨率高
     int STREAM_MEDIA_PARAM_RATIO_HEIGHT = 15;
     //16.发送时间比
-    int STREAM_MEDIA_RTMP_SEND_PERCENT = 16;
+    int STREAM_MEDIA_QSTP_SEND_PERCENT = 16;
     //17.在线人数
     int STREAM_MEDIA_ONLINE_NUMBER = 17;
 }
