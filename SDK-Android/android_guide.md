@@ -160,7 +160,7 @@ libs<br>
 **注意**：<br>
 (1)消息最大长度为256个字节;<br>
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
-推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
+推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
 ###5.4 播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
@@ -320,7 +320,7 @@ mSessionConfig = new SessionConfig.Builder()
 mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。
 
 ####5.5.2 设置本地预览布局
 ```
@@ -400,7 +400,7 @@ mSessionConfig = new SessionConfig.Builder()
 mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md "Android API")中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。
 
 ####5.6.2 设置本地预览和播放布局
 
@@ -479,7 +479,7 @@ mLYFaceTime.closeRemote(null);
 
 ##六、注意事项
 (1)用户在调用直播推流、播放器、消息透传的功能接口之前，必须先调用startCloudService接口。否则这些接口不可正常使用。
-(2)本SDK只提供了监听消息的功能，并不提供推送消息的功能，推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
+(2)本SDK只提供了监听消息的功能，并不提供推送消息的功能，推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 (3)播放控制功能中视频截图接口所抓取图片的格式为jpg。
 (4)本地录像和截图传入的文件夹路径必须是已经被创建的文件夹的路径；获取文件地址不能用file.toString(),要用file.getAbsolutePath()获取绝对路径。
 (5)消息透传功能所支持的消息最大长度为256个字节。

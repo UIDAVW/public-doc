@@ -90,7 +90,7 @@ PlatMsgHandler MsgHandle;
 CloudPlatform * pPlatform = CloudPlatform::getInstance();
 pPlatform-startCloudService(token,config,MsgHandler,"");
 ```
-传入startCloudService的参数详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-Windows/#!windows_api.md)。
+传入startCloudService的参数详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Windows/windows_api.md#2.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)。
 
 **注意**：其他接口必须在此接口被调用成功之后才能调用。
 
@@ -127,7 +127,7 @@ public:
 **注意**：
 (1)消息最大长度为256个字节;
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
-推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
+推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
 ###5.4 播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
