@@ -1,6 +1,6 @@
 #羚羊云C SDK使用说明
 ##一、概述
-本套SDK采用C语言编写，可供iOS、Android、Windows、linux的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_api.md)，使用这些接口可以实现推送媒体流、拉取媒体流、消息透传等功能。
+本套SDK采用C语言编写，可供iOS、Android、Windows、linux的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)，使用这些接口可以实现推送媒体流、拉取媒体流、消息透传等功能。
 
 ##二、功能概要
 该套SDK主要提供的功能如下：
@@ -26,7 +26,7 @@
 
 ##四、开发准备
 ###4.1 接入准备
-如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/public-doc/#!integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/public-doc/#!integration.md)即可进入。
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/#!public-doc/integration.md)即可进入。
 
 ###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C "获取SDK")
@@ -72,7 +72,7 @@ LDFLAGS		:= -Wl,-rpath=. -lPusher–lTopvdnSDK-lpthread -lssl -lcrypto
 4. 选择“库管理器”，点击“常规”，在“附件库目录”中配置库路径，然后在附加依赖项中添加libTopvdn.lib
 
 ##五、开发示例
-本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_api.md)来实现直播推流、播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -173,7 +173,7 @@ URL格式：
 <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云端录像下载
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端
 <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
-<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)的详细介绍。
+<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
 
 **URL的详细格式请参考[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)。**
 

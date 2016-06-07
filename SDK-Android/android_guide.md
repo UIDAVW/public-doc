@@ -1,6 +1,6 @@
 #羚羊云Android SDK使用说明
 ##一、概述
-本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
+本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
 该套SDK主要提供的功能如下：
@@ -41,7 +41,7 @@
 
 ##四、开发准备
 ###4.1 接入准备
-如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/public-doc/#!integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/public-doc/#!integration.md)即可进入。
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/#!public-doc/integration.md)即可进入。
 
 ###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android "获取SDK")
@@ -103,7 +103,7 @@ libs<br>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
 ##五、开发示例
-本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/public-doc/SDK-Android/#!android_api.md)来实现直播推流、播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -200,9 +200,9 @@ libs<br>
 
 (1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
 
-(2)根据[羚羊云token格式](http://doc.topvdn.com/api/public-doc/#!token_format.md)生成token；
+(2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
 
-(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)生成羚羊云格式的URL。
+(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
 ####5.4.3 设置播放连接状态监听
 设置循环执行网络拉流、解码视频帧、及显示视频帧这些过程之前，连接到云服务器的状态监听函数；
