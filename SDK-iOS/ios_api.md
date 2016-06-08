@@ -27,7 +27,11 @@ typedef NS_ENUM(NSInteger, LYstatusCode) {
     LYstatusCodePlayerErrorSeekTimestamp         = -4006,//seek失败
     LYstatusCodePlayerErrorSavePathInvalid       = -4007,//截图或者本地录像路径为空
     LYstatusCodePlayerErrorSnapshot              = -4008,//截图失败
-    LYstatusCodePlayerErrorStartLoaclRecord      = -4009,//本地录像失败
+    LYstatusCodePlayerErrorStartLocalRecord      = -4009,//本地录像失败
+    LYstatusCodePlayerErrorNoSetPlayerConfig     = -4010,//没设置播放器配置
+    LYstatusCodePlayerErrorLocalRecording        = -4011,//正在进行本地录像，需要先停止录制才可以开启
+    LYstatusCodePlayerErrorSavePathSuffix        = -4012,//地址后缀是.mp4
+    LYstatusCodePlayerErrorNOFacetime            = -4013,//没有进行视频通话
     
     //视频采集错误码
     LYstatusCodeVideoCaptureErrorNoDevice        = -5000,//获取摄像头设备列表失败(系统默认采集摄像头也获取不到)
