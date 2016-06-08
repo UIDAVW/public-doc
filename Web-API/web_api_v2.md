@@ -1798,7 +1798,7 @@ request_id | string | 此次请求的唯一编号
 
 ## 附录
 
-## 附录 1 回调请求
+### 附录 1 回调请求
 
 * 请求首部：
 
@@ -1959,3 +1959,8 @@ Accept-Encoding: gzip, deflate
 
 {"data": {"tracker_port": 80, "local_port": 8200, "local_ip": "10.154.13.169", "public_port": 56569, "state": 1, "public_ip": "98.234.113.73", "config_type": 0, "relay_port": 0, "conn_key": 0, "device": 1003190, "relay_ip": "0.0.0.0", "tracker_ip": "203.195.157.248"}, "event": "device-state"}
 ```
+
+## 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

@@ -1,6 +1,6 @@
 #羚羊云C SDK使用说明
 ##一、概述
-本套SDK采用C语言编写，可供iOS、Android、Windows、linux的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_api.md)，使用这些接口可以实现推送媒体流、拉取媒体流、消息透传等功能。
+本套SDK采用C语言编写，可供iOS、Android、Windows、linux的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)，使用这些接口可以实现推送媒体流、拉取媒体流、消息透传等功能。
 
 ##二、功能概要
 该套SDK主要提供的功能如下：
@@ -12,23 +12,26 @@
 - **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
 
 ##三、功能特性
-|    | 功能特性 |
+| ID | 功能特性 |
 |----|----|
-|    | 支持羚羊云的QSUP协议进行双向传输 |
-|    | 音频流支持AAC和OPUS |
-|    | 视频流支持H264 |
-|    | 支持羚羊云自定义网络协议QSUP进行推流 |
-|    | 支持羚羊云自定义网络协议QSTP进行推流 |
-|    | 支持羚羊云自定义网络协议QSUP进行拉流 |
-|    | 支持羚羊云自定义网络协议QSTP进行拉流 |
-|    | 支持AAC和OPUS格式音频数据的发送和接收 |
-|    | 支持H264格式视频数据的发送和接收 |
+| 1  | 支持羚羊云的QSUP协议进行双向传输 |
+| 2  | 音频流支持AAC和OPUS |
+| 3  | 视频流支持H264 |
+| 4  | 支持羚羊云自定义网络协议QSUP进行推流 |
+| 5  | 支持羚羊云自定义网络协议QSTP进行推流 |
+| 6  | 支持羚羊云自定义网络协议QSUP进行拉流 |
+| 7  | 支持羚羊云自定义网络协议QSTP进行拉流 |
+| 8  | 支持AAC和OPUS格式音频数据的发送和接收 |
+| 9  | 支持H264格式视频数据的发送和接收 |
 
 ##四、开发准备
-###4.1 SDK的获取
+###4.1 接入准备
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/#!public-doc/integration.md)即可进入。
+
+###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C "获取SDK")
 
-###4.2 SDK库结构
+###4.3 SDK库结构
 SDK目录
 |--lib      包含羚羊云的静态库libTopvdn.a和动态库libPusher.so
 
@@ -52,8 +55,8 @@ common_define.h：此头文件中包含羚羊云一些公共数据类型的定�
 
 LYPlatformAPI.h：此头文件包含羚羊云C接口的声明
 
-###4.3 SDK的集成
-####4.3.1linux环境下在Makefile中配置示例：
+###4.4 SDK的集成
+####4.4.1linux环境下在Makefile中配置示例：
 INCLUDE_DIR	:= ./include /*配置头文件路径*/
 
 LIB_DIR		:= ./lib     /*配置库文件路径*/
@@ -62,14 +65,14 @@ CFLAGS		:= -I$(INCLUDE_DIR)
 
 LDFLAGS		:= -Wl,-rpath=. -lPusher–lTopvdnSDK-lpthread -lssl -lcrypto
 
-####4.3.2windows环境工程配置（VS2012为例）
+####4.4.2windows环境工程配置（VS2012为例）
 1. 新建一个工程。
 2. 右键工程，选择“属性”。
 3. 选择“C/C++”，点击“常规”，在“附加包含目录”中配置头文件目录。
 4. 选择“库管理器”，点击“常规”，在“附件库目录”中配置库路径，然后在附加依赖项中添加libTopvdn.lib
 
 ##五、开发示例
-本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/public-doc/SDK-C/#!c_api.md)来实现直播推流、播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -140,7 +143,7 @@ void popMessage(void *apData, const char *aMessage)
 
 (1)消息最大长度为256个字节;
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
-推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
+推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
 ###5.4 建立传输通道
 任何媒体数据的接收和发送，必须先建立传输通道。需要传入羚羊云自定义格式的URL作为参数进行通道的连接，成功建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
@@ -169,10 +172,10 @@ URL格式：
 
 <u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云端录像下载
 <u>connectType</u>：连接类型，[1]推流端,[2]拉流端
-<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在play和end的范围之内。时间单位为秒。
-<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)的详细介绍。
+<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
+<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
 
-**URL的详细格式请参考[羚羊云URL格式解析](https://github.com/AntelopeExpress/public-doc/blob/master/url_format.md)。**
+**URL的详细格式请参考[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)。**
 
 ###5.5 推送媒体流
 首先需要建立连接，即创建传输通道，调用LY_connect创建传输通道，然后才能进行推流。羚羊云支持多路推流，每一路流都有一个int类型的fd唯一标识。（一路即一个传输通道，每个传输通道都可以传输音视频数据）。直播推流使用QSUP协议还是QSTP协议是根据用户调用LY_connectr函数传入的参数决定的，用户在调用LY_sendMediaFrame发送数据的时候无需关心这些选项。
@@ -341,3 +344,11 @@ else
 
 3. 2015-10 SDK_V1.0
 支持QSUP和QSTP协议传输数据，支持云存储，支持封面图片上传，支持消息透传。
+
+
+## 相关链接
+[羚羊云SDK-C版API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
+[羚羊云WebAPI使用指南](http://doc.topvdn.com/api/#!web_api_v2.md)

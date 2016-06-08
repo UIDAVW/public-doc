@@ -12,7 +12,7 @@ QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或�
 - <u>protocolType</u>：协议类型，[1]QSUP, [2]QSTP, [3]云端录像下载
 - <u>connectType</u>：连接类型，[1]推流端, [2]拉流端
 - <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
-- <u>token</u>：设备token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)的详细介绍。
+- <u>token</u>：设备token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
 
 下面列举了不同的场景下的url设置。
 
@@ -53,7 +53,7 @@ topvdn://183.57.151.161:1935?protocolType=2&connectType=2 &token=1003469_3222536
 - end 无
 - play 无
 
-##5 拉取录像流
+##5 拉取录像流示例
 
 ###5.1 url示例
 topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&begin=1464082941&end=1464086522&play=0。
@@ -90,3 +90,6 @@ topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5
 - end 无
 - play 无
 
+##相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)

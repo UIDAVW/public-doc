@@ -15,8 +15,8 @@ enum StreamInfo_Em {
     int STREAM_MEDIA_PARAM_VIDEO_AVERAGEDOWNLOADSPEED = 5;
     //6.平均音频下载速度
     int STREAM_MEDIA_PARAM_AUDIO_AVERAGEDOWNLOADSPEED = 6;
-    //7.rtmp
-    int STREAM_MEDIA_PARAM_RTMP = 7;
+    //7.QSTP
+    int STREAM_MEDIA_PARAM_QSTP = 7;
     //8.上行帧率
     int STREAM_MEDIA_PARAM_DEVICE_UPLOADFRAME = 8;
     //9.上行速度
@@ -34,7 +34,7 @@ enum StreamInfo_Em {
     //15.分辨率高
     int STREAM_MEDIA_PARAM_RATIO_HEIGHT = 15;
     //16.发送时间比
-    int STREAM_MEDIA_RTMP_SEND_PERCENT = 16;
+    int STREAM_MEDIA_QSTP_SEND_PERCENT = 16;
     //17.在线人数
     int STREAM_MEDIA_ONLINE_NUMBER = 17;
 }
@@ -61,8 +61,8 @@ int startCloudService(const std::string & token, const std::string & config, con
 **注意**：
 
 **token**：设备token，由应用后台生成，格式如下：
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
-token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
+2147549953\_1458979882\_1469999882\_bad3686a62a7aba595df3fb4c9c400e9。
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)
 
 **config**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n
@@ -187,7 +187,7 @@ int open(const std::string & url , const bool hard_decode , const antelopecloud:
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：
 topvdn://183.57.151.161:1935?protocolType=2&connectType=1&mode=2&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&cid=1003469
 topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&cid=%lu&begin=%lu&end=%lu&play=%lu
-Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)
+Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)
  
 **PlayerMsgCallBack**定义：
 ```
@@ -334,3 +334,8 @@ void stopLocalRecord();
 | 接口名 | stopLocalRecord |
 | 功能 | 停止本地录像； |
 | 返回值 | 无 |
+
+##4 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

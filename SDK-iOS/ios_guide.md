@@ -1,6 +1,6 @@
 #羚羊云iOS SDK使用说明
 ##一、概述
-本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
+本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
 该套SDK主要提供的功能如下：
@@ -14,49 +14,52 @@
 - **视频通话**：客户端之间通过羚羊云自主研发的QSUP协议建立连接，相互发送接收数据进行视频通话。
 
 ##三、功能特性
-|    | 功能特性 |
+| ID | 功能特性 |
 |----|----|
-|    | 支持 H.264 和 OPUS硬编(推荐) |
-|    | 支持 H.264 和 AAC 软编 |
-|    | 支持 H.264 和 AAC 硬编 |
-|    | 支持羚羊云自定义网络协议QSTP进行推流 |
-|    | 支持羚羊云自定义网络协议QSUP进行推流 |
-|    | 支持带存储的直播 |
-|    | 支持自主设置分辨率、码率、帧率 |
-|    | 支持手机摄像头推流 |
-|    | 支持手机前置摄像头和后置摄像头切换 |
-|    | 支持手机闪光灯的开启 |
-|    | 支持获取实时采集帧数据和图片 |
-|    | 支持羚羊云自定义网络协议QSUP进行播放 |
-|    | 支持羚羊云自定义网络协议QSTP进行播放 |
-|    | 支持实时获取流媒体信息参数 |
-|    | 支持实时获取播放流截图 |
-|    | 支持本地录制播放流并保存为视频 |
-|    | 支持云存储录像点播 |
-|    | 支持录像点播实时定位播放 |
-|    | 支持录像点播获取实时播放时间 |
+| 1  | 支持 H.264 和 OPUS硬编(推荐) |
+| 2  | 支持 H.264 和 AAC 软编 |
+| 3  | 支持 H.264 和 AAC 硬编 |
+| 4  | 支持羚羊云自定义网络协议QSTP进行推流 |
+| 5  | 支持羚羊云自定义网络协议QSUP进行推流 |
+| 6  | 支持带存储的直播 |
+| 7  | 支持自主设置分辨率、码率、帧率 |
+| 8  | 支持手机摄像头推流 |
+| 9  | 支持手机前置摄像头和后置摄像头切换 |
+| 10 | 支持手机闪光灯的开启 |
+| 11 | 支持获取实时采集帧数据和图片 |
+| 12 | 支持羚羊云自定义网络协议QSUP进行播放 |
+| 13 | 支持羚羊云自定义网络协议QSTP进行播放 |
+| 14 | 支持实时获取流媒体信息参数 |
+| 15 | 支持实时获取播放流截图 |
+| 16 | 支持本地录制播放流并保存为视频 |
+| 17 | 支持云存储录像点播 |
+| 18 | 支持录像点播实时定位播放 |
+| 19 | 支持录像点播获取实时播放时间 |
 
 ##四、开发准备
-###4.1 SDK的获取
+###4.1 接入准备
+如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/#!public-doc/integration.md)即可进入。
+
+###4.2 SDK的获取
 [点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-iOS "获取SDK")
 
-###4.2 SDK支持的系统版本
+###4.3 SDK支持的系统版本
 支持的IOS 8.0以上版本。
 
-###4.3 SDK库结构
+###4.4 SDK库结构
 SDK包内的文件简要说明如下： 
 libLYCloudSDK.a整个SDK静态库文件，包含所有SDK功能；
 include文件夹：SDK所需要导入的头文件目录；
 Version.txt 更新日志文件。
 
-###4.4 SDK的集成
+###4.5 SDK的集成
  
-####4.4.1 拖拽方式
+####4.5.1 拖拽方式
 将下载好的SDK文件夹(LYSDK_X.X.X)拖入到项目中，并勾选上Destination：
 
 ![Alt text](./../images/sdk_integration_ios_drag1.png "拖拽方式导入SDK")
 
-####4.4.2 拷贝方式
+####4.5.2 拷贝方式
 1、首先拷贝SDK到所需项目目录下：
 
 ![Alt text](./../images/sdk_integration_ios_copy1.png "拷贝方式导入SDK-1")
@@ -69,28 +72,28 @@ Version.txt 更新日志文件。
 
 ![Alt text](./../images/sdk_integration_ios_copy3.png "拷贝方式导入SDK-3")
 
-####4.4.3 添加依赖库
+####4.5.3 添加依赖库
 
 ![Alt text](./../images/sdk_integration_ios_config1.png "添加依赖库1")
 
 ![Alt text](./../images/sdk_integration_ios_config2.png "添加依赖库2")
 
 说明：SDK底层是C++实现，所以需要添加libstdc++.tbd文件(如果使用的是xcode7以下版本，后缀为dylib)；VideoToolbox.framework是硬编解码所需要，如果不使用硬编解码可不添加。
-####4.4.4 修改Enable BitCode
+####4.5.4 修改Enable BitCode
 SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
 
 ![Alt text](./../images/sdk_integration_ios_config3.png "修改Enable BitCode")
 
-####4.4.5 其他设置
+####4.5.5 其他设置
 1)在 Build Settings - Other Linker Flags 里，添加选项 -ObjC。
 2)如果您的工程需要使用 C++ ，在 Build Setting - Apple LLVM 7.0 - Language - C++ - C++ Standard Library 里， 设置值为 libstdc++ (GNU C++ standard library)。
 3)在工程配置infof.plist文件中，添加条目 NSAppTransportSecurity ，属性设为 Dictionary。在此条目下添加键值对，key 为 NSAllowsArbitraryLoads, 值为 YES。
  
-####4.4.6 编译工程
+####4.5.6 编译工程
 以上步骤进行完成以后，编译工程，如果没有报错，恭喜你！集成羚羊云iOS SDK成功！接下来可以开启炫酷的视频播放操作。
 
 ##五、开发示例
-本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_api.md)来实现直播推流、播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ###5.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -173,9 +176,9 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 
 (1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
 
-(2)根据[羚羊云token格式](http://doc.topvdn.com/api/public-doc/#!token_format.md)生成token；
+(2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
 
-(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)生成羚羊云格式的URL。
+(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
 ####5.4.5 关闭播放器
 ```
@@ -236,7 +239,7 @@ sampleRate = 11025, channle = 1, birrate = 128kpbs;
 LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
 ```
 Configuration类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_api.md)中的数据类型-直播推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-直播推流相关属性配置。
 
 ####5.5.2 初始化直播类
 ```
@@ -292,7 +295,7 @@ sampleRate = 16000, channle = 1;
 LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
 ```
 Configuration类配置视频通话推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_api.md)中的数据类型-视频通话推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-视频通话推流相关属性配置。
 
 ####5.6.2 初始化视频通话类
 ```
@@ -352,18 +355,23 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##六、注意事项
  
-	1. sdk只支持iOS 8.0以上的版本； 
-	2. 播放器打开之后就不能重新设置解码方式；
-	3. 音视频流配置类生产的类方法均不是单例，每次调用都会生成一个新的配置；
-	4. 直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放；
-	5. 功能模块代码务必按照使用说明流程中的进行，否则会不能正常实现；
-	6. 推流暂不支持动态切换分辨率，可支持动态切换码率。
+1. sdk只支持iOS 8.0以上的版本； 
+2. 播放器打开之后就不能重新设置解码方式；
+3. 音视频流配置类生产的类方法均不是单例，每次调用都会生成一个新的配置；
+4. 直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放；
+5. 功能模块代码务必按照使用说明流程中的进行，否则会不能正常实现；
+6. 推流暂不支持动态切换分辨率，可支持动态切换码率。
 
 ##七、常见问题
  
-1. SDK不工作，请检查平台是否启动；
-2. 无音视频数据采集，请检查摄像头已经麦克风权限是否得到授权。
-3. 接口异常返回，请检查参数的正确性。
+1. 我调用了SDK的接口，但是始终无法实现该接口的功能。
+答:请检查平台是否启动。
+
+2. 成功启动云服务，调用推流接口成功，但是无音视频数据采集。
+答:请检查摄像头已经麦克风权限是否得到授权。
+
+3. 启动云服务、播放器接口异常返回。
+答:请检查参数的正确性。
 
 ##八、更新历史
 
@@ -410,4 +418,9 @@ V1.1.1 sdk更新日期2016.4.29 17:00
   1. 改版后的第一版SDK。
 
 
-
+## 相关链接
+[羚羊云SDK-iOS版API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
+[羚羊云WebAPI使用指南](http://doc.topvdn.com/api/#!web_api_v2.md)

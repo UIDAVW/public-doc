@@ -85,9 +85,9 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 **注意**：
 
-**apToken**：设备token，由应用后台生成，格式：2147549953_3222536192_1469999882_bad3686a62a7aba595df3fb4c9c400e9。
+**apToken**：设备token，由应用后台生成，格式：2147549953\_3222536192\_1469999882\_bad3686a62a7aba595df3fb4c9c400e9。
 
-token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
+token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)
 
 **apConfig**：配置串，从后台获取(无需解析)，格式如下：
 [Config]\r\nIsDebug=0\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\nConnectTimeout=10000\r\nTransferTimeout=10000\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=120.26.74.53\r\nPort1=80\r\n
@@ -280,3 +280,8 @@ int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEn
 |apEncryptKey|const char*|in|必须|加密秘钥内容指针,自定义秘钥|
 |aEncryptKeyLength|int|in|必须|加密秘钥内容长度, 密钥最长不能超过128个字节|
 
+
+##4 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

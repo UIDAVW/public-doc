@@ -8,15 +8,15 @@
 extern "C"{
 #endif
 
-	//´ËÎÄ¼şÖĞÊµÏÖÒ»¸öÓ¦ÓÃÁçÑòÔÆC½Ó¿ÚSDKµÄ¶àÍ¨µÀ´«ÊäÊı¾İµÄ¿ò¼Ü£¬±ãÓÚµÚÈı·½ÓÑÉÌ¿ìËÙ¶Ô½ÓÁçÑòÔÆ£¬µÚÈı·½ÓÑÉÌ¿É¸ù¾İ×Ô¼ºµÄĞèÇó½øĞĞĞŞ¸Ä¡£
-	//Ò»°ãµÚÈı·½ÓÑÉÌÖ»Ğè°´ÕÕ×Ô¼ºµÄÂß¼­ÍÆÊÓÆµÁ÷º¯Êı£¬ÍÆÒôÆµÁ÷º¯Êı£¬²¥·ÅÒôÆµº¯ÊıÕâÈı¸öÏß³ÌÖ´ĞĞº¯Êı¼´¿É¿ìËÙ½èÖúÁçÑòÔÆ´«ÊäÒôÊÓÆµÊı¾İ¡£
+	//æ­¤æ–‡ä»¶ä¸­å®ç°ä¸€ä¸ªåº”ç”¨ç¾šç¾Šäº‘Cæ¥å£SDKçš„å¤šé€šé“ä¼ è¾“æ•°æ®çš„æ¡†æ¶ï¼Œä¾¿äºç¬¬ä¸‰æ–¹å‹å•†å¿«é€Ÿå¯¹æ¥ç¾šç¾Šäº‘ï¼Œç¬¬ä¸‰æ–¹å‹å•†å¯æ ¹æ®è‡ªå·±çš„éœ€æ±‚è¿›è¡Œä¿®æ”¹ã€‚
+	//ä¸€èˆ¬ç¬¬ä¸‰æ–¹å‹å•†åªéœ€æŒ‰ç…§è‡ªå·±çš„é€»è¾‘æ¨è§†é¢‘æµå‡½æ•°ï¼Œæ¨éŸ³é¢‘æµå‡½æ•°ï¼Œæ’­æ”¾éŸ³é¢‘å‡½æ•°è¿™ä¸‰ä¸ªçº¿ç¨‹æ‰§è¡Œå‡½æ•°å³å¯å¿«é€Ÿå€ŸåŠ©ç¾šç¾Šäº‘ä¼ è¾“éŸ³è§†é¢‘æ•°æ®ã€‚
 #ifndef QSTP_BASE_FD_VALUE
-#define QSTP_BASE_FD_VALUE 200 //QSTPĞ­ÒéÊ¹ÓÃµÄfdÎª200¿ªÊ¼µÄ
+#define QSTP_BASE_FD_VALUE 200 //QSTPåè®®ä½¿ç”¨çš„fdä¸º200å¼€å§‹çš„
 #endif
-#define RECV_AUDIO_BUF_SIZE 128*1024 //½ÓÊÕÒôÆµÊı¾İ»º´æÇø´óĞ¡
-static transportChannel channels[MAX_CHANNEL] = {0};//´«ÊäÍ¨µÀÊı×é
-static curWorkChannelCount = 0;//¼ÇÂ¼µ±Ç°Ê¹ÓÃÍ¨µÀÊı
-typedef void (*threadProc)(void* arg);//Ïß³Ìº¯ÊıÖ¸Õë
+#define RECV_AUDIO_BUF_SIZE 128*1024 //æ¥æ”¶éŸ³é¢‘æ•°æ®ç¼“å­˜åŒºå¤§å°
+static transportChannel channels[MAX_CHANNEL] = {0};//ä¼ è¾“é€šé“æ•°ç»„
+static curWorkChannelCount = 0;//è®°å½•å½“å‰ä½¿ç”¨é€šé“æ•°
+typedef void (*threadProc)(void* arg);//çº¿ç¨‹å‡½æ•°æŒ‡é’ˆ
 
 transportChannel* getChannel(int fd)
 {
@@ -31,7 +31,7 @@ transportChannel* getChannel(int fd)
 	return NULL;
 }
 
-//ÊµÏÖ¿ªÊ¼ÍÆÁ÷Âß¼­
+//å®ç°å¼€å§‹æ¨æµé€»è¾‘
 int startPushMedia(int fd,int isPushAudio)
 {
 	if(fd < 0)
@@ -52,8 +52,8 @@ int startPushMedia(int fd,int isPushAudio)
 		ch->isAudioOpen = isPushAudio;
 		threadProc video,audio;
 
-		video = pushVideoFlowProc; //´Ë´¦Ìæ»»×Ô¼ºµÄÍÆÁ÷Ïß³Ìº¯Êı
-		audio = pushAudioFlowProc; //´Ë´¦Ìæ»»×Ô¼ºµÄÍÆÁ÷Ïß³Ìº¯Êı
+		video = pushVideoFlowProc; //æ­¤å¤„æ›¿æ¢è‡ªå·±çš„æ¨æµçº¿ç¨‹å‡½æ•°
+		audio = pushAudioFlowProc; //æ­¤å¤„æ›¿æ¢è‡ªå·±çš„æ¨æµçº¿ç¨‹å‡½æ•°
 
 		ch->pushVideoing = 1;
 		if(pthread_create(&ch->pidPushVideo,NULL,video,&ch->fd) != 0)
@@ -76,7 +76,7 @@ int startPushMedia(int fd,int isPushAudio)
 }
 
 
-//ÊµÏÖÍ£Ö¹ÍÆÁ÷Âß¼­(Í£Ö¹ÍÆÁ÷ºó»á²»ÄÜ¼ÌĞø½ÓÊÜÊı¾İ)
+//å®ç°åœæ­¢æ¨æµé€»è¾‘(åœæ­¢æ¨æµåä¼šä¸èƒ½ç»§ç»­æ¥å—æ•°æ®)
 void stopPushMedia(int fd)
 {
 	if(fd < 0)
@@ -101,13 +101,6 @@ void stopPushMedia(int fd)
 				pthread_join(ch->pidPushAudio,NULL);
 				ch->pidPushAudio = NULL;
 			}
-			//Í£Ö¹½ÓÊÜÊı¾İµÄÏß³Ì
-			if(ch->pidRecvAudioing != NULL || ch->recvAudioing == 1)
-			{
-				ch->recvAudioing = 0;
-				pthread_join(ch->pidRecvAudioing,NULL);
-				ch->pidRecvAudioing = NULL;
-			}
 			ch->fd = -1;
 			ch->isAudioOpen = 0;
 		}
@@ -115,7 +108,7 @@ void stopPushMedia(int fd)
 	}
 }
 
-//¿ªÆôÍÆÒôÆµÁ÷£¬Õâ¸öº¯ÊıÊÇÉè±¸¸Õ¿ªÊ¼Ö»ÍÆÊÓÆµ£¬ÏëÍÆÒôÆµÁ÷µÄÊ±ºò£¬Í¨¹ıappÅäÖÃ´ò¿ªÒôÆµ¿ª¹Ø£¬È»ºó¿ªÊ¼ÍÆÒôÆµÁ÷
+//å¼€å¯æ¨éŸ³é¢‘æµï¼Œè¿™ä¸ªå‡½æ•°æ˜¯è®¾å¤‡åˆšå¼€å§‹åªæ¨è§†é¢‘ï¼Œæƒ³æ¨éŸ³é¢‘æµçš„æ—¶å€™ï¼Œé€šè¿‡appé…ç½®æ‰“å¼€éŸ³é¢‘å¼€å…³ï¼Œç„¶åå¼€å§‹æ¨éŸ³é¢‘æµ
 int startPushAudio(int fd)
 {
 	if(fd < 0)
@@ -130,7 +123,7 @@ int startPushAudio(int fd)
 		{
 			ch->isAudioOpen = 1;
 			threadProc audio;
-			audio = pushAudioFlowProc; //´Ë´¦Ìæ»»×Ô¼ºµÄÍÆÁ÷Ïß³Ìº¯Êı
+			audio = pushAudioFlowProc; //æ­¤å¤„æ›¿æ¢è‡ªå·±çš„æ¨æµçº¿ç¨‹å‡½æ•°
 			ch->pushAudioing = 1;
 			if(pthread_create(&ch->pidPushAudio,NULL,audio,&ch->fd) != 0)
 			{
@@ -142,7 +135,7 @@ int startPushAudio(int fd)
 	return 0;
 }
 
-//Í£Ö¹ÍÆÒôÆµÁ÷£¬Ò»°ãÍ¨¹ıAPP¶ËµÄÒôÆµ¿ª¹ØÅäÖÃ£¬¿ÉÒÔ¹Ø±ÕÒôÆµÁ÷µÄÍÆËÍ
+//åœæ­¢æ¨éŸ³é¢‘æµï¼Œä¸€èˆ¬é€šè¿‡APPç«¯çš„éŸ³é¢‘å¼€å…³é…ç½®ï¼Œå¯ä»¥å…³é—­éŸ³é¢‘æµçš„æ¨é€
 void stopPushAudio(int fd)
 {
 	if(fd < 0)
@@ -163,7 +156,7 @@ void stopPushAudio(int fd)
 	}
 }
 
-//½ÓÊÕÁçÑòÔÆ»Ø´«µÄÊı¾İ
+//æ¥æ”¶ç¾šç¾Šäº‘å›ä¼ çš„æ•°æ®
 static void* recvDataFromLyCloud(void* arg)
 {
 	if(arg == NULL)
@@ -185,6 +178,7 @@ static void* recvDataFromLyCloud(void* arg)
 		printf("malloc frame buffer failed by fd=%d\n",fd);
 		return;
 	}
+	frame.capacitySize = RECV_AUDIO_BUF_SIZE;//å¿…è¦è®¾ç½®ï¼Œå¦åˆ™æ— æ³•æ¥æ”¶æ•°æ®
 	while(ch->recvAudioing)
 	{
 #ifdef QSTP
@@ -192,7 +186,13 @@ static void* recvDataFromLyCloud(void* arg)
 #elif defined(LY_PLATFORM)
 		ret = LY_recvMediaFrame(fd,&frame);
 #endif
-#ifdef PLAYBACK//Èç¹ûÓĞ»Ø·Å£¬ÔÚÕâÀï½«Êı¾İÑ¹µ½²¥·Å¶ÓÁĞÖĞ
+		if(ret != 0)//å¦‚æœè¿”å›-1ï¼Œåˆ™è¡¨ç¤ºå·²ç»è°ƒç”¨äº†LY_disconnectè·å–å‘ç”Ÿé”™è¯¯ï¼Œé€€å‡ºçº¿ç¨‹
+		{
+			printf("LY_recvMediaFrame failed\n");
+			ch->recvAudioing = 0;
+			break;
+		}
+#ifdef PLAYBACK//å¦‚æœæœ‰å›æ”¾ï¼Œåœ¨è¿™é‡Œå°†æ•°æ®å‹åˆ°æ’­æ”¾é˜Ÿåˆ—ä¸­
 		if(ret == 0 && pushFrameToQue(ch->playBackBufHandle,frame.frameBuffer,frame.frameLength,frame.frameTime,AAC_TYPE_SAMPLE) != 0)
 		{
 			printf("push audio frame to playback failed\n");
@@ -201,6 +201,18 @@ static void* recvDataFromLyCloud(void* arg)
 		printf("recv audio frame,len=%d\n",frame.frameLength);
 #endif
 	}
+#ifdef PLAYBACK
+	//æ¸…ç†å·¥ä½œ
+	if(ch->pidPlayBacking != NULL || ch->playBacking)
+	{
+		ch->playBacking = 0;
+		cancelQue(ch->playBackBufHandle);//éœ€è¦å…ˆå–æ¶ˆé˜Ÿåˆ—ï¼Œå¦åˆ™ä¼šé˜»å¡ä½
+		pthread_join(ch->pidPlayBacking,NULL);
+		ch->pidPlayBacking = NULL;
+	}
+	destroyQue(ch->playBackBufHandle);
+	ch->playBackBufHandle = NULL;
+#endif
 	printf("recv audio data exit fd=%d\n",fd);
 }
 
@@ -223,16 +235,16 @@ int startRecvAudio(int fd)
 				return -1;
 			}
 		}
-#ifdef PLAYBACK//Èç¹ûĞèÒª»Ø·Å
+#ifdef PLAYBACK//å¦‚æœéœ€è¦å›æ”¾
 		if(ch->playBackBufHandle == NULL)
 		{
-			//´´½¨½ÓÊÕÒôÆµÊı¾İµÄ¶ÓÁĞ£¬£¨´Ë¶ÓÁĞÒÑÓÉÁçÑòÔÆSDKÊµÏÖ£¬µÚÈı·½ÓÑÉÌÖ±½ÓÊ¹ÓÃ¼´¿É£©
+			//åˆ›å»ºæ¥æ”¶éŸ³é¢‘æ•°æ®çš„é˜Ÿåˆ—ï¼Œï¼ˆæ­¤é˜Ÿåˆ—å·²ç”±ç¾šç¾Šäº‘SDKå®ç°ï¼Œç¬¬ä¸‰æ–¹å‹å•†ç›´æ¥ä½¿ç”¨å³å¯ï¼‰
 			ch->playBackBufHandle = createQue("playBack",NULL,RECV_AUDIO_BUF_SIZE);
 			if(ch->playBackBufHandle != NULL)
 			{
-				threadProc playBackProc = playBackAudioProc;//´Ë´¦Ìæ»»×Ô¼ºµÄ»Ø·ÅÏß³Ìº¯Êı
+				threadProc playBackProc = playBackAudioProc;//æ­¤å¤„æ›¿æ¢è‡ªå·±çš„å›æ”¾çº¿ç¨‹å‡½æ•°
 				ch->playBacking = 1;
-				//´´½¨²¥·ÅÊı¾İµÄÏß³Ì
+				//åˆ›å»ºæ’­æ”¾æ•°æ®çš„çº¿ç¨‹
 				if(pthread_create(&ch->pidPlayBacking,NULL,playBackProc,&ch->fd) != 0)
 				{
 					printf("create play back thread failed\n");
@@ -241,41 +253,6 @@ int startRecvAudio(int fd)
 			}
 		}
 #endif
-	}
-	return ret;
-}
-
-//Ò»¸öÁ¬½ÓµÄÉúÃüÖÜÆÚÄÚÖ»»á´¥·¢Ò»¸ö"StartPopData"ÏûÏ¢£¬ËùÒÔ½ÓÊÕÏß³Ì¿ªÆôºó±ÜÃâ¹Ø±Õ£¬³ı·Çµ÷ÓÃLY_disconnect»òÕßÍ£Ö¹ÍÆÁ÷
-int stopRecvAudio(int fd)
-{
-	int ret = -1;
-	if(fd < 0)
-	{
-		printf("fd must >= 0\n");
-		return -1;
-	}
-	transportChannel* ch = getChannel(fd);
-	if(NULL != ch)
-	{
-		if(ch->pidRecvAudioing != NULL)
-		{
-			ch->recvAudioing = 0;
-			pthread_join(ch->pidRecvAudioing,NULL);
-			ch->pidRecvAudioing = NULL;
-		}
-#ifdef PLAYBACK
-		if(ch->pidPlayBacking != NULL || ch->playBacking)
-		{
-			ch->playBacking = 0;
-			pthread_join(ch->pidPlayBacking,NULL);
-			ch->pidPlayBacking = NULL;
-		}
-		cancelQue(ch->playBackBufHandle);
-		destroyQue(ch->playBackBufHandle);
-		ch->playBackBufHandle = NULL;
-#endif
-		ret = 0;
-		printf("stop recv audio data success\n");
 	}
 	return ret;
 }
