@@ -22,7 +22,7 @@ QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或�
 topvdn://0.0.0.0:0?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2。
 此url为使用QSTP的公众模式推流。
 
-topvdn:// 183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2。
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2。
 此url为使用QSTP的公众模式推流到url中指定服务器IP和端口
 
 ###3.2 字段解释
