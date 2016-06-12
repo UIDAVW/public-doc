@@ -1,8 +1,9 @@
 #羚羊云推拉媒体流URL格式
-##1 QSTP和QSUP
-QSUP（Quick Streaming UdpProtocol）和QSTP（Quick Streaming TcpProtocol）协议都是羚羊云自定义的网络传输协议。
-QSUP是基于UDP的P2P传输协议，如果设备端只需要传送数据给设备的拥有者，可使用此协议，此协议传输延时比RTMP、HTTP等协议更低；
-QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或者需要使用云存储功能，则需要使用此协议。
+##1 术语和名词
+- **QSUP**：Quick Streaming UdpProtocol。羚羊云自定义的网络传输协议，是基于UDP的P2P传输协议，如果设备端只需要传送数据给设备的拥有者，可使用此协议，此协议传输延时比RTMP、HTTP等协议更低；
+- **QSTP**：Quick Streaming TcpProtocol。羚羊云自定义的网络传输协议，是基于TCP的传输协议，如果需要开启直播给多人观看，或者需要使用云存储功能，则需要使用此协议；
+- **公众直播**：设备推流，直播给多人观看；
+- **私有直播**：设备推流，只直播给该设备的拥有者观看。
 
 ##2 URL格式
   1.QSTP连接URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]
@@ -16,7 +17,7 @@ QSTP是基于TCP的传输协议，如果需要开启直播给多人观看，或�
 
 下面列举了不同的场景下的url设置。
 
-##3 直播推流url示例
+##3 推送直播流url示例
 
 ###2.1 url示例
 ```
@@ -78,16 +79,13 @@ topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_557
 - `end` 录像结束时间
 - `play` 开始播放录像的时间，必须在起始和终止时间区间内
 
-##6 QSUP协议推拉流
+##6 推拉直播流(QSUP方式)示例
 
 ###6.1 url示例
-本方APP与对方互连，或者本方APP连接对端设备。
-
-url示例：
 ```
 topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
 ```
-此url为使用QSUP协议连接对方。
+此url为使用QSUP协议连接对方，连接成功后，可以推流到对方，也可以从对方拉流。
 
 ###6.2 字段解释
 - `ip` 对方登录的羚羊云trackerIP
