@@ -276,7 +276,7 @@ void startBroadcasting(String remoteUrl);
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|remoteUrl|String|in|必须|远程播放地址； |
+|remoteUrl|String|in|必须|远程播放地址；内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 
 ###3.3 停止直播推流
 ```
@@ -525,7 +525,7 @@ public void openRemote(String remoteUrl, CallBackListener<Integer> callBackListe
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|remoteUrl|String|In|--|远程连接地址|
+|remoteUrl|String|In|--|远程连接，内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |callBackListener|CallBackListener|In|--|监听结果回调，onSuccess(T t)成功，onError(LYException exception)失败；|
 
 ###4.4 断开连接

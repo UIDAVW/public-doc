@@ -926,7 +926,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|dataSourceAddreess|NSString *|in|必须|播放地址：被叫方一定要传入正确，主叫方一定传入nil|
+|dataSourceAddreess|NSString *|in|必须|播放地址：被叫方一定要传入正确，主叫方一定传入nil，详见[羚羊云url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |openBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|statusCode：连接成功与否标识|
 |playerBlock|playerCallBackBlock|in|必须|播放过程中的状态回调|
 
