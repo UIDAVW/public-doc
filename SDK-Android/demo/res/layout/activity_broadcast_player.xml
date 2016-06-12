@@ -45,6 +45,17 @@
          android:textColor="@android:color/white"
         android:textOff="record"
         android:textOn="stopRecord"/>
+    <Button
+        android:id="@+id/btn_talk"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:background="@color/colorOrange"
+        android:text="按住对讲"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+    
     
     </LinearLayout>
     

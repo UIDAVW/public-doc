@@ -147,6 +147,25 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 		Utils.setContext(this);
 		init();   
 	}
+	
+	 /**
+     * 长按说话
+     */
+    View.OnTouchListener mOnTalkListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            	mTalkBtn.setBackgroundResource(R.color.colorHalfOrange);
+            	mPlayer.startTalk();
+                return false;
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            	mTalkBtn.setBackgroundResource(R.color.colorOrange);
+            	mPlayer.stopTalk();
+                return true;
+            }
+            return false;
+        }
+    };
 
 	private void init() {
 		TextView title = (TextView) findViewById(R.id.tv_title);
@@ -156,7 +175,9 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 
 	    mStartBtn = (Button) findViewById(R.id.btn_start);
 		ToggleButton toggleRecord = (ToggleButton) findViewById(R.id.toggle_record);
-		
+		mTalkBtn = (Button) findViewById(R.id.btn_talk);
+
+		mTalkBtn.setOnTouchListener(mOnTalkListener);
 		toggleRecord.setOnCheckedChangeListener(mChangeListener);
 
 		findViewById(R.id.back).setOnClickListener(mClickListener);
@@ -172,9 +193,11 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 			break;
 		case MainActivity.PLAYER_OF_PRIVATE_CAMERA_OF_VALUE:
 			title.setText("观看私有摄像机直播");
+			mTalkBtn.setVisibility(View.GONE);
 			break;
 		case MainActivity.PLAYER_OF_BROADCAST_OF_VALUE:
 			title.setText("观看设备直播");
+			mTalkBtn.setVisibility(View.GONE);
 			break;
 		default:
 			break;
