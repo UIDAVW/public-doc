@@ -171,9 +171,18 @@ int main(int argc,char** argv)
 	if (fd < 0)
 	{
 		printf("connect to peer failed,ret=%d\n", fd);
+		return -1;
 	}
 
 	printf("connect to peer success,start to send data\n");
+
+	if (pidRecvData == NULL)
+	{
+		if (pthread_create(&pidRecvData, NULL, recvData, NULL) != 0)
+		{
+			printf("create push audio thread failed\n");
+		}
+	}
 
 	if (pidPushAudio == NULL)
 	{
