@@ -6,9 +6,9 @@
 - **私有直播**：设备推流，只直播给该设备的拥有者观看。
 
 ##2 URL格式
-  1.QSTP连接URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]
-  2.QSUP连接URl格式：topvdn://traker_ip:port?protocolType=[]&token=[]
-  3.云端录像下载URL格式：topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
+  1.QSTP连接的URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]
+  2.QSUP连接的URL格式：topvdn://traker_ip:port?protocolType=[]&token=[]
+  3.云端录像下载的URL格式：topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
 
 - <u>protocolType</u>：协议类型，[1]QSUP, [2]QSTP, [3]云端录像下载
 - <u>connectType</u>：连接类型，[1]推流端, [2]拉流端
@@ -85,7 +85,7 @@ topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_557
 ```
 topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
 ```
-此url为使用QSUP协议连接对方，连接成功后，可以推流到对方，也可以从对方拉流。
+此url为使用QSUP协议推流到对方，或使用QSUP协议从对方拉流。适合视频通话的应用场景。
 
 ###6.2 字段解释
 - `ip` 对方登录的羚羊云trackerIP

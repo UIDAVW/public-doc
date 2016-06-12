@@ -512,7 +512,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](http://doc
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|success|void (^)(UIImage *image, char *imageBuffer, int bufferLength)|in|必须|image:UIImage图片 imageBuffer:图片数据 bufferLength:数据长度|
+|success|void (^)(UIImage \*image, char \*imageBuffer, int bufferLength)|in|必须|image:UIImage图片 imageBuffer:图片数据 bufferLength:数据长度|
 
 ###3.13 获取错误信息 
 ```
@@ -876,7 +876,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|success|void (^)(UIImage *image, char *imageBuffer, int bufferLength)|in|必须|image:UIImage;imageBuffer:图片数据；bufferLength:数据长度|
+|success|void (^)(UIImage \*image, char \*imageBuffer, int bufferLength)|in|必须|image:UIImage;imageBuffer:图片数据；bufferLength:数据长度|
 
 ###5.12 设置播放view
 ```
