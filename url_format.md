@@ -2,15 +2,15 @@
 ##1 术语和名词
 - **QSUP**：Quick Streaming UdpProtocol。羚羊云自定义的网络传输协议，是基于UDP的P2P传输协议，如果设备端只需要传送数据给设备的拥有者，可使用此协议，此协议传输延时比RTMP、HTTP等协议更低；
 - **QSTP**：Quick Streaming TcpProtocol。羚羊云自定义的网络传输协议，是基于TCP的传输协议，如果需要开启直播给多人观看，或者需要使用云存储功能，则需要使用此协议；
-- **公众直播**：设备推流，直播给多人观看；
-- **私有直播**：设备推流，只直播给该设备的拥有者观看。
+- **公众直播**：视频内容直播给多人观看；
+- **私有直播**：视频内容只直播给该设备的拥有者观看。
 
 ##2 URL格式
   1.QSTP连接的URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]
   2.QSUP连接的URL格式：topvdn://traker_ip:port?protocolType=[]&token=[]
   3.云端录像下载的URL格式：topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
 
-- <u>protocolType</u>：协议类型，[1]QSUP, [2]QSTP, [3]云端录像下载
+- <u>protocolType</u>：协议类型，[1]`QSUP`, [2]`QSTP`, [3]云端录像下载
 - <u>connectType</u>：连接类型，[1]推流端, [2]拉流端
 - <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
 - <u>token</u>：设备token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
@@ -23,12 +23,12 @@
 ```
 topvdn://0.0.0.0:0?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2
 ```
-此url为使用QSTP的公众模式推流。
+此url为使用`QSTP`的`公众模式推流`。
 
 ```
 topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2
 ```
-此url为使用QSTP的公众模式推流到url中指定服务器IP和端口
+此url为使用`QSTP`的`公众模式推流`到url中指定服务器IP和端口
 
 ###3.2 字段解释
 - `ip` 羚羊云推流服务器IP,为0.0.0.0则为使用羚羊云选择最优服务器，否则使用指定url中指定IP服务器
@@ -47,7 +47,7 @@ topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_32225361
 ```
 topvdn://183.57.151.161:1935?protocolType=2&connectType=2 &token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
 ```
-此url为使用QSTP拉流。
+此url为使用`QSTP拉流`。
 
 ###4.2 字段解释
 - `ip` 此IP从应用后台获取
@@ -66,7 +66,7 @@ topvdn://183.57.151.161:1935?protocolType=2&connectType=2 &token=1003469_3222536
 ```
 topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&begin=1464082941&end=1464086522&play=0
 ```
-此url为使用羚羊云下载协议下载录像，录像起始、结束时间时间单位为秒。play为相对于begin的时间差，例如为1的时候，即从1464086522+1秒开始播放。
+此url为使用`羚羊云下载协议`下载录像，录像起始、结束时间时间单位为秒。play为相对于begin的时间差，例如为1的时候，即从1464086522+1秒开始播放。
 
 ###5.2 字段解释
 - `ip` 此时固定为羚羊云域名：public.topvdn.cn
@@ -85,7 +85,7 @@ topvdn://public.topvdn.cn?protocolType=3&token=1003469_3222536192_1493481600_557
 ```
 topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
 ```
-此url为使用QSUP协议推流到对方，或使用QSUP协议从对方拉流。适合视频通话的应用场景。
+此url为使用`QSUP协议推流到对方`，或使用`QSUP协议从对方拉流`。适合视频通话的应用场景。
 
 ###6.2 字段解释
 - `ip` 对方登录的羚羊云trackerIP
