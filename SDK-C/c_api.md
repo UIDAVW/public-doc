@@ -20,6 +20,7 @@ typedef struct ServerInfo
 ```
 typedef struct
 {
+    unsigned long      capacitySize; /*多媒体帧缓冲区大小*/
     unsigned char      frameType;   /*多媒体帧类型*/
     unsigned char      frameBuffer; /*多媒体帧缓冲区地址*/
     unsigned long      frameLength; /*多媒体帧长度*/
