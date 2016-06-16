@@ -378,7 +378,43 @@ void stopAudioRecording();
 | 功能 | 直播过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-###3.12 获取摄像机列表
+##3.12 重置采集编码参数
+```
+ void reset(SessionConfig config);
+```
+| - | - |
+|-------|----|
+| 接口名 | reset |
+| 功能 | 重新初始化直播推流相关参数. 必须在停止直播推流后调用。 |
+| 返回值 | 无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
+
+###3.13 暂停以切入后台
+```
+void onHostActivityPaused();
+```
+| - | - |
+|-------|----|
+| 接口名 | onHostActivityPaused |
+| 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。
+	    若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
+| 返回值 | 无 |
+
+###3.14 从后台恢复播放
+```
+void onHostActivityResumed();
+```
+| - | - |
+|-------|----|
+| 接口名 | onHostActivityResumed |
+| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音
+         若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集 |
+| 返回值 | 无 |
+
+###3.15 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -388,7 +424,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###3.13 获取当前摄像机编号
+###3.16 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -398,7 +434,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###3.14 获取期望的摄像机编号
+###3.17 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -408,7 +444,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###3.15 切换摄像头
+###3.18 切换摄像头
 ```
 void switchCamera();
 ```
@@ -418,7 +454,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###3.16 设置摄像头类型
+###3.19 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -432,7 +468,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###3.17 获取闪光灯模式
+###3.20 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -442,7 +478,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###3.18 切换闪光灯
+###3.21 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -452,7 +488,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###3.19 设置闪光灯类型
+###3.22 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
@@ -620,7 +656,43 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-###4.12 动态设置码率
+##3.12 重置采集编码参数
+```
+ void reset(SessionConfig config);
+```
+| - | - |
+|-------|----|
+| 接口名 | reset |
+| 功能 | 重新初始化直播推流相关参数. 必须在停止直播推流后调用。 |
+| 返回值 | 无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
+
+###3.13 暂停以切入后台
+```
+void onHostActivityPaused();
+```
+| - | - |
+|-------|----|
+| 接口名 | onHostActivityPaused |
+| 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。
+	    若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
+| 返回值 | 无 |
+
+###3.14 从后台恢复播放
+```
+void onHostActivityResumed();
+```
+| - | - |
+|-------|----|
+| 接口名 | onHostActivityResumed |
+| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音
+         若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集 |
+| 返回值 | 无 |
+
+###4.15 动态设置码率
 ```
 public void setVideoBitrate(int aBitrate);
 ```
@@ -634,7 +706,7 @@ public void setVideoBitrate(int aBitrate);
 |-------|----|----|----|----|
 |aBitrate|int|In|--|期望设置的码率，单位是kbps,没有限制范围，建议设置200、500、800，分别对应普通、标清、高清 |
 
-###4.13 获取摄像机列表
+###4.16 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -644,7 +716,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###4.14 获取当前摄像机编号
+###4.17 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -654,7 +726,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###4.15 获取期望的摄像机编号
+###4.18 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -664,7 +736,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###4.16 切换摄像头
+###4.19 切换摄像头
 ```
 void switchCamera();
 ```
@@ -674,7 +746,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###4.17 设置摄像头类型
+###4.20 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -688,7 +760,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###4.18 获取闪光灯模式
+###4.21 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -698,7 +770,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###4.19 切换闪光灯
+###4.22 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -708,7 +780,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###4.20 设置闪光灯类型
+###4.23 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
