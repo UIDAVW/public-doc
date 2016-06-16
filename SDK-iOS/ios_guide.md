@@ -375,6 +375,11 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.3 sdk更新日期20160616 11：00
+更新说明：1、解决视频通话音频采集导致应用音频播放失败；
+        2、其他优化。
+
 2.0.2 sdk更新日期20160615 17：00
 更新说明：1、解决视频通话被叫断开再次视频通话失败的问题；
         2、解决上一版本重复进入视频通话和直播崩溃的问题；
