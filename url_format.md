@@ -2,8 +2,8 @@
 ##1 术语和名词
 - **QSUP**：Quick Streaming UdpProtocol。羚羊云自定义的网络传输协议，是基于UDP的P2P传输协议，如果设备端只需要传送数据给设备的拥有者，可使用此协议，此协议传输延时比RTMP、HTTP等协议更低；
 - **QSTP**：Quick Streaming TcpProtocol。羚羊云自定义的网络传输协议，是基于TCP的传输协议，如果需要开启直播给多人观看，或者需要使用云存储功能，则需要使用此协议；
-- **公众直播**：视频内容直播给多人观看；
-- **私有直播**：视频内容只直播给该设备的拥有者观看。
+- **公众模式**：视频内容直播给多人观看；
+- **私有模式**：视频内容只直播给该设备的拥有者观看。
 
 ##2 URL格式
   1.QSTP连接的URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]

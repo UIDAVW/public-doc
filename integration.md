@@ -12,6 +12,7 @@
 - **羚羊云用户**：接入到羚羊云平台、调用羚羊云开发接口实现视频应用的客户群体，并非最终的个人终端用户。文档将以“用户”作为简称。
 - **应用客户端**：用户开发的客户端应用程序，如手机app、PC桌面应用、嵌入在智能硬件设备中的应用程序等等。
 - **应用服务器**：用户开发的服务端应用程序，为客户端程序提供后台数据、后台业务处理等服务。
+- **设备**：接入到羚羊云的程序化设备，承载着用户开发的客户端应用程序，从视频流向的角度不同可分为推流设备和拉流设备。
 - **appid和appkey**：由羚羊云提供给用户的凭证，用户接入羚羊云平台时，平台会对id和key进行验证。
 - **cid**：每个客户端第一次接入到羚羊云平台之前，会由羚羊云分配一个id作为唯一的身份编号，羚羊云与客户端之间进行数据通信都只认这个id。
 - **token**：应用客户端调用羚羊云SDK接口需要携带的凭证，羚羊云平台需要验证其安全性。
@@ -31,7 +32,7 @@
 
 | ID | 功能名称 | 功能简要描述 |
 |----|----|----|
-| 1 | 获取设备ID段 | 向羚羊云获取用户所拥有的设备ID段，用户会在这个ID段内分配一个羚羊ID给用户的每个设备，这个羚羊ID也称CID. |
+| 1 | 获取设备id段 | 向羚羊云获取用户所拥有的设备id段，用户会在这个id段内分配一个羚羊id给用户的每个设备，这个羚羊id也称cid. |
 | 2 | 查询设备状态及信息 | 查询指定设备的状态，如：离线、就绪、转发中等，另外还可以查询设备的信息，如设备配置类型、公网ip、内网ip等。 |	
 | 3 | 服务器推送消息 | 应用服务器推送消息给用户名下的多个设备。 |
 | 4 | 客户端推送消息 | 客户端推送消息给用户名下的一个或多个设备，也可以向用户的http回调地址推送消息。 |
@@ -214,10 +215,10 @@ token明文段包含以下字段：
 [API手册-Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)
 [API手册-Windows版](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)
 
-[Demo-C版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C/)
-[Demo-iOS版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-iOS/)
-[Demo-Android版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android/)
-[Demo-Windows版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows/)
+[Demo-C版](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip)
+[Demo-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/zipdown/ly_sdk_ios.zip)
+[Demo-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip)
+[Demo-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip)
 
 ##9. 常见问题
 
