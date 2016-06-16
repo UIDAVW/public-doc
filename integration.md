@@ -215,10 +215,10 @@ token明文段包含以下字段：
 [API手册-Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)
 [API手册-Windows版](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)
 
-[Demo-C版](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-C/zipdown/ly_sdk_c.zip?raw=true)
-[Demo-iOS版](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/zipdown/ly_sdk_ios.zip?raw=true)
-[Demo-Android版](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/zipdown/ly_sdk_android.zip?raw=true)
-[Demo-Windows版](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/zipdown/ly_sdk_windows.zip?raw=true)
+[Demo-C版](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip)
+[Demo-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/zipdown/ly_sdk_ios.zip)
+[Demo-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip)
+[Demo-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip)
 
 ##9. 常见问题
 

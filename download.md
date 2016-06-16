@@ -1,8 +1,8 @@
 ### SDK库以及Demo
-[C](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-C/zipdown/ly_sdk_c.zip?raw=true)
+[C](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip)
 
-[iOS](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-iOS/zipdown/ly_sdk_ios.zip?raw=true)
+[iOS](http://doc.topvdn.com/api/public-doc/SDK-iOS/zipdown/ly_sdk_ios.zip)
 
-[Android](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Android/zipdown/ly_sdk_android.zip?raw=true)
+[Android](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip)
 
-[Windows](https://github.com/AntelopeExpress/public-doc/blob/master/SDK-Windows/zipdown/ly_sdk_windows.zip?raw=true)
+[Windows](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip)
