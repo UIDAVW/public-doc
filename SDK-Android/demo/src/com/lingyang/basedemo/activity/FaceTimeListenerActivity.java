@@ -212,6 +212,7 @@ public class FaceTimeListenerActivity extends AppBaseActivity {
             		showToast("被叫方无需连接，只有主叫方才能主动连接");
             		break;
             	case R.id.back:
+            		mLYFaceTime.closeRemote(null);
             		finish();
             		break;
             	case R.id.btn_end:
