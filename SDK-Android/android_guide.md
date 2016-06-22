@@ -316,8 +316,6 @@ mSessionConfig = new SessionConfig.Builder()
     .useVideo(true)//是否开启视频
 	.build();
 
-//没有必须配置项，可直接使用默认值
-mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
 **注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。

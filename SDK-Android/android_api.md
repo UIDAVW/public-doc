@@ -257,7 +257,7 @@ void setLocalPreview(LYGLCameraView glSurfaceView);
 | - | - |
 |-------|----|
 | 接口名 | setLocalPreview |
-| 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口 |
+| 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口,如无需本地预览，则无需调用该接口，且布局文件中也不要设置预览控件 |
 | 返回值 | 无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
@@ -378,7 +378,7 @@ void stopAudioRecording();
 | 功能 | 直播过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-##3.12 重置采集编码参数
+###3.12 重置采集编码参数
 ```
  void reset(SessionConfig config);
 ```
@@ -512,7 +512,7 @@ public void setLocalPreview(LYGLCameraViewpreviewView);
 | - | - |
 |-------|----|
 | 接口名 | setLocalPreview |
-| 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口； |
+| 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口,如无需本地预览，则无需调用该接口，且布局文件中也不要设置预览控件； |
 | 返回值 | 无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
@@ -656,7 +656,7 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-##3.12 重置采集编码参数
+###4.12 重置采集编码参数
 ```
  void reset(SessionConfig config);
 ```
@@ -670,7 +670,7 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
 
-###3.13 暂停以切入后台
+###4.13 暂停以切入后台
 ```
 void onHostActivityPaused();
 ```
@@ -681,7 +681,7 @@ void onHostActivityPaused();
 	    若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
 | 返回值 | 无 |
 
-###3.14 从后台恢复播放
+###4.14 从后台恢复播放
 ```
 void onHostActivityResumed();
 ```
