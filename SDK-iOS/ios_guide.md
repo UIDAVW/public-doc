@@ -345,6 +345,7 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ####5.6.8 关闭通话
 ```
+//主被叫关闭通话都要调用该方法！！！！！！
 [mFaceTime close:mFaceTimeAddress];
 ```
 
@@ -374,6 +375,11 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 答:请检查参数的正确性。
 
 ##八、更新历史
+
+
+2.0.6 sdk更新日期20160622 15：49
+更新说明：1、解决Rokid编译不通过的问题；
+
 
 2.0.4 sdk更新日期20160617 11：30
 更新说明：1、优化视频通话；
