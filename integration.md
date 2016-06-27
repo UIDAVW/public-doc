@@ -12,6 +12,7 @@
 - **羚羊云用户**：接入到羚羊云平台、调用羚羊云开发接口实现视频应用的客户群体，并非最终的个人终端用户。文档将以“用户”作为简称。
 - **应用客户端**：用户开发的客户端应用程序，如手机app、PC桌面应用、嵌入在智能硬件设备中的应用程序等等。
 - **应用服务器**：用户开发的服务端应用程序，为客户端程序提供后台数据、后台业务处理等服务。
+- **设备**：接入到羚羊云的程序化设备，承载着用户开发的客户端应用程序，从视频流向的角度不同可分为推流设备和拉流设备。
 - **appid和appkey**：由羚羊云提供给用户的凭证，用户接入羚羊云平台时，平台会对id和key进行验证。
 - **cid**：每个客户端第一次接入到羚羊云平台之前，会由羚羊云分配一个id作为唯一的身份编号，羚羊云与客户端之间进行数据通信都只认这个id。
 - **token**：应用客户端调用羚羊云SDK接口需要携带的凭证，羚羊云平台需要验证其安全性。
@@ -31,7 +32,7 @@
 
 | ID | 功能名称 | 功能简要描述 |
 |----|----|----|
-| 1 | 获取设备ID段 | 向羚羊云获取用户所拥有的设备ID段，用户会在这个ID段内分配一个羚羊ID给用户的每个设备，这个羚羊ID也称CID. |
+| 1 | 获取设备id段 | 向羚羊云获取用户所拥有的设备id段，用户会在这个id段内分配一个羚羊id给用户的每个设备，这个羚羊id也称cid. |
 | 2 | 查询设备状态及信息 | 查询指定设备的状态，如：离线、就绪、转发中等，另外还可以查询设备的信息，如设备配置类型、公网ip、内网ip等。 |	
 | 3 | 服务器推送消息 | 应用服务器推送消息给用户名下的多个设备。 |
 | 4 | 客户端推送消息 | 客户端推送消息给用户名下的一个或多个设备，也可以向用户的http回调地址推送消息。 |
@@ -42,8 +43,23 @@
 | 9 | 回放录像 | 拉取指定设备指定时间段的录像，在本地进行解码播放。 |
 | 10 | 监听消息 | 持续接收任何远程应用客户端或服务器经过羚羊云推送过来的消息，并通知到本地上层应用。 |
 
-##6. 如何接入羚羊云
-###6.1 接入对象
+##6. 羚羊云应用场景
+羚羊云支持各种智能硬件设备的接入，包括智能手机、传统的监控摄像机、家庭摄像机、行车记录仪、智能眼镜等一切具备视频采集或展示的设备。利用羚羊云所提供的功能和服务，用户可应用于一切和视频应用相关的场景。例如：
+
+- **视频直播**
+为传统的监控摄像机、智能手机、智能眼镜、户外相机、无人机、户外机器人等提供高品质的视频传输、存储服务。
+
+- **视频云存储**
+为传统视频监控、手机视频直播、在线教育、在线医疗等行业提供视频流存储与回放服务。
+
+- **视频通话**
+为机器人、智能手机、电脑、智能硬件等设备等提供给高品质的视频传输服务和低延时的双向视频通话服务。
+
+- **互联网视频分发**
+羚羊视频云也能够为传统互联网视频分发应用提供低成本、高性能的视频传输服务。
+
+##7. 如何接入羚羊云
+###7.1 接入对象
 所有需要使用羚羊云视频相关应用服务的用户，即羚羊云的接入对象。一般来讲，用户自己的应用通常包含客户端和服务器。
 
 - 应用客户端
@@ -52,10 +68,10 @@
 - 应用服务器
 用来管理用户自己所属的设备信息、查询设备的状态、配置设备的参数等。
 
-###6.2 接入凭证
+###7.2 接入凭证
 这些设备想要接入羚羊云，首先必须获得app id和app key。进入[羚羊云用户管理平台](http://console.topvdn.com/)可申请app id和app key。
 
-###6.3 认证机制
+###7.3 认证机制
 用户在接入到羚羊云平台时，无论是用户的服务器还是客户端，都必须通过平台的安全认证，才能使用接口以实现应用。服务器和客户端有着不同的认证机制，如下图所示：
 
 ![Alt text](./images/verify.png "羚羊云认证机制")
@@ -68,7 +84,7 @@
 (1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见本文下一章节的[羚羊云平台token验证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)。
 (2)应用客户端向他们的应用服务器获取token，凭着这个token，才能成功调用羚羊云客户端SDK或Web API实现功能。
 
-###6.4 用户接入
+###7.4 用户接入
 - 应用服务器接入
 携带appid和appkey，调用羚羊云Web API向云平台发送http请求，返回调用结果，即完成接入。
 
@@ -81,40 +97,40 @@
 上述接入流程中的`查询设备id段`需调用[Web-API的'查询设备id段'](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)接口；
 `登录云平台`需要调用SDK的开启云服务接口。[iOS调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
-##7 羚羊云token认证机制
-###7.1 羚羊云的身份验证方式
+##8 羚羊云token认证机制
+###8.1 羚羊云的身份验证方式
 羚羊云采用目前web领域普遍的认证方式：基于token的身份验证。
 
 无论是调用羚羊云Web API或者客户端SDK的接口，需要将token作为参数传入，在羚羊云服务端进行身份验证。
 
-###7.2 羚羊云token内容格式
+###8.2 羚羊云token内容格式
 >格式：{明文段}\_{验证码}
 
->样式：cid\_control\_expire\_\[vod\_time\]\_\[IP\]\_\[refer\]\_digest
+>样式：cid\_control\_expire\_\[vod\_time\]\_\[ip\]\_\[refer\]\_digest
 
 其中：
-**cid\_control\_expire\_\[vod\_time\]\_\[IP\]\_\[refer\]**为明文段，**[ ]**标记表示可选字段。
+**cid\_control\_expire\_\[vod\_time\]\_\[ip\]\_\[refer\]**为明文段，**[ ]**标记表示可选字段。
 **digest**为验证码
 
 举例：
 **537067556_3222536192_1493481600**_**f0399b369aa760362ac4edd224bae23b**
 
-###7.3 token明文段
+###8.3 token明文段
 token明文段包含以下字段：
 
-|字段 | 含义|
-|----|----|
-|cid	| 设备id，为访问云平台的设备id，如摄像机或需要p2p通讯或直播的手机id，在参与计算token时采用4字节整数方式；|
-|control	| 控制字段，表示此设备将使用的平台功能权限，在参与计算token时采用4字节整数方式；该字段各个字节和位所表达的意思请见下文的control字段介绍。|
-|expire | 过期时间，指token的有效时间，为UTC时间戳（秒级精度，4字节）在参与计算token时采用4字节整数方式；|
-|vod_time | 点播时间，指点播时对应的录制时间，同时也是点播文件的文件名部分，在参与计算token时采用4字节整数方式；|
-|ip | 指设备的公网IP地址，在计算token时采用4字节整数方式；|
-|refer | http请求时的refer地址中的域名部分，这个字段一般用来启用防盗链功能，在参与计算token时采用字符串方式；|
+|字段| 数据类型 | 含义 |
+|----|----|----|
+|cid |4字节无符号整型| 详见[相关术语和名词](http://doc.topvdn.com/api/#!public-doc/integration.md#3._相关术语和名词)关于`cid`的名词解释。|
+|control |4字节无符号整型| 控制字段，设备对视频流的推送、播放、云存储等功能的参数配置，各字节以及位的意义详见下文control字段介绍。|
+|expire |4字节无符号整型| 过期时间，token的有效时间，为UTC时间戳（秒级精度，4字节）。|
+|vod_time |4字节无符号整型| 点播时间，点播时对应的录制时间，同时也是点播文件的文件名部分。|
+|ip |4字节无符号整型| 设备的公网ip地址。|
+|refer |字符串| http请求时的refer地址中的域名部分，这个字段一般用来启用防盗链功能。|
 
 **注意：**
 除refer字段外，所有的字段都是主机字节序(Little-Endian小端存储)，无符号四字节整数类型；
 
-###7.4 token明文段的control字段
+###8.4 token明文段的control字段
 第一字节为int类型的低位，第四字节为int类型的高位
 
 | **第一字节**（推送播放验证） | **第二字节**（录制控制） | **第三字节**（播放控制）| **第四字节**（多码流保留）|
@@ -143,7 +159,7 @@ token明文段包含以下字段：
 6位：能否查看截图
 7位：能否收听声音
 
-###7.5 token验证码
+###8.5 token验证码
 由明文串配上羚羊云提供的密钥，通过HMAC-MD5标准算法，生成token的验证码部分。验证码为16个无符号的字节数组。
 
 - 明文串格式：各个字段按顺序无缝拼接而成，长度根据字段数目不同而不定。例如：<u>537067556</u>3222536192<u>1493481600</u>
@@ -178,16 +194,16 @@ token明文段包含以下字段：
 ```
 
 
-###7.6 羚羊云token类型
+###8.6 羚羊云token类型
 根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
 
-- **设备token**
+- **`设备token`**
 
 明文组成部分为cid + control + expire + \[ip]；
 
 \[ip]:可选项，如果control字段里面设置验证ip的标志位，则ip字段需要加入到用于token验证码计算的明文中。
 
-- **访问token**
+- **`访问token`**
 
 明文组成部分为cid + control + expire + \[vod_time] + \[ip] + \[refer]；
 
@@ -199,7 +215,7 @@ token明文段包含以下字段：
 
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段需要加入到用于token验证码计算的明文中。
 
-##8. 如何使用羚羊云SDK
+##9. 如何使用羚羊云SDK
 按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
 
 [Web API](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
@@ -214,30 +230,30 @@ token明文段包含以下字段：
 [API手册-Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)
 [API手册-Windows版](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)
 
-[Demo-C版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C/)
-[Demo-iOS版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-iOS/)
-[Demo-Android版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Android/)
-[Demo-Windows版](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows/)
+[Demo-C版](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip)
+[Demo-iOS版](http://doc.topvdn.com/api/public-doc/SDK-iOS/zipdown/ly_sdk_ios.zip)
+[Demo-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip)
+[Demo-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip)
 
-##9. 常见问题
+##10. 常见问题
 
-1. 什么是appid？怎么获取appid？
-答：appid是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appid才能正常使用。
+1. 什么是`appid`？怎么获取`appid`？
+答：`appid`是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appid才能正常使用。
 
-2. 什么是cid？怎么获取？
-答：cid是羚羊云这边唯一标识终端设备的4个字节长度的unsigned int，根据第三方友商提供设备的SN(必须唯一)由应用后台生成，第三方友商可使用羚羊云的应用后台，也可以使用自己的应用后台。
+2. 什么是`cid`？怎么获取？
+答：`cid`是羚羊云这边唯一标识终端设备的4个字节长度的unsigned int，根据第三方友商提供设备的SN(必须唯一)由应用后台生成，第三方友商可使用羚羊云的应用后台，也可以使用自己的应用后台。
 
-3. 羚羊云提供了设备端SDK吗？设备端SDK的功能包含哪些？
-答：设备端就是本文所说的应用客户端，我们在文中将它和移动手机端都归为客户端这一类。羚羊与提供了设备端SDK，就是C语言版的SDK，从文中的SDK功能用例图和功能列表中可以看到客户端的功能包含了推流和播放，对于设备端来讲，若没有显示屏，则没有播放功能。
+3. 羚羊云提供了`设备端SDK`吗？`设备端SDK`的功能包含哪些？
+答：设备端就是本文所说的应用客户端，所谓的设备分为推流设备和播放设备。从文中的SDK功能用例图和功能列表中可以看到客户端的功能包含了推流和播放，设备可以具备推流或播放中的一种功能，也可同时具备两种功能。比如：设备没有显示屏，则没有播放功能；设备既有视频采集器又有显示屏，则同时具备推流和播放的功能。
 
-4. 设备端的羚羊id是什么？如何获取？
+4. `羚羊id`是什么？如何获取？
 答：羚羊id就是文中所说的cid，获取方式也是文中提到的：先调用Web API获取羚羊云平台下该用户厂商所属的id段，然后由用户自己在这个id段内选择一个没有被分配的id作为这个设备的cid(也就是羚羊id)。
 
-5. 用户应用客户端接入流程中，'记录cid与该客户端的对应关系'这句话，这个对应关系如何建立。是我们的用户体系跟cid绑定，还是cid跟客户端唯一标识绑定。
-答：若应用客户端是给移动终端的用户所使用，则cid绑定的是该终端用户的唯一标识，如：手机号；若应用客户端是嵌入到视频采集设备的程序，则cid绑定的是该设备的唯一标识，如SN号。
+5. 用户应用客户端接入流程中，'记录`cid`与该客户端的对应关系'这句话，这个对应关系如何建立。是我们的用户体系跟`cid`绑定，还是`cid`跟客户端唯一标识绑定。
+答：若应用客户端是给移动终端的用户所使用，则cid绑定的是该终端用户的唯一标识，如：手机号；若应用客户端是嵌入到视频采集设备的程序，则`cid`绑定的是该设备的唯一标识，如SN号。
 
-6. 视频监控和视频通话调用哪些接口？
-答：视频监控调用SDK的播放器接口，视频通话调用SDK的视频通话接口。播放器接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)；视频通话接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
+6. `视频监控`和`视频通话`调用哪些接口？
+答：视频监控调用SDK的`播放器`接口，视频通话调用SDK的`视频通话`接口。播放器接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)；视频通话接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
 
 7. 每台设备都需要有一个羚羊云的id，需要在羚羊云注册，注册羚羊云需要调用什么接口，传入什么参数，以及回调是什么？.
 答：由第三方友商应用服务器调用羚羊云[Web-API的获取设备id段接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)，获取到一个id段，然后从这个id段中各个id对应到不同的设备，应用后台服务器必须保证每台设备分配到唯一的id。
@@ -245,5 +261,5 @@ token明文段包含以下字段：
 8. 视频通话需要调用什么接口，传什么参数？
 答：实现视频通话功能需要调用羚羊云SDK视频通话的接口，不同开发语言版本的SDK接口不一样。可参见[iOS视频通话接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android视频通话接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
 
-9. 如何实现录像回放的功能？录像存在羚羊云端的列表我们如何查看？找到视频列表后又如何按指定时间点播放录像？
+9. 如何实现`录像回放`的功能？录像存在羚羊云端的列表我们如何查看？找到视频列表后又如何按指定时间点播放录像？
 答：通过[Web API的查询设备录像时间轴接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.2.1_%E8%AE%BE%E5%A4%87%E5%BD%95%E5%83%8F%E6%97%B6%E9%97%B4%E8%BD%B4)，可以查询到某个视频设备存放在羚羊云端的录像时间列表，然后调用羚羊云客户端SDK的播放器接口([iOS播放器接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android播放器接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8))，传入指定格式的url参数，这个url参数需要通过应用服务器去获取。

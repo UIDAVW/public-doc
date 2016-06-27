@@ -369,7 +369,7 @@ token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvd
 | - | - |
 |-------|----|
 | 接口名 | resetVideoConfig |
-| 功能 | 重新设置音视频配置参数 |
+| 功能 | 重新设置音视频配置参数，2.0.2版本该接口无效 |
 | 返回值 | 无 |
 
 
@@ -512,7 +512,7 @@ Token串各字段所表示的意义请见[羚羊云token认证机制](http://doc
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|success|void (^)(UIImage *image, char *imageBuffer, int bufferLength)|in|必须|image:UIImage图片 imageBuffer:图片数据 bufferLength:数据长度|
+|success|void (^)(UIImage \*image, char \*imageBuffer, int bufferLength)|in|必须|image:UIImage图片 imageBuffer:图片数据 bufferLength:数据长度|
 
 ###3.13 获取错误信息 
 ```
@@ -876,7 +876,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|success|void (^)(UIImage *image, char *imageBuffer, int bufferLength)|in|必须|image:UIImage;imageBuffer:图片数据；bufferLength:数据长度|
+|success|void (^)(UIImage \*image, char \*imageBuffer, int bufferLength)|in|必须|image:UIImage;imageBuffer:图片数据；bufferLength:数据长度|
 
 ###5.12 设置播放view
 ```
@@ -926,7 +926,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|dataSourceAddreess|NSString *|in|必须|播放地址：被叫方一定要传入正确，主叫方一定传入nil|
+|dataSourceAddreess|NSString *|in|必须|播放地址：被叫方一定要传入正确，主叫方一定传入nil，详见[羚羊云url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |openBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|statusCode：连接成功与否标识|
 |playerBlock|playerCallBackBlock|in|必须|播放过程中的状态回调|
 

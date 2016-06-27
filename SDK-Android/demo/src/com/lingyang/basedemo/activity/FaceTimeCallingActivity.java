@@ -217,10 +217,11 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
                 
                 break;
             case R.id.back:
+            	mLYFaceTime.closeRemote(null);
         		finish();
         		break;
             case R.id.btn_end:
-            	mLYFaceTime.closeRemote(Const.FACETIME_URL);
+            	mLYFaceTime.closeRemote(null);
                 break;
             case R.id.btn_toogle_camera:
             	//切换摄像头
@@ -261,12 +262,14 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        mLYFaceTime.startVideoRecording();
         mLYFaceTime.onHostActivityResumed();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        mLYFaceTime.stopVideoRecording();
         mLYFaceTime.onHostActivityPaused();
     }
 

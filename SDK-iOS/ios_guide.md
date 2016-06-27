@@ -345,6 +345,7 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ####5.6.8 关闭通话
 ```
+//主被叫关闭通话都要调用该方法！！！！！！
 [mFaceTime close:mFaceTimeAddress];
 ```
 
@@ -375,6 +376,24 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.6 sdk更新日期20160622 15：49
+更新说明：1、解决Rokid编译不通过的问题；
+
+
+2.0.4 sdk更新日期20160617 11：30
+更新说明：1、优化视频通话；
+
+
+2.0.3 sdk更新日期20160616 11：00
+更新说明：1、解决视频通话音频采集导致应用音频播放失败；
+        2、其他优化。
+
+2.0.2 sdk更新日期20160615 17：00
+更新说明：1、解决视频通话被叫断开再次视频通话失败的问题；
+        2、解决上一版本重复进入视频通话和直播崩溃的问题；
+        3、历史播放增加Seek实现。
+该版本特别注意：直播和视频通话过程中不支持分辨率参数的切换；(即reset接口无效)。
 
 2.0.1 sdk更新日期20160608 16：23
 更新说明：1、增加视频通话本地录像功能；
