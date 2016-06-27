@@ -61,20 +61,20 @@ libs<br>
 
 ###4.5 SDK的集成
 ####4.5.1 Eclipse环境
-在eclipse下新建一个工程，对工程进行一下配置，搭建开发环境。
+在eclipse下新建一个工程，对工程进行配置，搭建开发环境。
 
 将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
 ![Alt text](./../images/sdk_integration_android_eclipse.png "Eclipse环境下的SDK集成")
 
 ####4.5.2 Android Studio环境
-在android studio下新建一个工程，对工程进行一下配置，搭建开发环境。
+在android studio下新建一个工程，对工程进行配置，搭建开发环境。
 
 (1)将sdk包内的文件直接拷贝到你的工程中的libs目录下，拷贝完成后如下图：
  
 ![Alt text](./../images/sdk_integration_android_as.png " Android Studio环境下的SDK集成")
 
-(2)在build.gradle里添加一下代码：<br>
+(2)在build.gradle里添加代码：<br>
 
     dependencies {
         compile files('libs/sdk.jar')
@@ -233,7 +233,7 @@ mPlayer.start();
 
 ####5.4.5 结束播放
 ```
-mPlayer.stopPlayback();
+mPlayer.stop();
 ```
 
 ####5.4.6 播放控制
@@ -306,7 +306,7 @@ mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 //音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
 mSessionConfig = new SessionConfig.Builder()
 	.withVideoBitrate(512000)//码率
-	.withVideoResolution(480, 640)//分辨率  默认720p
+	.withVideoResolution(480, 640)//分辨率  默认480p
     .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
 	.withCameraDisplayOrientation(90)//旋转角度
 	.withAudioChannels(1)//声道 1单声道  2双声道

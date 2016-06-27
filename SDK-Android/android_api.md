@@ -512,7 +512,7 @@ public void setLocalPreview(LYGLCameraViewpreviewView);
 | - | - |
 |-------|----|
 | 接口名 | setLocalPreview |
-| 功能 | 设置本地预览视图,建议在OnResume()方法中调用该接口,如无需本地预览，则无需调用该接口，且布局文件中也不要设置预览控件； |
+| 功能 | 设置本地预览视图,建议在OnCreate()方法中调用该接口,如无需本地预览，则无需调用该接口，且布局文件中也不要设置预览控件； |
 | 返回值 | 无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
