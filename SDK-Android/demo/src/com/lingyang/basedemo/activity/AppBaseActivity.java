@@ -15,7 +15,6 @@ import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.util.CLog;
 
 
-
 public class AppBaseActivity extends FragmentActivity {
 
     protected Handler mHandler;

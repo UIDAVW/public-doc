@@ -47,7 +47,6 @@ public class MainActivity extends AppBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Utils.setContext(this);
-		long l=System.currentTimeMillis()/1000;
 		initView();
 	}
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppBaseActivity {
 			case R.id.tv_broadcast:
 				// 设备直播
 				mType=LIVE_BROADCAST_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
+				startCloudServiceWithFacetime(Const.USERTOKEN_SECOND);
 				break;
 			case R.id.tv_public_live_player:
 				// 观看公众摄像机直播
@@ -77,7 +76,7 @@ public class MainActivity extends AppBaseActivity {
 			case R.id.tv_broadcast_player:
 				// 观看设备广播
 				mType=PLAYER_OF_BROADCAST_OF_VALUE;
-				startCloudServiceWithFacetime(Const.USERTOKEN_SECOND);
+				startCloudServiceWithFacetime(Const.USERTOKEN_FIRST);
 				break;
 			case R.id.tv_record_player:
 				// 观看云存储
@@ -141,13 +140,13 @@ public class MainActivity extends AppBaseActivity {
 			case FACETIME_OF_CALLING_SIDE_OF_VALUE:
 				// 主叫方
 				 intent = new Intent(MainActivity.this,
-						FaceTimeCallingActivity.class);
+						FaceTimeCalledActivity.class);
 				startActivity(intent);
 				break;
 			case FACETIME_OF_LISTENER_SIDE_OF_VALUE:
 				// 主叫方
 				 intent = new Intent(MainActivity.this,
-						 FaceTimeListenerActivity.class);
+						 FaceTimeCallActivity.class);
 				startActivity(intent);
 				break;
 			case LIVE_BROADCAST_OF_VALUE:
