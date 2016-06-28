@@ -53,7 +53,7 @@
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorOrange"
-                android:text="连接接听方"
+                android:text="主动连接"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
 
