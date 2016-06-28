@@ -376,6 +376,9 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+2.0.7 sdk更新日期20160628 17：07
+更新说明：1、解决私有播放已经优化细节问题；
+
 
 2.0.6 sdk更新日期20160622 15：49
 更新说明：1、解决Rokid编译不通过的问题；
