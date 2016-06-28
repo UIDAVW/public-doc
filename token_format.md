@@ -39,22 +39,22 @@ token明文段包含以下字段：
 - **第一字节（0-7位）**：推送控制及安全控制
 0位：  是否开启rtmp直播
 1位：  是否开启hls直播
-2位：  是否验证ip 如果该项开启则token明文段中必须填写ip字段，用以防止非本方的其他设备盗用URL链接。
-3位：  是否验证refer 如果该项开启则token明文段中必须填写refer字段，用以防止非本方的其他设备盗用URL链接。
-4位：  是否接受udp请求 如果不开启则不接受udp的数据请求
+2位：  是否验证ip &nbsp;&nbsp;如果该项开启则token明文段中必须填写ip字段，用以防止非本方的其他设备盗用URL链接。
+3位：  是否验证refer &nbsp;&nbsp;如果该项开启则token明文段中必须填写refer字段，用以防止非本方的其他设备盗用URL链接。
+4位：  是否接受udp请求 &nbsp;&nbsp;如果不开启则不接受udp的数据请求
 5-7位：保留
 
 - **第二字节（0-7位）**：录制控制
 0-3位: 录像循环存储开关
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000 不存储录像
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储7天录像  超过7天则会覆盖最旧的录像数据而继续循环存储
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储30天录像 超过30天则会覆盖最旧的录像数据而继续循环存储
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储90天录像 超过90天则会覆盖最旧的录像数据而继续循环存储
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他 保留
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000 不存储录像
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储7天录像  超过7天则会覆盖最旧的录像数据而继续循环存储
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储30天录像 超过30天则会覆盖最旧的录像数据而继续循环存储
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储90天录像 超过90天则会覆盖最旧的录像数据而继续循环存储
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他 保留
 4位 : FLV持久化开关，默认为0表示不打开
 5位 : HLS持久化开关，默认为0表示不打开
 6-7位: 保留
-**`注意`**: 
+**`注意`**: 以上三个开关同时只能开启一个。
 
 - **第三字节（0-7位）**：播放控制
 0位：能否观看公众 可否观看公众设备的视频
