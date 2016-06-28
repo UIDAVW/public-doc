@@ -29,7 +29,7 @@ import com.lingyang.sdk.util.CLog;
 import com.lingyang.sdk.view.LYGLCameraEncoderView;
 
 
-public class FaceTimeListenerActivity extends AppBaseActivity {
+public class FaceTimeCallActivity extends AppBaseActivity {
 
     /**
      * 互联api
@@ -53,10 +53,11 @@ public class FaceTimeListenerActivity extends AppBaseActivity {
 
     private void initView() {
     	TextView title=(TextView) findViewById(R.id.tv_title);
-    	title.setText("被叫方");
+    	title.setText("主叫方");
         camera_preview = (LYGLCameraEncoderView) findViewById(R.id.ly_preview);
         playerview = (LYPlayer) findViewById(R.id.ly_player);
         Button btn_start = (Button) findViewById(R.id.btn_start);
+        btn_start.setVisibility(View.GONE);
         btn_end = (Button) findViewById(R.id.btn_end);
         Button btn_toogle_camera = (Button) findViewById(R.id.btn_toogle_camera);
         Button btn_toogle_flash = (Button) findViewById(R.id.btn_toogle_flash);
@@ -126,8 +127,9 @@ public class FaceTimeListenerActivity extends AppBaseActivity {
 			}
 		});
         
-        //主叫方：发送连接串被连接的那一方
-        // 收到消息透传通道ConnectionAcceptted消息，表示连接已建立,可以进行推流和观看对方视频等操作;
+        //主叫方：发送连接串被连接的那一方，因为demo中没有连接后台，所以没有演示发送链接串功能
+        //此功能实现是在默认已经发送连接串的情况下实现的 
+        // 收到消息透传通道ConnectionAcceptted消息，表示对方已建立连接,可以进行推流和观看对方视频等操作;
         //                ConnectionClosed消息表示对方已挂断，连接已断开，可进行关闭退出或重置重连等操作;
         LYService.getInstance().setCloudMessageListener(
                         new LYService.AcceptMessageListener() {
@@ -212,7 +214,6 @@ public class FaceTimeListenerActivity extends AppBaseActivity {
             		showToast("被叫方无需连接，只有主叫方才能主动连接");
             		break;
             	case R.id.back:
-            		mLYFaceTime.closeRemote(null);
             		finish();
             		break;
             	case R.id.btn_end:
@@ -259,12 +260,24 @@ public class FaceTimeListenerActivity extends AppBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        mLYFaceTime.onHostActivityResumed();
+        mLYFaceTime.startVideoRecording();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        mLYFaceTime.stopVideoRecording();
+        mLYFaceTime.onHostActivityPaused();
     }
+    
+    @Override
+    protected void onStop() {
+    	// TODO Auto-generated method stub
+    	super.onStop();
+    	mLYFaceTime.closeRemote(null);
+    }
+
 
     @Override
     protected void onDestroy() {

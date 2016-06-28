@@ -30,7 +30,7 @@ import com.lingyang.sdk.util.CLog;
 import com.lingyang.sdk.view.LYGLCameraEncoderView;
 
 
-public class FaceTimeCallingActivity extends AppBaseActivity {
+public class FaceTimeCalledActivity extends AppBaseActivity {
 
 
     /**
@@ -55,7 +55,7 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
 
     private void initView() {
     	TextView title=(TextView) findViewById(R.id.tv_title);
-    	title.setText("主叫方");
+    	title.setText("被叫方");
         camera_preview = (LYGLCameraEncoderView) findViewById(R.id.ly_preview);
         playerview = (LYPlayer) findViewById(R.id.ly_player);
         Button btn_start  = (Button) findViewById(R.id.btn_start);
@@ -100,15 +100,12 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         .useAudio(true)
         .useVideo(true)
         .build();
-      //没有必须配置项，可直接使用默认值
-//		mSessionConfig=new SessionConfig();
         mLYFaceTime = new LYFaceTime(this, mSessionConfig);
         
         //设置本地预览
         mLYFaceTime.setLocalPreview(camera_preview);
         //设置远程播放器
         mLYFaceTime.setRemoteView(null, playerview);
-//        mLYFaceTime.setRemoteView(Const.FACETIME_URL159, playerview);
         
         LYService.getInstance().setCloudMessageListener(
                 new LYService.AcceptMessageListener() {
@@ -182,7 +179,8 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         switch (v.getId()) {
             case R.id.btn_start:
             	mHandler.obtainMessage(Constants.TaskState.ISRUNING).sendToTarget();
-                // 被叫方：收到连接串主动发起连接的那一方
+                // 被叫方：收到连接串主动发起连接的那一方，因为demo中没有连接后台，所以没有演示接受链接串功能
+                //此功能实现是在默认已经接收到连接串的情况下实现的 
             	//从消息透传通道收到主叫方传过来的连接串，主动发起连接，连接成功自动开始推流
                 mLYFaceTime.openRemote(Const.FACETIME_URL, new CallBackListener<Integer>() {
 					
@@ -217,7 +215,6 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
                 
                 break;
             case R.id.back:
-            	mLYFaceTime.closeRemote(null);
         		finish();
         		break;
             case R.id.btn_end:
@@ -239,12 +236,12 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
     				
     				@Override
     				public void onSnapshotSuccess(String arg0) {
-    					Toast.makeText(FaceTimeCallingActivity.this, "截图成功", Toast.LENGTH_LONG).show();
+    					Toast.makeText(FaceTimeCalledActivity.this, "截图成功", Toast.LENGTH_LONG).show();
     				}
     				
     				@Override
     				public void onSnapshotFail(LYException arg0) {
-    					Toast.makeText(FaceTimeCallingActivity.this, "截图失败"+arg0.getMessage(), Toast.LENGTH_LONG).show();
+    					Toast.makeText(FaceTimeCalledActivity.this, "截图失败"+arg0.getMessage(), Toast.LENGTH_LONG).show();
     				}
     			} );
             	break;
@@ -262,8 +259,8 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mLYFaceTime.startVideoRecording();
         mLYFaceTime.onHostActivityResumed();
+        mLYFaceTime.startVideoRecording();
     }
 
     @Override
@@ -271,6 +268,13 @@ public class FaceTimeCallingActivity extends AppBaseActivity {
         super.onPause();
         mLYFaceTime.stopVideoRecording();
         mLYFaceTime.onHostActivityPaused();
+    }
+    
+    @Override
+    protected void onStop() {
+    	// TODO Auto-generated method stub
+    	super.onStop();
+    	mLYFaceTime.closeRemote(null);
     }
 
     @Override

@@ -80,7 +80,22 @@ libs<br>
         compile files('libs/sdk.jar')
     }
 
-###4.6 系统权限设置
+###4.6 SDK DEMO 导入步骤
+官网提供的demo是eclipse环境下编写的，用eclipse工具可直接导入使用。在Android Studio环境下需新建一个project，
+然后以导入module的方式进行导入使用。
+####4.6.1 eclipse 导入
+（1）打开eclipse > File > import > Android > Exsiting Android Code IntoWorkspace
+
+（2）点击Browse选择demo所在目录 > 打开 > finish
+
+####4.6.2 Android Studio 导入
+（1）打开Android Studio ，新建一个Project
+
+（2）点击File > new > Import Module 
+
+（3）选择demo所在目录 > 打开 > next > finish
+
+###4.7 系统权限设置
     //networking api使用权限
     <uses-permission android:name="android.permission.INTERNET"/>
     //允许应用程序使用摄像头
