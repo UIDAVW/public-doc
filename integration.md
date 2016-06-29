@@ -40,7 +40,7 @@
 ##5. 羚羊云服务架构
 ![Alt text](./images/struct.png "羚羊云服务架构") 
 
-##6. 羚羊云SDK的功能
+##6. 羚羊云SDK功能
 从上面的整体架构中，可以看出羚羊云SDK可以分两大类:供应用服务器调用的Web API和供应用客户端调用的客户端SDK。以下是SDK的主要功能用例图：
 
 ![Alt text](./images/usercase.png "羚羊云SDK的功能")
@@ -62,7 +62,7 @@
 | 9 | 回放录像 | 拉取指定设备指定时间段的录像，在本地进行解码播放。 |
 | 10 | 监听消息 | 持续接收任何远程应用客户端或服务器经过羚羊云推送过来的消息，并通知到本地上层应用。 |
 
-##7. 如何接入羚羊云
+##7. 快速接入羚羊云
 ###7.1 接入对象
 所有需要使用羚羊云视频相关应用服务的用户，即羚羊云的接入对象。一般来讲，用户自己的应用通常包含客户端和服务器。
 
@@ -101,7 +101,7 @@
 上述接入流程中的`查询设备id段`需调用[Web-API的'查询设备id段'](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)接口；
 `登录云平台`需要调用SDK的开启云服务接口。[iOS调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
-##8. 如何使用羚羊云SDK
+##8. 使用羚羊云SDK
 按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
 
 [Web API](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
