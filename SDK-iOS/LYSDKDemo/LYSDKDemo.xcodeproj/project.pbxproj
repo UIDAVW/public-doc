@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF06540C1D12545800FB9928 /* libLYCloudSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF06540A1D12545800FB9928 /* libLYCloudSDK.a */; };
-		CF06540D1D12545800FB9928 /* Version.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF06540B1D12545800FB9928 /* Version.txt */; };
+		CF063A591D23736200F26075 /* libLYCloudSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF063A571D23736200F26075 /* libLYCloudSDK.a */; };
+		CF063A5A1D23736200F26075 /* Version.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF063A581D23736200F26075 /* Version.txt */; };
 		CF0CDBC01CFD724F00DA7404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0CDBBF1CFD724F00DA7404 /* main.m */; };
 		CF0CDBC31CFD724F00DA7404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0CDBC21CFD724F00DA7404 /* AppDelegate.m */; };
 		CF0CDBC61CFD724F00DA7404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0CDBC51CFD724F00DA7404 /* ViewController.m */; };
@@ -77,17 +77,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CF0654011D12545800FB9928 /* LYAudioStreamingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAudioStreamingConfiguration.h; sourceTree = "<group>"; };
-		CF0654021D12545800FB9928 /* LYCloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCloudService.h; sourceTree = "<group>"; };
-		CF0654031D12545800FB9928 /* LYFaceTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYFaceTime.h; sourceTree = "<group>"; };
-		CF0654041D12545800FB9928 /* LYLiveBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLiveBroadcast.h; sourceTree = "<group>"; };
-		CF0654051D12545800FB9928 /* LYMacroDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMacroDefines.h; sourceTree = "<group>"; };
-		CF0654061D12545800FB9928 /* LYPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPlayer.h; sourceTree = "<group>"; };
-		CF0654071D12545800FB9928 /* LYPlayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPlayerConfiguration.h; sourceTree = "<group>"; };
-		CF0654081D12545800FB9928 /* LYTypeDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTypeDefines.h; sourceTree = "<group>"; };
-		CF0654091D12545800FB9928 /* LYVideoStreamingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYVideoStreamingConfiguration.h; sourceTree = "<group>"; };
-		CF06540A1D12545800FB9928 /* libLYCloudSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLYCloudSDK.a; sourceTree = "<group>"; };
-		CF06540B1D12545800FB9928 /* Version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Version.txt; sourceTree = "<group>"; };
+		CF063A4E1D23736200F26075 /* LYAudioStreamingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYAudioStreamingConfiguration.h; sourceTree = "<group>"; };
+		CF063A4F1D23736200F26075 /* LYCloudService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCloudService.h; sourceTree = "<group>"; };
+		CF063A501D23736200F26075 /* LYFaceTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYFaceTime.h; sourceTree = "<group>"; };
+		CF063A511D23736200F26075 /* LYLiveBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLiveBroadcast.h; sourceTree = "<group>"; };
+		CF063A521D23736200F26075 /* LYMacroDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMacroDefines.h; sourceTree = "<group>"; };
+		CF063A531D23736200F26075 /* LYPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPlayer.h; sourceTree = "<group>"; };
+		CF063A541D23736200F26075 /* LYPlayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPlayerConfiguration.h; sourceTree = "<group>"; };
+		CF063A551D23736200F26075 /* LYTypeDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYTypeDefines.h; sourceTree = "<group>"; };
+		CF063A561D23736200F26075 /* LYVideoStreamingConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYVideoStreamingConfiguration.h; sourceTree = "<group>"; };
+		CF063A571D23736200F26075 /* libLYCloudSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libLYCloudSDK.a; sourceTree = "<group>"; };
+		CF063A581D23736200F26075 /* Version.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Version.txt; sourceTree = "<group>"; };
 		CF0CDBBB1CFD724F00DA7404 /* LYSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0CDBBF1CFD724F00DA7404 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF0CDBC11CFD724F00DA7404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				CF0CDC641CFD77A100DA7404 /* VideoToolbox.framework in Frameworks */,
 				CF0CDC621CFD779900DA7404 /* CoreAudio.framework in Frameworks */,
 				CF0CDC601CFD779200DA7404 /* OpenAL.framework in Frameworks */,
-				CF06540C1D12545800FB9928 /* libLYCloudSDK.a in Frameworks */,
+				CF063A591D23736200F26075 /* libLYCloudSDK.a in Frameworks */,
 				CF0CDC5E1CFD778A00DA7404 /* libstdc++.tbd in Frameworks */,
 				CF0CDC5C1CFD777D00DA7404 /* libz.tbd in Frameworks */,
 			);
@@ -211,28 +211,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CF0653FF1D12545800FB9928 /* LYSDKX.X.X */ = {
+		CF063A3E1D23717100F26075 /* LYSDKX.X.X */ = {
 			isa = PBXGroup;
 			children = (
-				CF0654001D12545800FB9928 /* include */,
-				CF06540A1D12545800FB9928 /* libLYCloudSDK.a */,
-				CF06540B1D12545800FB9928 /* Version.txt */,
+				CF063A4D1D23736200F26075 /* include */,
+				CF063A571D23736200F26075 /* libLYCloudSDK.a */,
+				CF063A581D23736200F26075 /* Version.txt */,
 			);
 			path = LYSDKX.X.X;
 			sourceTree = "<group>";
 		};
-		CF0654001D12545800FB9928 /* include */ = {
+		CF063A4D1D23736200F26075 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				CF0654011D12545800FB9928 /* LYAudioStreamingConfiguration.h */,
-				CF0654021D12545800FB9928 /* LYCloudService.h */,
-				CF0654031D12545800FB9928 /* LYFaceTime.h */,
-				CF0654041D12545800FB9928 /* LYLiveBroadcast.h */,
-				CF0654051D12545800FB9928 /* LYMacroDefines.h */,
-				CF0654061D12545800FB9928 /* LYPlayer.h */,
-				CF0654071D12545800FB9928 /* LYPlayerConfiguration.h */,
-				CF0654081D12545800FB9928 /* LYTypeDefines.h */,
-				CF0654091D12545800FB9928 /* LYVideoStreamingConfiguration.h */,
+				CF063A4E1D23736200F26075 /* LYAudioStreamingConfiguration.h */,
+				CF063A4F1D23736200F26075 /* LYCloudService.h */,
+				CF063A501D23736200F26075 /* LYFaceTime.h */,
+				CF063A511D23736200F26075 /* LYLiveBroadcast.h */,
+				CF063A521D23736200F26075 /* LYMacroDefines.h */,
+				CF063A531D23736200F26075 /* LYPlayer.h */,
+				CF063A541D23736200F26075 /* LYPlayerConfiguration.h */,
+				CF063A551D23736200F26075 /* LYTypeDefines.h */,
+				CF063A561D23736200F26075 /* LYVideoStreamingConfiguration.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 		CF0CDBF11CFD725900DA7404 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				CF0653FF1D12545800FB9928 /* LYSDKX.X.X */,
+				CF063A3E1D23717100F26075 /* LYSDKX.X.X */,
 				CF0CDC011CFD72E400DA7404 /* AFNetworking */,
 			);
 			name = libs;
@@ -572,7 +572,7 @@
 				CF0CDC511CFD734F00DA7404 /* LYCalledInternetViewController.storyboard in Resources */,
 				CF0CDBC91CFD724F00DA7404 /* Main.storyboard in Resources */,
 				CF0CDC571CFD734F00DA7404 /* LYInternetCallingViewController.storyboard in Resources */,
-				CF06540D1D12545800FB9928 /* Version.txt in Resources */,
+				CF063A5A1D23736200F26075 /* Version.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,9 +773,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK1.2.3",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK2.0.1",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK2.0.2",
 					"$(PROJECT_DIR)/LYSDKDemo/LYSDKX.X.X",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = quinnqiu.com.LYSDKDemo;
@@ -797,9 +794,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK1.2.3",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK2.0.1",
-					"$(PROJECT_DIR)/LYSDKDemo/LYSDK2.0.2",
 					"$(PROJECT_DIR)/LYSDKDemo/LYSDKX.X.X",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = quinnqiu.com.LYSDKDemo;

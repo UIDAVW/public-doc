@@ -376,6 +376,11 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.9 sdk更新日期20160629 11：07
+更新说明：1、适配开始视频通话之后才设置播放view的展示；
+        2、修改历史播放的卡顿问题。
+
 2.0.7 sdk更新日期20160628 17：07
 更新说明：1、解决私有播放已经优化细节问题；
 

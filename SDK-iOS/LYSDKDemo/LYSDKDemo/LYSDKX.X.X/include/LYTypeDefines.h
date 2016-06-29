@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, LYstatusCode) {
     LYstatusCodePlayerErrorNoSetPlayerConfig     = -4010,//没设置播放器配置
     LYstatusCodePlayerErrorLocalRecording        = -4011,//正在进行本地录像，需要先停止录制才可以开启
     LYstatusCodePlayerErrorSavePathSuffix        = -4012,//地址后缀是.mp4
+    //视频通话本地录像错误码
     LYstatusCodePlayerErrorNOFacetime            = -4013,//没有进行视频通话
     
     //视频采集错误码
