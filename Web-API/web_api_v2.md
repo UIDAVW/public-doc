@@ -85,7 +85,9 @@
 设备 token 和设备访问 token 的生成改到第三方，只要使用遵循我们给出的算法生成的 token 来进行请求都可以通过验证。羚羊云平台只控制第三方的 token 生成的 key。
 
 ## 2 接口列表
+接口功能
 
+![Alt text](./images/usercase-web.png "羚羊云Web API功能")
 ## 2.1 设备
 
 本节包含设备相关的接口，支持查询设备状态和 APP 的设备 ID 段信息。
@@ -1796,9 +1798,7 @@ request_id | string | 此次请求的唯一编号
 404 | 该上传文件不存在，可能已经被删除
 500 | 系统内部错误
 
-## 附录
-
-### 附录 1 回调请求
+## 附录 1 回调请求
 
 * 请求首部：
 
@@ -1828,7 +1828,7 @@ md5(X-APP-ID+request.body+X-APP-Key)
 
 对请求进行签名是为了让第三方的后台验证这个请求的合法性，检查请求在中途是否被篡改，所以第三方后台应该对每个回调的消息请求都进行签名校验。
 
-###  附录 1.1 设备消息回调
+##  附录 1.1 设备消息回调
 
 对于设备推送消息给设备的接口，第三方可以要求将这个消息回调传给第三方的服务器后端。
 
@@ -1868,7 +1868,7 @@ Accept-Encoding: gzip, deflate
 {"data": {"msg": "aGVsbG8=", "to": [5003062], "from": 1003200, "created": 1452666295}, "event": "device-message"}
 ```
 
-###  附录 1.2 录像剪辑回调
+##  附录 1.2 录像剪辑回调
 
 创建录像剪辑任务之后，当剪辑完成的时候会向第三方提供的回调接口发送本回调请求，请求体为 `json` 数据：
 
@@ -1900,7 +1900,7 @@ Accept-Encoding: gzip, deflate
 {"data": {"clip_id": 1024, "device": 1003775}, "event": "device-record-clip"}
 ```
 
-###  附录 1.3 设备状态变化
+##  附录 1.3 设备状态变化
 
 设备上/下线或者切换调度等状态变化的时候，如果第三方提供了状态回调地址，相关设备状态变化会被 POST 到这个地址：
 
@@ -1959,8 +1959,3 @@ Accept-Encoding: gzip, deflate
 
 {"data": {"tracker_port": 80, "local_port": 8200, "local_ip": "10.154.13.169", "public_port": 56569, "state": 1, "public_ip": "98.234.113.73", "config_type": 0, "relay_port": 0, "conn_key": 0, "device": 1003190, "relay_ip": "0.0.0.0", "tracker_ip": "203.195.157.248"}, "event": "device-state"}
 ```
-
-## 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
-[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
-[羚羊云URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
