@@ -3,15 +3,17 @@
 本SDK可供Android平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
-该套SDK主要提供的功能如下：
+![Alt text](./../images/usercase-android.png "羚羊云AndroidSDK功能")
 
 - **直播推流**：将Android系统设备采集到的音视频数据进行编码，通过羚羊云自主研发的QSTP网络协议推送到羚羊云，以供终端用户观看直播或云端存储录像。支持自主设置分辨率、码率、帧率、编码类型等视频参数。
 
-- **播放器**：支持播放直播流和云端录像流，网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
+- **播放直播流**：支持播放直播流，网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
 
-- **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
+- **播放录像流**：支持播放云端录像流，网络拉流采用羚羊云自主研发的基于TCP的QSTP协议，能够达到快速开流、低延时、高清画质的播放效果。
 
 - **视频通话**：客户端之间通过羚羊云自主研发的QSUP协议建立连接，相互发送接收数据进行视频通话。
+
+- **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
 
 ##三、功能特性
 | ID | 功能特性 |
@@ -177,10 +179,88 @@ libs<br>
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
-###5.4 播放器
+###5.4 直播推流
+![Alt text](./../images/flow_push.png "直播推流接口调用流程")
+直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#3.2_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)
+####5.4.1 设置流参数
+
+```
+//音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
+mSessionConfig = new SessionConfig.Builder()
+	.withVideoBitrate(512000)//码率
+	.withVideoResolution(480, 640)//分辨率  默认480p
+    .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
+	.withCameraDisplayOrientation(90)//旋转角度
+	.withAudioChannels(1)//声道 1单声道  2双声道
+	.useHardAudioEncode(false)//是否音频硬编
+	.useHardVideoEncode(false)//是否视频硬编
+	.useAudio(true)//是否开启音频
+    .useVideo(true)//是否开启视频
+	.build();
+
+```
+SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。
+
+####5.4.2 设置本地预览布局
+```
+<com.lingyang.sdk.view.LYGLCameraEncoderView
+    android:id="@+id/ly_preview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_preview);
+```
+我们对surfaceview封装了的自定义View，用来预览本地采集的图像。
+
+####5.4.3 设置本地预览视图
+```
+//设置本地预览
+mLiveBroadcast.setLocalPreview(mPreview);
+####5.5.4 设置推流状态监听
+mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
+	@Override
+	public void onBroadcastStart() {
+		showToast("马上开始直播");
+	}
+	@Override
+	public void onBroadcastLive() {
+		showToast("正在直播");
+	}
+	@Override
+	public void onBroadcastStop() {
+		showToast("停止直播");
+	}
+	@Override
+	public void onBroadcastError(LYException exception) {
+		showToast("直播出错" + exception.getCode() + "--"
+				+ exception.getMessage());
+	}
+});
+```
+####5.4.4 开始推流直播
+```
+// 开始直播
+//IBroadcastOpenAPI.MODE_LIVE  :直播
+//IBroadcastOpenAPI.MODE_LIVE_AND_RECORD   :录像直播
+			
+mLiveBroadcast.startBroadcasting(ILiveBroadcast.MODE_LIVE,
+	"3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1");
+```
+
+####5.4.5 结束推流直播
+```
+//结束直播
+mLiveBroadcast.stopBroadcasting();
+//资源释放
+mLiveBroadcast.release();
+```
+**注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
+
+###5.5 播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
-####5.4.1 设置播放布局
+####5.5.1 设置播放布局
 我们将播放器封装成了界面控件，方便用户直接嵌入到app的主界面中，实现播放器的功能。
  
     <com.lingyang.sdk.player.widget.LYPlayer
@@ -190,7 +270,7 @@ libs<br>
 
     LYPlayer mPlayer = (LYPlayer)findViewById(R.id.ly_player);
 
-####5.4.2 设置播放源
+####5.5.2 设置播放源
  
     //公众摄像机直播观看		
     mPlayer.setDataSource("topvdn://topvdn.public.cn" +
@@ -219,7 +299,7 @@ libs<br>
 
 (3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
-####5.4.3 设置播放连接状态监听
+####5.5.3 设置播放连接状态监听
 设置循环执行网络拉流、解码视频帧、及显示视频帧这些过程之前，连接到云服务器的状态监听函数；
 ```
 /**
@@ -238,7 +318,7 @@ mPlayer.setOnPreparedListener(new OnPreparedListener() {
 ```
 OnPreparedListener被触发则表示连接至云服务器已经成功，在回调函数中，可以在播放控件界面上显示连接状态的变化。
 
-####5.4.4 开始播放
+####5.5.4 开始播放
 ```
 mPlayer.start();
 ```
@@ -246,12 +326,12 @@ mPlayer.start();
 
 注：该方法既可以播放直播流，也可以播放云端录像流。播放的类型根据上面所述 “设置播放源”小节的url地址内容来区分。
 
-####5.4.5 结束播放
+####5.5.5 结束播放
 ```
 mPlayer.stop();
 ```
 
-####5.4.6 播放控制
+####5.5.6 播放控制
 #####视频截图
 ```
 snapPath=”/storage/emulated/0/Topvdn/我的相册/”;
@@ -311,84 +391,6 @@ mPlayer.mute();
 //动态获取流媒体参数，用户根据需要传参获取，如当前视频帧率。
 mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 ```
-
-###5.5 直播推流
-![Alt text](./../images/flow_push.png "直播推流接口调用流程")
- 
-####5.5.1 设置流参数
-
-```
-//音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
-mSessionConfig = new SessionConfig.Builder()
-	.withVideoBitrate(512000)//码率
-	.withVideoResolution(480, 640)//分辨率  默认480p
-    .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
-	.withCameraDisplayOrientation(90)//旋转角度
-	.withAudioChannels(1)//声道 1单声道  2双声道
-	.useHardAudioEncode(false)//是否音频硬编
-	.useHardVideoEncode(false)//是否视频硬编
-	.useAudio(true)//是否开启音频
-    .useVideo(true)//是否开启视频
-	.build();
-
-```
-SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。
-
-####5.5.2 设置本地预览布局
-```
-<com.lingyang.sdk.view.LYGLCameraEncoderView
-    android:id="@+id/ly_preview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-
-LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_preview);
-```
-我们对surfaceview封装了的自定义View，用来预览本地采集的图像。
-
-####5.5.3 设置本地预览视图
-```
-//设置本地预览
-mLiveBroadcast.setLocalPreview(mPreview);
-####5.5.4 设置推流状态监听
-mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
-	@Override
-	public void onBroadcastStart() {
-		showToast("马上开始直播");
-	}
-	@Override
-	public void onBroadcastLive() {
-		showToast("正在直播");
-	}
-	@Override
-	public void onBroadcastStop() {
-		showToast("停止直播");
-	}
-	@Override
-	public void onBroadcastError(LYException exception) {
-		showToast("直播出错" + exception.getCode() + "--"
-				+ exception.getMessage());
-	}
-});
-```
-####5.5.4 开始推流直播
-```
-// 开始直播
-//IBroadcastOpenAPI.MODE_LIVE  :直播
-//IBroadcastOpenAPI.MODE_LIVE_AND_RECORD   :录像直播
-			
-mLiveBroadcast.startBroadcasting(ILiveBroadcast.MODE_LIVE,
-	"3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1");
-```
-
-####5.5.5 结束推流直播
-```
-//结束直播
-mLiveBroadcast.stopBroadcasting();
-//资源释放
-mLiveBroadcast.release();
-```
-**注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
 
 ###5.6 视频通话
 ![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
