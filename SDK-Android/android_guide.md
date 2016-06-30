@@ -122,7 +122,7 @@ libs<br>
 ##五、开发示例
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)来实现直播推流、播放器、消息透传的功能。
 
-###5.1 启动云服务
+##5.1 &nbsp;启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 
     /**
@@ -150,13 +150,13 @@ libs<br>
 
 **注意**：其他接口必须在此接口被调用成功之后才能调用。
 
-###5.2 停止云服务
+##5.2 &nbsp;停止云服务
     //退出是要关闭云服务，节省资源
     LYService.getInstance().stopCloudService();
     
 在应用退出的时候调用，释放系统资源。
 
-###5.3 消息透传
+##5.3 &nbsp;消息透传
 当应用客户端使用SDK接入到羚羊云后，可以向同样接入到羚羊云的另外一端的应用客户端，互相传递他们之间协定的网络消息。这些消息对于羚羊云来说是透明的，羚羊云只提供消息传递的通道。
 
 该功能可以有如下应用场景：<br>
@@ -179,10 +179,10 @@ libs<br>
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
-###5.4 直播推流
+##5.4 &nbsp;直播推流
 ![Alt text](./../images/flow_push.png "直播推流接口调用流程")
 
-直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#3.2_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)。
+`注`：直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#3.2_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)。
 ####5.4.1 设置流参数
 
 ```
@@ -258,7 +258,7 @@ mLiveBroadcast.release();
 ```
 **注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
 
-###5.5 播放器
+##5.5 &nbsp;播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.5.1 设置播放布局
@@ -393,7 +393,7 @@ mPlayer.mute();
 mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 ```
 
-###5.6 视频通话
+##5.6 &nbsp;视频通话
 ![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
 
 ####5.6.1 设置流参数
