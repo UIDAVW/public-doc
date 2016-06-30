@@ -95,7 +95,7 @@ SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
 ##五、开发示例
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)来实现直播推流、播放器、消息透传的功能。
 
-##5.1 &nbsp;&nbsp;启动云服务
+##5.1 &nbsp;启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 
 ```
