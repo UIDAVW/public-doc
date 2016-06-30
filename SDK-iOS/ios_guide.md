@@ -223,7 +223,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 [m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```
 
-##5.5 直播推流
+##5.5 &nbsp;直播推流
 ![Alt text](./../images/flow_push.png "直播推流接口调用流程")
 
 `注`：直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#3.3_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD)。
