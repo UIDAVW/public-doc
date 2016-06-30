@@ -205,6 +205,7 @@ ret = LY_sendMediaFrame(fd,&frame);//发送音视频数据，成功返回0，失
 if(ret != 0)
 printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frameSize);
 ```
+`注`:推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户下载并回放录像，只需将url按照[羚羊云URL格式协议](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)而设置即可实现。
 
 ###5.6 拉取直播流
 拉取直播的前提是目标设备端已经建立推直播流的通道连接，否则将没有网络数据可拉取。拉取直播流使用连接推流服务器时返回的fd。需要先使用LY_connect建立连接，然后调用接收数据的接口LY_recvMediaFrame接收数据，只是输出参数的帧类型有所区别。

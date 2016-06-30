@@ -393,11 +393,8 @@ token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvd
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-| dataSourceAddress |NSString *|in|必须|直播推流地址，用户从第三方后台获取|
+| dataSourceAddress |NSString *|in|必须|直播推流地址，用户从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |startBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
->token：设备token，从后台获取，格式如下：<br>
-2147549953_1458979882_1469999882_bad3686a62a7aba595df3fb4c9c400e9<br>
-Token串各字段所表示的意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)
 
 ###3.4 停止直播
 ```

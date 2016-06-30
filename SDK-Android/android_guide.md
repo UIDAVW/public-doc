@@ -181,7 +181,8 @@ libs<br>
 
 ###5.4 直播推流
 ![Alt text](./../images/flow_push.png "直播推流接口调用流程")
-直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#3.2_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)
+
+直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#3.2_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)。
 ####5.4.1 设置流参数
 
 ```
