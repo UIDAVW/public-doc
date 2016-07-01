@@ -3,7 +3,7 @@
 本SDK可供iOS平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)，实现直播推流、直播播放、云端录像播放、消息透传、视频通话等功能。
 
 ##二、功能概要
-该套SDK主要提供的功能如下：
+![Alt text](./../images/usercase-ios.png "羚羊云iOS SDK功能")
 
 - **直播推流**：将iOS系统设备采集到的音视频数据进行编码，通过羚羊云自主研发的QSTP网络协议推送到羚羊云，以供终端用户观看直播或云端存储录像。支持自主设置分辨率、码率、帧率、编码类型等视频参数。
 
@@ -95,7 +95,7 @@ SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
 ##五、开发示例
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)来实现直播推流、播放器、消息透传的功能。
 
-###5.1 启动云服务
+##5.1 &nbsp;启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 
 ```
@@ -113,14 +113,14 @@ SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
 ```
 **注意**：其他接口必须在此接口被调用成功之后才能调用。
 
-###5.2 停止云服务
+##5.2 &nbsp;停止云服务
  
 ```
 [[LYCloudService sharedLYCloudService] stopCloudService];
 ```
 在应用退出的时候调用，释放系统资源。
 
-###5.3 消息透传
+##5.3 &nbsp;消息透传
 当应用客户端使用SDK接入到羚羊云后，可以向同样接入到羚羊云的另外一端的应用客户端，互相传递他们之间协定的网络消息。这些消息对于羚羊云来说是透明的，羚羊云只提供消息传递的通道。
 
 该功能可以有如下应用场景：
@@ -139,7 +139,7 @@ popMessageBlock:^(NSDictionary *dictionary) {
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
-###5.4 播放器
+##5.4 &nbsp;播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
 ####5.4.1 创建播放器类
@@ -223,8 +223,10 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 [m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```
 
-###5.5 直播推流
+##5.5 &nbsp;直播推流
 ![Alt text](./../images/flow_push.png "直播推流接口调用流程")
+
+`注`：直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#3.3_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD)。
  
 ####5.5.1 设置流参数
 
@@ -279,7 +281,7 @@ LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:m
 ```
 [mLiving destroy];
 ```
-###5.6 视频通话
+##5.6 &nbsp;视频通话
 ![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
  
 ####5.6.1 设置流参数
@@ -318,7 +320,7 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ####5.6.5 建立连接
 发起视频通话的一方不需要调用建立连接接口，5.6.4步骤完成即可；以下连接步骤针对于收到连接地址的一方
-**注意**：连接地址第三方后台透传或者推送得打。
+**注意**：连接地址第三方后台透传或者推送得到。
 
 ```
 [mFaceTime open: mFaceTimeAddress openStatus:^(LYstatusCode statusCode, NSString *errorString) {

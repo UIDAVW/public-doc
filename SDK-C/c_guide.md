@@ -3,11 +3,13 @@
 本套SDK采用C语言编写，可供iOS、Android、Windows、linux的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)，使用这些接口可以实现推送媒体流、拉取媒体流、消息透传等功能。
 
 ##二、功能概要
-该套SDK主要提供的功能如下：
+![Alt text](./../images/usercase-c.png "羚羊云C SDK功能")
 
 - **推送媒体流**：通过羚羊云自主研发的QSTP或QSUP网络协议推送到羚羊云，以供终端用户观看直播或云端存储录像。
 
-- **拉取媒体流**：网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时的效果。上层应用可将拉取到的媒体流进行解码播放。
+- **拉取直播流**：网络拉流采用羚羊云自主研发的基于UDP的QSUP协议和基于TCP的QSTP协议，能够达到快速开流、低延时的效果。上层应用可将拉取到的媒体流进行解码播放。
+
+- **下载录像流**：通过羚羊云自主研发的QSTP网络协议下载存储在羚羊云端的录像。
 
 - **消息透传**：提供客户端与客户端之间、客户端与服务端之间进行自定义消息格式通讯的能力。
 
@@ -74,7 +76,7 @@ LDFLAGS		:= -Wl,-rpath=. -lPusher–lTopvdnSDK-lpthread -lssl -lcrypto
 ##五、开发示例
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)来实现直播推流、播放器、消息透传的功能。
 
-###5.1 启动云服务
+##5.1 &nbsp;启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 ```
 void popMessage(void *apData, const char *aMessage)
@@ -111,14 +113,14 @@ while(1)
 ```
 **注意**：其他接口必须在此接口被调用成功之后才能调用。
 
-###5.2 停止云服务
+##5.2 &nbsp;停止云服务
 ```
 //停止云平台服务，释放相关资源。
 LY_stopCloudService();
 ```
 在应用退出的时候调用，释放系统资源。
 
-###5.3 消息透传
+##5.3 &nbsp;消息透传
 当应用客户端使用SDK接入到羚羊云后，可以向同样接入到羚羊云的另外一端的应用客户端，互相传递他们之间协定的网络消息。这些消息对于羚羊云来说是透明的，羚羊云只提供消息传递的通道。
 
 该功能可以有如下应用场景：
@@ -145,7 +147,7 @@ void popMessage(void *apData, const char *aMessage)
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口-设备推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.1_%E8%AE%BE%E5%A4%87%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)。
 
-###5.4 建立传输通道
+##5.4 &nbsp;建立传输通道
 任何媒体数据的接收和发送，必须先建立传输通道。需要传入羚羊云自定义格式的URL作为参数进行通道的连接，成功建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
 ```
 char *peer="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069";
@@ -177,7 +179,7 @@ URL格式：
 
 **URL的详细格式请参考[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)。**
 
-###5.5 推送媒体流
+##5.5 &nbsp;推送媒体流
 首先需要建立连接，即创建传输通道，调用LY_connect创建传输通道，然后才能进行推流。羚羊云支持多路推流，每一路流都有一个int类型的fd唯一标识。（一路即一个传输通道，每个传输通道都可以传输音视频数据）。直播推流使用QSUP协议还是QSTP协议是根据用户调用LY_connectr函数传入的参数决定的，用户在调用LY_sendMediaFrame发送数据的时候无需关心这些选项。
 ```
 int fd;
@@ -203,8 +205,9 @@ ret = LY_sendMediaFrame(fd,&frame);//发送音视频数据，成功返回0，失
 if(ret != 0)
 printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frameSize);
 ```
+`注`:推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户下载并回放录像，只需将url按照[羚羊云URL格式协议](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)而设置即可实现。
 
-###5.6 拉取直播流
+##5.6 &nbsp;拉取直播流
 拉取直播的前提是目标设备端已经建立推直播流的通道连接，否则将没有网络数据可拉取。拉取直播流使用连接推流服务器时返回的fd。需要先使用LY_connect建立连接，然后调用接收数据的接口LY_recvMediaFrame接收数据，只是输出参数的帧类型有所区别。
 ```
 void* recvMediaData (void* arg)
@@ -249,7 +252,7 @@ int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通�
 }
 ```
 
-###5.7 拉取录像流
+##5.7 &nbsp;下载录像流
 观看录像必须登录到羚羊云平台，通过给出观看录像的时间点，从应用后台拿到该时间点录像的相关信息，然后调用LY_connect连接到服务器，比拉取直播流多了一个传递参数，最后调用LY_recvMediaFrame接收录像数据。
 
 ```
@@ -287,7 +290,7 @@ if(frame.frameBuffer)
 }
 ```
 
-###5.8 断开通道连接
+##5.8 &nbsp;断开通道连接
 断开fd标识的传输通道 ，此时羚羊云服务还没有关闭。
 ```
 if(LY_disconnect(fd) != 0)//这里的fd是调用函数LY_connect获取到的
