@@ -486,7 +486,7 @@ mLiveBroadcast.release();
 ```
 **注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
 
-###4. SDK使用说明
+###4. 使用SDK
 [Web API使用指南](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
 [SDK使用说明-C版](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_guide.md "C版SDK")
 [SDK使用说明-iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md "iOS版SDK")
