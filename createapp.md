@@ -2,6 +2,7 @@
 
 ## 1. 登录羚羊云管理平台
 使用已经注册过的羚羊云开发者账号进行登录到管理平台
+
 ![Alt text](./images/ly_user_create_app_0.png "登录羚羊云管理平台") 
 
 ## 2. 激活并认证账号信息
@@ -17,4 +18,5 @@
 
 ## 4. 创建App成功
 创建App成功后会出现该App的数据统计概况。
+
 ![Alt text](./images/ly_user_create_app_3.png "App数据统计概况") 
