@@ -17,12 +17,7 @@ import com.lingyang.basedemo.config.Const;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.cloud.LYService;
 
-/**
- * 文件名: MainActivity 描 述: 该类是整个程序的入口，程序中用到188和186两个特定账号配合所有功能的实现。
- * 188账号是互联中的主叫方，广播中的直播方。 186账号是互联中的被叫方，广播中的观看方。
- * 登陆两个账号中任意账号观看的摄像机直播和云存储都是188账号下绑定的摄像机。 用户可选择两个账号中任意账号账号进行登录 创建人: 廖蕾
- * 创建时间:2016/3
- */
+
 public class MainActivity extends AppBaseActivity {
 
 	private final int FACETIME_OF_CALLING_SIDE_OF_VALUE=01; //互联主叫方
@@ -98,10 +93,10 @@ public class MainActivity extends AppBaseActivity {
 									int which) {
 								if (which == 0) {
 									mType=FACETIME_OF_CALLING_SIDE_OF_VALUE;
-									 startCloudServiceWithFacetime(Const.FACETIME_CALLING_USERTOKEN);
+									 startCloudServiceWithFacetime(Const.FACETIME_LISTENER_USERTOKEN);
 								} else {
 									mType=FACETIME_OF_LISTENER_SIDE_OF_VALUE;
-									startCloudServiceWithFacetime(Const.FACETIME_LISTENER_USERTOKEN);
+									startCloudServiceWithFacetime(Const.FACETIME_CALLING_USERTOKEN);
 								}
 								dialog.cancel();
 							}
@@ -140,13 +135,13 @@ public class MainActivity extends AppBaseActivity {
 			case FACETIME_OF_CALLING_SIDE_OF_VALUE:
 				// 主叫方
 				 intent = new Intent(MainActivity.this,
-						FaceTimeCalledActivity.class);
+						FaceTimeCallActivity.class);
 				startActivity(intent);
 				break;
 			case FACETIME_OF_LISTENER_SIDE_OF_VALUE:
-				// 主叫方
+				// 被叫方
 				 intent = new Intent(MainActivity.this,
-						 FaceTimeCallActivity.class);
+						 FaceTimeCalledActivity.class);
 				startActivity(intent);
 				break;
 			case LIVE_BROADCAST_OF_VALUE:

@@ -10,11 +10,11 @@ import com.lingyang.basedemo.config.Constants;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.player.widget.LYPlayer;
-import com.lingyang.sdk.player.widget.LYPlayer.OnPlayProgressListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnPreparedListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnSeekCompleteListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnSnapshotListener;
-import com.lingyang.sdk.player.widget.LYPlayer.onClosedListener;
+import com.lingyang.sdk.player.widget.OnClosedListener;
+import com.lingyang.sdk.player.widget.OnPlayProgressListener;
+import com.lingyang.sdk.player.widget.OnPreparedListener;
+import com.lingyang.sdk.player.widget.OnSeekCompleteListener;
+import com.lingyang.sdk.player.widget.OnSnapshotListener;
 
 import android.os.Bundle;
 import android.view.View;
@@ -126,9 +126,15 @@ public class RecordPlayerActivity extends AppBaseActivity {
 		mPlayer.setOnSeekCompleteListener(new OnSeekCompleteListener() {
 			
 			@Override
-			public void onSeekComplete(int time) {
+			public void onSeekSuccess(int time) {
 				// TODO Auto-generated method stub
-				showToast("快进+"+time);
+				showToast("耗时：+"+time);
+			}
+
+			@Override
+			public void onSeekError(LYException exception) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 		
@@ -152,7 +158,7 @@ public class RecordPlayerActivity extends AppBaseActivity {
 		/**
 		 * 关闭播放器监听
 		 */
-		mPlayer.setOnClosedListener(new onClosedListener() {
+		mPlayer.setOnClosedListener(new OnClosedListener() {
 			
 			@Override
 			public void onClosed() {
@@ -168,13 +174,36 @@ public class RecordPlayerActivity extends AppBaseActivity {
 		});
 	}
 	
+	
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mPlayer.pauseToBackground();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		 super.onResume();
+		 mPlayer.resumeFromBackground();
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		if (mPlayer .isPlaying() ) {
+			mPlayer.stop();
+		}
+
+	}
+
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		if(mPlayer.isPlaying()){
-			mPlayer.stop();
-		}
+		
 		super.onDestroy();
 	}
-	
 }

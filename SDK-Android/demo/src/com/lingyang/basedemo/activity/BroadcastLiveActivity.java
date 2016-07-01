@@ -1,5 +1,6 @@
 package com.lingyang.basedemo.activity;
 
+import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.SurfaceView;
@@ -11,13 +12,14 @@ import com.lingyang.basedemo.R;
 import com.lingyang.basedemo.config.Const;
 import com.lingyang.basedemo.config.Constants;
 import com.lingyang.sdk.av.SessionConfig;
+import com.lingyang.sdk.broadcast.BroadcastListener;
 import com.lingyang.sdk.broadcast.ILiveBroadcast;
-import com.lingyang.sdk.broadcast.ILiveBroadcast.BroadcastListener;
 import com.lingyang.sdk.broadcast.LYLiveBroadcast;
 import com.lingyang.sdk.cloud.LYService;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.view.LYGLCameraEncoderView;
 import com.lingyang.sdk.view.LYGLCameraView;
+import com.lingyang.sdk.view.SurfaceFrameShape;
 
 public class BroadcastLiveActivity extends AppBaseActivity {
 
@@ -72,8 +74,6 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 		.useVideo(true)
 		.withAudioBitrate(16000)// 音频码率
 		.build();
-		//没有必须配置项，可直接使用默认值
-//		mSessionConfig=new SessionConfig();
 		mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 		init();
 	}
@@ -93,6 +93,11 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 		toggleCamera.setOnClickListener(mClickListener);
 		toggleFlash.setOnClickListener(mClickListener);
 		
+		//设置圆形预览框，默认四边形
+		mPreview.setShape(SurfaceFrameShape.CIRCLE);
+		//将预览view提到视图最上层，在圆形预览和三角形预览时必须调用此方法才能看到预览下层的视图
+		mPreview.setZOrderOnTop(true);
+		
 		//设置本地预览
 		mLiveBroadcast.setLocalPreview(mPreview);
 		
@@ -107,8 +112,7 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 						mHandler.obtainMessage(Constants.TaskState.SUCCESS).sendToTarget();
 						showToast("正在直播");
 						mStartBtn.setText("正在直播");
-						mStartBtn
-								.setBackgroundResource(R.color.colorLightOrange);
+						mStartBtn.setBackgroundResource(R.color.colorLightOrange);
 					}
 
 					@Override
@@ -133,24 +137,30 @@ public class BroadcastLiveActivity extends AppBaseActivity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		mLiveBroadcast.onHostActivityPaused();
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		mLiveBroadcast.onHostActivityResumed();
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		//结束直播
+		mLiveBroadcast.stopBroadcasting();
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		//结束直播
-		mLiveBroadcast.stopBroadcasting();
 		//资源释放
 		mLiveBroadcast.release();
 		
-		LYService.getInstance().stopCloudService();
-			
 	}
 }

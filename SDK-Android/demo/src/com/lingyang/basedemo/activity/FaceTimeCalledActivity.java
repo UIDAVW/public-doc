@@ -21,11 +21,12 @@ import com.lingyang.basedemo.config.Constants;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.CallBackListener;
 import com.lingyang.sdk.av.SessionConfig;
+import com.lingyang.sdk.cloud.AcceptMessageListener;
 import com.lingyang.sdk.cloud.LYService;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.facetime.LYFaceTime;
 import com.lingyang.sdk.player.widget.LYPlayer;
-import com.lingyang.sdk.player.widget.LYPlayer.OnSnapshotListener;
+import com.lingyang.sdk.player.widget.OnSnapshotListener;
 import com.lingyang.sdk.util.CLog;
 import com.lingyang.sdk.view.LYGLCameraEncoderView;
 
@@ -108,7 +109,7 @@ public class FaceTimeCalledActivity extends AppBaseActivity {
         mLYFaceTime.setRemoteView(null, playerview);
         
         LYService.getInstance().setCloudMessageListener(
-                new LYService.AcceptMessageListener() {
+                new AcceptMessageListener() {
                     @Override
                     public void accept(
                     		LYService.CloudMessage message) {
@@ -122,7 +123,7 @@ public class FaceTimeCalledActivity extends AppBaseActivity {
                                  }
                              });
                         	 
-                        	 //主叫方，断开连接，停止采集发送数据
+                        	 //断开连接，停止采集发送数据
                               mLYFaceTime.closeRemote(null);
                         }
                     }
@@ -252,7 +253,7 @@ public class FaceTimeCalledActivity extends AppBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.activity_face_time_calling);
+        setContentView(R.layout.activity_face_time_listener);
         initView();
         initData();
     }
