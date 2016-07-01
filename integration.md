@@ -28,61 +28,44 @@
 
 
 ##4. 相关术语和名词
-- **羚羊云用户**：调用羚羊云开发接口接入到羚羊云，开发并实现视频应用的开发者，并非最终的个人终端用户。文档将以“用户”作为简称。
-- **应用客户端**：用户开发的客户端应用程序，如手机app、PC桌面应用、嵌入在智能硬件设备中的应用程序等等。
-- **应用服务器**：用户开发的服务端应用程序，为客户端程序提供后台数据、后台业务处理等服务。
-- **设备**：接入到羚羊云的程序化设备，承载着用户开发的客户端应用程序，从视频流向的角度不同可分为推流设备和拉流设备。
-- **appid和appkey**：由羚羊云提供给用户的凭证，用户接入羚羊云平台时，平台会对id和key进行验证。
-- **cid**：每个客户端第一次接入到羚羊云平台之前，会由羚羊云分配一个id作为唯一的身份编号，羚羊云与客户端之间进行数据通信都只认这个id。
-- **token**：应用客户端调用羚羊云SDK接口需要携带的凭证，羚羊云平台需要验证其安全性。
-- **Web API**: 为开发者提供http接口，即开发者通过http形式发起数据请求，获取返回json或xml格式的数据。用户可以基于此开发JavaScript、C#、C++、Java、Objective-C等语言的应用。
+- **羚羊云用户**
+调用羚羊云开发接口接入到羚羊云，开发并实现视频应用的开发者，并非最终的个人终端用户。文档将以“用户”作为简称。
+
+- **设备**
+接入到羚羊云的程序化设备，承载着用户开发的客户端应用程序，从视频流向的角度不同可分为推流设备和拉流设备。
+
+- **应用**
+羚羊云用户调用开发接口，利用羚羊云提供的视频服务而开发的应用软件。
+
+- **应用客户端**
+用户开发的客户端应用程序，如手机app、PC桌面应用、嵌入在智能硬件设备中的应用程序等等。
+
+- **应用服务器**
+用户开发的服务端应用程序，为客户端程序提供后台数据、后台业务处理等服务。
+
+- **appid和appkey**
+由羚羊云提供给用户的凭证，用户接入羚羊云平台时，平台会对id和key进行验证。
 
 ##5. 羚羊云服务架构
 ![Alt text](./images/struct.png "羚羊云服务架构") 
 
-##6. 快速接入羚羊云
-###6.1 接入对象
-所有需要使用羚羊云视频相关应用服务的用户，即羚羊云的接入对象。一般来讲，用户自己的应用通常包含客户端和服务器。
+##5. 集成羚羊云SDK(四步)
 
-- `应用客户端`
-无论是手机、平板电脑等这些视频展示端，还是家庭摄像机、行车记录仪等这类的视频采集端，对于羚羊云来说，这些设备都是客户端，并不区分类别。
+###5.1 成为羚羊云的开发者
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[注册羚羊云开发者账号](http://console.topvdn.com/register)
 
-- `应用服务器`
-用来管理用户自己所属的设备信息、查询设备的状态、配置设备的参数等。
+###5.2 拥有自己的应用
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[创建自己的应用](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)
 
-###6.2 接入凭证
-这些设备想要接入羚羊云，首先必须获得app id和app key。进入[羚羊云用户管理平台](http://console.topvdn.com/)可申请app id和app key。
+###5.3 快速接入
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[将应用接入到羚羊云](http://doc.topvdn.com/api/index.html#!public-doc/joinup.md)
 
-###6.3 认证机制
-用户在接入到羚羊云平台时，无论是用户的服务器还是客户端，都必须通过平台的安全认证，才能使用接口以实现应用。服务器和客户端有着不同的认证机制，如下图所示：
+###5.4 集成示例
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[不同应用场景下的集成SDK示例](http://doc.topvdn.com/api/index.html#!public-doc/integ_case.md)
 
-![Alt text](./images/verify.png "羚羊云认证机制")
+##6. 使用羚羊云SDK
 
-
-- 应用服务器认证
-应用服务器直接携带app id和app key，通过调用羚羊云提供的Web API向羚羊云平台发送http请求，云平台会对id和key进行验证，验证通过将会返回该API对应的结果。
-
-- 应用客户端认证
-(1)应用服务器根据拿到的app key，按照羚羊云的token生成算法规则，计算得出一个token；token的计算方法可参见本文下一章节的[羚羊云平台token验证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)。
-(2)应用客户端向他们的应用服务器获取token，凭着这个token，才能成功调用羚羊云客户端SDK或Web API实现功能。
-
-###6.4 用户接入
-- 应用服务器接入
-携带appid和appkey，调用羚羊云Web API向云平台发送http请求，返回调用结果，即完成接入。
-
-- 应用客户端接入
-客户端的接入过程就相对复杂一些，需要应用服务器的参与，如下图所示：
-
-![Alt text](./images/flow.png "应用客户端接入羚羊云的流程")
-
-**注**：
-上述接入流程中的`查询设备id段`需调用[Web-API的'查询设备id段'](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)接口；
-`登录云平台`需要调用SDK的开启云服务接口。[iOS调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
-
-##7. 使用羚羊云SDK
-按照上面介绍的方法和步骤接入到羚羊云平台之后，就可以开始调用SDK接口实现视频应用的功能了。以下是每种SDK的调用方法。
-
-[Web API](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
+[Web API使用说明](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
 
 [SDK使用说明-C版](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_guide.md "C版SDK")
 [SDK使用说明-iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md "iOS版SDK")
@@ -99,7 +82,7 @@
 [Demo-Android版](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip)
 [Demo-Windows版](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip)
 
-##8. 常见问题
+##7. 常见问题
 
 1. 什么是`appid`？怎么获取`appid`？
 答：`appid`是第三方友商和羚羊云建立合作关系后，由羚羊云分配的唯一标识第三方友商的4字节长度的字符串。第三方友商使用羚羊云SDK必须有appid才能正常使用。

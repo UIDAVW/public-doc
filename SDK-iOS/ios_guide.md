@@ -320,7 +320,7 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ####5.6.5 建立连接
 发起视频通话的一方不需要调用建立连接接口，5.6.4步骤完成即可；以下连接步骤针对于收到连接地址的一方
-**注意**：连接地址第三方后台透传或者推送得打。
+**注意**：连接地址第三方后台透传或者推送得到。
 
 ```
 [mFaceTime open: mFaceTimeAddress openStatus:^(LYstatusCode statusCode, NSString *errorString) {
