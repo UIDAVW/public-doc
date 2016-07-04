@@ -461,8 +461,7 @@ void onHostActivityResumed();
 | - | - |
 |-------|----|
 | 接口名 | onHostActivityResumed |
-| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音
-         若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集 |
+| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音。若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集 |
 | 返回值 | 无 |
 
 ###4.15 获取摄像机列表
