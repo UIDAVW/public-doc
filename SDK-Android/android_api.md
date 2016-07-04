@@ -638,7 +638,7 @@ public void startVideoRecording();
 ```
 | - | - |
 |-------|----|
-| 接口名 | stopVideoRecording |
+| 接口名 | startVideoRecording |
 | 功能 | 互联中重新开始视频数据发送 |
 | 返回值 | 无 |
 
@@ -711,8 +711,7 @@ void onHostActivityPaused();
 | - | - |
 |-------|----|
 | 接口名 | onHostActivityPaused |
-| 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。
-	    若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
+| 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
 | 返回值 | 无 |
 
 ###5.14 从后台恢复播放
@@ -722,8 +721,7 @@ void onHostActivityResumed();
 | - | - |
 |-------|----|
 | 接口名 | onHostActivityResumed |
-| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音
-         若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集 |
+| 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音,若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集. |
 | 返回值 | 无 |
 
 ###5.15 动态设置码率
