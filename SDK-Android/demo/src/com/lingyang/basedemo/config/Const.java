@@ -2,6 +2,7 @@ package com.lingyang.basedemo.config;
 
 
 public class Const {
+	
 	public static final String USERTOKEN_FIRST = "2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f";
     public static final String USERTOKEN_SECOND = "2147550102_3356753920_1685865787_03373899bf20c3d64b1b34a656792b70";
     public static final String CONFIG  =  "[Config]\r\nIsDebug=1\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nIsSendBroadcast=0\r\nUdpSendInterval=2" +
@@ -34,7 +35,8 @@ public class Const {
      * 播放器
      */
     //公众摄像机直播观看地址（私有带云存储也是该格式） 格式暂定  rtmp6.public.topvdn.cn:1935是转发服务器地址
-    public static final String CAMERA_PLAYER_URL = "topvdn://rtmp6.public.topvdn.cn:1935?token=1003176&protocolType=2&connectType=2";
+    public static final String CAMERA_PLAYER_URL = "rtmp://rtmp6.public.topvdn.cn/live/1003176_3356491776_1465286522_b31e8a48097732dc528053e7280ad711";
+//    public static final String CAMERA_PLAYER_URL = "topvdn://rtmp6.public.topvdn.cn:1935?token=1003176&protocolType=2&connectType=2";
     
     //私有不带云存储摄像机直播观看地址 token是摄像头token  203.195.157.248:80调度服务器地址
     public static final String PRIVATE_CAMERA_PLAYER_URL = "topvdn://203.195.157.248:80?token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb&"+

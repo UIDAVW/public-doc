@@ -128,25 +128,21 @@ libs<br>
     /**
      * 开启云服务
      */
-    public void startCloudServiceWithFacetime(String userToken) {
         LYService.getInstance().startCloudService(
         	userToken
-            , Const.CONFIG
+            , CONFIG
             , new CallBackListener<Long>() {
                 @Override
                 public void onSuccess(Long aLong) {
-                        CLog.v("long-" + aLong);
                         showToast("登录成功" );
                 }
                 
                 @Override
                 public void onError(LYException exception) {
-                    CLog.v("exception-" + exception.toString());
                     showToast("登录失败"+exception.getMessage());
                 }
             }
         );
-    }
 
 **注意**：其他接口必须在此接口被调用成功之后才能调用。
 
@@ -166,7 +162,7 @@ libs<br>
     /**
      * 设置云消息监听
      */
-    LYService.getInstance().setCloudMessageCallbackListener (
+    LYService.getInstance().setCloudMessageListener (
         new LYService.AcceptMessageListener() {
             @Override
             public void accept (LYService.CloudMessage message) {
@@ -189,7 +185,7 @@ libs<br>
 //音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
 mSessionConfig = new SessionConfig.Builder()
 	.withVideoBitrate(512000)//码率
-	.withVideoResolution(480, 640)//分辨率  默认480p
+	.withVideoResolution(640, 480)//分辨率  
     .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
 	.withCameraDisplayOrientation(90)//旋转角度
 	.withAudioChannels(1)//声道 1单声道  2双声道
@@ -212,7 +208,7 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 
 LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_preview);
 ```
-我们对surfaceview封装了的自定义View，用来预览本地采集的图像。
+我们对glsurfaceview封装了的自定义View，用来预览本地采集的图像。
 
 ####5.4.3 设置本地预览视图
 ```
@@ -241,12 +237,9 @@ mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 ```
 ####5.4.4 开始推流直播
 ```
-// 开始直播
-//IBroadcastOpenAPI.MODE_LIVE  :直播
-//IBroadcastOpenAPI.MODE_LIVE_AND_RECORD   :录像直播
-			
-mLiveBroadcast.startBroadcasting(ILiveBroadcast.MODE_LIVE,
-	"3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1");
+// 开始直播		
+mLiveBroadcast.startBroadcasting("opvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
+    		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f");
 ```
 
 ####5.4.5 结束推流直播
@@ -317,7 +310,7 @@ mPlayer.setOnPreparedListener(new OnPreparedListener() {
     }
 });
 ```
-OnPreparedListener被触发则表示连接至云服务器已经成功，在回调函数中，可以在播放控件界面上显示连接状态的变化。
+OnPreparedListener被触发则表示连接至云服务器已经成功且播放器已经成功打开，在回调函数中，可以在播放控件界面上显示连接状态的变化。
 
 ####5.5.4 开始播放
 ```
@@ -402,7 +395,7 @@ mPlayer.getMediaParam(IMediaParamProtocol.STREAM_MEDIA_PARAM_VIDEO_RATE);
 //音视频和摄像机的初始化配置，用户可根据实际需要进行配置。
 mSessionConfig = new SessionConfig.Builder()
 	.withVideoBitrate(512000)//码率
-	.withVideoResolution(480, 640)//分辨率  默认720p
+	.withVideoResolution(640, 480)//分辨率  默认720p
     .withDesireadCamera(Camera.CameraInfo.CAMERA_FACING_BACK)//摄像头类型
 	.withCameraDisplayOrientation(90)//旋转角度
 	.withAudioChannels(1)//声道 1单声道  2双声道
@@ -412,8 +405,6 @@ mSessionConfig = new SessionConfig.Builder()
     .useVideo(true)//是否开启视频
 	.build();
 
-//没有必须配置项，可直接使用默认值
-mLiveBroadcast = new LYLiveBroadcast(this, mSessionConfig);
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
 **注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#1.3_SessionConfig%E9%85%8D%E7%BD%AE%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E5%8F%82%E6%95%B0 "Android API")中的数据类型-直播推流相关属性配置。
@@ -447,10 +438,10 @@ mLYFaceTime.setRemoteView(null, playerview);
 
 ```
 /**
- * 主动连接方
- * 从消息透传通道收到对方的连接串主动发起连接，连接成功自动推流
+ * 被叫方：
+ * 从消息透传通道收到对方发送过来的的连接串主动发起连接，连接成功自动推流
  */
-mLYFaceTime.openRemote(FACETIME_URL159,
+mLYFaceTime.openRemote("topvdn://203.195.157.248:80?token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f&protocolType=1",
     new CallBackListener<Integer>() {
         @Override
     public void onSuccess(Integer t) {
@@ -462,7 +453,7 @@ mLYFaceTime.openRemote(FACETIME_URL159,
 ```
 ```
 /**
- * 被连接方
+ * 主叫方：用户需要接入羚羊后台实现消息透传功能，将连接串发给被叫方。
  * 设置连接监听和互联监听
  */
 LYService.getInstance().setCloudMessageListener(
@@ -471,8 +462,12 @@ LYService.getInstance().setCloudMessageListener(
             public void accept(
             LYService.CloudMessage message) {
             if (message.Name.equals("ConnectionAcceptted")) {
-                //接受对方连接成功
-                        } });
+                //对方收到连接串并连接成功
+                        } 
+            if (message.Name.equals("ConnectionClosed")) {      	 
+                //对方已挂断，己方也需断开连接
+               mLYFaceTime.closeRemote(null);
+                                }});
                         
 mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
@@ -491,6 +486,7 @@ mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
 ```
 mLYFaceTime.closeRemote(null);
+mLYFaceTime.release();
 ```
 
 ##六、注意事项
@@ -518,6 +514,13 @@ mLYFaceTime.closeRemote(null);
 答：QSTP全称quick streaming tcp  protocol，QSUP全称quick streaming udp protocol，是羚羊云针对网络音视频媒体流自主研发的流媒体传协议，具有充分利用节点带宽资源达到高效快速传输的特点。
 
 ##八、更新历史
+V2.0.1 SDK更新日期 2016.7.1
+(1)添加预览View形状设置
+
+(2)修复播放器相关bug
+
+(3）优化代码结构
+
 
 V2.0.0 SDK更新日期 2016.6.2
 

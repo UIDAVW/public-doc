@@ -10,12 +10,13 @@ import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.player.IMediaParamProtocol;
 import com.lingyang.sdk.player.widget.LYPlayer;
-import com.lingyang.sdk.player.widget.LYPlayer.OnErrorListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnLocalRecordListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnPreparedListener;
-import com.lingyang.sdk.player.widget.LYPlayer.OnSnapshotListener;
-import com.lingyang.sdk.player.widget.LYPlayer.onClosedListener;
+import com.lingyang.sdk.player.widget.OnClosedListener;
+import com.lingyang.sdk.player.widget.OnErrorListener;
+import com.lingyang.sdk.player.widget.OnLocalRecordListener;
+import com.lingyang.sdk.player.widget.OnPreparedListener;
+import com.lingyang.sdk.player.widget.OnSnapshotListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -223,7 +224,7 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 		/**
 		 * 关闭播放器监听
 		 */
-		mPlayer.setOnClosedListener(new onClosedListener() {
+		mPlayer.setOnClosedListener(new OnClosedListener() {
 			
 			@Override
 			public void onClosed() {
@@ -273,21 +274,29 @@ OnLocalRecordListener mLocalRecordListener = new OnLocalRecordListener() {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		mPlayer.pauseToBackground();
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		 super.onResume();
+		 mPlayer.resumeFromBackground();
+	}
+	
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		if (mPlayer .isPlaying() ) {
+			mPlayer.stop();
+		}
+
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		
-		if (mPlayer .isPlaying() ) {
-			mPlayer.stop();
-		}
 		
 		super.onDestroy();
 	}

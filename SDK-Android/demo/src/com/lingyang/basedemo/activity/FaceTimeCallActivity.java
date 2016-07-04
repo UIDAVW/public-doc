@@ -19,12 +19,13 @@ import com.lingyang.basedemo.config.Const;
 import com.lingyang.basedemo.config.Utils;
 import com.lingyang.sdk.CallBackListener;
 import com.lingyang.sdk.av.SessionConfig;
+import com.lingyang.sdk.cloud.AcceptMessageListener;
 import com.lingyang.sdk.cloud.LYService;
 import com.lingyang.sdk.exception.LYException;
 import com.lingyang.sdk.facetime.IFaceTime;
 import com.lingyang.sdk.facetime.LYFaceTime;
 import com.lingyang.sdk.player.widget.LYPlayer;
-import com.lingyang.sdk.player.widget.LYPlayer.OnSnapshotListener;
+import com.lingyang.sdk.player.widget.OnSnapshotListener;
 import com.lingyang.sdk.util.CLog;
 import com.lingyang.sdk.view.LYGLCameraEncoderView;
 
@@ -57,7 +58,8 @@ public class FaceTimeCallActivity extends AppBaseActivity {
         camera_preview = (LYGLCameraEncoderView) findViewById(R.id.ly_preview);
         playerview = (LYPlayer) findViewById(R.id.ly_player);
         Button btn_start = (Button) findViewById(R.id.btn_start);
-        btn_start.setVisibility(View.GONE);
+        btn_start.setBackgroundResource(R.color.colorLightOrange);
+        btn_start.setEnabled(false);
         btn_end = (Button) findViewById(R.id.btn_end);
         Button btn_toogle_camera = (Button) findViewById(R.id.btn_toogle_camera);
         Button btn_toogle_flash = (Button) findViewById(R.id.btn_toogle_flash);
@@ -74,7 +76,6 @@ public class FaceTimeCallActivity extends AppBaseActivity {
         toggle_input_stream.setEnabled(false);
         
         findViewById(R.id.back).setOnClickListener(mClickListener);
-        btn_start.setOnClickListener(mClickListener);
         btn_end.setOnClickListener(mClickListener);
         btn_toogle_camera.setOnClickListener(mClickListener);
         btn_toogle_flash.setOnClickListener(mClickListener);
@@ -132,7 +133,7 @@ public class FaceTimeCallActivity extends AppBaseActivity {
         // 收到消息透传通道ConnectionAcceptted消息，表示对方已建立连接,可以进行推流和观看对方视频等操作;
         //                ConnectionClosed消息表示对方已挂断，连接已断开，可进行关闭退出或重置重连等操作;
         LYService.getInstance().setCloudMessageListener(
-                        new LYService.AcceptMessageListener() {
+                        new AcceptMessageListener() {
                             @Override
                             public void accept(
                             		LYService.CloudMessage message) {
@@ -155,7 +156,7 @@ public class FaceTimeCallActivity extends AppBaseActivity {
                                          }
                                      });
                                 	 
-                                	 //主叫方，断开连接，停止采集发送数据
+                                	 //断开连接，停止采集发送数据
                                       mLYFaceTime.closeRemote(null);
                                 }
                             }
@@ -210,9 +211,6 @@ public class FaceTimeCallActivity extends AppBaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-            	case R.id.btn_start:
-            		showToast("被叫方无需连接，只有主叫方才能主动连接");
-            		break;
             	case R.id.back:
             		finish();
             		break;
