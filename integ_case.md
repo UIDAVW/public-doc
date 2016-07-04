@@ -1,5 +1,7 @@
 #羚羊云SDK集成示例
 
+本文介绍在不同的应用场景下，推流端和播放端两端设备的SDK集成示例。
+
 ##1 视频通话
 以下展示iOS设备之间视频通话的例子，Android设备之间的视频通话流程与之一样，具体使用方法请参见[这里](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md "Anroid版SDK")。
 
@@ -383,7 +385,7 @@ mPlayer.stop();
 ![Alt text](./images/flow-livephone.png "手机直播应用场景下SDK的调用流程") 
 
 ###3.1 推流端
-以Android手机推流为例。需要调用羚羊云Android版SDK接口来直播推流功能。
+以Android手机推流为例。需要调用羚羊云Android版SDK接口来实现直播推流的功能。
 
 ####3.1.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
@@ -485,6 +487,52 @@ mLiveBroadcast.stopBroadcasting();
 mLiveBroadcast.release();
 ```
 **注意**：在调用stopBroadcasting 之后，必须调用release以释放系统资源。
+
+###3.2 播放端
+以iOS手机拉流播放为例。需要调用羚羊云iOS版SDK接口来完成播放功能。
+
+####3.2.1 创建播放器类
+```
+LYPlayer *m_player = [[LYPlayer alloc] init];
+```
+
+####3.2.2 创建播放配置
+```
+LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:playview
+                                                                                  frame:CGRectMake(0, 0, 640  , 480)
+                                                                             decodeMode:LYPlayerDecodeModeHard];
+```
+
+####3.2.3 设置播放配置
+```
+[m_player setViewWithConfiguration:m_playerConfig];
+```
+
+####3.2.4 打开播放器
+```
+[m_player open: @"topvdn://203.195.157.248:80?protocolType=1&token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb"
+    openStatus: ^(LYstatusCode statusCode, NSString *errorString) {
+        //打开播放器的状态回调
+    }
+  playerStatus: ^(NSDictionary *playerMessageDic) {
+        //播放过程中的状态回调
+    }
+];
+
+```
+播放地址由应用向应用后台获取。
+应用后台生成播放源url的方法和步骤如下：
+
+(1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取羚羊云的tracker ip/port或者relay ip/port；
+
+(2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
+
+(3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
+
+####3.2.5 关闭播放器
+```
+[m_player close];
+```
 
 ###4. 使用SDK
 [Web API使用指南](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2.md "Web API")
