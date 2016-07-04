@@ -55,8 +55,8 @@ int startCloudService(const std::string & token, const std::string & config, con
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|token|std::string|in|必须|设备token，由第三方后台生成。|
-|config|std::string|in|必须|配置串，从第三方后台获取。|
+|token|std::string|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
+|config|std::string|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
 |handlePlatformMsgCallBack|antelopecloud::PlatformMsgCallBack|in|必须|启动结果监听回调，返回成功或失败|
 **注意**：
 
