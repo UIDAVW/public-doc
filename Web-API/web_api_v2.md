@@ -93,7 +93,7 @@
 ## 2 接口列表
 接口功能
 
-![Alt text](./images/usercase-web.png "羚羊云Web API功能")
+![Alt text](./usercase-web.png "羚羊云Web API功能")
 ## 2.1 设备
 
 本节包含设备相关的接口，支持查询设备状态和 APP 的设备 ID 段信息。
