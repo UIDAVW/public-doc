@@ -238,7 +238,7 @@ mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 ####5.4.4 开始推流直播
 ```
 // 开始直播		
-mLiveBroadcast.startBroadcasting("opvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
+mLiveBroadcast.startBroadcasting("topvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
     		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f");
 ```
 
