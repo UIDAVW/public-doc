@@ -77,29 +77,29 @@ token明文段包含以下字段：
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C语言示例代码如下：
 ```
-unsigned int cid = 537067556;
-unsigned int control = 3222536192;
-unsigned int expire = 1493481600;
-unsigned char src[12];
-char token[100];
-memcpy(src, &cid, 4);
-memcpy(src+4, &control, 4);
-memcpy(src+8, &expire, 4);
-char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
-unsigned char digest[16];
+    unsigned int cid = 537067556;
+    unsigned int control = 3222536192;
+    unsigned int expire = 1493481600;
+    unsigned char src[12];
+    char token[100];
+    memcpy(src, &cid, 4);
+    memcpy(src+4, &control, 4);
+    memcpy(src+8, &expire, 4);
+    char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
+    unsigned char digest[16];
 
-int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
-if(ret != 0)
-{
-    return -1;
-}
+    int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
+    if(ret != 0)
+    {
+        return -1;
+    }
 
-snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x, cid, control, expire, digest[0] , digest[1] , digest[2] , digest[3] , digest[4] , digest[5] , digest[6] , digest[7] , digest[8] , digest[9] , digest[10] , digest[11] , digest[12] , digest[13] , digest[14] , digest[15]”);
+    snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x, cid, control, expire, digest[0] , digest[1] , digest[2] , digest[3] , digest[4] , digest[5] , digest[6] , digest[7] , digest[8] , digest[9] , digest[10] , digest[11] , digest[12] , digest[13] , digest[14] , digest[15]”);
 
-return 0;
+    return 0;
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP示例代码如下：
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```
+```
 <?php 
     function generate_ly_token($app_key, $cid, $control, $expire) {
     	$data = pack("I", $cid).pack("I", $control).pack("I", $expire);
