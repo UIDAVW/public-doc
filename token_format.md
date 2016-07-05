@@ -99,7 +99,7 @@ snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%
 return 0;
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP示例代码如下：
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```
 <?php 
     function generate_ly_token($app_key, $cid, $control, $expire) {
     	$data = pack("I", $cid).pack("I", $control).pack("I", $expire);
