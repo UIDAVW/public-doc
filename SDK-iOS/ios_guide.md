@@ -139,27 +139,86 @@ popMessageBlock:^(NSDictionary *dictionary) {
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
 推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2.md)“设备推送消息”。
 
-##5.4 &nbsp;播放器
+##5.4 &nbsp;直播推流
+![Alt text](./../images/flow_push.png "直播推流接口调用流程")
+
+`注`：直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#3.3_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD)。
+ 
+####5.4.1 设置流参数
+
+```
+//该方法生成一个默认的视频采集配置
+videoSize = (640, 480);
+frameRate = 30fps, bitrate = 512kbps;
+LYVideoStreamingConfiguration *mVideoConfig = [LYVideoStreamingConfiguration defaultConfiguration];
+    
+//该方法生成一个默认的音频采集配置。
+sampleRate = 11025, channle = 1, birrate = 128kpbs;
+LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
+```
+Configuration类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-直播推流相关属性配置。
+
+####5.4.2 初始化直播类
+```
+//初始化直播类:如果不采集音频，则audioConfiguration传nil即可
+LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
+```
+
+####5.4.3 设置本地预览视图
+```
+//设置采集视频预览view
+[mLiving setPreview:self.preview frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+```
+
+####5.4.4 开始直播
+```
+//直播资源的准备，返回 statusCode == LYstatusCodeSuccess 才可以推流
+[mLiving startLiveBroadcast:LYLiveBroadcastModeLiving token:mLiveAddress startBlock:^(LYstatusCode statusCode, NSString *errorString) {
+    if (LYstatusCodeSuccess == statusCode) {
+        //直播资源准备完成，可以开始推流；
+    }
+}];
+```
+
+####5.4.5 开始推流直播
+```
+[mLiving startSendVideoData];
+[mLiving startSendAudioData];
+```
+**注意**：直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放
+
+####5.4.6 结束推流直播
+```
+[mLiving stopLiveBroadcast];
+```
+
+####5.4.7 释放资源
+```
+[mLiving destroy];
+```
+
+##5.5 &nbsp;播放器
 ![Alt text](./../images/flow_player.png "播放器接口调用流程")
  
-####5.4.1 创建播放器类
+####5.5.1 创建播放器类
 ```
 LYPlayer *m_player = [[LYPlayer alloc] init];
 ```
 
-####5.4.2 创建播放配置
+####5.5.2 创建播放配置
 ```
 LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:playview
                                                                                   frame:CGRectMake(0, 0, 640  , 480)
                                                                              decodeMode:LYPlayerDecodeModeHard];
 ```
 
-####5.4.3 设置播放配置
+####5.5.3 设置播放配置
 ```
 [m_player setViewWithConfiguration:m_playerConfig];
 ```
 
-####5.4.4 打开播放器
+####5.5.4 打开播放器
 ```
 [m_player open: @"topvdn://203.195.157.248:80?protocolType=1&token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb"
     openStatus: ^(LYstatusCode statusCode, NSString *errorString) {
@@ -180,12 +239,12 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 
 (3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
-####5.4.5 关闭播放器
+####5.5.5 关闭播放器
 ```
 [m_player close];
 ```
 
-####5.4.6 播放控制
+####5.5.6 播放控制
 #####视频截图
 ```
 [m_player snapshot: m_path
@@ -223,64 +282,6 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 [m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```
 
-##5.5 &nbsp;直播推流
-![Alt text](./../images/flow_push.png "直播推流接口调用流程")
-
-`注`：直播推流支持云存储功能：在推流的过程中将音视频流存储在羚羊云，以供用户回放录像。 具体方法参照[推流API](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#3.3_%E5%BC%80%E5%A7%8B%E7%9B%B4%E6%92%AD)。
- 
-####5.5.1 设置流参数
-
-```
-//该方法生成一个默认的视频采集配置
-videoSize = (640, 480);
-frameRate = 30fps, bitrate = 512kbps;
-LYVideoStreamingConfiguration *mVideoConfig = [LYVideoStreamingConfiguration defaultConfiguration];
-    
-//该方法生成一个默认的音频采集配置。
-sampleRate = 11025, channle = 1, birrate = 128kpbs;
-LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration defaultConfiguration];
-```
-Configuration类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-直播推流相关属性配置。
-
-####5.5.2 初始化直播类
-```
-//初始化直播类:如果不采集音频，则audioConfiguration传nil即可
-LYLiveBroadcast *mLiving = [[LYLiveBroadcast alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
-```
-
-####5.5.3 设置本地预览视图
-```
-//设置采集视频预览view
-[mLiving setPreview:self.preview frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-```
-
-####5.5.4 开始直播
-```
-//直播资源的准备，返回 statusCode == LYstatusCodeSuccess 才可以推流
-[mLiving startLiveBroadcast:LYLiveBroadcastModeLiving token:mLiveAddress startBlock:^(LYstatusCode statusCode, NSString *errorString) {
-    if (LYstatusCodeSuccess == statusCode) {
-        //直播资源准备完成，可以开始推流；
-    }
-}];
-```
-
-####5.5.5 开始推流直播
-```
-[mLiving startSendVideoData];
-[mLiving startSendAudioData];
-```
-**注意**：直播推流暂不支持单独推音频流，开始推流的时候一定要音视频流一起开启，否则播放端拉不到视频流无法播放
-
-####5.5.6 结束推流直播
-```
-[mLiving stopLiveBroadcast];
-```
-
-####5.5.7 释放资源
-```
-[mLiving destroy];
-```
 ##5.6 &nbsp;视频通话
 ![Alt text](./../images/flow_facetime.png "视频通话接口调用流程")
  

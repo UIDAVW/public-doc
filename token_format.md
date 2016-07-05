@@ -75,9 +75,8 @@ token明文段包含以下字段：
 - `生成的验证码`：16进制32个字符的字符串。
 - `验证码生成的示例代码`：
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C语言示例代码如下：
 ```
-    //C语言代码，并不完整，仅作为示例以供参考
-
     unsigned int cid = 537067556;
 	unsigned int control = 3222536192;
 	unsigned int expire = 1493481600;
@@ -98,6 +97,14 @@ token明文段包含以下字段：
 	snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x, cid, control, expire, digest[0] , digest[1] , digest[2] , digest[3] , digest[4] , digest[5] , digest[6] , digest[7] , digest[8] , digest[9] , digest[10] , digest[11] , digest[12] , digest[13] , digest[14] , digest[15]”);
 
 	return 0;
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP示例代码如下：
+```
+    <?php 
+        $data = pack("I",6539).pack("I",3356753920).pack("I",1480909478); 
+        $secret = "abcdefghijklmnopqrstuvwxyz123456"; 
+        echo hash_hmac('md5', $data, $secret); 
+    ?>
 ```
 
 ##6 羚羊云token类型
