@@ -379,6 +379,10 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.12 sdk更新日期20160705 11：35
+更新说明：1、解决直播进入后台崩溃；
+
 2.0.11 sdk更新日期20160701 17：00
 更新说明：1、增加视频监控支持IPV6；
         2、解决摄像头切换分辨率花屏的问题；
