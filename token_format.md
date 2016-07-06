@@ -78,33 +78,181 @@ token明文段包含以下字段：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C语言示例代码如下：
 ```
     unsigned int cid = 537067556;
-	unsigned int control = 3222536192;
-	unsigned int expire = 1493481600;
-	unsigned char src[12];
-	char token[100];
-	memcpy(src, &cid, 4);
-	memcpy(src+4, &control, 4);
-	memcpy(src+8, &expire, 4);
+    unsigned int control = 3222536192;
+    unsigned int expire = 1493481600;
+    unsigned char src[12];
+    char token[100];
+    memcpy(src, &cid, 4);
+    memcpy(src+4, &control, 4);
+    memcpy(src+8, &expire, 4);
     char key[50] = "abcdefghijklmnopqrstuvwxyz123456";
-	unsigned char digest[16];
+    unsigned char digest[16];
 
-	int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
-	if(ret != 0)
-	{
-		return -1;
-	}
+    int ret = hmac_md5((unsigned char*)key,strlen(key),src,12,digest);
+    if(ret != 0)
+    {
+        return -1;
+    }
 
-	snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x, cid, control, expire, digest[0] , digest[1] , digest[2] , digest[3] , digest[4] , digest[5] , digest[6] , digest[7] , digest[8] , digest[9] , digest[10] , digest[11] , digest[12] , digest[13] , digest[14] , digest[15]”);
+    snprintf(token, sizeof(token), “%u_%u_%u_%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x%.2x, cid, control, expire, digest[0] , digest[1] , digest[2] , digest[3] , digest[4] , digest[5] , digest[6] , digest[7] , digest[8] , digest[9] , digest[10] , digest[11] , digest[12] , digest[13] , digest[14] , digest[15]”);
 
-	return 0;
+    return 0;
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHP示例代码如下：
 ```
-    <?php 
-        $data = pack("I",6539).pack("I",3356753920).pack("I",1480909478); 
-        $secret = "abcdefghijklmnopqrstuvwxyz123456"; 
-        echo hash_hmac('md5', $data, $secret); 
-    ?>
+<?php 
+    function generate_ly_token($app_key, $cid, $control, $expire) {
+    	$data = pack("I", $cid).pack("I", $control).pack("I", $expire);
+    	$hash_val = hash_hmac("md5", $data, $app_key);
+    	return $cid."_".$control."_".$expire."_".$hash_val;
+    }
+    
+    /*Sample data.*/
+    $app_key = "d57559a82027b7d846318a0c1596d645";
+    $cid = 10000;
+    $control = 3222274048;
+    $expire = 1475031947;
+    
+    /*Should be 10000_3222274048_1475031947_f124654ced4d5b30dad739caac64f424 */
+    echo generate_ly_token($app_key, $cid, $control, $expire);
+?>
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java示例代码如下：
+```
+import java.nio.ByteOrder;
+import java.nio.ByteBuffer;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+
+class Main {
+
+  public static String generateLYToken(String appKey, Integer cid, Integer control, Integer expire) {
+      byte[] data = getTokenPartsBytes(cid, control, expire);
+      String hash_val = hmac_md5(appKey, data);
+      return String.format(
+        "%d_%d_%d_%s", Integer.toUnsignedLong(cid.intValue()),
+        Integer.toUnsignedLong(control.intValue()),
+        Integer.toUnsignedLong(expire.intValue()), hash_val);
+  }
+
+  public static byte[] getTokenPartsBytes(Integer cid, Integer control, Integer expire) {
+      ByteBuffer buf = ByteBuffer.allocate(12);
+      buf.order(ByteOrder.LITTLE_ENDIAN);
+      buf.putInt(cid.intValue());
+      buf.putInt(control.intValue());
+      buf.putInt(expire.intValue());
+      return buf.array();
+  }
+  
+  public static String hmac_md5(String appKey, byte[] data) {
+    String algorithm = "HmacMD5";
+    Mac mac = null;
+    
+    try {
+        SecretKeySpec key = new SecretKeySpec((appKey).getBytes("UTF-8"), algorithm);
+        mac = Mac.getInstance(algorithm);
+        mac.init(key);
+    } catch (UnsupportedEncodingException e) {
+      System.out.println(e);
+    } catch (InvalidKeyException e) {
+      System.out.println(e);
+    } catch (NoSuchAlgorithmException e) {
+      System.out.println(e);
+    }
+
+    byte[] bytes = mac.doFinal(data);
+    StringBuffer hash = new StringBuffer();
+    for (int i = 0; i < bytes.length; i++) {
+        String hex = Integer.toHexString(0xFF & bytes[i]);
+        if (hex.length() == 1) {
+           hash.append('0');
+        }
+        hash.append(hex);
+    }
+    return hash.toString();
+  }
+
+  public static void main(String[] args) {
+    String appKey = "d57559a82027b7d846318a0c1596d645";
+    Integer cid = Integer.parseUnsignedInt("10000");
+    Integer control = Integer.parseUnsignedInt("3222274048");
+    Integer expire = Integer.parseUnsignedInt("1475031947");
+
+    // Should be 10000_3222274048_1475031947_f124654ced4d5b30dad739caac64f424
+    System.out.println(generateLYToken(appKey, cid, control, expire));
+  }
+}
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python示例代码如下：
+```
+import hmac
+import struct
+import functools
+from hashlib import md5
+
+pack_unsigned_int = functools.partial(struct.pack, 'I')
+
+def generate_ly_token(app_key, cid, control, expire):
+    parts = [cid, control, expire]
+    data = ''.join(map(pack_unsigned_int, parts))
+    hash_val = hmac.new(app_key, data, md5).hexdigest()
+    return '_'.join(map(str, parts)+[hash_val])
+
+if __name__ == '__main__':
+    app_key = 'd57559a82027b7d846318a0c1596d645'
+    cid = 10000
+    control = 3222274048
+    expire = 1475031947
+    # Should be `10000_3222274048_1475031947_f124654ced4d5b30dad739caac64f424`
+    print(generate_ly_token(app_key, cid, control, expire))
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go语言示例代码如下：
+```
+package main
+
+import (
+    "bytes"
+    "crypto/hmac"
+    "crypto/md5"
+    "encoding/binary"
+    "fmt"
+    "log"
+)
+
+func GenerateLYToken(app_key []byte, cid, control, expire uint32) string {
+    buf := bytes.Buffer{}
+    err := binary.Write(&buf, binary.LittleEndian, cid)
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = binary.Write(&buf, binary.LittleEndian, control)
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = binary.Write(&buf, binary.LittleEndian, expire)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    mac := hmac.New(md5.New, app_key)
+    mac.Write(buf.Bytes())
+    hash_val := mac.Sum([]byte{})
+    return fmt.Sprintf("%d_%d_%d_%x", cid, control, expire, hash_val)
+}
+
+func main() {
+    app_key := []byte("d57559a82027b7d846318a0c1596d645")
+
+    var cid, control, expire uint32
+    cid = 10000
+    control = 3222274048
+    expire = 1475031947
+    //Should be 10000_3222274048_1475031947_f124654ced4d5b30dad739caac64f424
+    fmt.Println(GenerateLYToken(app_key, cid, control, expire))
+}
 ```
 
 ##6 羚羊云token类型
