@@ -60,7 +60,7 @@ Windows平台开发语言推荐使用C++，IDE推荐Visual Studio，界面推荐
 ####4.5.2 工程属性设置
 直接将LY_Windows_SDK文件夹拷贝到工程目录下(熟悉Windows开发的用户可忽略，包含引用路径和链接路径即可)，在VS解决方案中右键“工程名”，选择“属性”，配置“C/C++”常规一项中”附加包含目录“，填入“LY_Windows_SDK\include;”，在“链接器”的“常规”一项中填入库路径，并将目录下所有静态库的名称引用进去。
 
-##五、开发示例
+##五、功能集成
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)来实现播放器、消息透传的功能。
 
 ##5.1 &nbsp;启动云服务

@@ -92,7 +92,7 @@ SDK暂不支持bitcode，所以需要设置Enabel BitCode为NO：
 ####4.5.6 编译工程
 以上步骤进行完成以后，编译工程，如果没有报错，恭喜你！集成羚羊云iOS SDK成功！接下来可以开启炫酷的视频播放操作。
 
-##五、开发示例
+##五、功能集成
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ##5.1 &nbsp;启动云服务

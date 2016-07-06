@@ -73,7 +73,7 @@ LDFLAGS		:= -Wl,-rpath=. -lPusher–lTopvdnSDK-lpthread -lssl -lcrypto
 3. 选择“C/C++”，点击“常规”，在“附加包含目录”中配置头文件目录。
 4. 选择“库管理器”，点击“常规”，在“附件库目录”中配置库路径，然后在附加依赖项中添加libTopvdn.lib
 
-##五、开发示例
+##五、功能集成
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ##5.1 &nbsp;启动云服务
