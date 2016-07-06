@@ -271,6 +271,6 @@ func main() {
 \[ip]:可选项，如果control字段里面设置验证ip的标志位，则ip字段必须填写；
 \[refer]：可选项，并只有在http访问方式下使用，如果control里设置了验证refer标志位，则refer字段必须填写。
 
-##相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+####相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
