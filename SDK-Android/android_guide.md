@@ -119,7 +119,7 @@ libs<br>
     //摄像头功能
     <uses-feature android:name="android.hardware.camera.autofocus"/>
 
-##五、开发示例
+##五、功能集成
 本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md)来实现直播推流、播放器、消息透传的功能。
 
 ##5.1 &nbsp;启动云服务
