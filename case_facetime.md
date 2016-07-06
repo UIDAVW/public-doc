@@ -1,5 +1,5 @@
 # 视频通话功能开发指南
-以下展示iOS设备之间视频通话的例子，Android设备之间的视频通话流程与之一样，具体使用方法请参见[这里](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md "Anroid版SDK")。
+以下展示iOS设备之间视频通话的例子。Android设备之间的视频通话流程与之一样，具体使用方法请参见[这里](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md "Anroid版SDK")。
 
 ![Alt text](./images/flow-facetime.png "视频通话应用场景下SDK的调用流程") 
 
