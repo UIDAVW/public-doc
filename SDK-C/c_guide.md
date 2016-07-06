@@ -31,7 +31,7 @@
 如果您对我们的产品不熟悉，可通过阅读[《羚羊云SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md)了解SDK和羚羊云之间的整体服务架构以及如何接入到羚羊云。[点击这里](http://doc.topvdn.com/api/#!public-doc/integration.md)即可进入。
 
 ###4.2 SDK的获取
-[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-C "获取SDK")
+[点击这里获取](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip "获取SDK")
 
 ###4.3 SDK库结构
 SDK目录
