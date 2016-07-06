@@ -71,7 +71,8 @@
 * 设备接口：提供给设备的接口，需要验证设备 token；
 
 ### 1.9 文档更新
-
+* 2016-07-06：
+    - 调整查询 ID 段接口；
 * 2016-05-17：
     - 文件上传接口实现；
     - 接口添加 `curl` 示例及请求报文；
@@ -113,7 +114,7 @@
 
 ```json
 {
-	"cids": [1003134, 1003775]
+	"cids": [1003538]
 }
 ```
 
@@ -121,7 +122,7 @@
 ---|---|---|---|---
 size | unsigned int | `query param` 每页大小 | 否 | 10
 page | unsigned uint | `query param` 第几页 | 否 | 2
-cids | json array | 摄像机 ID 字符串列表，如果没有或者为空则分页返回所有的数据 | 否 | []
+cids | json array | 设备 ID 字符串列表，如果没有或者为空则分页返回所有的数据 | 否 | []
 
 
 * `curl` 请求示例：
@@ -151,10 +152,10 @@ Cache-Control: no-cache
 
 ```json
 {
-	"init_string": "",
+	"init_string": "[Config]\r\nIsDebug=1\r\nLocalBasePort=8200\r\nIsCaptureDev=1\r\nIsPlayDev=1\r\nUdpSendInterval=2\r\n[Tracker]\r\nCount=3\r\nIP1=121.42.156.148\r\nPort1=80\r\nIP2=182.254.149.39\r\nPort2=80\r\nIP3=203.195.157.248\r\nPort3=80\r\n[LogServer]\r\nCount=1\r\nIP1=223.202.103.147\r\nPort1=80",
     "devices": [
 	    {
-		    "cid": 1003134,
+		    "cid": 1003538,
 			"state": 4,
 			"tracker_ip": "203.195.157.248",
 			"tracker_port": 80,
@@ -182,9 +183,9 @@ Cache-Control: no-cache
 
 字段名 | 类型 | 描述
 ---|---|---
-init_string | string | 摄像机初始化串
+init_string | string | 设备初始化串
 devices | json array | 设备列表
-total | unsigned int | 查询条件下的摄像机总数
+total | unsigned int | 查询条件下的设备总数
 page | unsigned int | 页数
 size | unsigned int | 页大小
 request_id | string | 此次请求的唯一编号
@@ -223,7 +224,7 @@ hls |  string | 设备的 hls 播放地址，私有配置设备此字段为空
 
 ### 2.1.2 查询设备 ID 段
 
-* 接口状态：`使用中`
+* 接口状态：`调整中`
 * 接口功能：提供给应用服务器查询分配给该 app 的设备 id 分段数据。任何需要连接到羚羊云的 client 分配的 id 必须在返回的分段内。
 * 接口类型：管理接口
 * 请求地址：`/v2/devices/ids`
@@ -254,10 +255,11 @@ Cache-Control: no-cache
 ```json
 {
 	"app_id": "Test",
-	"segments": [
+	"cids": [
 		{
-			"from": 1234,
-			"to": 5678
+			"begin": 1234,
+			"end": 5678，
+			"usage": 1
 		}
 	],
 	"request_id": "2279fa57f4d644c1b333f5ff5ff7a2b7"
@@ -269,9 +271,10 @@ Cache-Control: no-cache
 字段名 | 类型 | 描述
 ---|---|---
 app_id | string | 羚羊云给用户提供的 APP ID
-segments | json object array | 各个分段其实和结束，闭区间
-from | int | 分段起始
-to | int | 分段结束
+cids | json object array | 各个 cid 分段其实和结束，闭区间
+begin | int | 分段起始
+end | int | 分段结束
+usage | int | 使用类型，1 推流设备，2 观看用户
 request_id | string | 此次请求的唯一编号
 
 
@@ -1854,7 +1857,7 @@ md5(X-APP-ID+request.body+X-APP-Key)
 }
 ```
 
-请求体是 `json` 数据，如果用户需要标识某个回调的消息对应某个用户推送到摄像机的消息，应当自己在消息体内进行标识，羚羊云不会对消息进行解析，只是传递。
+请求体是 `json` 数据，如果用户需要标识某个回调的消息对应某个用户推送到设备的消息，应当自己在消息体内进行标识，羚羊云不会对消息进行解析，只是传递。
 
 * 请求首部及请求体例子：
 
