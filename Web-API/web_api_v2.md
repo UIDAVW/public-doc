@@ -258,7 +258,7 @@ Cache-Control: no-cache
 	"cids": [
 		{
 			"begin": 1234,
-			"end": 5678，
+			"end": 5678,
 			"usage": 1
 		}
 	],
