@@ -1,6 +1,6 @@
 #羚羊云SDK接入指南
 
-##1. 集成羚羊云SDK(四步)
+##1. 集成羚羊云(四步)
 
 ###1.1 成为羚羊云的开发者
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[注册羚羊云开发者账号](http://console.topvdn.com/register)
