@@ -46,11 +46,11 @@ while(1)
 ###1.2 建立传输通道
 任何媒体数据的接收和发送，必须先建立传输通道。需要传入羚羊云自定义格式的URL作为参数进行通道的连接，成功建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
 ```
-char *peer="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069";
-intfd;
+char *url="topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069";
+int fd;
 while(1)
 {
-	fd = LY_connect (url,NULL);
+	fd = LY_connect(url,NULL);
 	if(fd< 0)
 	{
 		printf("connect to peer faild\n");
