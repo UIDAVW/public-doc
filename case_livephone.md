@@ -66,7 +66,9 @@ LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_pre
 ```
 //设置本地预览
 mLiveBroadcast.setLocalPreview(mPreview);
-####5.5.4 设置推流状态监听
+```
+###1.5 设置推流状态监听
+```
 mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	@Override
 	public void onBroadcastStart() {
@@ -87,7 +89,7 @@ mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	}
 });
 ```
-###1.5 开始推流直播
+###1.6 开始推流直播
 ```
 // 开始直播
 //IBroadcastOpenAPI.MODE_LIVE  :直播
@@ -97,7 +99,7 @@ mLiveBroadcast.startBroadcasting(ILiveBroadcast.MODE_LIVE,
 	"3000000185_3356753920_1492163431_cc3acc347784f3e30cd4713acec615b1");
 ```
 
-###1.6 结束推流直播
+###1.7 结束推流直播
 当不再推流时可以调用接口结束推流。
 ```
 //结束直播
