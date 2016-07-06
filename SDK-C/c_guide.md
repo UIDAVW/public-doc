@@ -349,10 +349,10 @@ else
 支持QSUP和QSTP协议传输数据，支持云存储，支持封面图片上传，支持消息透传。
 
 ##九、API手册
-[C API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api.md)
+[羚羊云C API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api.md)
 
 #### 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
 [羚羊云WebAPI使用指南](http://doc.topvdn.com/api/#!web_api_v2.md)
