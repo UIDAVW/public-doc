@@ -1,6 +1,6 @@
 #羚羊云Windows SDK使用说明
 ##一、概述
-本SDK可供Windows平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)，实现直播播放、云端录像播放、消息透传等功能。
+本SDK可供Windows平台下的应用调用，为开发者提供接入羚羊视频云的开发接口，使开发者能够轻松实现视频相关的应用。羚羊视频云在视频传输和云存储领域有着领先的开发技术和丰富的产品经验,设计了高质量、宽适应性、分布式、模块化的音视频传输和存储云平台。SDK为上层应用提供简单的[API接口](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Windows/windows_api.md)，实现直播播放、云端录像播放、消息透传等功能。
 
 ##二、功能概要
 ![Alt text](./../images/usercase-win.png "羚羊云WindowsSDK功能")
@@ -21,7 +21,7 @@
 
 ##四、开发准备
 ###4.1 SDK的获取
-[点击这里获取](https://github.com/AntelopeExpress/public-doc/tree/master/SDK-Windows "获取SDK")
+[点击这里获取](http://doc.topvdn.com/api/public-doc/SDK-Windows/zipdown/ly_sdk_windows.zip "获取SDK")
 
 ###4.2 SDK支持的系统版本
 Windows 7及以上版本。
@@ -58,7 +58,7 @@ Windows平台开发语言推荐使用C++，IDE推荐Visual Studio，界面推荐
 直接将LY_Windows_SDK文件夹拷贝到工程目录下(熟悉Windows开发的用户可忽略，包含引用路径和链接路径即可)，在VS解决方案中右键“工程名”，选择“属性”，配置“C/C++”常规一项中”附加包含目录“，填入“LY_Windows_SDK\include;”，在“链接器”的“常规”一项中填入库路径，并将目录下所有静态库的名称引用进去。
 
 ##五、功能集成
-本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/#!public-doc/SDK-Windows/windows_api.md)来实现播放器、消息透传的功能。
+本章节介绍如何调用[SDK的API接口](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Windows/windows_api.md)来实现播放器、消息透传的功能。
 
 ##5.1 &nbsp;启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
