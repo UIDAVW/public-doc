@@ -255,7 +255,7 @@ func main() {
 }
 ```
 
-##6 羚羊云token类型
+##6 token类型
 根据设备(包括手机、摄像头等)所处于羚羊云端点的不同，token分为设备token和访问token。本方所携带的token称为设备token，对端设备的token称为访问token。
 
 - `设备token`
