@@ -1398,7 +1398,7 @@ void onSeekError(LYException exception);
 |exception|LYException|out|必须|错误对象，包括错误码和错误信息，详见：数据类型_错误信息|
 
 
-##7 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+#### 相关链接
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integ_case.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
