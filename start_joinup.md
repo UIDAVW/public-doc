@@ -13,10 +13,6 @@
 
 ###1.4 集成示例
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[不同应用场景下的集成SDK示例](http://doc.topvdn.com/api/index.html#!public-doc/integ_case.md)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不同应用场景下的集成SDK示例：
-- [视频通话](http://doc.topvdn.com/api/index.html#!public-doc/case_facetime.md)
-- [视频直播](http://doc.topvdn.com/api/index.html#!public-doc/case_livevideo.md)
-- [手机直播](http://doc.topvdn.com/api/index.html#!public-doc/case_livephone.md)
 
 ##2. 使用羚羊云SDK
 
