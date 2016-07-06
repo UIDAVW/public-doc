@@ -724,7 +724,21 @@ void onHostActivityResumed();
 | 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音,若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集. |
 | 返回值 | 无 |
 
-###5.15 动态设置码率
+###5.15 动态设置视频是否自适应
+```
+public void setFitScreen(boolean isFit);
+```
+| - | - |
+|-------|----|
+| 接口名 | setFitScreen |
+| 功能 | 设置视频是否自适应，必须在调用设置远程播放器接口之后调用。如果播放器view和获取的视频流宽高比不一致时，设置为true，则将将画面进行裁剪以适应View，设置为false，则不裁剪画面，可能导致画面变形。|
+| 返回值 | 无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|isFit|boolean|In|--|true 为自适应，false 为不自适应 |
+
+###5.16 动态设置码率
 ```
 public void setVideoBitrate(int aBitrate);
 ```
@@ -738,7 +752,7 @@ public void setVideoBitrate(int aBitrate);
 |-------|----|----|----|----|
 |aBitrate|int|In|--|期望设置的码率，单位是kbps,没有限制范围，建议设置200、500、800，分别对应普通、标清、高清 |
 
-###5.16 获取摄像机列表
+###5.17 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -748,7 +762,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###5.17 获取当前摄像机编号
+###5.18 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -758,7 +772,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###5.18 获取期望的摄像机编号
+###5.19 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -768,7 +782,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###5.19 切换摄像头
+###5.20 切换摄像头
 ```
 void switchCamera();
 ```
@@ -778,7 +792,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###5.20 设置摄像头类型
+###5.21 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -792,7 +806,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###5.21 获取闪光灯模式
+###5.22 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -802,7 +816,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###5.22 切换闪光灯
+###5.23 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -812,7 +826,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###5.23 设置闪光灯类型
+###5.24 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
@@ -1004,7 +1018,21 @@ String getMediaParam(int paramType);
 |-------|----|----|----|----|
 |paramType|int|In|必须|流媒体信息对应的协议参数，详见：数据类型IMediaParamProtocol的媒体参数协议|
 
-###6.16 获取时长
+###5.16 动态设置视频是否自适应
+```
+public void setFitScreen(boolean isFit);
+```
+| - | - |
+|-------|----|
+| 接口名 | setFitScreen |
+| 功能 | 设置视频是否自适应，如果播放器view和获取的视频流宽高比不一致时，设置为true，则将将画面进行裁剪以适应View，设置为false，则不裁剪画面，可能导致画面变形。|
+| 返回值 | 无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|isFit|boolean|In|--|true 为自适应，false 为不自适应 |
+
+###6.17 获取时长
 ```
 int getDuration();
 ```
@@ -1014,7 +1042,7 @@ int getDuration();
 | 功能 | 获取播放的时长 ，仅在点播状态下有效； |
 | 返回值 |返回录像时长，单位毫秒 |
 
-###6.17 获取当前播放位置
+###6.18 获取当前播放位置
 ```
 int getCurrentPosition();
 ```
@@ -1024,7 +1052,7 @@ int getCurrentPosition();
 | 功能 | 获取当前播放位置，仅在点播状态下有效； |
 | 返回值 |无 |
 
-###6.18 获取当前缓冲进度
+###6.19 获取当前缓冲进度
 ```
 int getBufferPercentage();
 ```
@@ -1034,7 +1062,7 @@ int getBufferPercentage();
 | 功能 | 获取当前缓冲进度的百分比，仅在点播状态下有效； |
 | 返回值 |返回当前缓冲进度的百分比 |
 
-###6.19 是否能暂停
+###6.20 是否能暂停
 ```
 boolean canPause();
 ```
@@ -1044,7 +1072,7 @@ boolean canPause();
 | 功能 | 测试当前对象是否能暂停，仅在点播状态下有效； |
 | 返回值 |返回boolean类型结果，true：能  false：不能 |
 
-###6.20 是否能后退
+###6.21 是否能后退
 ```
 boolean canSeekBackward();
 ```
@@ -1054,7 +1082,7 @@ boolean canSeekBackward();
 | 功能 | 测试当前对象是否能后退，仅在点播状态下有效； |
 | 返回值 |返回boolean类型结果，true：能  false：不能 |
 
-###6.21 是否能快进
+###6.22 是否能快进
 ```
 boolean canSeekForward();
 ```
@@ -1064,7 +1092,7 @@ boolean canSeekForward();
 | 功能 | 测试当前对象是否能快进，仅在点播状态下有效； |
 | 返回值 |返回boolean类型结果，true：能  false：不能 |
 
-###6.22 注册播放进度回调
+###6.23 注册播放进度回调
 ```
 void setOnPlayProgressListener(OnPlayProgressListener playProgressListener);
 ```
@@ -1078,7 +1106,7 @@ void setOnPlayProgressListener(OnPlayProgressListener playProgressListener);
 |-------|----|----|----|----|
 |playProgressListener|OnPlayProgressListener|In|必须|详见：播放进度回调监听|
 
-###6.23 播放进度回调接口
+###6.24 播放进度回调接口
 ```
 public interface OnPlayProgressListener {
         void onPlayProgress(int playProgress);
@@ -1094,7 +1122,7 @@ public interface OnPlayProgressListener {
 |-------|----|----|----|----|
 |playProgress|int|out|--|播放进度时间，单位毫秒|
 
-###6.24 注册连接状态的回调
+###6.25 注册连接状态的回调
 ```
 void setOnPreparedListener(OnPreparedListener preparedListener);
 ```
@@ -1108,7 +1136,7 @@ void setOnPreparedListener(OnPreparedListener preparedListener);
 |-------|----|----|----|----|
 |preparedListener|OnPreparedListener|In|必须|详见：媒体文件即将播放时调用的回调函数|
 
-###6.25 连接状态的回调接口
+###6.26 连接状态的回调接口
 ```
 interface OnPreparedListener {
         void onPrepared( int time);
@@ -1124,7 +1152,7 @@ interface OnPreparedListener {
 |-------|----|----|----|----|
 |time|int|out|--|准备时长|
 
-###6.26 视频截图
+###6.27 视频截图
 ```
 void snapshot(String path, String name, OnSnapshotListener listener);
 ```
@@ -1140,7 +1168,7 @@ void snapshot(String path, String name, OnSnapshotListener listener);
 |name|String|In|必须|截图名称，不需要填写格式名称，保存为jpg格式|
 |listener|OnSnapshotListener|In|必须|详见：视频截图结果通知回调|
 
-###6.27 视频截图结果通知回调
+###6.28 视频截图结果通知回调
 ```
 //截图返回的参数错误
 int ERROR_RETURN_PARAM = -101;
@@ -1158,7 +1186,7 @@ void onSnapshotSuccess(String saveFullPath)；
 void onSnapshotFail(int errorCode);
 ```
 
-###6.28 注册本地录像状态回调
+###6.29 注册本地录像状态回调
 ```
 void setLocalRecordListener(OnLocalRecordListener onLocalRecordListener);
 ```
@@ -1172,7 +1200,7 @@ void setLocalRecordListener(OnLocalRecordListener onLocalRecordListener);
 |-------|----|----|----|----|
 |onLocalRecordListener|OnLocalRecordListener|In|必须|详见：本地录像状态回调函数|
 
-###6.29 本地录像状态回调接口
+###6.30 本地录像状态回调接口
 ```
 void onRecordSizeChange(long size, long time);
 ```
@@ -1187,7 +1215,7 @@ void onRecordSizeChange(long size, long time);
 |size|long|out|--|录制大小，单位：KB|
 |time|long|out|--|制时长，单位：S|
 
-###6.30 录像时发生错误时调用的回调函数
+###6.31 录像时发生错误时调用的回调函数
 ```
 void onRecordError(LYException e);
 ```
@@ -1201,7 +1229,7 @@ void onRecordError(LYException e);
 |-------|----|----|----|----|
 |e|LYException|out|--|错误信息|
 
-###6.31 开始本地录像
+###6.32 开始本地录像
 ```
 void startLocalRecord(String filePath);
 ```
@@ -1215,7 +1243,7 @@ void startLocalRecord(String filePath);
 |-------|----|----|----|----|
 |filePath|String|In|必须|保存路径；|
 
-###6.32 结束本地录像   
+###6.33 结束本地录像   
 ```
 void stopLocalRecord();
 ```
@@ -1225,7 +1253,7 @@ void stopLocalRecord();
 | 功能 | 结束本地录像； |
 | 返回值 |无 |
 
-###6.33 重置播放器配置
+###6.34 重置播放器配置
 ```
 void reset();
 ```
@@ -1235,7 +1263,7 @@ void reset();
 | 功能 | 将播放器的所有配置清空，回到初始化状态，但保留播放器实例，用户可重新设置播放器配置，重新设置播放源进行播放； |
 | 返回值 |无 |
 
-###6.34 注册播放结束后事件的回调
+###6.35 注册播放结束后事件的回调
 ```
 void setOnCompletionListener(OnCompletionListener completionListener);
 ```
@@ -1249,7 +1277,7 @@ void setOnCompletionListener(OnCompletionListener completionListener);
 |-------|----|----|----|----|
 |completionListener|OnCompletionListener|In|必须|详见：媒体文件播放结束后调用的回调函数|
 
-###6.35 播放结束后事件的回调接口
+###6.36 播放结束后事件的回调接口
 ```
 interface OnCompletionListener {
         void onCompletion();
@@ -1261,7 +1289,7 @@ interface OnCompletionListener {
 | 功能 | 媒体文件播放结束后调用的回调接口； |
 | 返回值 |无 |
 
-###6.36 注册播放错误事件的回调
+###6.37 注册播放错误事件的回调
 ```
 void setOnErrorListener(OnErrorListener errorListener);
 ```
@@ -1275,7 +1303,7 @@ void setOnErrorListener(OnErrorListener errorListener);
 |-------|----|----|----|----|
 |errorListener|OnErrorListener|In|必须|详见：播放和建立播放期间发生错误的回调函数|
 
-###6.37 播放错误事件的回调接口
+###6.38 播放错误事件的回调接口
 ```
 interface OnErrorListener {
         boolean onError(int code, String msg);
@@ -1292,7 +1320,7 @@ interface OnErrorListener {
 |code|int|out|--|错误码|
 |msg|String|out|--|错误信息|
 
-###6.38 注册播放缓冲的回调       
+###6.39 注册播放缓冲的回调       
 ```
 void setOnPlayingBufferCacheListener(OnPlayingBufferCacheListener bufferListener);
 ```
@@ -1306,7 +1334,7 @@ void setOnPlayingBufferCacheListener(OnPlayingBufferCacheListener bufferListener
 |-------|----|----|----|----|
 |bufferListener|OnPlayingBufferCacheListener|In|必须|详见：播放时缓存的回调函数|
 
-###6.39 播放缓冲的回调接口
+###6.40 播放缓冲的回调接口
 ```
 interface OnPlayingBufferCacheListener {
 	void onPlayingBufferCache(int percent);
@@ -1314,7 +1342,7 @@ interface OnPlayingBufferCacheListener {
 	void onBufferEnd();
 }
 ```
-####6.39.1 当前缓冲的百分比
+####6.40.1 当前缓冲的百分比
 ```
 void onPlayingBufferCache(int percent)；
 ```
@@ -1328,7 +1356,7 @@ void onPlayingBufferCache(int percent)；
 |-------|----|----|----|----|
 |percent|int|out|--|当前缓冲的百分比|
 
-####6.39.2 开始缓冲
+####6.40.2 开始缓冲
 ```
 void onBufferStart();
 ```
@@ -1338,7 +1366,7 @@ void onBufferStart();
 | 功能 | 开始缓冲时回调函数；|
 | 返回值 |无 |
 
-####6.39.3 缓冲结束
+####6.40.3 缓冲结束
 ```
 void onBufferEnd();
 ```
@@ -1348,7 +1376,7 @@ void onBufferEnd();
 | 功能 | 缓冲结束时回调函数；|
 | 返回值 |无 |
 
-###6.40 注册seek结束事件的回调       
+###6.41 注册seek结束事件的回调       
 ```
 void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 ```
@@ -1362,14 +1390,14 @@ void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 |-------|----|----|----|----|
 |seekCompleteListener|OnSeekCompleteListener|In|必须|详见：播放定位查找结束时调用的回调接口|
 
-###6.41 seek结束事件的回调接口
+###6.42 seek结束事件的回调接口
 ```
 interface OnSeekCompleteListener {
         void onSeekSuccess( int time);
         void onSeekError(LYException exception);
     }
 ```
-####6.41.1 seek成功回调
+####6.42.1 seek成功回调
 ```
 void onSeekSuccess( int time);
 ```
@@ -1383,7 +1411,7 @@ void onSeekSuccess( int time);
 |-------|----|----|----|----|
 |time|int|out|必须|seek耗时|
 
-####6.41.2 seek失败回调
+####6.42.2 seek失败回调
 ```
 void onSeekError(LYException exception);
 ```
