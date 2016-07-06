@@ -1399,7 +1399,6 @@ void onSeekError(LYException exception);
 
 
 ##7 相关链接
-[Android SDK使用说明](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide.md)
 [羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

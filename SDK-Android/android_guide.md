@@ -559,9 +559,10 @@ V1.4.1 SDK更新日期 2016.4.29
 
 (4)截图失败bug修复
 
+##九、API手册
+[Android API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md)
 
 ## 相关链接
-[羚羊云SDK-Android版API](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md)
 [羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
