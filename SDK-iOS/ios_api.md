@@ -1053,8 +1053,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 功能 | 释放互联底层资源，退出的时候一定要调用|
 | 返回值 | 无 |
 
-##6 相关链接
-[iOS SDK使用说明](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md)
+#### 相关链接
 [羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

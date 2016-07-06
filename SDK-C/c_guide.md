@@ -212,14 +212,14 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 ```
 void* recvMediaData (void* arg)
 {
-#defineMAX_FRAME 512*1014
-	char*url="topvdn://183.57.151.161:1935?protocolType=2&connectType=2&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b";
-int fd = LY_connect(url,NULL)//建立数据通道连接，返回标识传输通道的fd
+#define MAX_FRAME 512*1014
+	char *url="topvdn://183.57.151.161:1935?protocolType=2&connectType=2&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b";
+    int fd = LY_connect(url,NULL);//建立数据通道连接，返回标识传输通道的fd
 	if(arg == NULL)
 		return;
-	intfd = *(int*)arg;
-	intret = 0;
-	char* buf;
+	int fd = *(int*)arg;
+	int ret = 0;
+	char *buf;
 	MediaFrame_tframe = {0};
 	frame.frameBuffer = (char*)malloc(MAX_FRAME);//外面传入buffer接收数据
 	extern int recvData = 1;
@@ -278,7 +278,7 @@ while(recvRecord)
 	ret = LY_recvMediaFrame(fd,&frame);//没有数据会阻塞住
 	if(ret != 0)
 	{
-			printf("recvrecord framefailed,fd=%d\n",fd);
+		printf("recvrecord framefailed,fd=%d\n",fd);
 	}
 
     //将收到的媒体帧自行解码及播放……
