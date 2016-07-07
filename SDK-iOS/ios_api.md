@@ -1054,6 +1054,6 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 返回值 | 无 |
 
 #### 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
