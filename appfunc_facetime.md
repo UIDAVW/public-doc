@@ -14,9 +14,9 @@
 第5步“建立双方的通话连接”需要调用羚羊云SDK的[视频通话-建立通话连接](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)接口，接口参数需要传入A发送过来的URL。
 
 ##3. 开发示例
-###1.1 主叫端
+###3.1 主叫端
 
-####1.1.1 启动云服务
+####3.1.1 启动云服务
 启动羚羊云服务，该接口函数分配并初始化本地系统资源，登录到羚羊云平台，在平台端进行安全认证。
 
 ```
@@ -33,7 +33,7 @@
 ];
 ```
 
-####1.1.2 设置流参数
+####3.1.2 设置流参数
 ```
 //该方法生成一个默认的视频采集配置
 videoSize = (640, 480);
@@ -47,29 +47,29 @@ LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration def
 Configuration类配置视频通话推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
 **注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-视频通话推流相关属性配置。
 
-####1.1.3 初始化视频通话类
+####3.1.3 初始化视频通话类
 ```
 //初始化直播类:如果不采集音频，则audioConfiguration传nil即可
 LYFaceTime * mFaceTime = [[LYFaceTime alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
 ```
 
-####1.1.4 设置播放参数
+####3.1.4 设置播放参数
 ```
 //如果不需要播放对方视频则不设置该参数
 LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:mPlayView frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) decodeMode:LYPlayerDecodeModeHard];
 [mFaceTime setPlayView:mFaceTimeAddress playerConfiguration:mPlayerConfig]; 
 ```
 
-####1.1.5 设置本地预览视图
+####3.1.5 设置本地预览视图
 ```
 //设置采集视频预览view：如果不预览自己视频则不设置
 [mFaceTime setPreview:self.preview frame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
 ```
 
-####1.1.6 发送QSUP连接URL到被叫端
-通过羚羊云提供的消息透传通道来发送QSUP连接URL到被叫端，您也通过自己的方式发送QSUP连接URL到被叫端。
+####3.1.6 发送QSUP连接URL到被叫端
+通过羚羊云提供的消息透传通道来发送QSUP连接URL到被叫端，您也通过自己的方式发送QSUP连接URL到被叫端。[羚羊云推拉流URL格式-QSUP方式](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md#6_%E6%8E%A8%E6%8B%89%E7%9B%B4%E6%92%AD%E6%B5%81%28QSUP%E6%96%B9%E5%BC%8F%29%E7%A4%BA%E4%BE%8B)
 
-#####1.1.7 关闭通话
+#####3.1.7 关闭通话
 最后若想主动停止视频通话则需要调用close方法；当收到ConnectionClosed时也必须调用close方法。
 ```
 //主被叫关闭通话都要调用该方法！！！！！！
