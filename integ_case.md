@@ -3,14 +3,18 @@
 本文介绍在不同的应用场景下，推流端和播放端两端设备的SDK集成示例。
 
 ##1 应用场景
-- 视频通话
+**视频通话**
+
 ![Alt text](./images/facetime.png "视频通话应用场景") 
+<br /><br />
+**视频直播**
 
-- 视频直播
 ![Alt text](./images/livevideo.png "视频直播应用场景") 
+<br /><br />
+**手机直播**
 
-- 手机直播
 ![Alt text](./images/livephone.png "手机直播应用场景") 
+<br />
 
 ##2 应用体系
 ![Alt text](./images/app_system.png) 
@@ -24,18 +28,18 @@
 
 ![Alt text](./images/app_sys_join.png) 
 
-上图中1、2步是由开发者注册并登录羚羊云应用管理平台完成，获取到appid-key和id段之后将其保存在应用服务器；
+上图中1、2步是由开发者注册并登录羚羊云应用管理平台完成，获取到appid-appkey和id段之后将其保存在应用服务器；
 其他的3、4、5步全都是在应用服务器端完成。
 
 **注**：
-`生成token的方法`参考[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
+`生成token的方法`参考[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)，
+`config`可通过调用Web API的['查询设备状态接口'](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，该接口返回的`init_string`字段即`config串`。
 
 ![Alt text](./images/app_sys_join2.png) 
 
-**注**：
-`连接并启动云服务`需要调用SDK的开启云服务接口，该接口需要传入羚羊token和config串。[iOS调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
+`连接并启动云服务`需要调用**SDK的开启云服务接口**，该接口需要传入`羚羊token`和`config串`。[iOS调用示例](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
-这样设备A和设备B就成功接入到羚羊云，下面就可以根据自己的特定场景和需求来实现不同的功能。下面分别展示视频通话、视频直播、手机直播这几种应用场景的集成示例。
+至此，设备A和设备B就成功接入到羚羊云，然后根据自己的特定场景和需求来实现不同的功能。下面分别展示视频通话、视频直播、手机直播这几种应用场景的集成方法。
 
 ##3 视频通话应用
 ###3.1 第一步

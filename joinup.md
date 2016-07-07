@@ -44,6 +44,13 @@
 ##4. 接入流程概览
 ![Alt text](./images/joinup1.png "接入流程-第一步")
 
+以上流程中：
+
+`申请appid-appkey`的方法参见[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)；
+
+`获取id段`的方法参见[这里](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)。
+<br /><br />
+
 ![Alt text](./images/joinup2.png "接入流程-第二步")
 
 ![Alt text](./images/joinup3.png "接入流程-第三步")
@@ -58,7 +65,8 @@
 ![Alt text](./images/flow.png "应用客户端接入羚羊云的流程")
 
 **注**：
-上述接入流程中的`查询设备id段`需调用[Web-API的'查询设备id段'](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.2_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87_ID_%E6%AE%B5)接口；
+`申请appid-appkey`的方法参见[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)；
+`获取id段`的方法参见[这里](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)。
 `登录云平台`需要调用SDK的开启云服务接口。[iOS调用示例](http://doc.topvdn.com/api/public-doc/SDK-iOS/#!ios_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 `生成token的方法`[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 `生成推拉流的URL`参考[羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
@@ -66,10 +74,10 @@
 ##6. 常见问题
 
 1. 什么是`appid`？怎么获取`appid`？
-答：`appid`是用户(开发者)在羚羊云创建应用后，由羚羊云分配的唯一字符串，是该应用在羚羊云中的唯一标识。用户拿到appid后才能有效调用羚羊云SDK提供的接口。获取appid请参考本文前面的'[将应用接入到羚羊云](http://doc.topvdn.com/api/index.html#!public-doc/joinup.md)'。
+答：`appid`是用户(开发者)在羚羊云创建应用后，由羚羊云分配的唯一字符串，是该应用在羚羊云中的唯一标识。用户拿到appid后才能有效调用羚羊云SDK提供的接口。获取appid请参考本文前面的'[拥有自己的应用](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)'。
 
 2. 什么是`cid`？怎么获取？
-答：`cid`是一个4个字节长度的无符号整型数，是羚羊云用来标识唯一的用户终端设备。获取的方式请参照'[将应用接入到羚羊云](http://doc.topvdn.com/api/index.html#!public-doc/joinup.md)'。
+答：`cid`是一个4个字节长度的无符号整型数，是羚羊云用来标识唯一的用户终端设备。获取的方式请参照'[申请应用的ID段](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)'。
 
 3. 羚羊云提供了`设备端SDK`吗？`设备端SDK`的功能包含哪些？
 答：设备端就是本文所说的应用客户端，所谓的设备分为推流设备和播放设备。客户端的功能包含了推流和播放，设备可以具备推流或播放中的一种功能，也可同时具备两种功能。比如：设备没有显示屏，则没有播放功能；设备既有视频采集器又有显示屏，则同时具备推流和播放的功能。
