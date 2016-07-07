@@ -1,9 +1,9 @@
 #羚羊云视频通话应用开发
 
-##1. 应用接入
+##1. 视频通话应用接入
 开发视频通话的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
 
-##2. 开发流程
+##2. 视频通话开发流程
 ![Alt text](./images/appfunc_facetime.png) 
 
 上图的流程中：
@@ -13,7 +13,7 @@
 第5步“收到A的呼叫请求”，是在羚羊云SDK的[启动云服务](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)介绍。
 第5步“建立双方的通话连接”需要调用羚羊云SDK的[视频通话-建立通话连接](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)接口，接口参数需要传入A发送过来的URL。
 
-##3. 开发示例
+##3. 视频通话开发示例
 ###3.1 主叫端
 
 ####3.1.1 启动云服务
