@@ -1,6 +1,0 @@
-==================FD==NOT==FOUND======================
-=======> File : e:\windowssdk\librtmp\rtmp_interface.cpp, Line : 310, Func: RemoveFromRtmpContexArray, DateTime : Sat May 14 21:42:11 2016
-main stream(0) connect to server failed !!!
-=======> File : d:\topvdn\win_sdk\windowssdk\librtmp\lyqstpapi.cpp, Line : 755, Func: LY_connectToRelayServer, DateTime : Mon May 30 13:21:48 2016
-main stream(0) connect to server failed !!!
-=======> File : d:\topvdn\win_sdk\windowssdk\librtmp\lyqstpapi.cpp, Line : 755, Func: LY_connectToRelayServer, DateTime : Mon May 30 13:22:19 2016
