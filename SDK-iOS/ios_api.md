@@ -909,7 +909,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |dataSourceAddreess|NSString *|in|必须|播放地址|
 |frame|CGRect|in|必须|view的frame播放地址|
 
-###5.14 打开播放器
+###5.14 建立通话连接
 ```
 - (void)open: (NSString *)dataSourceAddreess
   openStatus: (void (^)(LYstatusCode statusCode, NSString         	*errorString))openBlock
@@ -929,7 +929,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |playerBlock|playerCallBackBlock|in|必须|播放过程中的状态回调|
 **注意**：该方法只有被叫方才调用，主叫方不调用该方法。
 
-###5.15 关闭播放器
+###5.15 关闭通话连接
 ```
 - (void)close: (NSString *)dataSourceAddreess;
 ```

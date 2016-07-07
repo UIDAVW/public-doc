@@ -2,11 +2,11 @@
 ![Alt text](./images/appfunc_facetime.png) 
 
 上图的流程中：
-第2步“获取羚羊tracker的ip和端口”需要调用羚羊云Web API的[获取设备状态]()接口。
-第3步“生成URL”需要根据[羚羊云推拉流URL格式]()。
-第4步“推送消息给B”需要调用羚羊云Web API的[服务器推送消息]()接口，接口参数需要传入B的羚羊cid。
-第5步“收到A的呼叫请求”，是在羚羊云SDK的[启动云服务]()接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传]()介绍。
-第5步“建立双方的通话连接”需要调用羚羊云SDK的[视频通话-打开播放器]()接口，接口参数需要传入A发送过来的URL。
+第2步“获取羚羊tracker的ip和端口”需要调用羚羊云Web API的[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)接口。
+第3步“生成URL”需要根据[羚羊云推拉流URL格式-QSUP方式](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md#6_%E6%8E%A8%E6%8B%89%E7%9B%B4%E6%92%AD%E6%B5%81%28QSUP%E6%96%B9%E5%BC%8F%29%E7%A4%BA%E4%BE%8B)。
+第4步“推送消息给B”需要调用羚羊云Web API的[服务器推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.2_%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)接口，接口参数需要传入B的羚羊cid。
+第5步“收到A的呼叫请求”，是在羚羊云SDK的[启动云服务](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)介绍。
+第5步“建立双方的通话连接”需要调用羚羊云SDK的[视频通话-建立通话连接](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E6%89%93%E5%BC%80%E6%92%AD%E6%94%BE%E5%99%A8)接口，接口参数需要传入A发送过来的URL。
 
 ###1.1 主叫端
 
