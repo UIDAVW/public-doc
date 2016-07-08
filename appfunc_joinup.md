@@ -35,12 +35,12 @@
 ###3.1 第1步
 ![Alt text](./images/app_sys_join.png) 
 
-上图中1、2步是由开发者注册并登录[羚羊云应用管理平台](http://console.topvdn.com)完成，获取到`appid-appkey`和`id段`之后将其保存在应用服务器；
-其他的3、4、5步全都是在应用服务器端完成。
+上图中**1**、**2**步是由开发者注册并登录[羚羊云应用管理平台](http://console.topvdn.com)完成，获取到`appid-appkey`和`id段`之后将其保存在应用服务器；
+其他的**3**、**4**、**5**步全都是在`应用服务器`端完成。
 
 **注**：
-`token的生成方法`参考[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)；
-`config`可通过调用Web API的['查询设备状态接口'](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，该接口返回的`init_string`字段即`config串`。
+生成`token`的方法：参考[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)；
+获取`config`的方法：通过调用Web API的['查询设备状态接口'](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，该接口返回的`init_string`字段即`config串`。
 
 ###3.2 第2步
 ![Alt text](./images/app_sys_join2.png) 
