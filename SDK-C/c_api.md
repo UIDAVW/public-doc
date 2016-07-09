@@ -80,8 +80,8 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apToken|char*|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
-|apConfig|char*|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
+|apToken|char*|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
+|apConfig|char*|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 **注意**：
@@ -132,7 +132,7 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aUrl|char*|in|必须|目标服务器的url地址，连接类型（推流或拉流），使用的协议等。|
-|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
+|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
 **注意**：
 
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：

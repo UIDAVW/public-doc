@@ -108,7 +108,7 @@ while(1)
 	sleep(1);
 }
 ```
-**注意**：其他接口必须在此接口被调用成功之后才能调用。deviceToken和configStr从羚羊云应用后台或者用户的[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。
+**注意**：其他接口必须在此接口被调用成功之后才能调用。deviceToken和configStr从羚羊云应用后台或者用户的[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。
 
 ##5.2 &nbsp;停止云服务
 ```
