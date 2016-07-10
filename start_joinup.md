@@ -2,7 +2,7 @@
 
 ##1. 集成羚羊云(五步)
 
-###1.1 成为羚羊云的开发者
+###1.1 成为羚羊云的应用开发者
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[注册羚羊云开发者账号](http://console.topvdn.com/register)
 
 ###1.2 拥有自己的应用

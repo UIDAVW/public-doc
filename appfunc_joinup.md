@@ -1,4 +1,4 @@
-#羚羊云应用接入
+#应用接入羚羊云
 
 ##1 应用场景
 羚羊云提供了一系列的功能接口供用户调用，用户按照不同的流程、调用不同的接口可以实现不同的应用场景和功能。
@@ -49,7 +49,10 @@
 [启动云服务-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 [启动云服务-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
-至此，设备A和设备B就成功接入到羚羊云。
+至此，设备A和设备B就成功接入到羚羊云。接下来就是如何调用不同的接口来实现不同场景的应用了。
+[视频通话](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_facetime.md)
+[视频直播](http://doc.topvdn.com/api/index.html#!public-doc/case_livevideo.md)
+[手机直播](http://doc.topvdn.com/api/index.html#!public-doc/case_livephone.md)
 
 ##4. 常见问题
 
