@@ -14,7 +14,8 @@
 | 第4步 | 推送消息给B | 调用羚羊云Web API的[服务器推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.2_%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)接口，接口参数需要传入B的羚羊cid。|
 | 第5步 | 收到A的呼叫请求 | 在羚羊云SDK的[启动云服务](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)。 |
 | 第5步 | 建立通话连接 | 调用羚羊云SDK的"建立通话连接"接口，需要传入A发送过来的URL作为参数。[Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.3_%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B9%B6%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE) [iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5) |
-
+| 第6步 | A内部触发连接建立成功的消息 | SDK内部自动触发，不需要调用接口。 |
+| 第7步 | 双方开始视频通话 | A和B的使用者已经可以互相视频通话，不需要调用接口。 |
 ##3. 视频通话开发示例
 ###3.1 主叫端
 
