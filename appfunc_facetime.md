@@ -6,7 +6,7 @@
 ##2. 视频通话开发流程
 ![Alt text](./images/appfunc_facetime.png) 
 
-| 序号 | 步骤名称 | 调用接口 |
+| 步骤序号 | 步骤名称 | 调用接口 |
 | ----    | ----    | ----     |
 | 第1步   | A向应用服务器发送请求:呼叫B | 属应用层自己的业务，与羚羊云SDK无关，不需要调用接口。 |
 | 第2步   | 获取羚羊tracker的ip和端口 | 调用羚羊云Web API的[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)接口 |
