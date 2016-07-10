@@ -144,8 +144,8 @@ void startCloudService(String userToken, String configString, CallBackListener<L
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|userToken|String|in|必须|设备token，由第三方后台生成。|
-|configString|String|in|必须|配置串，从第三方后台获取。|
+|userToken|String|in|必须|设备token，由应用服务器生成。|
+|configString|String|in|必须|配置串，从应用服务器获取。|
 |listener|CallBackListener<Long>|in|必须|启动结果监听回调，返回成功或失败|
 
 **注意**：
@@ -866,7 +866,7 @@ public void setDataSource(String url)
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
+|url|String|In|--|地址，从应用服务器获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 
 ###6.3 设置播放缓冲时长
 ```
