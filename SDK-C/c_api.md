@@ -143,7 +143,7 @@ topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu
 
 Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)
 
-##3.2 &nbsp;断开通道连接
+##3.2 断开通道连接
 ```
 int	LY_disconnect(const int aFd);
 ```
@@ -157,7 +157,7 @@ int	LY_disconnect(const int aFd);
 |-------|----|----|----|----|
 |aFd|int|in|必须|传输通道句柄|
 
-##3.3 &nbsp;发送媒体帧
+##3.3 发送媒体帧
 ```
 int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```
@@ -173,7 +173,7 @@ int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 |aFd|int|in|必须|传输通道句柄|
 |apMediaFrame|MediaFrame_t|in|必须|多媒体数据帧结构体指针，详细参考数据类型中的媒体帧信息|
 
-##3.4 &nbsp;接收媒体帧
+##3.4 接收媒体帧
 ```
 int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```
@@ -188,7 +188,7 @@ int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 |aFd|int|in|必须|传输通道句柄|
 |apMediaFrame|MediaFrame_t|in|必须|多媒体数据帧结构体指针，详细参考数据类型中的媒体帧信息|
 
-##3.5 &nbsp;获取在线状态
+##3.5 获取在线状态
 ```
 int	LY_getOnlineStatus(void);
 ```
@@ -198,7 +198,7 @@ int	LY_getOnlineStatus(void);
 | 功能 | 获取本方在云平台的在线状态（网络正常情况下，获取到的状态的是准确无误的；如果网络状况不好，延时比较大(触发超时更改状态)，可能出现实际状态和获取到的状态不一致，可通过平台回调函数的"Online"和"Offline"消息同步状态。） |
 | 返回值 | 0表示离线，1表示在线 |
 
-##3.6 &nbsp;更新token信息
+##3.6 更新token信息
 ```
 int LY_updateToken(const char *aDeviceToken, int maxLen);
 ```
@@ -218,7 +218,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 
 token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
-##3.7 &nbsp;定位录像到指定时间点
+##3.7 定位录像到指定时间点
 ```
 int LY_seek(const int aFd, const unsigned int aCurrentTime);
 ```
@@ -233,7 +233,7 @@ int LY_seek(const int aFd, const unsigned int aCurrentTime);
 |aFd|int|in|必须|建立录像传输通道时的通道句柄fd|
 |aCurrentTime|unsigned int|in|必须|要定位的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于等于0 |
 
-##3.8 &nbsp;设置指定网卡IP
+##3.8 设置指定网卡IP
 ```
 int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aSecondIP, const int aSecondIpLength);
 ```
@@ -250,7 +250,7 @@ int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aS
 |aSecondIP|const char *|in|必须|第二个IP |
 |aSecondIpLength|int|in|必须|第二个IP的长度 |
 
-##3.9 &nbsp;设置媒体编解码信息
+##3.9 设置媒体编解码信息
 ```
 int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo); 
 ```
@@ -265,7 +265,7 @@ int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo);
 |aFd|const int|in|必须|传输通道fd|
 |aMediaInfo|const MediaInfo_t|in|必须|多媒体编解码信息 |
 
-##3.10 &nbsp;设置加密密钥
+##3.10 设置加密密钥
 ```
 int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEncryptKey, const int aEncryptKeyLength);
 ```
