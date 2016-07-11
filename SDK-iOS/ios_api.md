@@ -298,8 +298,8 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|token|NSString *|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
-|config|NSString *|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
+|token|NSString *|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
+|config|NSString *|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
 |startBlock|startCloudServiceBlock|in|--|启动服务状态回调 详见平台接口block|
 |popMessageBlock|cloudServicePopMessageBlock|in|--|消息监听回调，设备状态变更、建立连接消息、自定义消息均通过改block回调，详见平台接口block|
 **注意**：
@@ -393,7 +393,7 @@ token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvd
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-| dataSourceAddress |NSString *|in|必须|直播推流地址，用户从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
+| dataSourceAddress |NSString *|in|必须|直播推流地址，用户从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |startBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
 
 ###3.4 停止直播
@@ -909,7 +909,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |dataSourceAddreess|NSString *|in|必须|播放地址|
 |frame|CGRect|in|必须|view的frame播放地址|
 
-###5.14 打开播放器
+###5.14 建立通话连接
 ```
 - (void)open: (NSString *)dataSourceAddreess
   openStatus: (void (^)(LYstatusCode statusCode, NSString         	*errorString))openBlock
@@ -929,7 +929,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 |playerBlock|playerCallBackBlock|in|必须|播放过程中的状态回调|
 **注意**：该方法只有被叫方才调用，主叫方不调用该方法。
 
-###5.15 关闭播放器
+###5.15 关闭通话连接
 ```
 - (void)close: (NSString *)dataSourceAddreess;
 ```
@@ -1054,6 +1054,6 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 返回值 | 无 |
 
 #### 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

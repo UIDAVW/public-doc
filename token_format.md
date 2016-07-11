@@ -21,7 +21,7 @@ token明文段包含以下字段：
 
 |字段| 数据类型 | 含义 |
 |----|----|----|
-|cid |4字节无符号整型| 详见[《SDK接入指南》](http://doc.topvdn.com/api/#!public-doc/integration.md#3._相关术语和名词)关于`cid`的名词解释。|
+|cid |4字节无符号整型| 详见[“SDK接入指南”](http://doc.topvdn.com/api/#!public-doc/start_archit.md)关于`cid`的名词解释。|
 |control |4字节无符号整型| 控制字段，设备对视频流的推送、播放、云存储等功能的参数配置，各字节以及位的意义详见下文control字段介绍。|
 |expire |4字节无符号整型| 过期时间，token的有效时间，为UTC时间戳（秒级精度，4字节）。|
 |vod_time |4字节无符号整型| 点播时间，点播时对应的录制时间，同时也是点播文件的文件名部分。|

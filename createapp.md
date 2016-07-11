@@ -20,3 +20,11 @@
 创建App成功后会出现该App的数据统计概况。
 
 ![Alt text](./images/ly_user_create_app_3.png "App数据统计概况") 
+
+## 5. 获取App的羚羊appid和appkey
+
+![Alt text](./images/ly_user_create_app_5.png) 
+
+"代号"即`appid`；
+"APP KEY"即`appkey`，"APP KEY"是隐式字符串，点击该字符串可以查看并复制完整的显式字符串。
+

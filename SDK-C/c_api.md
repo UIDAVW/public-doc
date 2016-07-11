@@ -1,5 +1,5 @@
 #羚羊云C API手册
-##1 数据类型
+##1 &nbsp;&nbsp;&nbsp;数据类型
 ###1.1 返回值
 ```
 #define LY_SUCCESS 0//操作成功
@@ -66,9 +66,9 @@ typedef enum {
 } ClientStatus_Em;
 ```
 
-##2 云服务接口
+##2 &nbsp;&nbsp;&nbsp;云服务接口
     
-###2.1 启动云服务
+##2.1 启动云服务
 ```
 int	LY_startCloudService(const char* const apToken, const char* const apConfig, const PlatformMessageCallBack apMessageCallBack, void *apUserData);
 ```
@@ -80,8 +80,8 @@ int	LY_startCloudService(const char* const apToken, const char* const apConfig, 
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|apToken|char*|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
-|apConfig|char*|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
+|apToken|char*|in|必须|设备token，由[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)生成。|
+|apConfig|char*|in|必须|配置串，从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。|
 |apMessageCallBack|PlatformMessageCallBack|in|必须|平台消息回调函数，该函数用来处理云平台返回的消息|
 |apUserData|void*|in|可选|由SDK保存，平台每次调用aPMessageCallBack这个回调函数作为第一个参数传递进去，可传递一些用户自定义信息|
 **注意**：
@@ -105,7 +105,7 @@ typedef void (*PlatformMessageCallBack)(void* apUserData, const char* constaMess
 |apUserData|void*|in|必须|用户自定义数据，对于羚羊云透明，羚羊云只做保存和传递。|
 |aMessage|char*|in|必须|羚羊云的回调数据，cJSON格式，需要解析，解析示例请参照羚羊云C接口DEMO。|
 
-###2.2 停止云服务
+##2.2 停止云服务
 ```
 void LY_stopCloudService();
 ```
@@ -116,9 +116,9 @@ void LY_stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-##3 推拉流接口
+##3 &nbsp;&nbsp;&nbsp;推拉流接口
     
-###3.1 建立传输通道
+##3.1 建立传输通道
 ```
 int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 ```
@@ -132,7 +132,7 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aUrl|char*|in|必须|目标服务器的url地址，连接类型（推流或拉流），使用的协议等。|
-|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/integration.md#4._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
+|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
 **注意**：
 
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：
@@ -143,7 +143,7 @@ topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu
 
 Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)
 
-###3.2 断开通道连接
+##3.2 断开通道连接
 ```
 int	LY_disconnect(const int aFd);
 ```
@@ -157,7 +157,7 @@ int	LY_disconnect(const int aFd);
 |-------|----|----|----|----|
 |aFd|int|in|必须|传输通道句柄|
 
-###3.3 发送媒体帧
+##3.3 发送媒体帧
 ```
 int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```
@@ -173,7 +173,7 @@ int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 |aFd|int|in|必须|传输通道句柄|
 |apMediaFrame|MediaFrame_t|in|必须|多媒体数据帧结构体指针，详细参考数据类型中的媒体帧信息|
 
-###3.4 接收媒体帧
+##3.4 接收媒体帧
 ```
 int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```
@@ -188,7 +188,7 @@ int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 |aFd|int|in|必须|传输通道句柄|
 |apMediaFrame|MediaFrame_t|in|必须|多媒体数据帧结构体指针，详细参考数据类型中的媒体帧信息|
 
-###3.5 获取在线状态
+##3.5 获取在线状态
 ```
 int	LY_getOnlineStatus(void);
 ```
@@ -198,7 +198,7 @@ int	LY_getOnlineStatus(void);
 | 功能 | 获取本方在云平台的在线状态（网络正常情况下，获取到的状态的是准确无误的；如果网络状况不好，延时比较大(触发超时更改状态)，可能出现实际状态和获取到的状态不一致，可通过平台回调函数的"Online"和"Offline"消息同步状态。） |
 | 返回值 | 0表示离线，1表示在线 |
 
-###3.6 更新token信息
+##3.6 更新token信息
 ```
 int LY_updateToken(const char *aDeviceToken, int maxLen);
 ```
@@ -218,7 +218,7 @@ int LY_updateToken(const char *aDeviceToken, int maxLen);
 
 token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvdn.com/api/public-doc/#!token_format.md)
 
-###3.7 定位录像到指定时间点
+##3.7 定位录像到指定时间点
 ```
 int LY_seek(const int aFd, const unsigned int aCurrentTime);
 ```
@@ -233,7 +233,7 @@ int LY_seek(const int aFd, const unsigned int aCurrentTime);
 |aFd|int|in|必须|建立录像传输通道时的通道句柄fd|
 |aCurrentTime|unsigned int|in|必须|要定位的时间点，该时间点为相对于建立录像传输通道时传入的begin的差值，必须大于等于0 |
 
-###3.8 设置指定网卡IP
+##3.8 设置指定网卡IP
 ```
 int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aSecondIP, const int aSecondIpLength);
 ```
@@ -250,7 +250,7 @@ int LY_setLocalIP(const char *aFirstIP, const int aFirstIpLength, const char *aS
 |aSecondIP|const char *|in|必须|第二个IP |
 |aSecondIpLength|int|in|必须|第二个IP的长度 |
 
-###3.9 设置媒体编解码信息
+##3.9 设置媒体编解码信息
 ```
 int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo); 
 ```
@@ -265,7 +265,7 @@ int LY_setMediaInfo(const int aFd, const MediaInfo_t aMediaInfo);
 |aFd|const int|in|必须|传输通道fd|
 |aMediaInfo|const MediaInfo_t|in|必须|多媒体编解码信息 |
 
-###3.10 设置加密密钥
+##3.10 设置加密密钥
 ```
 int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEncryptKey, const int aEncryptKeyLength);
 ```
@@ -283,6 +283,6 @@ int	LY_setQSUPEncryptKey(const unsigned int aEncryptType,const char * const apEn
 
 
 #### 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integration.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)

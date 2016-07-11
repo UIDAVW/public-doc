@@ -132,7 +132,7 @@ public class LYException extends Exception {
 ##2 云服务接口
 接口名称：LYService
     
-###2.2 启动云服务
+###2.1 启动云服务
 ```
 void startCloudService(String userToken, String configString, CallBackListener<Long> listener);
 ```
@@ -144,8 +144,8 @@ void startCloudService(String userToken, String configString, CallBackListener<L
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|userToken|String|in|必须|设备token，由第三方后台生成。|
-|configString|String|in|必须|配置串，从第三方后台获取。|
+|userToken|String|in|必须|设备token，由应用服务器生成。|
+|configString|String|in|必须|配置串，从应用服务器获取。|
 |listener|CallBackListener<Long>|in|必须|启动结果监听回调，返回成功或失败|
 
 **注意**：
@@ -159,7 +159,7 @@ token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvd
 调用者不必知道该字符串内容所表示的意义。
 应用后台调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)获取，接口返回的"init_string"字段即配置串。
 
-###2.3 停止云服务
+###2.2 停止云服务
 ```
 void stopCloudService();
 ```
@@ -170,7 +170,7 @@ void stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-###2.4 获取SDK和平台版本号
+###2.3 获取SDK和平台版本号
 ```
 String getSDKVersion();
 ```
@@ -181,7 +181,7 @@ String getSDKVersion();
 | 返回值 | 返回Android SDK和平台版本号 |
 | 参数列表 | 无 |
 
-###2.5 日志打印开关
+###2.4 日志打印开关
 ```
 void setNativeLoggingEnabled(boolean enabled);
 ```
@@ -195,7 +195,7 @@ void setNativeLoggingEnabled(boolean enabled);
 |-------|----|----|----|----|
 |enabled|boolean|in|必须|true为开启,false为不开启(默认)|
 
-###2.6 用户是否在线
+###2.5 用户是否在线
 ```
 boolean isOnline();
 ```
@@ -207,7 +207,7 @@ boolean isOnline();
 | 参数列表 | 无 |
 
 
-###2.7 消息结构定义
+###2.6 消息结构定义
 ```
     /**
      * 平台消息回调
@@ -228,7 +228,7 @@ boolean isOnline();
     }
 ```
 
-###2.8 设置消息接收回调
+###2.7 设置消息接收回调
 ```
 void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 ```
@@ -239,7 +239,7 @@ void setCloudMessageListener(AcceptMessageListener acceptCloudMessageListener);
 | 返回值 | 无|
 | 参数列表 | 请参见下面的消息接收回调函数 |
 
-###2.9 消息接收回调函数
+###2.8 消息接收回调函数
 ```
     interface AcceptMessageListener {
         void accept(CloudMessage message);
@@ -866,7 +866,7 @@ public void setDataSource(String url)
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|url|String|In|--|地址，从第三方后台获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
+|url|String|In|--|地址，从应用服务器获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 
 ###6.3 设置播放缓冲时长
 ```
@@ -1427,6 +1427,6 @@ void onSeekError(LYException exception);
 
 
 #### 相关链接
-[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/integ_case.md)
+[羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
