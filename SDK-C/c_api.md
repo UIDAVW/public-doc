@@ -116,9 +116,9 @@ void LY_stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-##3 推拉流接口
+##3 &nbsp;&nbsp;推拉流接口
     
-##3.1 &nbsp;建立传输通道
+##3.1 建立传输通道
 ```
 int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 ```
