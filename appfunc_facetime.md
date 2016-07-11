@@ -20,11 +20,11 @@
 ##3. 视频通话开发示例
 本示例的前提：用户(即开发者)必须先将[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)到羚羊云。
 
-###3.1 设备A发送'呼叫B'的命令
-这一步是`设备A`向`应用服务器`发送请求，并未涉及到羚羊云SDK的调用，需要用户自己制定消息来完成。需要注意的是，`应用服务器`在这一步之前须存有`设备A`和`设备B`的`羚羊cid`以及`羚羊token`。
+###3.1 设备A发送'呼叫B'的消息
+这一步是设备A向应用服务器发送'呼叫设备B'的请求，并未涉及到羚羊云SDK的调用，需要用户自己制定消息来完成。需要注意的是，`应用服务器`在这一步之前须存有设备A和设备B的`羚羊cid`以及`羚羊token`。
 
 ###3.2 应用服务器获取羚羊tracker的ip和port
-`应用服务器`收到`设备A`发送的请求消息后，调用羚羊云Web API的'[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)'接口，调用接口时传入`设备A`的`羚羊cid`，从接口的返回结果中获取到`设备A`所在的羚羊`tracker(调度服务器)的ip和port`。
+应用服务器收到设备A发送的请求消息后，调用羚羊云Web API的'[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)'接口，调用接口时传入`设备A`的`羚羊cid`，从接口的返回结果中获取到`设备A`所在的羚羊`tracker(调度服务器)的ip和port`。
 以下仅展示`curl`方式的Web http请求示例，用户需根据自己应用服务器所采用的开发语言去完成http请求并解析返回的json数据。
 ```
 curl -X POST -H "X-APP-ID: mock" -H "X-APP-Key: mock-app-key-use-your-own-pls" -H "Content-Type: application/json" -d '{
@@ -63,14 +63,14 @@ curl -X POST -H "X-APP-ID: mock" -H "X-APP-Key: mock-app-key-use-your-own-pls" -
 其中的`tracker_ip`和`tracker_port`即设备A的羚羊tracker的ip和port。
 
 ###3.3 应用服务器生成设备A的羚羊URL
-`设备A`的羚羊URL用来建立A与B之间传输视频的连接，是实现视频通话的关键。该URL的生成规则参考[QSUP方式推拉流URL](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md#6_%E6%8E%A8%E6%8B%89%E7%9B%B4%E6%92%AD%E6%B5%81%28QSUP%E6%96%B9%E5%BC%8F%29%E7%A4%BA%E4%BE%8B)。
+设备A的羚羊URL用来建立A与B之间传输视频的连接，是实现视频通话的关键。该URL的生成规则参考[QSUP方式推拉流URL](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md#6_%E6%8E%A8%E6%8B%89%E7%9B%B4%E6%92%AD%E6%B5%81%28QSUP%E6%96%B9%E5%BC%8F%29%E7%A4%BA%E4%BE%8B)。
 ```
 topvdn://203.195.157.248:80?protocolType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
 ```
-`ip`为`设备A`的羚羊tracker_ip；
-`port` 为`设备A`的羚羊tracker_port；
-`protocolType`为必须为`QSUP`方式传输视频流；
-`token`为`设备A`的羚羊token。
+`ip`为设备A的羚羊tracker_ip；
+`port` 为设备A的羚羊tracker_port；
+`protocolType`为必须为QSUP方式传输视频流；
+`token`为设备A的羚羊token。
 
 ###3.4 应用服务器推送消息给设备B
 应用服务器通过羚羊云的消息通道将设备A的羚羊URL传输给设备B，调用Web API的[服务器推送消息](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.3.2_%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81%E6%B6%88%E6%81%AF)接口。
@@ -89,23 +89,23 @@ curl -X POST -H "Content-Type: application/json" -H "X-APP-ID: Test" -H "X-APP-K
 `msg`字段为应用服务器发送的消息体，为base64的编码值，其中包含了`设备A的羚羊URL`。
 
 ###3.5 设备B收到设备A的呼叫请求
-`设备B`在调用羚羊云SDK的启动云服务([iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2_%E4%BA%91%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3))接口时传入`消息监听回调函数`，在回调函数中会收到`设备A`请求的消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)。
+设备B在调用羚羊云SDK的启动云服务([iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2_%E4%BA%91%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3))接口时传入"消息监听回调函数"，在回调函数中会收到设备A请求的消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)。
 
 ###3.6 设备B使用设备A的羚羊URL建立视频通话连接
-`设备B`在回调函数中收到`设备A`的呼叫请求消息，消息体中包含了`设备A`的羚羊URL，该消息是base64编码，需要解码。从消息体中拿到URL之后调用SDK的"建立通话连接"接口，需要传入`设备A`的URL作为参数。
+设备B在回调函数中收到设备A的呼叫请求消息，消息体中包含了设备A的羚羊URL，该消息是base64编码，需要解码。从消息体中拿到URL之后调用SDK的"建立通话连接"接口，需要传入设备A的URL作为参数。
 [建立通话连接-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.3_%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B9%B6%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE)
 [建立通话连接-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)
 
 ###3.7 双方开始视频通话
-在上一步`设备B`调用接口建立通话连接成功后，双方就可以开始视频通话了。
+在上一步设备B调用接口建立通话连接成功后，双方就可以开始视频通话了。
 
 ###3.8 结束视频通话连接
-若通话的一方想主动停止视频通话则需要调用`关闭视频通话连接`方法；
-当对方被动收到ConnectionClosed的消息时也必须调用`关闭视频通话`方法。该消息在应用层的`消息监听回调函数`中会被触发。
+若通话的一方想主动停止视频通话则需要调用"关闭视频通话连接"方法；
+当对方被动收到ConnectionClosed的消息时也必须调用"关闭视频通话连接"方法。该消息在应用层的"消息监听回调函数"中会被触发。
 [关闭视频通话-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.4_%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5)
 [关闭视频通话-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.15_%E5%85%B3%E9%97%AD%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)
 
 ##4. 视频通话接口使用说明
-若想了解Android或iOS平台下的所有视频通话相关接口，请参考以下文档。
-[视频通话接口使用指南-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
-[视频通话接口使用指南-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
+若想详细了解羚羊云Android或iOS平台下的SDK所有视频通话相关接口，请参考以下文档：
+[视频通话接口使用说明-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
+[视频通话接口使用说明-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
