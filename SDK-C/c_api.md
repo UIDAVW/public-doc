@@ -116,7 +116,7 @@ void LY_stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-##3 &nbsp;&nbsp;推拉流接口
+##3 &nbsp;&nbsp;&nbsp;推拉流接口
     
 ##3.1 建立传输通道
 ```
