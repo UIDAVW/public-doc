@@ -132,7 +132,7 @@ public class LYException extends Exception {
 ##2 云服务接口
 接口名称：LYService
     
-&nbsp;&nbsp;&nbsp;##2.1 启动/停止云服务
+##&nbsp;&nbsp;&nbsp;2.1 启动/停止云服务
 ###2.1.1 启动云服务
 ```
 void startCloudService(String userToken, String configString, CallBackListener<Long> listener);
@@ -171,7 +171,7 @@ void stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-&nbsp;&nbsp;&nbsp;##2.2 消息监听
+##&nbsp;&nbsp;&nbsp;2.2 消息监听
 
 ###2.2.1 消息结构定义
 ```
@@ -302,7 +302,7 @@ void setZOrderOnTop(boolean onTop);
 ##4 直播推流接口
 接口名称：LYLiveBroadcast
 
-&nbsp;&nbsp;&nbsp;##4.1 预设直播参数
+##&nbsp;&nbsp;&nbsp;4.1 预设直播参数
 
 ###4.1.1 设置本地预览视图
 ```
@@ -318,7 +318,7 @@ void setLocalPreview(LYGLCameraView glSurfaceView);
 |-------|----|----|----|----|
 |glSurfaceView|LYGLCameraView|in|必须|对glsurfaceview进行了封装的自定义View，用来显示视频直播推流的本地预览，详见：预览器接口|
 
-&nbsp;&nbsp;&nbsp;##4.2 开始/停止直播
+##&nbsp;&nbsp;&nbsp;4.2 开始/停止直播
 
 ###4.2.1 开始直播推流
 ```
@@ -394,7 +394,7 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 |-------|----|----|----|----|
 |exception|LYException|out|--|包含错误信息和错误码。详见：数据类型-错误信息 |
 
-&nbsp;&nbsp;&nbsp;##4.3 直播控制
+##&nbsp;&nbsp;&nbsp;4.3 直播控制
 
 ###4.3.1 开始视频采集发送
 ```
@@ -563,7 +563,7 @@ void setFlashMode(String desiredFlash);
 
 播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
 
-&nbsp;&nbsp;&nbsp;##5.1 预设播放参数
+##&nbsp;&nbsp;&nbsp;5.1 预设播放参数
 
 ###5.1.1 播放器布局
 该布局是基于SurfaceView的自定义播放器控件，在使用过程中，只需要引入播放器控件的相应的layout界面即可。
@@ -601,7 +601,7 @@ void setPlayOptions(PlayOptions playOptions);
 |-------|----|----|----|----|
 |playOptions|PlayOptions|In|必须|缓冲数据，缓冲时长等相关配置，详见：数据类型_播放缓冲时长参数。|
 
-&nbsp;&nbsp;&nbsp;##5.2 开始/停止播放
+##&nbsp;&nbsp;&nbsp;5.2 开始/停止播放
 
 ###5.2.1 开始播放
 ```
@@ -623,7 +623,7 @@ void stop();
 | 功能 | 停止播放，必须在开始播放后调用； |
 | 返回值 | 无 |
 
-&nbsp;&nbsp;&nbsp;##5.3 播放信息和控制
+##&nbsp;&nbsp;&nbsp;5.3 播放信息和控制
 
 ###5.3.1 是否正在播放
 ```
@@ -883,7 +883,7 @@ void reset();
 | 功能 | 将播放器的所有配置清空，回到初始化状态，但保留播放器实例，用户可重新设置播放器配置，重新设置播放源进行播放； |
 | 返回值 |无 |
 
-&nbsp;&nbsp;&nbsp;##5.4 注册播放事件的回调
+##&nbsp;&nbsp;&nbsp;5.4 注册播放事件的回调
 
 ###5.4.1 注册本地录像状态回调
 ```
@@ -1154,7 +1154,7 @@ void onSeekError(LYException exception);
 ##6 视频通话接口
 接口名称：LYFaceTime
  
-&nbsp;&nbsp;&nbsp;##6.1 预设视频通话参数
+##&nbsp;&nbsp;&nbsp;6.1 预设视频通话参数
 
 ###6.1.1 设置本地画面预览
 ```
@@ -1185,7 +1185,7 @@ public void setRemoteView(String remoteUrl, VideoPlayerView view);
 |remoteUrl|String|In|--|此参数作为预留，目前设置为null；|
 |view|VideoPlayerView|In|--|播放展示对方视频的View；|
 
-&nbsp;&nbsp;&nbsp;##6.2 打开/关闭视频通话
+##&nbsp;&nbsp;&nbsp;6.2 打开/关闭视频通话
 
 ###6.2.1 建立通话连接
 ```
@@ -1226,7 +1226,7 @@ public void release();
 | 功能 | 释放编码器，音视频采集器，相关工作线程等资源. **必须在断开连接后调用**，该实例不能再被使用。 |
 | 返回值 | 无 |
 
-&nbsp;&nbsp;&nbsp;##6.3 视频通话控制
+##&nbsp;&nbsp;&nbsp;6.3 视频通话控制
 
 ###6.3.1 开始视频采集发送
 ```
