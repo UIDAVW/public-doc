@@ -1,5 +1,5 @@
 #羚羊云iOS API手册
-##1 - 数据类型
+##1---数据类型
 ###1.1 接口执行的状态
 ```
 typedef NS_ENUM(NSInteger, LYstatusCode) {
@@ -268,7 +268,7 @@ typedef NS_ENUM(NSInteger, LYLiveBroadcastMode) {
                            decodeMode: (LYPlayerDecodeMode) decodeMode;
 ```
 
-##2 - 云服务接口
+##2---云服务接口
 >接口名称：LYCloudService
     
 ###2.1 获取单例对象
@@ -350,7 +350,7 @@ typedef void(^cloudServicePopMessageBlock)(NSDictionary *dictionary);
 | 返回值 | 返回用户在线状态 YES: 在线  NO: 为离线|
 | 参数列表 | 无 |
 
-##3 - 直播推流接口
+##3---直播推流接口
 >接口名称：LYLiveBroadCast
 
 ##3.1 初始化与反初始化
@@ -547,7 +547,7 @@ typedef void(^cloudServicePopMessageBlock)(NSDictionary *dictionary);
 | 功能 | 可以在执行过程中获取之前的操作是否存在错误信息。 |
 | 返回值 | 调用之前所产生的错误信息字符串 |
 
-##4 - 播放器接口
+##4---播放器接口
 >接口名称：LYPlayer
 
 ##4.1 预设播放器
@@ -747,7 +747,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 | 功能 | 结束本地录像； |
 | 返回值 | 无 |
 
-##5 - 视频通话接口
+##5---视频通话接口
 >接口名称：LYFaceTime
 
 ##5.1 初始化与反初始化
