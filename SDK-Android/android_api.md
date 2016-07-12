@@ -1,5 +1,5 @@
 #羚羊云Android API手册
-##1 --数据类型
+##1 - 数据类型 -
 ###1.1 媒体参数类型
 ```
 public interface IMediaParamProtocol {
@@ -129,7 +129,7 @@ public class LYException extends Exception {
 }
 ```
 
-##2 --云服务接口
+##2 - 云服务接口 -
 接口名称：LYService
     
 ##2.1 启动/停止云服务
@@ -257,7 +257,7 @@ void setNativeLoggingEnabled(boolean enabled);
 |-------|----|----|----|----|
 |enabled|boolean|in|必须|true为开启,false为不开启(默认)|
 
-##3 --预览器接口
+##3 - 预览器接口 -
 接口名称：LYGLCameraView
 
 预览控件可用于直播推流、视频通话等的本地预览，可设置成四边形，圆形，三角形等形状。
@@ -299,7 +299,7 @@ void setZOrderOnTop(boolean onTop);
 |onTop|boolean|in|必须|是否将预览View设置为视图最外层，true：设置为最外层；false：不设置为最外层|
 
 
-##4 --直播推流接口
+##4 - 直播推流接口 -
 接口名称：LYLiveBroadcast
 
 ##4.1 预设直播参数
@@ -558,7 +558,7 @@ void setFlashMode(String desiredFlash);
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
 
-##5 --播放器接口
+##5 - 播放器接口 -
 接口名称：LYPlayer
 
 播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
