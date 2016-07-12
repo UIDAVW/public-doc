@@ -35,13 +35,13 @@
 ###3.1 第1步
 ![Alt text](./images/app_sys_join.png) 
 
-|步骤序号|步骤名称|实现途径|
+| 步骤序号 | 步骤名称 | 实现途径 |
 |:-----:| ----- | ------ |
-|1|获取`appid`和`appkey`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md#5._%E8%8E%B7%E5%8F%96App%E7%9A%84%E7%BE%9A%E7%BE%8Aappid%E5%92%8Cappkey)。获取到的appid和appkey存放在应用服务器。|
-|2|获取`id段`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)。获取到的id段存放在应用服务器。|
-|3|获取cid|在应用服务器端完成。从id段中分配一个id值作为设备的羚羊cid。|
-|4|计算`羚羊token`|在应用服务器端完成，按照[羚羊云token认证](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)规则生成设备的羚羊token，需要用到appkey和羚羊cid。|
-|5|获取`羚羊config串`|在应用服务器端完成，调用Web API的[查询设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)接口，需要将设备的羚羊cid作为参数传入接口，接口返回的`init_string`字段即羚羊config串。|
+| 1 | 获取`appid`和`appkey` |注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md#5._%E8%8E%B7%E5%8F%96App%E7%9A%84%E7%BE%9A%E7%BE%8Aappid%E5%92%8Cappkey)。获取到的appid和appkey存放在应用服务器。 |
+| 2 | 获取`id段` |注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)。获取到的id段存放在应用服务器。 |
+| 3 | 获取`cid` |在应用服务器端完成。从id段中分配一个id值作为设备的羚羊cid。 |
+| 4 | 计算`羚羊token` |在应用服务器端完成，按照[羚羊云token认证](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)规则生成设备的羚羊token，需要用到appkey和羚羊cid。 |
+| 5 | 获取`羚羊config串` |在应用服务器端完成，调用Web API的[查询设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)接口，需要将设备的羚羊cid作为参数传入接口，接口返回的`init_string`字段即羚羊config串。 |
 
 ###3.2 第2步
 ![Alt text](./images/app_sys_join2.png) 
