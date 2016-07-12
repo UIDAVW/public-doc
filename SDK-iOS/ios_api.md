@@ -323,7 +323,7 @@ token的内容格式及意义请见[羚羊云token认证机制](http://doc.topvd
 | 参数列表 | 无 |
 
 ##2.2 消息监听
-消息监听回调，设备状态变更、建立连接消息、自定义消息均通过改block回调，详见本文"数据类型-平台接口block"。
+从上面的"启动云服务"接口方法介绍中可知，消息监听是通过用户的回调函数实现，设备状态变更、建立连接消息、自定义消息均通过改block回调，详见本文"数据类型-平台接口block"。
 ```
 typedef void(^cloudServicePopMessageBlock)(NSDictionary *dictionary);
 ```

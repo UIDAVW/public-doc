@@ -1,5 +1,5 @@
 #羚羊云C API手册
-##1 &nbsp;&nbsp;&nbsp;数据类型
+##1---数据类型
 ###1.1 返回值
 ```
 #define LY_SUCCESS 0//操作成功
@@ -66,7 +66,7 @@ typedef enum {
 } ClientStatus_Em;
 ```
 
-##2 &nbsp;&nbsp;&nbsp;云服务接口
+##2---云服务接口
     
 ##2.1 启动云服务
 ```
@@ -116,7 +116,7 @@ void LY_stopCloudService();
 | 返回值 | 无 |
 | 参数列表 | 无 |
 
-##3 &nbsp;&nbsp;&nbsp;推拉流接口
+##3---推拉流接口
     
 ##3.1 建立传输通道
 ```
