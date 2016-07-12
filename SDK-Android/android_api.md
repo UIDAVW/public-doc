@@ -558,7 +558,7 @@ void setFlashMode(String desiredFlash);
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
 
-##5 &nbsp;&nbsp;&nbsp;播放器接口(LYPlayer)
+##5 &nbsp;&nbsp;&nbsp;**播放器接口**
 接口名称：LYPlayer
 
 播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
