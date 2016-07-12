@@ -257,7 +257,6 @@ void setNativeLoggingEnabled(boolean enabled);
 |-------|----|----|----|----|
 |enabled|boolean|in|必须|true为开启,false为不开启(默认)|
 
-
 ##3 预览器接口
 接口名称：LYGLCameraView
 
@@ -345,7 +344,17 @@ void stopBroadcasting();
 | 功能 | 关闭广播，除手动点击停止调用外，在onPause()方法里也要调用该接口停止直播 |
 | 返回值 | 无 |
 
-###4.2.3 是否正在直播
+##4.2.3 释放接口资源
+```
+void release();
+```
+| - | - |
+|-------|----|
+| 接口名 | release |
+| 功能 | 释放编码器，音视频采集器，相关工作线程等资源. 必须在停止直播推流后调用，该实例不能再被使用。 |
+| 返回值 | 无 |
+
+###4.2.4 是否正在直播
 ```
 boolean isBroadcasting();
 ```
@@ -355,7 +364,7 @@ boolean isBroadcasting();
 | 功能 | 判断是否正在直播 |
 | 返回值 | 返回直播状态 true: 正在直播  false: 已停止直播 |
 
-###4.2.4 设置推流状态变化回调
+###4.2.5 设置推流状态变化回调
 ```
 void setBroadcastListener(BroadcastStateChangeListener listener);
 ```
@@ -548,16 +557,6 @@ void setFlashMode(String desiredFlash);
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
-
-##4.4 释放接口资源
-```
-void release();
-```
-| - | - |
-|-------|----|
-| 接口名 | release |
-| 功能 | 释放编码器，音视频采集器，相关工作线程等资源. 必须在停止直播推流后调用，该实例不能再被使用。 |
-| 返回值 | 无 |
 
 ##5 播放器接口
 接口名称：LYPlayer
@@ -1217,6 +1216,16 @@ public void closeRemote(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null;|
 
+##6.2.3 释放接口资源
+```
+public void release();
+```
+| - | - |
+|-------|----|
+| 接口名 | release |
+| 功能 | 释放编码器，音视频采集器，相关工作线程等资源. **必须在断开连接后调用**，该实例不能再被使用。 |
+| 返回值 | 无 |
+
 ##6.3 视频通话控制
 
 ###6.3.1 开始视频采集发送
@@ -1436,16 +1445,6 @@ void setFlashMode(String desiredFlash);
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
-
-##6.4 释放接口资源
-```
-public void release();
-```
-| - | - |
-|-------|----|
-| 接口名 | release |
-| 功能 | 释放编码器，音视频采集器，相关工作线程等资源. 必须在断开连接后调用，该实例不能再被使用。 |
-| 返回值 | 无 |
 
 
 #### 相关链接
