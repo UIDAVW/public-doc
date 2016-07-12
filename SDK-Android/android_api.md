@@ -1151,7 +1151,7 @@ void onSeekError(LYException exception);
 |-------|----|----|----|----|
 |exception|LYException|out|必须|错误对象，包括错误码和错误信息，详见：数据类型_错误信息|
 
-##6 --视频通话接口
+##6 - 视频通话接口 -
 接口名称：LYFaceTime
  
 ##6.1 预设视频通话参数
