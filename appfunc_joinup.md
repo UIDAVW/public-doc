@@ -35,9 +35,6 @@
 ###3.1 第1步
 ![Alt text](./images/app_sys_join.png) 
 
-上图中**1**、**2**步是由开发者注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，开发者获取到`appid-appkey`和`id段`之后，将其保存在`应用服务器`；
-其他的**3**、**4**、**5**步全都是在`应用服务器`端完成。
-
 |步骤序号|步骤名称|实现途径|
 |:-----:| ----- | ------ |
 |1|获取`appid`和`appkey`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)。获取到的id段存放在应用服务器。|
