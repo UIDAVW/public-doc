@@ -394,7 +394,7 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 |-------|----|----|----|----|
 |exception|LYException|out|--|包含错误信息和错误码。详见：数据类型-错误信息 |
 
-##4.3 直播信息和控制
+##4.3 直播控制和信息
 
 ###4.3.1 开始视频采集发送
 ```
@@ -563,7 +563,7 @@ void setFlashMode(String desiredFlash);
 
 播放器模块可单独实现直播播放，摄像头直播播放，云存储播放，本地录像等功能。
 
-##5.1 预设播放参数
+##5.1 预设播放器
 
 ###5.1.1 播放器布局
 该布局是基于SurfaceView的自定义播放器控件，在使用过程中，只需要引入播放器控件的相应的layout界面即可。

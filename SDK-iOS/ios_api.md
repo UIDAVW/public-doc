@@ -446,7 +446,7 @@ typedef void(^cloudServicePopMessageBlock)(NSDictionary *dictionary);
 | 功能 | 和开始直播对应调用，内部释放开始直播准备的底层资源。 |
 | 返回值 | 无 |
 
-##3.4 直播信息和控制
+##3.4 直播控制和信息
 
 ###3.4.1 切换摄像头
 ```
