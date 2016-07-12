@@ -37,7 +37,7 @@
 
 |步骤序号|步骤名称|实现途径|
 |:-----:| ----- | ------ |
-|1|获取`appid`和`appkey`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md)。获取到的appid和appkey存放在应用服务器。|
+|1|获取`appid`和`appkey`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createapp.md#5._%E8%8E%B7%E5%8F%96App%E7%9A%84%E7%BE%9A%E7%BE%8Aappid%E5%92%8Cappkey)。获取到的appid和appkey存放在应用服务器。|
 |2|获取`id段`|注册并登录[羚羊云应用管理平台](http://console.topvdn.com)来完成，具体方法请参考[这里](http://doc.topvdn.com/api/index.html#!public-doc/createids.md)。获取到的id段存放在应用服务器。|
 |3|获取cid|在应用服务器端完成。从id段中分配一个id值作为设备的羚羊cid。|
 |4|计算`羚羊token`|在应用服务器端完成，按照[羚羊云token认证](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)规则生成设备的羚羊token，需要用到appkey和羚羊cid。|
