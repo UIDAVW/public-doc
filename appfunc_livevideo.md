@@ -277,7 +277,7 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 
 ##3.2 播放端
 
-####3.1.1 开发流程
+####3.2.1 开发流程
 
 ![Alt text](./images/appfunc_livevideo_3.png) 
 
@@ -291,9 +291,8 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 | 第6步 | 设备B获取拉流URL | 设备B从应用服务器接收拉流URL。不需要调用羚羊云SDK接口。 |
 | 第7步 | 设备B调用播放器接口 | 设备B调用羚羊云SDK的直播推流接口，需要传入B的拉流URL。 |
 
-####3.1.2 开发示例
+####3.2.2 开发示例
 
-##3. 开发示例
 本示例的前提：用户(即开发者)必须先将[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)到羚羊云。
 假设推流端为：Android设备。
 
