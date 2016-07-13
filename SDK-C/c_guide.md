@@ -181,7 +181,7 @@ URL格式：
 ```
 int fd;
 int ret;
-MediaFrame_tframe = {0};
+MediaFrame_t frame = {0};
 char *url="topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&mode=2";
 while(1)
 {
