@@ -39,20 +39,23 @@ public class Const {
 //    public static final String CAMERA_PLAYER_URL = "topvdn://rtmp6.public.topvdn.cn:1935?token=1003176&protocolType=2&connectType=2";
     
     //私有不带云存储摄像机直播观看地址 token是摄像头token  203.195.157.248:80调度服务器地址
-    public static final String PRIVATE_CAMERA_PLAYER_URL = "topvdn://203.195.157.248:80?token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb&"+
-    		"protocolType=1" ;
+//    public static final String PRIVATE_CAMERA_PLAYER_URL = "topvdn://203.195.157.248:80?token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb&"+
+//    		"protocolType=1" ;
+    //私有不带云存储摄像机直播观看地址 token是摄像头token  203.195.157.248:80调度服务器地址 亿播
+    public static final String PRIVATE_CAMERA_PLAYER_URL = "topvdn://121.42.156.148:80?protocolType=1&"
+    		+ "token=1073873030_3222274048_1468055289_d37af8d98e5cd53b7a7a2a90c7ec7bf8" ;
     
     //手机直播观看地址
     public static final String BROADCAST_LIVE_URL = "topvdn://rtmp1.public.topvdn.cn:1935?token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f&" +
     		"protocolType=2&connectType=2";
     
      //云存储观看地址 ，，client_token就是设备token，所有时间单位都是秒
-    static long begin=System.currentTimeMillis()/1000-3600*24;
-    static long end=System.currentTimeMillis()/1000;
-    public static final String RECORD_PLAYER_URL = "topvdn://public.topvdn.cn?protocolType=3&" +
-    		"token=1003639_3356753920_1466920474_d0063cb1050b05adb0fe69767ba95138&cid=1003639&" +
-    		"begin=1464317700&end=1464319828&play=1464317700";  
+//    public static final String RECORD_PLAYER_URL = "topvdn://public.topvdn.cn?protocolType=3&" +
+//    		"token=1003639_3356753920_1466920474_d0063cb1050b05adb0fe69767ba95138&cid=1003639&" +
+//    		"begin=1464317700&end=1464319828&play=1464317700";  
 	
+    public static final String RECORD_PLAYER_URL = "topvdn://183.57.151.177:1935?protocolType=3&connectType=2&token=1003155_3222536192_1493481600_1e1fbd38c4d26902a796d063b6b8f787&"
+    		+ "cid=1003155&begin=1467388800&end=1467475200&play=1467388800";  
 	
 	
 
