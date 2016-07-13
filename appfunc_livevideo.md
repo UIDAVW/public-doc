@@ -418,3 +418,4 @@ mPlayer.stop();
 详细接口方法介绍请参考：
 [播放器API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md#5---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
 [播放器API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#4---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
+
