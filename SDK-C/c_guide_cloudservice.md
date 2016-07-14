@@ -74,5 +74,3 @@ void popMessage(void *apData, const char *aMessage)
 #### 相关链接
 [羚羊云SDK服务架构](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md)
 [羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
-[羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
-
