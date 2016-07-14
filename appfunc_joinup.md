@@ -32,7 +32,15 @@
 - `设备(即应用客户端)`
 接入过程中有一部分工作需要应用服务器来协助完成。
 
-###3.1 第1步
+###3.1 羚羊云认证机制
+用户在接入到羚羊云时，无论是用户的应用服务器还是应用客户端，都必须通过安全认证，才能使用接口以实现应用。如下图所示：
+
+![Alt text](./images/verify.png "羚羊云认证机制")
+
+`**注**`：上图中的`token`均指的是接入羚羊云需要权鉴认证的token，而并非用户应用体系中应用客户端到应用服务器的权鉴token。
+
+###3.2 接入步骤1
+
 ![Alt text](./images/app_sys_join.png) 
 
 | 步骤序号 | 步骤名称 | 实现途径 |
@@ -43,7 +51,7 @@
 | 4 | 计算`羚羊token` |在应用服务器端完成，按照[羚羊云token认证](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)规则生成设备的羚羊token，需要用到appkey和羚羊cid。 |
 | 5 | 获取`羚羊config串` |在应用服务器端完成，调用Web API的[查询设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)接口，需要将设备的羚羊cid作为参数传入接口，接口返回的`init_string`字段即羚羊config串。 |
 
-###3.2 第2步
+###3.3 接入步骤2
 ![Alt text](./images/app_sys_join2.png) 
 
 `连接并启动云服务`需要调用**SDK的开启云服务接口**，该接口需要传入`羚羊token`和`config串`。

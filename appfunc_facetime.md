@@ -3,7 +3,12 @@
 ## 视频通话应用
 
 ##1. 视频通话应用接入
+![Alt text](./images/appfunc_facetime0.png) 
+
 开发视频通话的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md#1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md#1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
 ##2. 视频通话开发流程
 ![Alt text](./images/appfunc_facetime.png) 
