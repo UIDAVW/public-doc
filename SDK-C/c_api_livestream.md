@@ -7,14 +7,14 @@ int LY_connect (const char *aUrl, const char *aDataSourceInfo)
 | - | - |
 |-------|----|
 | 接口名 | LY_connect |
-| 功能 | 和交互端（包括手机APP，羚羊云的服务器）建立连接，根据传入的aUrl参数判断类型，建立媒体传输通道。如果是观看录像使用此接口连接服务器，则第二个参数需要传录像磁盘信息；否则传入第二个参数传NULL即可。该函数与 LY_disconnect配套使用。 |
+| 功能 | 建立音视频流的传输通道。该函数与 LY_disconnect配套使用。 |
 | 返回值 | 大于等于0表示成功，且返回传输通道句柄fd；否则失败 |
 | 参数列表 | 无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |aUrl|char*|in|必须|目标服务器的url地址，连接类型（推流或拉流），使用的协议等。|
-|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
+|aDataSourceInfo|char*|in|可选|如果是观看录像时调用，则此参数为必须；否则参数填NULL。此参数内容从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取，对调用者透明。|
 **注意**：
 
 **aUrl**：连接地址，从后台获取到IP、端口和token，按照如下格式组合：
