@@ -76,7 +76,7 @@ void* recvMediaData (void* arg)
 	int fd = *(int*)arg;
 	int ret = 0;
 	char *buf;
-	MediaFrame_tframe = {0};
+	MediaFrame_t frame = {0};
 	frame.frameBuffer = (char*)malloc(MAX_FRAME);//外面传入buffer接收数据
 	extern int recvData = 1;
 	while(recvData)
@@ -112,7 +112,7 @@ void* recvMediaData (void* arg)
 观看录像必须登录到羚羊云平台，通过给出观看录像的时间点，从应用后台拿到该时间点录像的相关信息，然后调用LY_connect连接到服务器，比拉取直播流多了一个传递参数，最后调用LY_recvMediaFrame接收录像数据。
 
 ```
-char *url="topvdn://183.57.151.161:1935?protocolType=3&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&begin=1464092317&end= 1464095883&play=1464092317";
+char *url="topvdn://183.57.151.161:1935?protocolType=3&token=537067556_3222536192_1493481600_f0399b369aa760362ac4edd224bae23b&begin=1464092317&end=1464095883&play=1464092317";
 char *dataSource;//这个数据从应用后台拿，是json串格式的数据。示例：{"cid": 537067556, "events": [], "request_id": "91be3a8ffc534ad5bc3b3882a4574451", "servers": [{"ip": "183.57.151.208", "port": 80}], "videos": [{"from": 1463587200, "server_index": 0, "to": 1463627550}]} 
 
 while(1)
@@ -126,7 +126,7 @@ while(1)
 	} 
 	break;
 }
-MediaFrame_tframe = {0};
+MediaFrame_t frame = {0};
 frame.frameBuffer = (char*)malloc(MAX_FRAME_SIZE);//外面传入buffer接收数据
 
 while(recvRecord)
