@@ -1,6 +1,6 @@
 #羚羊云Android SDK示例-直播推流
 
-在使用本示例实现推拉流功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide_cloudservice.md)接口的调用。
+在使用本示例实现直播推流的功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide_cloudservice.md)接口的调用。
 本示例仅仅展示了SDK直播推流接口的调用方法和示例，若想实现完整的视频直播应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
 
 ![Alt text](./../images/flow_push.png "直播推流接口调用流程")
