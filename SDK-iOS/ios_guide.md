@@ -376,6 +376,11 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+2.0.14 sdk更新日期20160718 17：30
+更新说明：1、云服务支持IPV6；
+        2、公有推流和拉流支持IPV6；
+        3、历史拉流支持IPV6；
+
 
 2.0.12 sdk更新日期20160705 11：35
 更新说明：1、解决直播进入后台崩溃；
