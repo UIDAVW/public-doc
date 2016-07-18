@@ -8,11 +8,11 @@
 ##2 URL格式
   1.QSTP连接的URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]
   2.QSUP连接的URL格式：topvdn://traker_ip:port?protocolType=[]&token=[]
-  3.云端录像下载的URL格式：topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
+  3.云端录像下载的URL格式：topvdn://topvdn.public.cn?cid=[]&protocolType=[]&token=[]&begin=[]&end=[]&play=[]
 
 - <u>protocolType</u>：协议类型，[1]`QSUP`, [2]`QSTP`, [3]云端录像下载
 - <u>connectType</u>：连接类型，[1]推流端, [2]拉流端
-- <u>begin、end、play</u>：下载录像需要用到，其他功能可不用，cid表示要下载录像的源设备羚羊cid，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
+- <u>cid、begin、end、play</u>：下载录像需要用到，其他功能可不用，cid表示要下载录像的源设备羚羊cid，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
 - <u>token</u>：设备token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
 
 下面列举了不同的场景下的url设置。
