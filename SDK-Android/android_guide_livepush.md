@@ -73,7 +73,7 @@ mLiveBroadcast.startBroadcasting("topvdn://0.0.0.0:0?protocolType=2&connectType=
     		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f");
 ```
 
-#6. 结束推流直播
+##6. 结束推流直播
 ```
 //结束直播
 mLiveBroadcast.stopBroadcasting();
