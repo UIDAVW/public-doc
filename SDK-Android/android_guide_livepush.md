@@ -42,7 +42,10 @@ LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_pre
 ```
 //设置本地预览
 mLiveBroadcast.setLocalPreview(mPreview);
-####5.5.4 设置推流状态监听
+```
+
+##4. 设置推流状态监听
+```
 mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	@Override
 	public void onBroadcastStart() {
@@ -63,14 +66,14 @@ mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	}
 });
 ```
-##4. 开始推流直播
+##5. 开始推流直播
 ```
 // 开始直播		
 mLiveBroadcast.startBroadcasting("topvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
     		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f");
 ```
 
-##5. 结束推流直播
+#6. 结束推流直播
 ```
 //结束直播
 mLiveBroadcast.stopBroadcasting();
