@@ -176,10 +176,13 @@ mPlayer.stop();
 假设推流端为：嵌入式Linux视频采集设备。
 
 ####第1步 设备A获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
 ####第2步 设备A调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
 ####第3步 设备A向应用服务器请求推流URL
 设备A向应用服务器发送消息：请求获取A的推流URL。
@@ -299,10 +302,13 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 假设推流端为：Android设备。
 
 ####第1步 设备B获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
 ####第2步 设备B调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
 ####第3步 设备B向应用服务器请求拉流URL
 设备B向应用服务器发送消息：请求获取B的拉流URL。
