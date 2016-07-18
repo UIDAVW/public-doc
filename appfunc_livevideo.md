@@ -30,11 +30,13 @@
 假设推流端为：嵌入式Linux视频采集设备；播放端为：Android设备。
 
 ####2.2.1 设备获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
 ####2.2.2 设备调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
-需要注意的是，两端的设备A和B都必须调用此接口。
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
 ####2.2.3 设备B请求观看A的视频直播
 设备B向应用服务器发出请求消息：观看A的视频直播。这一步是由用户在应用层完成，属于应用层自己的业务。
