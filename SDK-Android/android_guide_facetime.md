@@ -20,6 +20,8 @@ mSessionConfig = new SessionConfig.Builder()
 	.useAudio(true)//是否开启音频
     .useVideo(true)//是否开启视频
 	.build();
+//创建互联对象
+LYFaceTime mLYFaceTime = new LYFaceTime（mContext,mSessionConfig）；
 
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
