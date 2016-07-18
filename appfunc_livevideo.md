@@ -30,11 +30,13 @@
 假设推流端为：嵌入式Linux视频采集设备；播放端为：Android设备。
 
 ####2.2.1 设备获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
 ####2.2.2 设备调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
-需要注意的是，两端的设备A和B都必须调用此接口。
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
 ####2.2.3 设备B请求观看A的视频直播
 设备B向应用服务器发出请求消息：观看A的视频直播。这一步是由用户在应用层完成，属于应用层自己的业务。
@@ -173,16 +175,19 @@ mPlayer.stop();
 本示例的前提：用户(即开发者)必须先将[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)到羚羊云。
 假设推流端为：嵌入式Linux视频采集设备。
 
-####第1步 设备A获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+####**第1步** 设备A获取羚羊云的token和config
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
-####第2步 设备A调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+####**第2步** 设备A调用启动云服务接口
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
-####第3步 设备A向应用服务器请求推流URL
+####**第3步** 设备A向应用服务器请求推流URL
 设备A向应用服务器发送消息：请求获取A的推流URL。
 
-####第4步 应用服务器获取A的羚羊云tracker的ip和port
+####**第4步** 应用服务器获取A的羚羊云tracker的ip和port
 应用服务器在收到上一步的消息后，通过调用调用羚羊云Web API的'[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)'接口，调用接口时传入`设备A`的`羚羊cid`，从接口的返回结果中获取到`设备A`所在的羚羊`tracker(调度服务器)的ip和port`。
 以下仅展示`curl`方式的Web http请求示例，用户需根据自己应用服务器所采用的开发语言去完成http请求并解析返回的json数据。
 ```
@@ -221,7 +226,7 @@ curl -X POST -H "X-APP-ID: mock" -H "X-APP-Key: mock-app-key-use-your-own-pls" -
 ```
 其中的`tracker_ip`和`tracker_port`即设备A的羚羊tracker的ip和port。
 
-####第5步 应用服务器生成A的推流URL
+####**第5步** 应用服务器生成A的推流URL
 此时，应用服务器存有A的羚羊cid、trakcer ip、tracker port和羚羊token，现在需要将这些值组合拼接成一个A的推流URL。该URL的生成规则参考[QSTP方式推流URL](http://doc.topvdn.com/api/#!public-doc/url_format.md#3_%E6%8E%A8%E9%80%81%E7%9B%B4%E6%92%AD%E6%B5%81%E7%A4%BA%E4%BE%8B)。
 ```
 topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=2
@@ -233,10 +238,10 @@ topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_32225361
 `mode`表示使用QSTP协议推流，公众模式；
 `token`为设备A的羚羊token。
 
-####第6步 设备A获取推流URL
+####**第6步** 设备A获取推流URL
 应用服务器在生成了A的推流URL之后，将URL返回给设备A。
 
-####第7步 设备A调用SDK的直播推流接口
+####**第7步** 设备A调用SDK的直播推流接口
 以C(设备为嵌入式Linux系统)代码为例：
 首先需要建立连接，即创建传输通道，调用LY_connect创建传输通道，然后才能进行推流。
 ```
@@ -296,16 +301,19 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 本示例的前提：用户(即开发者)必须先将[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)到羚羊云。
 假设推流端为：Android设备。
 
-####第1步 设备B获取羚羊云的token和config
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+####**第1步** 设备B获取羚羊云的token和config
+开发视频直播的应用之前，需将应用先接入羚羊云(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))。最终会获取到设备A和B的羚羊`cid`、`token`以及`config`。
 
-####第2步 设备B调用启动云服务接口
-这一步在[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)一文中有详细介绍。
+####**第2步** 设备B调用启动云服务接口
+需要调用羚羊云SDK的**启动云服务**接口：
+[启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
+[启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
+[启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
 
-####第3步 设备B向应用服务器请求拉流URL
+####**第3步** 设备B向应用服务器请求拉流URL
 设备B向应用服务器发送消息：请求获取B的拉流URL。
 
-####第4步 应用服务器获取B的羚羊云tracker的ip和port
+####**第4步** 应用服务器获取B的羚羊云tracker的ip和port
 应用服务器在收到上一步的消息后，通过调用调用羚羊云Web API的'[获取设备状态](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.1.1_%E6%9F%A5%E8%AF%A2%E8%AE%BE%E5%A4%87%E7%8A%B6%E6%80%81)'接口，调用接口时传入`设备B`的`羚羊cid`，从接口的返回结果中获取到`设备B`所在的羚羊`tracker(调度服务器)的ip和port`。
 以下仅展示`curl`方式的Web http请求示例，用户需根据自己应用服务器所采用的开发语言去完成http请求并解析返回的json数据。
 ```
@@ -344,7 +352,7 @@ curl -X POST -H "X-APP-ID: mock" -H "X-APP-Key: mock-app-key-use-your-own-pls" -
 ```
 其中的`tracker_ip`和`tracker_port`即设备A的羚羊tracker的ip和port。
 
-####第5步 应用服务器生成B的拉流URL
+####**第5步** 应用服务器生成B的拉流URL
 此时，应用服务器存有B的羚羊cid、trakcer ip、tracker port和羚羊token，现在需要将这些值组合拼接成一个B的拉流URL。该URL的生成规则参考[QSTP方式拉流URL](http://doc.topvdn.com/api/#!public-doc/url_format.md#4_%E6%8B%89%E5%8F%96%E7%9B%B4%E6%92%AD%E6%B5%81%E7%A4%BA%E4%BE%8B)。
 ```
 topvdn://183.57.151.161:1935?protocolType=2&connectType=2 &token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069
@@ -355,10 +363,10 @@ topvdn://183.57.151.161:1935?protocolType=2&connectType=2 &token=1003469_3222536
 `connectType`表示设备B为拉流端；
 `token`为设备B的羚羊token。
 
-####第6步 设备B获取拉流URL
+####**第6步** 设备B获取拉流URL
 应用服务器在生成了B的拉流URL之后，将URL返回给设备B。
 
-####第7步 设备B调用SDK的播放器接口
+####**第7步** 设备B调用SDK的播放器接口
 以Android的代码为例：
 
 #####(1) 设置播放布局

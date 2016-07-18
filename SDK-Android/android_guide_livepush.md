@@ -22,7 +22,8 @@ mSessionConfig = new SessionConfig.Builder()
 	.useAudio(true)//是否开启音频
     .useVideo(true)//是否开启视频
 	.build();
-
+//创建直播推流对象
+LYLiveBroadcast mLiveBroadcast = new LYLiveBroadcast（mContext,mSessionConfig）；
 ```
 SessionConfig类配置直播推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。<br>
 **注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_datatype.md "Android API")中的数据类型-直播推流相关属性配置。
@@ -42,7 +43,10 @@ LYGLCameraEncoderView mPreview = (LYGLCameraEncoderView)findViewById(R.id.ly_pre
 ```
 //设置本地预览
 mLiveBroadcast.setLocalPreview(mPreview);
-####5.5.4 设置推流状态监听
+```
+
+##4. 设置推流状态监听
+```
 mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	@Override
 	public void onBroadcastStart() {
@@ -63,14 +67,14 @@ mLiveBroadcast.setBroadcastListener(new BroadcastListener() {
 	}
 });
 ```
-##4. 开始推流直播
+##5. 开始推流直播
 ```
 // 开始直播		
 mLiveBroadcast.startBroadcasting("topvdn://0.0.0.0:0?protocolType=2&connectType=1&mode=2&" +
     		"token=2147550101_3356753920_1685865782_5e66341ab86fa3becec154f71dd4095f");
 ```
 
-##5. 结束推流直播
+##6. 结束推流直播
 ```
 //结束直播
 mLiveBroadcast.stopBroadcasting();
