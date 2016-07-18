@@ -1,7 +1,11 @@
 #羚羊云C SDK示例-推流拉流
 
+声明：本示例仅仅展示了SDK推拉流接口的调用方法和示例，若想实现完整的推拉流应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
+
+## 接口调用流程
 在使用本示例实现推拉流功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_guide_cloudservice.md)接口的调用。
-本示例仅仅展示了SDK推拉流接口的调用方法和示例，若想实现完整的推拉流应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
+
+![Alt text](./../images/callflow_livestream_c.png "退流拉流接口调用流程")
 
 ##1. 建立传输通道
 任何媒体数据的接收和发送，必须先建立传输通道。需要传入羚羊云自定义格式的URL作为参数进行通道的连接，成功建立连接后，即可通过LY_recvMediaFrame和LY_sendMediaFrame收发数据。
@@ -22,17 +26,6 @@ while(1)
 //连接成功后即可调用接口收发数据
 //...
 ```
-URL格式：
-
-  1,QSTP连接URL格式：topvdn://relay_ip:port?protocolType=[]&connectType=[]&token=[]&mode=[]
-  2,QSUP连接URl格式：topvdn://traker_ip:port?protocolType=[]&token=[]
-  3,云端录像下载URL格式：topvdn://topvdn.public.cn?protocolType=[]&token=[]&begin=[]&end=[]&play=[]
-
-<u>protocolType</u>：协议类型，[1]QSUP,[2]QSTP,[3]云端录像下载
-<u>connectType</u>：连接类型，[1]推流端,[2]拉流端
-<u>begin、end、play</u>：下载录像需要用到，其他功能可不用，begin表示要下载录像的开始时间，end表示结束时间，play表示开始播放的时间，需要在begin和end的范围之内。时间单位为秒。
-<u>token</u>：对端设备的访问token，具体内容格式请见[羚羊云token认证机制](http://doc.topvdn.com/api/#!public-doc/token_format.md)的详细介绍。
-
 **URL的详细格式请参考[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)。**
 
 ##2. 推送媒体流
