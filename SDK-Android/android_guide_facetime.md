@@ -42,9 +42,8 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 // 设置本地预览
 mLYFaceTime.setLocalPreview(camera_preview);
 ```
-注：播放器是指播放对方视频图像。
 
-##3. 设置远端播放器视图
+##3. 设置播放器视图
  
 ```
 <!-- 播放器布局 -->
@@ -53,9 +52,10 @@ mLYFaceTime.setLocalPreview(camera_preview);
     android:layout_width="150dp"
     android:layout_height="200dp"" />
 
-// 设置远程播放器
+// 设置播放器视图
 mLYFaceTime.setRemoteView(null, playerview);
 ```
+注：播放器是指播放对方视频图像。
 
 ##4. 建立通话连接
 
@@ -109,6 +109,10 @@ mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
 ```
 mLYFaceTime.closeRemote(null);
+```
+
+##6. 释放视频通话对象
+```
 mLYFaceTime.release();
 ```
 
