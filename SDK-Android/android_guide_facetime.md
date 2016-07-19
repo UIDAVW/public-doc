@@ -77,7 +77,7 @@ mLYFaceTime.openRemote("topvdn://203.195.157.248:80?token=2147550101_3356753920_
 ```
 /**
  * 主叫方：用户需要接入羚羊后台实现消息透传功能，将连接串发给被叫方。
- * 设置连接监听和互联监听
+ * 设置连接监听和视频通话监听
  */
 LYService.getInstance().setCloudMessageListener(
         new LYService.AcceptMessageListener() {
@@ -96,12 +96,12 @@ mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
         @Override
         public void onSuccess(Integer t) {
-            //开始互联
+            //开始视频通话
         }
 
         @Override
         public void onError(LYException exception) {
-            //互联失败
+            //视频通话失败
         }
 ```
 
