@@ -94,7 +94,7 @@ public void startVideoRecording();
 | - | - |
 |-------|----|
 | 接口名 | startVideoRecording |
-| 功能 | 互联中重新开始视频数据发送 |
+| 功能 | 视频通话中重新开始视频数据发送 |
 | 返回值 | 无 |
 
 ###7.2 停止视频采集发送

@@ -42,9 +42,8 @@ SessionConfig类配置直播推流的参数，包括是否使用音、视频，�
 // 设置本地预览
 mLYFaceTime.setLocalPreview(camera_preview);
 ```
-注：播放器是指播放对方视频图像。
 
-##3. 设置远端播放器视图
+##3. 设置播放器视图
  
 ```
 <!-- 播放器布局 -->
@@ -53,9 +52,10 @@ mLYFaceTime.setLocalPreview(camera_preview);
     android:layout_width="150dp"
     android:layout_height="200dp"" />
 
-// 设置远程播放器
+// 设置播放器视图
 mLYFaceTime.setRemoteView(null, playerview);
 ```
+注：播放器是指播放对方视频图像。
 
 ##4. 建立通话连接
 
@@ -77,7 +77,7 @@ mLYFaceTime.openRemote("topvdn://203.195.157.248:80?token=2147550101_3356753920_
 ```
 /**
  * 主叫方：用户需要接入羚羊后台实现消息透传功能，将连接串发给被叫方。
- * 设置连接监听和互联监听
+ * 设置连接监听和视频通话监听
  */
 LYService.getInstance().setCloudMessageListener(
         new LYService.AcceptMessageListener() {
@@ -96,12 +96,12 @@ mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
         @Override
         public void onSuccess(Integer t) {
-            //开始互联
+            //开始视频通话
         }
 
         @Override
         public void onError(LYException exception) {
-            //互联失败
+            //视频通话失败
         }
 ```
 
@@ -109,6 +109,10 @@ mLYFaceTime.setCallBackListener(new CallBackListener<Integer>() {
 
 ```
 mLYFaceTime.closeRemote(null);
+```
+
+##6. 释放视频通话对象
+```
 mLYFaceTime.release();
 ```
 
