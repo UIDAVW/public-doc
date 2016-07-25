@@ -434,7 +434,7 @@ void setOnCompletionListener(OnCompletionListener completionListener);
 | - | - |
 |-------|----|
 | 接口名 | setOnCompletionListener |
-| 功能 | 媒体文件播放结束后调用的回调函数； |
+| 功能 | 媒体文件播放结束后调用的回调函数，仅在点播状态下有效； |
 | 返回值 |无 |
 
 |参数列表|类型|In/Out|可选/必须|描述|
@@ -450,10 +450,36 @@ interface OnCompletionListener {
 | - | - |
 |-------|----|
 | 接口名 | OnCompletionListener |
-| 功能 | 媒体文件播放结束后调用的回调接口； |
+| 功能 | 媒体文件播放结束后调用的回调接口，仅在点播状态下有效； |
 | 返回值 |无 |
 
-###9.10 注册播放错误事件的回调
+###9.10 注册关闭播放器回调
+```
+void setOnClosedListener(OnClosedListener closedListener)
+```
+| - | - |
+|-------|----|
+| 接口名 | setOnClosedListener |
+| 功能 | 对当调用stop停止播放的接口后的结果回调； |
+| 返回值 |无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|closedListener|OnClosedListener|In|必须|详见：闭播放器事件回调|
+
+###9.11 关闭播放器事件回调
+```
+interface OnClosedListener {
+        void onClosed();;
+    }
+```
+| - | - |
+|-------|----|
+| 接口名 | OnClosedListener |
+| 功能 | 对当调用stop停止播放的接口后的结果回调；|
+| 返回值 |无 |
+
+###9.12 注册播放错误事件的回调
 ```
 void setOnErrorListener(OnErrorListener errorListener);
 ```
@@ -467,7 +493,7 @@ void setOnErrorListener(OnErrorListener errorListener);
 |-------|----|----|----|----|
 |errorListener|OnErrorListener|In|必须|详见：播放和建立播放期间发生错误的回调函数|
 
-###9.11 播放错误事件的回调接口
+###9.13 播放错误事件的回调接口
 ```
 interface OnErrorListener {
         boolean onError(int code, String msg);
@@ -484,7 +510,7 @@ interface OnErrorListener {
 |code|int|out|--|错误码|
 |msg|String|out|--|错误信息|
 
-###9.12 注册播放缓冲的回调       
+###9.14 注册播放缓冲的回调       
 ```
 void setOnPlayingBufferCacheListener(OnPlayingBufferCacheListener bufferListener);
 ```
@@ -498,7 +524,7 @@ void setOnPlayingBufferCacheListener(OnPlayingBufferCacheListener bufferListener
 |-------|----|----|----|----|
 |bufferListener|OnPlayingBufferCacheListener|In|必须|详见：播放时缓存的回调函数|
 
-###9.13 播放缓冲的回调接口
+###9.15 播放缓冲的回调接口
 ```
 interface OnPlayingBufferCacheListener {
 	void onPlayingBufferCache(int percent);
@@ -541,7 +567,7 @@ void onBufferEnd();
 | 功能 | 缓冲结束时回调函数；|
 | 返回值 |无 |
 
-###9.14 注册seek结束事件的回调       
+###9.16 注册seek结束事件的回调       
 ```
 void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 ```
@@ -555,7 +581,7 @@ void setOnSeekCompleteListener(OnSeekCompleteListener seekCompleteListener);
 |-------|----|----|----|----|
 |seekCompleteListener|OnSeekCompleteListener|In|必须|详见：播放定位查找结束时调用的回调接口|
 
-###9.15 seek结束事件的回调接口
+###9.17 seek结束事件的回调接口
 ```
 interface OnSeekCompleteListener {
         void onSeekSuccess( int time);

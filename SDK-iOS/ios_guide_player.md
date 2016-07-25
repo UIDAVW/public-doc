@@ -1,28 +1,27 @@
 #羚羊云iOS SDK示例-播放器
 
-在使用本示例实现播放器的功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide_cloudservice.md)接口的调用。
-本示例仅仅展示了SDK播放器接口的调用方法和示例，若想实现完整的播放器应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
+声明：本示例仅仅展示了SDK播放器接口的调用方法和示例，若想实现完整的播放器应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
 
-![Alt text](./../images/flow_player.png "播放器接口调用流程")
+##接口调用流程
+在使用本示例实现播放器的功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide_cloudservice.md)接口的调用。
+
+![Alt text](./../images/callflow_player_ios.png "播放器接口调用流程")
  
 ##1. 创建播放器类
 ```
 LYPlayer *m_player = [[LYPlayer alloc] init];
 ```
 
-##2. 创建播放配置
+##2. 设置播放配置
 ```
 LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithPlayView:playview
                                                                                   frame:CGRectMake(0, 0, 640  , 480)
                                                                              decodeMode:LYPlayerDecodeModeHard];
-```
-
-##3. 设置播放配置
-```
+//配置播放器
 [m_player setViewWithConfiguration:m_playerConfig];
 ```
 
-##4. 打开播放器
+##3. 打开播放器
 ```
 [m_player open: @"topvdn://203.195.157.248:80?protocolType=1&token=1003182_3222536192_1467302400_b862e6a09c7c12022794a18aa61e71bb"
     openStatus: ^(LYstatusCode statusCode, NSString *errorString) {
@@ -39,19 +38,19 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 (2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
 (3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
-##5. 关闭播放器
+##4. 关闭播放器
 ```
 [m_player close];
 ```
 
-##6. 播放控制
-###6.1 视频截图
+##5. 播放控制
+###5.1 视频截图
 ```
 [m_player snapshot: m_path
             status: ^(LYstatusCode statusCode, NSString *errorString) {}
 ];
 ```
-###6.2 视频录制
+###5.2 视频录制
 ```
 //开始录制
 [m_player startLocalRecord:m_path status:^(LYstatusCode statusCode, NSString *errorString) {
@@ -61,7 +60,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 //结束录制
 [m_player stopLocalRecord];
 ```
-###6.3 声音开关
+###5.3 声音开关
 ```
 //开启声音
 [m_player unmute];
@@ -69,7 +68,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 [m_player mute];
 ```
 
-###6.4 对讲开关
+###5.4 对讲开关
 ```
 //开启对讲
 - (void)startTalkWithSampleRate: (NSInteger)sampleRate channel: (NSInteger)channel;
@@ -77,7 +76,7 @@ LYPlayerConfiguration *m_playerConfig = [[LYPlayerConfiguration alloc] initWithP
 - (void)stopTalk;
 ```
 
-###6.5 获取流媒体参数
+###5.5 获取流媒体参数
 ```
 [m_player getMediaParam:LYStreamMediaParamVideoAverageDownloadSpeed];
 ```

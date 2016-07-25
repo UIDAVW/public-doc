@@ -46,7 +46,22 @@ public void openRemote(String remoteUrl, CallBackListener<Integer> callBackListe
 |remoteUrl|String|In|--|远程连接，内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |callBackListener|CallBackListener|In|--|监听结果回调，onSuccess(T t)成功，onError(LYException exception)失败；|
 
-##4 关闭通话连接
+##4 设置互联结果监听
+```
+public void setCallBackListener(CallBackListener<Integer> callbackListener);
+```
+| - | - |
+|-------|----|
+| 接口名 | setCallBackListener |
+| 功能 | 设置互联结果监听，主动呼叫方调用此接口可监听互联成功与否。被叫方已在openRemote里设置，此接口专门给主叫方设置使用； |
+| 返回值 | 无 |
+
+|参数列表|类型|In/Out|可选/必须|描述|
+|-------|----|----|----|----|
+|callBackListener|CallBackListener|In|--|监听结果回调，onSuccess(T t)成功，onError(LYException exception)失败；|
+
+
+##5 关闭通话连接
 ```
 public void closeRemote(String remoteUrl);
 ```
@@ -60,7 +75,7 @@ public void closeRemote(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null;|
 
-##5 释放接口资源
+##6 释放接口资源
 ```
 public void release();
 ```
@@ -70,19 +85,19 @@ public void release();
 | 功能 | 释放编码器，音视频采集器，相关工作线程等资源. **必须在断开连接后调用**，该实例不能再被使用。 |
 | 返回值 | 无 |
 
-##6 视频通话控制
+##67 视频通话控制
 
-###6.1 开始视频采集发送
+###7.1 开始视频采集发送
 ```
 public void startVideoRecording();
 ```
 | - | - |
 |-------|----|
 | 接口名 | startVideoRecording |
-| 功能 | 互联中重新开始视频数据发送 |
+| 功能 | 视频通话中重新开始视频数据发送 |
 | 返回值 | 无 |
 
-###6.2 停止视频采集发送
+###7.2 停止视频采集发送
 ```
 public void stopVideoRecording();
 ```
@@ -92,7 +107,7 @@ public void stopVideoRecording();
 | 功能 | 在直播页面调用此方法，摄像头会继续采集数据，但不发送；在切到后台的时候调用此方法，当前应用会停止采集，释放对摄像头的锁定；如果切到后台的时候，不调用此方法，摄像头会继续采集发送视频数据(Android 4.3及以上版本)； |
 | 返回值 | 无 |
 
-###6.3 开始音频采集发送
+###7.3 开始音频采集发送
 ```
 public void startAudioRecording();
 ```
@@ -102,7 +117,7 @@ public void startAudioRecording();
 | 功能 | 视频通话过程中开始视频数据发送 |
 | 返回值 | 无 |
 
-###6.4 停止音频采集发送
+###7.4 停止音频采集发送
 ```
 public void stopAudioRecording();
 ```
@@ -112,7 +127,7 @@ public void stopAudioRecording();
 | 功能 | 视频通话过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-###6.5 关闭音频播放
+###7.5 关闭音频播放
 ```
 public void mute(String remoteUrl);
 ```
@@ -126,7 +141,7 @@ public void mute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-###6.6 开启音频播放
+###7.6 开启音频播放
 ```
 public void unmute(String remoteUrl);
 ```
@@ -140,7 +155,7 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|In|--|远程连接地址，目前传null|
 
-###6.7 重置采集编码参数
+###7.7 重置采集编码参数
 ```
  void reset(SessionConfig config);
 ```
@@ -154,7 +169,7 @@ public void unmute(String remoteUrl);
 |-------|----|----|----|----|
 |config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
 
-###6.8 暂停以切入后台
+###7.8 暂停以切入后台
 ```
 void onHostActivityPaused();
 ```
@@ -164,7 +179,7 @@ void onHostActivityPaused();
 | 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
 | 返回值 | 无 |
 
-###6.9 从后台恢复播放
+###7.9 从后台恢复播放
 ```
 void onHostActivityResumed();
 ```
@@ -174,7 +189,7 @@ void onHostActivityResumed();
 | 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音,若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用开始采集. |
 | 返回值 | 无 |
 
-###6.10 动态设置视频是否自适应
+###7.10 动态设置视频是否自适应
 ```
 public void setFitScreen(boolean isFit);
 ```
@@ -188,7 +203,7 @@ public void setFitScreen(boolean isFit);
 |-------|----|----|----|----|
 |isFit|boolean|In|--|true 为自适应，false 为不自适应 |
 
-###6.11 动态设置码率
+###7.11 动态设置码率
 ```
 public void setVideoBitrate(int aBitrate);
 ```
@@ -202,9 +217,9 @@ public void setVideoBitrate(int aBitrate);
 |-------|----|----|----|----|
 |aBitrate|int|In|--|期望设置的码率，单位是kbps,没有限制范围，建议设置200、500、800，分别对应普通、标清、高清 |
 
-##7 设备控制
+##8 设备控制
 
-###7.1 获取摄像机列表
+###8.1 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -214,7 +229,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###7.2 获取当前摄像机编号
+###8.2 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -224,7 +239,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###7.3 获取期望的摄像机编号
+###8.3 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -234,7 +249,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###7.4 切换摄像头
+###8.4 切换摄像头
 ```
 void switchCamera();
 ```
@@ -244,7 +259,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###7.5 设置摄像头类型
+###8.5 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -258,7 +273,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###7.6 获取闪光灯模式
+###8.6 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -268,7 +283,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###7.7 切换闪光灯
+###8.7 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -278,7 +293,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###7.8 设置闪光灯类型
+###8.8 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```

@@ -1,11 +1,13 @@
 #羚羊云Android SDK示例-播放器
 
-在使用本示例实现播放器的功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide_cloudservice.md)接口的调用。
-本示例仅仅展示了SDK播放器接口的调用方法和示例，若想实现完整的播放器应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
+声明：本示例仅仅展示了SDK播放器接口的调用方法和示例，若想实现完整的播放器应用请参考[羚羊云视频直播应用开发](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)。
 
-![Alt text](./../images/flow_player.png "播放器接口调用流程")
+## 接口调用流程
+在使用本示例实现播放器的功能之前，必须先完成[开启羚羊云服务](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide_cloudservice.md)接口的调用。
+
+![Alt text](./../images/callflow_player_android.png "播放器接口调用流程")
  
-##1. 设置播放布局
+##1. 获取播放器视图
 我们将播放器封装成了界面控件，方便用户直接嵌入到app的主界面中，实现播放器的功能。
 ``` 
 <com.lingyang.sdk.player.widget.LYPlayer
@@ -13,6 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 
+//创建播放器对象
 LYPlayer mPlayer = (LYPlayer)findViewById(R.id.ly_player);
 ```
 ##2. 设置播放源
