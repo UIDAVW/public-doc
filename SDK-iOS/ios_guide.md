@@ -376,6 +376,12 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.15 sdk更新日期20160725 18：30
+更新说明：1、支持实时获取视频采集数据；
+        2、支持实时获取播放视频数据；
+
+
 2.0.14 sdk更新日期20160718 17：30
 更新说明：1、云服务支持IPV6；
         2、公有推流和拉流支持IPV6；
