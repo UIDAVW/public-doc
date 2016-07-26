@@ -376,6 +376,10 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+2.0.16 sdk更新日期20160726 19：30
+更新说明：1、支持预览的横竖屏旋转和缩放；
+        2、支持播放的横竖屏旋转和缩放；
+
 
 2.0.15 sdk更新日期20160725 18：30
 更新说明：1、支持实时获取视频采集数据；
