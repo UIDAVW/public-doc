@@ -223,7 +223,7 @@ void resumeFromBackground();
 | - | - |
 |-------|----|
 | 接口名 | resumeFromBackground |
-| 功能 | 后台进入前台时,在宿主Activity的onResume方法中调用此方法恢复播放； |
+| 功能 |后台进入前台时,在宿主Activity的onResume方法中调用此方法恢复播放； |
 | 返回值 | 无 |
 
 ###8.6 设置播放位置

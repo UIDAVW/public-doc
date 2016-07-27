@@ -20,7 +20,7 @@
 |----|----|
 | 1  | 支持 H.264 和 AAC 软编（推荐） |
 | 2  | 支持 H.264 和 AAC 硬编 |
-| 3  | 软编支持 Android Min API 15（Android 4.0.3）及其以上版本 |
+| 3  | 软编支持 Android Min API 18（Android 4.3）及其以上版本 |
 | 4  | 硬编支持 Android Min API 18（Android 4.3）及其以上版本 |
 | 5  | 支持羚羊云自定义网络协议QSUP进行推流 |
 | 6  | 支持羚羊云自定义网络协议QSTP进行推流 |
