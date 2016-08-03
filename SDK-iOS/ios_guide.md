@@ -376,6 +376,11 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 
 ##八、更新历史
 
+
+2.0.17 sdk更新日期20160802 22：30
+更新说明：1、视频通话支持AAC和OPUS编码设置；
+        2、视频通话支持AAC和OPUS自适应解码；
+
 2.0.16 sdk更新日期20160726 19：30
 更新说明：1、支持预览的横竖屏旋转和缩放；
         2、支持播放的横竖屏旋转和缩放；
