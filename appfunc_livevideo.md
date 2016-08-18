@@ -6,9 +6,9 @@
 开发视频直播的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
 完成应用的接入后，应用服务器端会保存应用的`config`字符串、所有设备的羚羊`cid`、`token`。
 
-视频直播应用有不同的应用场景：一对一直播和一对多直播。这两种场景在应用开发流程上也是不同的。
+视频直播应用有不同的应用场景：私有(一对一)直播和公众(一对多)直播。这两种场景在应用开发流程上也是不同的。
 
-##2 一对一直播
+##2 私有直播(一对一)
 
 ###2.1 开发流程
 
@@ -153,7 +153,7 @@ mPlayer.stop();
 [播放器API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md#5---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
 [播放器API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#4---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
 
-##3 一对多直播
+##3 公众直播(一对多)
 
 ##3.1 推流端
 
