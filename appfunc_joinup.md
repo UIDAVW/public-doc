@@ -73,8 +73,8 @@
 ![Alt text](./images/app_sys_join2.png) 
 
 `连接并启动云服务`需要调用**SDK的开启云服务接口**，该接口需要传入`羚羊token`和`config串`。
-[启动云服务-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
-[启动云服务-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
+[启动云服务-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_cloudservice.md)
+[启动云服务-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_cloudservice.md)
 
 至此，设备A和设备B就成功接入到羚羊云。接下来就是如何调用不同的接口来实现不同场景的应用了。
 [视频通话](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_facetime.md)

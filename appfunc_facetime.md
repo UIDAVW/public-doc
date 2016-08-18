@@ -2,7 +2,7 @@
 
 ## 视频通话应用
 
-##1. 视频通话应用接入
+##1. 应用接入
 ![Alt text](./images/appfunc_facetime0.png) 
 
 开发视频通话的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
@@ -10,7 +10,7 @@
 [启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md#1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 [启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md#1_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)
 
-##2. 视频通话开发流程
+##2. 开发流程
 ![Alt text](./images/appfunc_facetime.png) 
 
 | 步骤序号 | 步骤名称 | 调用接口 |
@@ -24,7 +24,7 @@
 | 第6步 | A内部触发连接建立成功的消息 | SDK内部自动触发，不需要调用接口。 |
 | 第7步 | 双方开始视频通话 | A和B的使用者已经可以互相视频通话，不需要调用接口。 |
 
-##3. 视频通话开发示例
+##3. 开发示例
 本示例的前提：用户(即开发者)必须先将[应用接入](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md)到羚羊云。
 
 ###3.1 设备A发送'呼叫B'的消息
@@ -100,8 +100,8 @@ curl -X POST -H "Content-Type: application/json" -H "X-APP-ID: Test" -H "X-APP-K
 
 ###3.6 设备B使用设备A的羚羊URL建立视频通话连接
 设备B在回调函数中收到设备A的呼叫请求消息，消息体中包含了设备A的羚羊URL，该消息是base64编码，需要解码。从消息体中拿到URL之后调用SDK的"建立通话连接"接口，需要传入设备A的URL作为参数。
-[建立通话连接-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.3_%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B9%B6%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE)
-[建立通话连接-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)
+[建立通话连接-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)
+[建立通话连接-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)
 
 ###3.7 双方开始视频通话
 在上一步设备B调用接口建立通话连接成功后，双方就可以开始视频通话了。
@@ -109,10 +109,10 @@ curl -X POST -H "Content-Type: application/json" -H "X-APP-ID: Test" -H "X-APP-K
 ###3.8 结束视频通话连接
 若通话的一方想主动停止视频通话则需要调用"关闭视频通话连接"方法；
 当对方被动收到ConnectionClosed的消息时也必须调用"关闭视频通话连接"方法。该消息在应用层的"消息监听回调函数"中会被触发。
-[关闭视频通话-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.4_%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5)
-[关闭视频通话-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.15_%E5%85%B3%E9%97%AD%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5)
+[关闭视频通话-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)
+[关闭视频通话-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)
 
-##4. 视频通话接口使用说明
+##4. 接口使用说明
 若想详细了解羚羊云Android或iOS平台下的SDK所有视频通话相关接口，请参考以下文档：
-[视频通话接口使用说明-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
-[视频通话接口使用说明-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.6_%C2%A0%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)
+[视频通话接口使用说明-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_facetime.md)
+[视频通话接口使用说明-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_facetime.md)

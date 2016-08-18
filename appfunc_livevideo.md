@@ -146,12 +146,12 @@ mPlayer.stop();
 ```
 
 详细接口方法调用示例请参考：
-[SDK播放器接口调用示例-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.5_%C2%A0%E6%92%AD%E6%94%BE%E5%99%A8)
-[SDK播放器接口调用示例-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.5_%C2%A0%E6%92%AD%E6%94%BE%E5%99%A8)
+[SDK播放器接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_player.md)
+[SDK播放器接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_player.md)
 
 详细接口方法介绍请参考：
-[播放器API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md#5---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
-[播放器API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#4---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
+[播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
+[播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
 ##3 公众直播(一对多)
 
@@ -271,14 +271,14 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 **URL的详细格式请参考[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md#3_%E6%8E%A8%E9%80%81%E7%9B%B4%E6%92%AD%E6%B5%81%E7%A4%BA%E4%BE%8B)。**
 
 详细接口方法调用示例请参考：
-[SDK直播推流接口调用示例-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%C2%A0%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)
-[SDK直播推流接口调用示例-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%C2%A0%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81)
-[SDK直播推流接口调用示例-C(Linux)](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_guide.md#5.5_%C2%A0%E6%8E%A8%E9%80%81%E5%AA%92%E4%BD%93%E6%B5%81)
+[SDK直播推流接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_livepush.md)
+[SDK直播推流接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_livepush.md)
+[SDK直播推流接口调用示例-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_guide_livepush.md)
 
 详细接口方法介绍请参考：
-[直播推流API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md#4---%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E6%8E%A5%E5%8F%A3)
-[直播推流API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#3---%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E6%8E%A5%E5%8F%A3)
-[直播推流API-C(Linux)](http://doc.topvdn.com/api/#!public-doc/SDK-C/c_api.md#3.3_%E5%8F%91%E9%80%81%E5%AA%92%E4%BD%93%E5%B8%A7)
+[直播推流API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_livepush.md)
+[直播推流API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_livepush.md)
+[直播推流API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_livepush.md)
 
 ##3.2 播放端
 
@@ -419,10 +419,10 @@ mPlayer.stop();
 ```
 
 详细接口方法调用示例请参考：
-[SDK播放器接口调用示例-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.5_%C2%A0%E6%92%AD%E6%94%BE%E5%99%A8)
-[SDK播放器接口调用示例-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.5_%C2%A0%E6%92%AD%E6%94%BE%E5%99%A8)
+[SDK播放器接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_player.md)
+[SDK播放器接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_player.md)
 
 详细接口方法介绍请参考：
-[播放器API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api.md#5---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
-[播放器API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md#4---%E6%92%AD%E6%94%BE%E5%99%A8%E6%8E%A5%E5%8F%A3)
+[播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
+[播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
