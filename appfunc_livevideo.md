@@ -8,7 +8,7 @@
 
 视频直播应用有不同的应用场景：[QSUP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式(一对一)直播和[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式(一对多)直播。这两种场景在应用开发流程上也是不同的。
 
-##2 QSUP直播(一对一)
+##2 QSUP方式直播(一对一)
 在[QSUP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的直播应用场景下，源端设备推送的视频内容同时只能供一台播放设备而观看。
 
 ###2.1 开发流程
@@ -161,10 +161,10 @@ mPlayer.stop();
 [播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
 [播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
-##3 QSTP直播(一对多)
+##3 QSTP方式直播(一对多)
 在[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的直播应用场景下，源端设备推送的视频内容能同时供多台播放设备而观看，当然也可以同时只用一台设备观看视频。
 
-##3.1 推流端
+##3.1 QSTP直播推流端
 
 ####3.1.1 开发流程
 
@@ -296,7 +296,7 @@ printf("send frame failed nal %d frameret:%d,frameSize=%d\n",frameType,ret,frame
 [直播推流API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_livepush.md)
 [直播推流API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_livepush.md)
 
-##3.2 播放端
+##3.2 QSTP直播播放端
 
 ####3.2.1 开发流程
 
