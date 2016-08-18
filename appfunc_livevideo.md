@@ -443,7 +443,7 @@ mPlayer.stop();
 [播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
 ##4 直播录制
-直播录制必须基于[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的视频直播场景，其内部实现原理是在推流端向羚羊云后由羚羊存储服务将视频存储在羚羊云中。
+直播录制必须基于[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的视频直播场景，其内部实现原理是在推流端向羚羊云推流后由羚羊存储服务将视频存储在羚羊云中。
 
 对于应用层的开发者来说，想要实现该功能，须在上述的'QSTP直播'->'推流端'->'开发流程'图的第五步**拼接羚羊推流URL**时按照[羚羊云推拉流URL格式-QSTP方式](http://doc.topvdn.com/api/#!public-doc/url_format.md#2.1_url%E7%A4%BA%E4%BE%8B)来设置其中的`protocolType`字段和`mode`字段。例如：
 ```
