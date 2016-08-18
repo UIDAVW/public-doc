@@ -6,9 +6,10 @@
 开发视频直播的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
 完成应用的接入后，应用服务器端会保存应用的`config`字符串、所有设备的羚羊`cid`、`token`。
 
-视频直播应用有不同的应用场景：私有(一对一)直播和公众(一对多)直播。这两种场景在应用开发流程上也是不同的。
+视频直播应用有不同的应用场景：[QSUP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式(一对一)直播和[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式(一对多)直播。这两种场景在应用开发流程上也是不同的。
 
-##2 私有直播(一对一)
+##2 QSUP直播(一对一)
+在[QSUP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的直播应用场景下，源端设备推送的视频内容同时只能供一台播放设备而观看。
 
 ###2.1 开发流程
 
@@ -160,7 +161,8 @@ mPlayer.stop();
 [播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
 [播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
-##3 公众直播(一对多)
+##3 QSTP直播(一对多)
+在[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的直播应用场景下，源端设备推送的视频内容能同时供多台播放设备而观看，当然也可以同时只用一台设备观看视频。
 
 ##3.1 推流端
 
@@ -440,3 +442,14 @@ mPlayer.stop();
 [播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
 [播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
+##4 直播录制
+直播录制必须基于[QSTP](http://doc.topvdn.com/api/#!public-doc/url_format.md)方式的视频直播场景，其内部实现原理是在推流端向羚羊云后由羚羊存储服务将视频存储在羚羊云中。
+
+对于应用层的开发者来说，想要实现该功能，须在上述的'QSTP直播'->'推流端'->'开发流程'图的第五步**拼接羚羊推流URL**时按照[羚羊云推拉流URL格式-QSTP方式](http://doc.topvdn.com/api/#!public-doc/url_format.md#2.1_url%E7%A4%BA%E4%BE%8B)来设置其中的`protocolType`字段和`mode`字段。例如：
+```
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=4
+```
+其中：
+- `protocolType` 必须为2，表示使用QSTP协议推流。
+- `connectType` 必须为1，表示推流端。
+- `mode` 值可为4，表示使用QSTP协议推流，私有模式，并开启云存储；也可为4，表示使用QSTP协议推流，公众模式，并开启云存储。
