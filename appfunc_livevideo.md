@@ -34,6 +34,13 @@
 
 ####2.2.2 设备调用启动云服务接口
 需要调用羚羊云SDK的**启动云服务**接口：
+
+详细接口方法调用示例请参考：
+[SDK基础云服务接口调用示例-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_guide_cloudservice.md)
+[SDK基础云服务接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_cloudservice.md)
+[SDK基础云服务接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_cloudservice.md)
+
+详细接口方法介绍请参考：
 [启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
 [启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
 [启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
@@ -180,6 +187,13 @@ mPlayer.stop();
 
 ####**第2步** 设备A调用启动云服务接口
 需要调用羚羊云SDK的**启动云服务**接口：
+
+详细接口方法调用示例请参考：
+[SDK基础云服务接口调用示例-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_guide_cloudservice.md)
+[SDK基础云服务接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_cloudservice.md)
+[SDK基础云服务接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_cloudservice.md)
+
+详细接口方法介绍请参考：
 [启动云服务API-C(Linux)](http://doc.topvdn.com/api/index.html#!public-doc/SDK-C/c_api_cloudservice.md)
 [启动云服务API-Android](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_api_cloudservice.md)
 [启动云服务API-iOS](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api_cloudservice.md)
