@@ -118,7 +118,14 @@ curl -X POST -H "Content-Type: application/json" -H "X-APP-ID: Test" -H "X-APP-K
 [关闭视频通话-Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)
 [关闭视频通话-iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)
 
-##4. 接口使用说明
+##4. 接口说明
 若想详细了解羚羊云Android或iOS平台下的SDK所有视频通话相关接口，请参考以下文档：
+
+详细接口方法调用示例请参考：
+[SDK视频通话接口调用示例-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)
+[SDK视频通话接口调用示例-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)
+
+详细接口方法介绍请参考：
 [视频通话接口使用说明-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_facetime.md)
 [视频通话接口使用说明-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_facetime.md)
+
