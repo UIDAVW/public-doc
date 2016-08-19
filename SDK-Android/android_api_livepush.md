@@ -252,6 +252,7 @@ void setFlashMode(String desiredFlash);
 | 功能 | 根据传入的参数设置相应的闪光灯类型； |
 | 返回值 | 无 |
 
+
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
