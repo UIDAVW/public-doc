@@ -79,7 +79,17 @@
 | dataSourceAddress |NSString *|in|必须|直播推流地址，用户从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |startBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
 
-##6 停止直播
+##6 支持直播录制
+该功能需要在调用上节`startLiveBroadcast`接口方法时传入特定格式的URL，按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/public-doc/#!url_format.md)设置`protocolType`、`connectType`和`mode`字段。例如：
+```
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=4
+```
+其中：
+- `protocolType` 必须为2，表示使用QSTP协议推流。
+- `connectType` 必须为1，表示推流端。
+- `mode` 值可为3，表示使用QSTP协议推流，私有模式，并开启云存储；也可为4，表示使用QSTP协议推流，公众模式，并开启云存储。
+
+##7 停止直播
 ```
 - (void) stopLiveBroadcast;
 ```
@@ -89,9 +99,9 @@
 | 功能 | 和开始直播对应调用，内部释放开始直播准备的底层资源。 |
 | 返回值 | 无 |
 
-##7 直播控制
+##8 直播控制
 
-###7.1 开始推视频流 
+##8.1 开始推视频流 
 ```
 - (void) startSendVideoData；
 ```
@@ -101,7 +111,7 @@
 | 功能 | 开始推视频流。 |
 | 返回值 | 无 |
 
-###7.2 停止推视频流 
+###8.2 停止推视频流 
 ```
 - (void) stopSendVideoData；
 ```
@@ -111,7 +121,7 @@
 | 功能 | 停止推视频流。 |
 | 返回值 | 无 |
 
-###7.3 开始推音频流 
+###8.3 开始推音频流 
 ```
 - (void) startSendAudioData；
 ```
@@ -121,7 +131,7 @@
 | 功能 | 开始推音频流。 |
 | 返回值 | 无 |
 
-###7.4 停止推音频流 
+###8.4 停止推音频流 
 ```
 - (void) stopSendAudioData；
 ```
@@ -131,9 +141,9 @@
 | 功能 | 停止推音频流。 |
 | 返回值 | 无 |
 
-##8 设备控制
+##9 设备控制
 
-###8.1 切换摄像头
+###9.1 切换摄像头
 ```
 - (void) switchCamera: (LYCaptureCameraMode)cameraMode
           switchBlock: (void (^)(LYstatusCode statusCode, NSString *errorString))switchBlock;
@@ -150,7 +160,7 @@
 |cameraMode|LYCaptureCameraMode|in|必须|前置/后置|
 |switchBlock|void (^)(LYstatusCode statusCode, NSString *errorString))|in|可选|切换状态回调|
 
-###8.2 开关闪光灯 
+###9.2 开关闪光灯 
 ```
 - (void) turnTorchAndFlashOn: (BOOL)on
                       status: (void (^)(LYstatusCode statusCode, NSString *errorString))turnBlock;
@@ -167,7 +177,7 @@
 |on|BOOL|in|必须|前置/后置|
 |turnBlock|void (^)(LYstatusCode statusCode, NSString *errorString))|in|可选|打开状态回调|
 
-###8.3 获取当前采集图片 
+###9.3 获取当前采集图片 
 ```
 - (void) getCurrentFrameImage: (void (^)(UIImage *image, char *imageBuffer, int bufferLength))success;
 ```
@@ -182,7 +192,7 @@
 |-------|----|----|----|----|
 |success|void (^)(UIImage \*image, char \*imageBuffer, int bufferLength)|in|必须|image:UIImage图片 imageBuffer:图片数据 bufferLength:数据长度|
 
-###8.4 获取错误信息 
+###9.4 获取错误信息 
 ```
 - (NSString *) getCurrentErrorInfo
 ```

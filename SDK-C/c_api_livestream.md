@@ -25,7 +25,17 @@ topvdn://ip=%s:port=%d?protocolType=%d&connectType=%d&mode=%u&token=%s&begin=%lu
 
 Url各字段意义及详解请见[羚羊云Url格式解析](http://doc.topvdn.com/api/public-doc/#!url_format.md)
 
-##2 断开通道连接
+##2 支持直播录制
+该功能需要在调用`LY_connect`接口方法时传入特定格式的URL，按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/public-doc/#!url_format.md)设置`protocolType`、`connectType`和`mode`字段。例如：
+```
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=4
+```
+其中：
+- `protocolType` 必须为2，表示使用QSTP协议推流。
+- `connectType` 必须为1，表示推流端。
+- `mode` 值可为3，表示使用QSTP协议推流，私有模式，并开启云存储；也可为4，表示使用QSTP协议推流，公众模式，并开启云存储。
+
+##3 断开通道连接
 ```
 int	LY_disconnect(const int aFd);
 ```
@@ -39,7 +49,7 @@ int	LY_disconnect(const int aFd);
 |-------|----|----|----|----|
 |aFd|int|in|必须|传输通道句柄|
 
-##3 发送媒体帧
+##4 发送媒体帧
 ```
 int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```
@@ -55,7 +65,7 @@ int	LY_sendMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 |aFd|int|in|必须|传输通道句柄|
 |apMediaFrame|MediaFrame_t|in|必须|多媒体数据帧结构体指针，详细参考数据类型中的媒体帧信息|
 
-##4 接收媒体帧
+##5 接收媒体帧
 ```
 int	LY_recvMediaFrame(const int aFd, MediaFrame_t * apMediaFrame);
 ```

@@ -30,7 +30,17 @@ void startBroadcasting(String remoteUrl);
 |-------|----|----|----|----|
 |remoteUrl|String|in|必须|远程播放地址；内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 
-##3 停止直播推流
+##3 支持直播录制
+该功能需要在调用`startBroadcasting`接口方法时传入特定格式的URL，按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/public-doc/#!url_format.md)设置`protocolType`、`connectType`和`mode`字段。例如：
+```
+topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=4
+```
+其中：
+- `protocolType` 必须为2，表示使用QSTP协议推流。
+- `connectType` 必须为1，表示推流端。
+- `mode` 值可为3，表示使用QSTP协议推流，私有模式，并开启云存储；也可为4，表示使用QSTP协议推流，公众模式，并开启云存储。
+
+##4 停止直播推流
 ```
 void stopBroadcasting();
 ```
@@ -40,7 +50,7 @@ void stopBroadcasting();
 | 功能 | 关闭广播，除手动点击停止调用外，在onPause()方法里也要调用该接口停止直播 |
 | 返回值 | 无 |
 
-##4 是否正在直播
+##5 是否正在直播
 ```
 boolean isBroadcasting();
 ```
@@ -50,7 +60,7 @@ boolean isBroadcasting();
 | 功能 | 判断是否正在直播 |
 | 返回值 | 返回直播状态 true: 正在直播  false: 已停止直播 |
 
-##5 设置推流状态变化回调
+##6 设置推流状态变化回调
 ```
 void setBroadcastListener(BroadcastStateChangeListener listener);
 ```
@@ -61,7 +71,7 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 | 返回值 | 无 |
 | 参数列表 | 参见下面的推流状态变化回调函数 |
 
-##6 推流状态变化回调函数
+##7 推流状态变化回调函数
 ```
     interface BroadcastStateChangeListener {
         void onBroadcastStart();
@@ -80,9 +90,9 @@ void setBroadcastListener(BroadcastStateChangeListener listener);
 |-------|----|----|----|----|
 |exception|LYException|out|--|包含错误信息和错误码。详见：数据类型-错误信息 |
 
-##7 直播控制
+##8 直播控制
 
-###7.1 开始视频采集发送
+###8.1 开始视频采集发送
 ```
 void startVideoRecording();
 ```
@@ -92,7 +102,7 @@ void startVideoRecording();
 | 功能 | 开始视频数据发送 |
 | 返回值 | 无 |
 
-###7.2 停止视频采集发送
+###8.2 停止视频采集发送
 ```
 void stopVideoRecording();
 ```
@@ -102,7 +112,7 @@ void stopVideoRecording();
 | 功能 | 在直播页面调用此方法，摄像头会继续采集数据，但不发送；在切到后台的时候调用此方法，当前应用会停止采集，释放对摄像头的锁定；如果切到后台的时候，不调用此方法，摄像头会继续采集发送视频数据(Android 4.3及以上版本)； |
 | 返回值 | 无 |
 
-###7.3 开始音频采集发送
+###8.3 开始音频采集发送
 ```
 void startAudioRecording();
 ```
@@ -112,7 +122,7 @@ void startAudioRecording();
 | 功能 | 开始音频数据发送 |
 | 返回值 | 无 |
 
-###7.4 停止音频采集发送
+###8.4 停止音频采集发送
 ```
 void stopAudioRecording();
 ```
@@ -122,7 +132,7 @@ void stopAudioRecording();
 | 功能 | 直播过程中停止声音采集发送，释放对麦克风的锁定 |
 | 返回值 | 无 |
 
-###7.5 重置采集编码参数
+###8.5 重置采集编码参数
 ```
  void reset(SessionConfig config);
 ```
@@ -136,7 +146,7 @@ void stopAudioRecording();
 |-------|----|----|----|----|
 |config|SessionConfig|In|必须|配置直播推流和采集相关属性，包括音视频编码等相关信息。详见：数据类型_直播流和采集相关属性配置|
 
-###7.6 暂停以切入后台
+###8.6 暂停以切入后台
 ```
 void onHostActivityPaused();
 ```
@@ -146,7 +156,7 @@ void onHostActivityPaused();
 | 功能 | 在宿主Activity onPause()回调时使用，节省系统资源 仅语音通讯时无需调用，支持后台语音。若要放弃对camera的使用权，先停止采集再调用此方法，否则，不会释放camera，而且会继续采集。|
 | 返回值 | 无 |
 
-###7.7 从后台恢复播放
+###8.7 从后台恢复播放
 ```
 void onHostActivityResumed();
 ```
@@ -156,9 +166,9 @@ void onHostActivityResumed();
 | 功能 | 在宿主Activity onResume()回调时使用，仅语音通讯时无需调用，支持后台语音。若暂停前已停止采集，则调用此方法获取对camera的使用权，再调用'开始采集'方法。 |
 | 返回值 | 无 |
 
-##8 设备控制
+##9 设备控制
 
-###8.1 获取摄像机列表
+###9.1 获取摄像机列表
 ```
 List<Camera.Size> getSupportedPreviewSizes();
 ```
@@ -168,7 +178,7 @@ List<Camera.Size> getSupportedPreviewSizes();
 | 功能 | 获取当前摄像机支持的预览列表； |
 | 返回值 | 当前摄像机支持的预览列表； |
 
-###8.2 获取当前摄像机编号
+###9.2 获取当前摄像机编号
 ```
 int getCurrentCamera();
 ```
@@ -178,7 +188,7 @@ int getCurrentCamera();
 | 功能 | 获取当前摄像机编号； |
 | 返回值 | 当前摄像机编号； |
 
-###8.3 获取期望的摄像机编号
+###9.3 获取期望的摄像机编号
 ```
 int getDesiredCamera();
 ```
@@ -188,7 +198,7 @@ int getDesiredCamera();
 | 功能 | 获取期望的摄像机编号； |
 | 返回值 | 摄像机编号； |
 
-###8.4 切换摄像头
+###9.4 切换摄像头
 ```
 void switchCamera();
 ```
@@ -198,7 +208,7 @@ void switchCamera();
 | 功能 | 切换至另一个摄像头，从摄像机列表中循环切换，设置效果在预览状态下立即生效； |
 | 返回值 | 无 |
 
-###8.5 设置摄像头类型
+###9.5 设置摄像头类型
 ```
 void setCameraType(int camera);
 ```
@@ -212,7 +222,7 @@ void setCameraType(int camera);
 |-------|----|----|----|----|
 |camera|int|In|必须|{android.hardware.Camera.CameraInfo#CAMERA_FACING_BACK} or {android.hardware.Camera.CameraInfo#CAMERA_FACING_FRONT}|
 
-###8.6 获取闪光灯模式
+###9.6 获取闪光灯模式
 ```
 String getFlashMode();
 ```
@@ -222,7 +232,7 @@ String getFlashMode();
 | 功能 | 获取当前闪光灯模式； |
 | 返回值 | 无 |
 
-###8.7 切换闪光灯
+###9.7 切换闪光灯
 ```
 String toggleFlash();
 ```
@@ -232,7 +242,7 @@ String toggleFlash();
 | 功能 | 若当前闪光灯为关闭，调用后打开，反之同理； |
 | 返回值 | 无 |
 
-###8.8 设置闪光灯类型
+###9.8 设置闪光灯类型
 ```
 void setFlashMode(String desiredFlash);
 ```
@@ -246,7 +256,7 @@ void setFlashMode(String desiredFlash);
 |-------|----|----|----|----|
 |desiredFlash|String|In|必须|{android.hardware.Camera.Parameters#FLASH_MODE_TORCH} or {android.hardware.Camera.Parameters#FLASH_MODE_OFF} ect|
 
-##9 释放接口资源
+##10 释放接口资源
 ```
 void release();
 ```
