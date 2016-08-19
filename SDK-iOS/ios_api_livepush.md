@@ -79,7 +79,7 @@
 | dataSourceAddress |NSString *|in|必须|直播推流地址，用户从[应用服务器](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md#3._%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%90%8D%E8%AF%8D)获取。内容格式和意义请参见[羚羊云播放源url格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)|
 |startBlock|void (^)(LYstatusCode statusCode, NSString *errorString)|in|必须|直播状态回调|
 
-##6 支持直播录制
+##6 直播录制
 该功能需要在调用上节`startLiveBroadcast`接口方法时传入特定格式的URL，按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/public-doc/#!url_format.md)设置`protocolType`、`connectType`和`mode`字段。例如：
 ```
 topvdn://183.57.151.161:1935?protocolType=2&connectType=1&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&mode=4
