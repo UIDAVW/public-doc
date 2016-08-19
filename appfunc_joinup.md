@@ -80,6 +80,7 @@
 至此，设备A和设备B就成功接入到羚羊云。接下来就是如何调用不同的接口来实现不同场景的应用了。
 [视频通话](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_facetime.md)
 [视频直播](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)
+[视频点播](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_vod.md)
 
 ##5 常见问题
 
