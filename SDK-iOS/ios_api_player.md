@@ -2,6 +2,8 @@
 
 >接口名称：LYPlayer
 
+播放器模块可单独实现播放直播流、播放存储在羚羊云的录像流等功能。
+
 ##1 设置播放器配置
 ```
 - (void) setViewWithConfiguration: (LYPlayerConfiguration *)playerConfiguration;
