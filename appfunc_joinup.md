@@ -18,23 +18,24 @@
 - **Web API**
 为开发者提供http接口，即开发者通过http形式发起数据请求，获取返回json或xml格式的数据。用户可以基于此开发JavaScript、C#、C++、Java、Objective-C等语言的应用。
 
-##2 接口功能
+##2 应用功能
 羚羊云提供了一系列的功能接口供用户调用，用户按照不同的流程、调用不同的接口可以实现不同的应用场景和功能。
 
 **视频通话：**
 
-![Alt text](./images/facetime.png "视频通话应用场景") 
+![Alt text](./images/facetime.png "视频通话功能") 
 <br /><br />
 
 **视频直播：**
 
-![Alt text](./images/livevideo.png "视频直播应用场景") 
+![Alt text](./images/livevideo.png "视频直播功能") 
 <br /><br />
 
-**手机直播：**
+**视频点播：**
 
-![Alt text](./images/livephone.png "手机直播应用场景") 
+![Alt text](./images/vod.png "视频点播功能")
 <br />
+
 
 ##3 应用体系
 ![Alt text](./images/app_system.png) 

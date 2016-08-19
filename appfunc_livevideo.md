@@ -1,6 +1,6 @@
 #羚羊云视频直播应用开发
 
-## 视频直播应用
+## 视频直播功能
 
 ##1. 应用接入
 开发视频直播的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))
