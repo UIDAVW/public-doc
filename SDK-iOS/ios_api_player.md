@@ -125,7 +125,7 @@ playerStatus: (playerCallBackBlock)playerBlock;
 
 |参数列表|类型|In/Out|可选/必须|描述|
 |-------|----|----|----|----|
-|timestamp|NSInteger|in|必须|时间戳|
+|timestamp|NSInteger|in|必须|相对起始播放时间所移动的秒数|
 |seekBlock|void (^)(LYstatusCode statusCode)|in|可选|状态回调|
 
 ##6 获取流媒体数据
