@@ -1,6 +1,6 @@
 #羚羊云视频点播功能开发
 
-## 视频点播功能
+## 视频点播功能开发
 
 ##1. 应用接入
 开发视频点播的应用之前，需将应用先接入羚羊云。(点击[这里](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_joinup.md))

@@ -1,6 +1,6 @@
 #羚羊云视频通话应用开发
 
-## 视频通话功能
+## 视频通话功能开发
 
 ##1. 应用接入
 ![Alt text](./images/appfunc_facetime0.png) 
