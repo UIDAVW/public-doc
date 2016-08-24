@@ -9,7 +9,7 @@
 ##2. 录像时间轴
 视频点播的内容来源于推流端设备在直播过程中存储于羚羊云的录像文件。应用层首先需要知道指定的推流端设备在什么时间段内有录像存储在羚羊云，然后播放有效时间段内任何时间点的录像视频。
 
-推流端设备的录像时间轴可通过调用羚羊云[Web API特定接口](http://doc.topvdn.com/api/index.html#!web_api_v2.md#2.2.1_%E8%AE%BE%E5%A4%87%E5%BD%95%E5%83%8F%E6%97%B6%E9%97%B4%E8%BD%B4)发送HTTP请求来获取，然后接收HTTP的返回数据并解析得到该设备的时间轴信息。
+推流端设备的录像时间轴可通过调用羚羊云[Web API特定接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_record_loop.md)发送HTTP请求来获取，然后接收HTTP的返回数据并解析得到该设备的时间轴信息。
 以下仅展示`curl`方式的Web http请求示例，用户需根据自己应用客户端所采用的开发语言去完成http请求并解析返回的json数据。
 ```
 curl -X GET -H "Cache-Control: no-cache" "http://api.topvdn.com/v2/record/1003555/timeline?client_token=1003555_3356753920_1463469894_c88181fb30d35401cd4612cfde96a4d2"
