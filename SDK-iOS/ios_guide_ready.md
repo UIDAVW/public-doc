@@ -1,7 +1,7 @@
 #羚羊云iOS SDK集成准备
 
 ##1. SDK的获取
-[点击这里获取](http://doc.topvdn.com/api/public-doc/SDK-iOS/zipdown/ly_sdk_ios.zip "获取SDK")
+[点击这里获取](https://codeload.github.com/AntelopeCloud/SDK-iOS/zip/master "获取SDK")
 
 ##2. SDK支持的系统版本
 支持的IOS 8.0以上版本。

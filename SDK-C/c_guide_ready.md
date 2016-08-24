@@ -1,7 +1,7 @@
 #羚羊云C SDK集成准备
 
 ##1 SDK的获取
-[点击这里获取](http://doc.topvdn.com/api/public-doc/SDK-C/zipdown/ly_sdk_c.zip "获取SDK")
+[点击这里获取](https://codeload.github.com/AntelopeCloud/SDK-C/zip/master "获取SDK")
 
 ##2 SDK库结构
 SDK目录

@@ -1,6 +1,6 @@
 #羚羊云Android SDK集成准备
 ##1. SDK的获取
-[点击这里获取](http://doc.topvdn.com/api/public-doc/SDK-Android/zipdown/ly_sdk_android.zip "获取SDK")
+[点击这里获取](https://codeload.github.com/AntelopeCloud/SDK-Android/zip/master "获取SDK")
 
 ##2. SDK支持的系统版本
 SDK支持的Android版本：4.3及以上的Android版本(api18)。
