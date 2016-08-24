@@ -188,7 +188,7 @@ LY_stopCloudService();
 播放源的URL地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
 
-(1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2_deviceinfo.md)获取羚羊云的tracker ip/port或者relay ip/port；
+(1)调用[Web API的'查询设备在线信息'接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_deviceinfo.md)获取羚羊云的tracker ip/port或者relay ip/port；
 
 (2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
 
@@ -228,7 +228,7 @@ mPlayer.stop();
 
 <br />
 ### 相关链接
-[Web API查询设备状态](http://doc.topvdn.com/api/public-doc/Web-API/#!web_api_v2_deviceinfo.md "Web API")
+[Web API查询设备在线信息](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_deviceinfo.md "Web API")
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
 

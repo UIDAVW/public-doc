@@ -79,4 +79,3 @@ LYPlayerConfiguration *mPlayerConfig = [[LYPlayerConfiguration alloc] initWithPl
 [羚羊云SDK接入指南](http://doc.topvdn.com/api/index.html#!public-doc/start_joinup.md)
 [羚羊云token认证机制](http://doc.topvdn.com/api/index.html#!public-doc/token_format.md)
 [羚羊云推拉流URL格式解析](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)
-[羚羊云WebAPI使用指南](http://doc.topvdn.com/api/#!web_api_v2.md)

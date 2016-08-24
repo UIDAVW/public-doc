@@ -51,7 +51,7 @@ popMessageBlock:^(NSDictionary *dictionary) {
 **注意**：
 (1)消息最大长度为256个字节;
 (2)本SDK只提供了监听消息的功能，当对方有消息到来的时候，本方会通过回调函数通知到应用层的SDK调用者，应用层可以对该消息进行处理以及回应该消息至对端的客户端。
-推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/#!web_api_v2_pushmsg.md)“应用客户端推送消息”。
+推送消息或者回应消息并不属于本SDK的功能范畴，需要调用羚羊云提供的[Web API接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_pushmsg.md)“应用客户端推送消息”。
 
 #### 相关链接
 [羚羊云SDK服务架构](http://doc.topvdn.com/api/index.html#!public-doc/start_archit.md)

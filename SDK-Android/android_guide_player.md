@@ -40,7 +40,7 @@ mPlayer.setDataSource("topvdn://topvdn.public.cn" +
 
 播放源的URL地址由应用向应用后台获取。
 应用后台生成播放源url的方法和步骤如下：
-(1)调用[Web API的'查询设备状态'接口](http://doc.topvdn.com/api/#!web_api_v2_deviceinfo.md)获取羚羊云的tracker ip/port或者relay ip/port；
+(1)调用[Web API的'查询设备在线信息'接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_deviceinfo.md)获取羚羊云的tracker ip/port或者relay ip/port；
 (2)根据[羚羊云token格式](http://doc.topvdn.com/api/#!public-doc/token_format.md)生成token；
 (3)按照[羚羊云URL格式解析](http://doc.topvdn.com/api/#!public-doc/url_format.md)生成羚羊云格式的URL。
 
