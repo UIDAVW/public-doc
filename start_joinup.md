@@ -36,3 +36,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不同应用场景下的集成SDK示例：
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[视频通话](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_facetime.md)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[视频直播](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_livevideo.md)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[视频点播](http://doc.topvdn.com/api/index.html#!public-doc/appfunc_vod.md)
