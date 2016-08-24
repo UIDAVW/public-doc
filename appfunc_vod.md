@@ -66,7 +66,7 @@ Cache-Control: no-cache
 [播放器API-Android](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_player.md)
 [播放器API-iOS](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_player.md)
 
-在相应的API中(iOS为**打开播放器**API，Android为**设置播放源**API)传入`播放地址`时按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md#3.3_QSTP%E6%8B%89%E5%8F%96%E5%BD%95%E5%83%8F%E6%B5%81%E7%A4%BA%E4%BE%8B)设置`protocolType`字段为`3`，格式如下：
+在相应的API中(iOS为**打开播放器**API，Android为**设置播放源**API)传入`播放地址`时按照[羚羊云推拉流URL格式](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md)设置`protocolType`字段为`3`，格式如下：
 ```
 topvdn://public.topvdn.cn?cid=1003469&protocolType=3&token=1003469_3222536192_1493481600_5574318032e39b62063d98e6bff50069&begin=1464082941&end=1464086522&play=0
 ```
