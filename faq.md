@@ -10,13 +10,13 @@
 答：设备端就是本文所说的应用客户端，所谓的设备分为推流设备和播放设备。客户端的功能包含了推流和播放，设备可以具备推流或播放中的一种功能，也可同时具备两种功能。比如：设备没有显示屏，则没有播放功能；设备既有视频采集器又有显示屏，则同时具备推流和播放的功能。客户端SDK按照平台的不同类型分为C(Linux)、iOS、Android几种版本，设备按照自己所属的系统平台使用相应类别的SDK。
 
 4. `视频监控`和`视频通话`调用哪些接口？
-答：视频监控调用SDK的`播放器`接口，视频通话调用SDK的`视频通话`接口。播放器接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)；视频通话接口调用示例：[iOS版](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android版](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
+答：视频监控调用SDK的`播放器`接口，视频通话调用SDK的`视频通话`接口。播放器接口调用示例：[iOS版](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_player.md)、[Android版](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_player.md)；视频通话接口调用示例：[iOS版](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)、[Android版](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)。
 
 5. 视频通话需要调用什么接口，传什么参数？
-答：实现视频通话功能需要调用羚羊云SDK视频通话的接口，不同开发语言版本的SDK接口不一样。可参见[iOS视频通话接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)、[Android视频通话接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.6_%E8%A7%86%E9%A2%91%E9%80%9A%E8%AF%9D)。
+答：实现视频通话功能需要调用羚羊云SDK视频通话的接口，不同开发语言版本的SDK接口不一样。可参见[iOS视频通话接口调用示例](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_facetime.md)、[Android视频通话接口调用示例](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_facetime.md)。
 
 6. 如何实现`录像回放`的功能？录像存在羚羊云端的列表我们如何查看？找到视频列表后又如何按指定时间点播放录像？
-答：通过[Web API的查询设备录像时间轴接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_record_loop.md)，可以查询到某个视频设备存放在羚羊云端的录像时间列表，然后调用羚羊云客户端SDK的播放器接口([iOS播放器接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8)、[Android播放器接口调用示例](http://doc.topvdn.com/api/#!public-doc/SDK-Android/android_guide.md#5.4_%E6%92%AD%E6%94%BE%E5%99%A8))，传入指定格式的url参数，这个url参数需要通过应用服务器去获取。
+答：通过[Web API的查询设备录像时间轴接口](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_record_loop.md)，可以查询到某个视频设备存放在羚羊云端的录像时间列表，然后调用羚羊云客户端SDK的播放器接口([iOS播放器接口调用示例](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_player.md)、[Android播放器接口调用示例](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_guide_player.md))，传入指定格式的url参数，这个url参数需要通过应用服务器去获取。
 
 7. 什么是`tracker`？
 答：tracker是羚羊云服务端的调度服务器，主要将全球IP网络中众多设备(视频源)和视频转发服务节点之间的传输线路按最优的方案进行选择与调配。

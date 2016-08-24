@@ -22,7 +22,7 @@ LYAudioStreamingConfiguration *mAudioConfig = [LYAudioStreamingConfiguration def
 LYFaceTime * mFaceTime = [[LYFaceTime alloc] initWithVideoConfiguration:mVideoConfig audioConfiguration:mAudioConfig]; 
 ```
 Configuration类配置视频通话推流的参数，包括是否使用音、视频，是否使用硬编码，视频旋转角度等多种配置，用户可根据需要查看更多进行配置。
-**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/#!public-doc/SDK-iOS/ios_api.md)中的数据类型-视频通话推流相关属性配置。
+**注意**：更多的参数配置详见[API手册](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_datatype.md)中的数据类型-视频通话推流相关属性配置。
 
 ##2. 设置播放参数
 ```

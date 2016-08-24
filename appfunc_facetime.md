@@ -25,8 +25,8 @@
 | 第2步   | 获取羚羊tracker的ip和端口 | 调用羚羊云Web API的[查询设备在线信息](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_deviceinfo.md)接口 |
 | 第3步 | 生成A的URL | 根据[羚羊云推拉流URL格式-QSUP方式](http://doc.topvdn.com/api/index.html#!public-doc/url_format.md) |
 | 第4步 | 推送消息给B | 调用羚羊云Web API的[服务器推送消息](http://doc.topvdn.com/api/index.html#!public-doc/Web-API/web_api_v2_pushmsg.md)接口，接口参数需要传入B的羚羊cid。|
-| 第5步 | 收到A的呼叫请求 | 调用羚羊云SDK的[启动云服务](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1)接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)。 |
-| 第5步 | 建立通话连接 | 调用羚羊云SDK的"建立通话连接"接口，需要传入A发送过来的URL作为参数。[Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#5.3_%E6%89%93%E5%BC%80%E9%93%BE%E6%8E%A5%E5%B9%B6%E6%8E%A8%E9%80%81%E6%95%B0%E6%8D%AE) [iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#5.14_%E5%BB%BA%E7%AB%8B%E9%80%9A%E8%AF%9D%E8%BF%9E%E6%8E%A5) |
+| 第5步 | 收到A的呼叫请求 | 调用羚羊云SDK的[启动云服务](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_cloudservice.md)接口时传入的`消息监听回调函数`来接收并响应处理消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_cloudservice.md)。 |
+| 第5步 | 建立通话连接 | 调用羚羊云SDK的"建立通话连接"接口，需要传入A发送过来的URL作为参数。[Android接口方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_facetime.md) [iOS接口方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_facetime.md) |
 | 第6步 | A内部触发连接建立成功的消息 | SDK内部自动触发，不需要调用接口。 |
 | 第7步 | 双方开始视频通话 | A和B的使用者已经可以互相视频通话，不需要调用接口。 |
 
@@ -102,7 +102,7 @@ curl -X POST -H "Content-Type: application/json" -H "X-APP-ID: Test" -H "X-APP-K
 `msg`字段为应用服务器发送的消息体，为base64的编码值，其中包含了`设备A的羚羊URL`。
 
 ###3.5 设备B收到设备A的呼叫请求
-设备B在调用羚羊云SDK的启动云服务([iOS调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api.md#2.2_%E5%90%AF%E5%8A%A8%E4%BA%91%E6%9C%8D%E5%8A%A1) [Android调用方法](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api.md#2_%E4%BA%91%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3))接口时传入"消息监听回调函数"，在回调函数中会收到设备A请求的消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide.md#5.3_%C2%A0%E6%B6%88%E6%81%AF%E9%80%8F%E4%BC%A0)。
+设备B在调用羚羊云SDK的启动云服务([iOS接口介绍](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_api_cloudservice.md) [Android接口介绍](http://doc.topvdn.com/api/index.html#!public-doc/SDK-Android/android_api_cloudservice.md))接口时传入"消息监听回调函数"，在回调函数中会收到设备A请求的消息，原理可参见[消息透传](http://doc.topvdn.com/api/index.html#!public-doc/SDK-iOS/ios_guide_cloudservice.md)。
 
 ###3.6 设备B使用设备A的羚羊URL建立视频通话连接
 设备B在回调函数中收到设备A的呼叫请求消息，消息体中包含了设备A的羚羊URL，该消息是base64编码，需要解码。从消息体中拿到URL之后调用SDK的"建立通话连接"接口，需要传入设备A的URL作为参数。
