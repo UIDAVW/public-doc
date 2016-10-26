@@ -56,6 +56,14 @@ Cache-Control: no-cache
 		},
 		...
 	],
+  	"eventinfo": [
+      	{
+        	"event_flag": 1,
+      		"event_time": 1476948635,
+      		"event_type": 14
+      	},
+      	...
+  	],
 	"servers": [
 		{
 			"ip": "192.168.2.11",
@@ -73,6 +81,7 @@ Cache-Control: no-cache
 | ---------- | ---------- | ------------- |
 | videos     | json array | 循环存储列表        |
 | events     | json array | 事件存储列表        |
+| eventinfo  | son array  | 事件列表          |
 | servers    | json array | 录像所存储的服务器信息列表 |
 | request_id | string     | 此次请求的唯一编号     |
 
@@ -93,6 +102,14 @@ Cache-Control: no-cache
 | begin | int    | 事件存储起始时间，这个值与 cid 一起可以得到一个唯一的事件存储录像 |
 | end   | int    | 事件存储段结束时间                           |
 | url   | string | 事件存储的 m3u8 播放列表地址                   |
+
+- eventinfo 字段：
+
+| 字段名        | 类型   | 描述                                |
+| ---------- | ---- | --------------------------------- |
+| event_time | int  | 发生时间                              |
+| event_flag | int  | 标识事件开始或者结束，1 为开始，0 为结束            |
+| event_type | int  | 事件存储 event_type ，由用户透传，用以标识事件录像类型 |
 
 
 * servers 字段
@@ -129,7 +146,7 @@ Cache-Control: no-cache
 
 | 参数名   | 类型   | 描述                    | 必须   | 举例         |
 | ----- | ---- | --------------------- | ---- | ---------- |
-| cid   | int  | 设备 ID                 | 是    | 10000415    |
+| cid   | int  | 设备 ID                 | 是    | 10000415   |
 | start | int  | `query param` 录像起始时间戳 | 否    | 1439626260 |
 | end   | int  | `query param` 录像结束时间戳 | 否    | 1439633460 |
 
