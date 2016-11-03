@@ -209,7 +209,7 @@ curl -X GET -H "X-Client-Token: 3000000226_0_1456222962_478f89ea0bcbb6678cef561a
 * 请求报文：
 
 ```json
-GET /v2/record/3000000226/clips HTTP/1.1
+GET /v2/record/3000000226/clips/status HTTP/1.1
 Host: api.topvdn.com
 X-Client-Token: 3000000226_0_1456222962_478f89ea0bcbb6678cef561adc6efe52
 Content-Type: application/json
