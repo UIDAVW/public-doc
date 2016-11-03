@@ -203,13 +203,13 @@ Cache-Control: no-cache
 * `curl` 请求示例：
 
 ```
-curl -X GET -H "X-Client-Token: 3000000226_0_1456222962_478f89ea0bcbb6678cef561adc6efe52" -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://api.topvdn.com/v2/record/3000000226/clips"
+curl -X GET -H "X-Client-Token: 3000000226_0_1456222962_478f89ea0bcbb6678cef561adc6efe52" -H "Content-Type: application/json" -H "Cache-Control: no-cache" "http://api.topvdn.com/v2/record/clips/42/status"
 ```
 
 * 请求报文：
 
 ```json
-GET /v2/record/3000000226/clips/status HTTP/1.1
+GET /v2/record/clips/42/status HTTP/1.1
 Host: api.topvdn.com
 X-Client-Token: 3000000226_0_1456222962_478f89ea0bcbb6678cef561adc6efe52
 Content-Type: application/json
