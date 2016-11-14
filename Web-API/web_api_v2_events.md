@@ -80,7 +80,6 @@ Cache-Control: no-cache
 ```
 
 
-
 | 参数名            | 类型           | 描述                          | 必须    | 举例                                       |
 | -------------- | ------------ | --------------------------- | ----- | ---------------------------------------- |
 | cid            | int          | 设备 ID                       | 是     | 100303                                   |
@@ -148,23 +147,23 @@ Cache-Control: no-cache
 ```json
 {
     "events": [
-    {
-      "id": "58297d437fd4fc2ca396422e"
-      "mode": 1,
-	  "event_type": 12,
-      "timestamp": 1479116818,
-	  "expire": 1479116829,
-      "subject": "门禁事件通知",
-      "body": {
-        "user": "张三",
-        "event": "启动门禁",
-      },
-      "attachments": [
-         "http://api.topvdn.com/event/123123",
-         "http://api.topvdn.com/event/123123"
-      ]
-	},
-    ...
+        {
+          "id": "58297d437fd4fc2ca396422e",
+          "mode": 1,
+          "event_type": 12,
+          "timestamp": 1479116818,
+          "expire": 1479116829,
+          "subject": "门禁事件通知",
+          "body": {
+            "user": "张三",
+            "event": "启动门禁"
+          },
+          "attachments": [
+             "http://api.topvdn.com/event/123123",
+             "http://api.topvdn.com/event/123123"
+          ]
+        },
+        ...
     ],
     "total": 43,
     "current": 1,
@@ -193,5 +192,5 @@ Cache-Control: no-cache
 | timestamp   | int          | 事件创建的 unix 时间戳，单位为秒           |
 | expire      | int          | 事件过期时间戳，0 代表永不过期             |
 | subject     | string       | 事件主题，事件的简单描述                |
-| body        | json object  | 通过 Key -> Value 的方式描述具体的事件内容，这个内容由第三方自主定义      |
+| body        | json object  | 通过 Key -> Value 的方式描述具体的事件内容，这个内容由第三方自定义      |
 | attachments | string array | 事件附件在羚羊云对象存储的 url 列表          |
