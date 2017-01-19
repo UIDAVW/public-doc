@@ -49,10 +49,10 @@ token明文段包含以下字段：
 
 0-3位: 录像存储开关
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000 不存储录像
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储7天录像  循环式存储超过 7 天会覆盖旧的录像数据, 事件式存储录像数据超过 7 天会被删除
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储30天录像 循环式存储超过 30 天会覆盖旧的录像数据, 事件式存储录像数据超过 30 天会被删除
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储90天录像 循环式存储超过 90 天会覆盖旧的录像数据, 事件式存储录像数据超过 90 天会被删除
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1111 永久保存录像数据 只对事件式存储生效, 想要删除录像数据只能通过 Web 接口进行
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储 7 天录像  循环式存储超过 7 天会覆盖旧的录像数据, 事件式存储录像数据超过 7 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储 30 天录像 循环式存储超过 30 天会覆盖旧的录像数据, 事件式存储录像数据超过 30 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储 90 天录像 循环式存储超过 90 天会覆盖旧的录像数据, 事件式存储录像数据超过 90 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1111 永久保存录像数据 只对事件式存储生效, 想要删除录像数据只能通过相关 Web 接口
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他 保留
 4位 : 循环式的存储类型标记，1 表示启用, 0 表示不启用
 5位 : 事件式的存储类型标记, 1 表示启用, 0 表示不启用
