@@ -47,14 +47,15 @@ token明文段包含以下字段：
 
 - **第二字节（0-7位）**：录制控制
 
-0-3位: 录像循环存储开关
+0-3位: 录像存储开关
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0000 不存储录像
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储7天录像  超过7天则会覆盖最旧的录像数据而继续循环存储
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储30天录像 超过30天则会覆盖最旧的录像数据而继续循环存储
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储90天录像 超过90天则会覆盖最旧的录像数据而继续循环存储
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0001 存储7天录像  循环式存储超过 7 天会覆盖旧的录像数据, 事件式存储录像数据超过 7 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0010 存储30天录像 循环式存储超过 30 天会覆盖旧的录像数据, 事件式存储录像数据超过 30 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0011 存储90天录像 循环式存储超过 90 天会覆盖旧的录像数据, 事件式存储录像数据超过 90 天会被删除
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1111 永久保存录像数据 只对事件式存储生效, 想要删除录像数据只能通过 Web 接口进行
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其他 保留
-4位 : FLV持久化开关，默认为0表示不打开
-5位 : HLS持久化开关，默认为0表示不打开
+4位 : 循环式的存储类型标记，1 表示启用, 0 表示不启用
+5位 : 事件式的存储类型标记, 1 表示启用, 0 表示不启用
 6位 : 是否允许下载对象
 7位 : 是否验证 object_id
 
