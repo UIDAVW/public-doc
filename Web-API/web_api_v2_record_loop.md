@@ -108,7 +108,7 @@ Cache-Control: no-cache
 | 字段名        | 类型   | 描述                                |
 | ---------- | ---- | --------------------------------- |
 | event_time | int  | 发生时间                              |
-| event_flag | int  | 标识事件开始或者结束，1 为开始，0 为结束            |
+| event_flag | int  | 兼容字段, 新版一直为 1 , 无具体意义            |
 | event_type | int  | 事件存储 event_type ，由用户透传，用以标识事件录像类型 |
 
 
