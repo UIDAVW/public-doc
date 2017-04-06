@@ -91,7 +91,7 @@ Cache-Control: no-cache
 | ------------ | ------ | ---------------------------------------- |
 | cid          | int    | 设备 id                                    |
 | state        | int    | 设备状态 0：异常或离线； 1：就绪； 2：获取转发中 3：连接转发中 4：推流中 5：断开转发中 |
-| config_type  | int    | 设备配置类型，公众或者私有等 0：私有；1：私有广播；2：公众；3：私有录像；4：公众录像 |
+| config_type  | int    | 设备配置类型，公众或者私有等 0：私有；1：私有广播；2：公众；3：私有录像；4：公众录像; 6: 事件存储|
 | tracker_ip   | string | 设备登录的 tracker 服务器                        |
 | tracker_port | int    | 设备登录的 tracker 端口                         |
 | public_ip    | string | 设备公网 IP                                  |
@@ -102,8 +102,8 @@ Cache-Control: no-cache
 | relay_ip     | string | 源转发服务器                                   |
 | relay_port   | int    | 源转发 端口                                   |
 | cover_url    | string | 设备的封面截图，注意此 URL 会过期，目前默认为获取后 24 小时       |
-| rtmp_url     | string | 设备的 rtmp 播放 domain，私有配置设备此字段为空           |
-| hls          | string | 设备的 hls 播放地址，私有配置设备此字段为空                 |
+| rtmp_url     | string | 设备的 rtmp 播放 domain，私有 (config_type 0) 配置设备此字段为空           |
+| hls          | string | 设备的 hls 播放地址，私有 (config_type 0) 配置设备此字段为空                 |
 
 
 * 状态码
