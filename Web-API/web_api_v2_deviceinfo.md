@@ -91,7 +91,7 @@ Cache-Control: no-cache
 | ------------ | ------ | ---------------------------------------- |
 | cid          | int    | 设备 id                                    |
 | state        | int    | 设备状态 0：异常或离线； 1：就绪； 2：获取转发中 3：连接转发中 4：推流中 5：断开转发中 |
-| config_type  | int    | 设备配置类型，公众或者私有等 0：私有；1：私有广播；2：公众；3：私有录像；4：公众录像; 6: 事件存储|
+| config_type  | int    | 设备配置类型，公众或者私有等 0：私有；1：私有广播；2：公众；3：私有录像；4：公众录像; 6: 事件存储 |
 | tracker_ip   | string | 设备登录的 tracker 服务器                        |
 | tracker_port | int    | 设备登录的 tracker 端口                         |
 | public_ip    | string | 设备公网 IP                                  |
@@ -102,8 +102,23 @@ Cache-Control: no-cache
 | relay_ip     | string | 源转发服务器                                   |
 | relay_port   | int    | 源转发 端口                                   |
 | cover_url    | string | 设备的封面截图，注意此 URL 会过期，目前默认为获取后 24 小时       |
-| rtmp_url     | string | 设备的 rtmp 播放 domain，私有 (config_type 0) 配置设备此字段为空           |
-| hls          | string | 设备的 hls 播放地址，私有 (config_type 0) 配置设备此字段为空                 |
+| rtmp_url     | string | 设备的 rtmp 播放 domain，私有 (config_type 0) 配置设备此字段为空 |
+| hls          | string | 设备的 hls 播放地址，私有 (config_type 0) 配置设备此字段为空，详细见下 |
+
+
+* `hls` 字段
+
+在提供给客户端播放时，第三方应该在本接口返回的 hls 地址后后面添加 token 相关的验证信息作为查询参数，例子如下：
+
+` http://hls0-9.public.topvdn.cn/hls/<cid>/index.m3u8?expire=1566579141&access=3222536192&token=e17e6311c52a23d1d58923fc42f24540`
+
+参考文档: [羚羊云token内容格式](http://doc.topvdn.com/api/#!public-doc/token_format.md#2_羚羊云token内容格式)
+
+| 查询参数   | token 字段 | 意义                |
+| ------ | -------- | ----------------- |
+| access | control  | token 的权限控制位      |
+| expire | expire   | 过期时间              |
+| token  | digest   | 根据 token 算法生成的摘要串 |
 
 
 * 状态码
@@ -115,5 +130,3 @@ Cache-Control: no-cache
 | 401  | app_key 验证不通过      |
 | 406  | size 超过限制，最大为 100  |
 | 500  | 系统内部错误             |
-
-## .
