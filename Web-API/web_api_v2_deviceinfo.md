@@ -108,7 +108,7 @@ Cache-Control: no-cache
 
 * `hls` 字段
 
-在提供给客户端播放时，第三方应该在本接口返回的 hls 地址后后面添加 token 相关的验证信息作为查询参数，例子如下：
+在提供给客户端播放时，第三方应该在本接口返回的 hls 地址后面添加 token 相关的验证信息作为查询参数，例子如下：
 
 ` http://hls0-9.public.topvdn.cn/hls/<cid>/index.m3u8?expire=1566579141&access=3222536192&token=e17e6311c52a23d1d58923fc42f24540`
 
