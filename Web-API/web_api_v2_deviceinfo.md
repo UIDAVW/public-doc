@@ -63,7 +63,7 @@ Cache-Control: no-cache
 			"relay_port": 80,
 			"cover_url": "http://api.topvdn.com/v2/snapshots/1003775/cover?client_token=1003775_0_1452756453_0d78e95edab47e565010f47a0300de2d",
 			"rtmp_url": "rtmp://rtmp0-9.public.topvdn.cn/",
-			"hls": "http://hls0-9.public.topvdn.cn/hls/<cid>/index.m3u8"
+			"hls": "http://hls0-9.public.topvdn.cn/live/<cid>/index.m3u8"
 		}
 	],
 	"total": 145,
@@ -110,15 +110,9 @@ Cache-Control: no-cache
 
 在提供给客户端播放时，第三方应该在本接口返回的 hls 地址后面添加 token 相关的验证信息作为查询参数，例子如下：
 
-` http://hls0-9.public.topvdn.cn/hls/<cid>/index.m3u8?expire=1566579141&access=3222536192&token=e17e6311c52a23d1d58923fc42f24540`
+` http://hls0-9.public.topvdn.cn/live/<cid>/index.m3u8?client_token=1003775_0_1452756453_0d78e95edab47e565010f47a0300de2d`
 
-参考文档: [羚羊云token内容格式](http://doc.topvdn.com/api/#!public-doc/token_format.md#2_羚羊云token内容格式)
-
-| 查询参数   | token 字段 | 意义                |
-| ------ | -------- | ----------------- |
-| access | control  | token 的权限控制位      |
-| expire | expire   | 过期时间              |
-| token  | digest   | 根据 token 算法生成的摘要串 |
+`client_token` 即为该设备的羚羊 token，具体见文档 [羚羊云token内容格式](http://doc.topvdn.com/api/#!public-doc/token_format.md#2_羚羊云token内容格式)
 
 
 * 状态码
