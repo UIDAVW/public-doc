@@ -236,7 +236,7 @@ Content-Type:
 
 * `postman`请求报文：
 
-```test
+```text
   POST /upload3?access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411 HTTP/1.1
   Host: 122.226.181.252:8030
   Cache-Control: no-cache
@@ -318,7 +318,7 @@ Content-Type:
 
 * 请求报文：
 
-  ```test
+  ```text
   GET /v2/events?channel_id=1&size=10&offset=42 HTTP/1.1
   Host: 127.0.0.1:8080
   X-APP-ID: Test
@@ -422,7 +422,7 @@ Postman-Token: f5f350d7-2cde-5e62-cdb3-501abe722f19
 
 * 返回数据：
 
-```test
+```text
 请求的对象的内容
 ```
 
