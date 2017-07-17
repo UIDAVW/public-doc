@@ -64,7 +64,7 @@
 
 * `postman` 请求报文：
 
-```text
+```
 POST /upload2?size=144896&amp;access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411&amp;expiretype=0&amp;key=/1/upload.txt HTTP/1.1
 Host: 122.226.181.252:8030
 Cache-Control: no-cache
@@ -236,7 +236,7 @@ Content-Type:
 
 * `postman`请求报文：
 
-```text
+```
   POST /upload3?access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411 HTTP/1.1
   Host: 122.226.181.252:8030
   Cache-Control: no-cache
@@ -318,7 +318,7 @@ Content-Type:
 
 * 请求报文：
 
-  ```text
+  ```
   GET /v2/events?channel_id=1&size=10&offset=42 HTTP/1.1
   Host: 127.0.0.1:8080
   X-APP-ID: Test
@@ -409,7 +409,7 @@ http://122.226.181.252:8030/files?access_token=1003775_3145728_1577429797_abf242
 
 * 请求报文：
 
-```text
+```
 GET /files?access_token=100377531457281577429797_abf24269c1b163a04a4090643a82f411key=/1/upload.txtobj_id=59251953000f50ff01001a7a HTTP/1.1
 
 Host: 122.226.181.252:8030
@@ -422,7 +422,7 @@ Postman-Token: f5f350d7-2cde-5e62-cdb3-501abe722f19
 
 * 返回数据：
 
-```text
+```
 请求的对象的内容
 ```
 
@@ -463,7 +463,7 @@ http://122.226.181.252:8030/fileinfo/delete?key=/1/upload.txt1&obj_id=5925195300
 
 * 请求报文：
 
-```text
+```
 GET /fileinfo/delete?key=/1/upload.txt1obj_id=59251953000f50ff01001a7aaccess_token=100377531457281577429797_abf24269c1b163a04a4090643a82f411 HTTP/1.1
 
 Host: 122.226.181.252:8030
@@ -532,7 +532,7 @@ http://122.226.181.252:8030/fileinfo/infos?obj_id=592529a8000f50ff0100677d&key=/
 
 * 请求报文：
 
-```text
+```
 GET /fileinfo/infos?obj_id=592529a8000f50ff0100677d&amp;key=/1/upload.txt&amp;access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411 HTTP/1.1
 Host: 122.226.181.252:8030
 Cache-Control: no-cache
@@ -618,7 +618,7 @@ http://122.226.181.252:8030/fileinfo/listbysort?obj_id=592529a8000f50ff0100677d&
 
 * 请求报文：
 
-```text
+```
 GET /fileinfo/listbysort?obj_id=592529a8000f50ff0100677d&amp;key=/1/upload.txt&amp;count=10&amp;access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411 HTTP/1.1
 Host: 122.226.181.252:8030
 Cache-Control: no-cache
@@ -711,7 +711,7 @@ http://122.226.181.252:8030/fileinfo/cidsbyappid?access_token=1003775_3145728_15
 
 * 请求报文：
 
-```text
+```
 GET /fileinfo/cidsbyappid?access_token=1003775_3145728_1577429797_abf24269c1b163a04a4090643a82f411&amp;obj_type=1 HTTP/1.1
 Host: 122.226.181.252:8030
 Cache-Control: no-cache
